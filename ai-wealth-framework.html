@@ -1354,7 +1354,7 @@ body {
      .ph-cursor { display: none; }
    }
   </style>
-   <style>
+     <style>
    /* Site chrome — shared footer + about-modal system */
    .site-footer { margin-top: 32px; padding: 24px; border-top: 1px solid var(--color-border); background: var(--color-surface); }
    .sf-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; }
@@ -1364,7 +1364,11 @@ body {
    .sf-links { display: flex; gap: 20px; flex-wrap: wrap; }
    .sf-byline { font-size: 13px; color: var(--color-text-secondary); }
    .sf-byline a { display: inline; color: var(--color-primary); font-weight: 600; }
-   #appInfoBtn { flex-shrink: 0; }
+   #appInfoBtn { flex-shrink: 0; display: inline-flex !important; align-items: center; gap: 6px; }
+   [data-theme-toggle] { display: inline-flex !important; align-items: center; justify-content: center; gap: 6px; }
+   .tt-label { font-size: 13px; font-weight: 500; white-space: nowrap; }
+   .app-summary { padding: 10px 24px; background: var(--color-surface); border-bottom: 1px solid var(--color-border); color: var(--color-text-secondary); font-size: 13px; line-height: 1.5; }
+   .sidebar-header .app-summary, .sidebar__header .app-summary { padding: 4px 0 0; margin: 0; border: none; background: none; font-size: 12px; }
    .site-about-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 2500; display: flex; align-items: center; justify-content: center; padding: 20px; }
    .site-about-modal { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; max-width: 580px; width: 100%; max-height: 82vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,.3); }
    .sam-head { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; border-bottom: 1px solid var(--color-border); position: sticky; top: 0; background: var(--color-surface); }
@@ -3422,9 +3426,9 @@ console.log('- Ctrl/Cmd + 8: Team');
    })();
   </script>
   <script>
-   window.APP_ABOUT = {"title":"About AI Business Framework","html":"<p><strong>AI Business Framework</strong> is a project hub built around a specific business-building methodology: a 4-step framework (Industry Selection → Business Model → Customer Targeting → Offer Creation) for launching an AI-driven business.</p>\n<p>It tracks KPIs like revenue, monthly recurring revenue, CAC, and LTV; includes a Documents section with real file upload (click a document to open the file you uploaded), an automation section, inventory, a team roster, and an ROI calculator for modeling payback period.</p>\n<p>It's meant to demonstrate a step-by-step \"framework as software\" pattern — turning a business methodology into an interactive tool rather than a static slide deck.</p><p style=\"margin-top:20px;margin-bottom:8px;font-weight:600;color:var(--color-text)\">Key Features</p><ul><li>4-step business framework (Industry Selection \u2192 Business Model \u2192 Customer Targeting \u2192 Offer Creation)</li><li>KPI tracking: revenue, MRR, CAC, LTV</li><li>Real document upload \u2014 click an uploaded document to open the actual file</li><li>Automation, Inventory, and Team sections, plus an ROI calculator</li></ul><p style=\"margin-top:20px;margin-bottom:8px;font-weight:600;color:var(--color-text)\">How to Use</p><ul><li>Use the sidebar to move through Dashboard, Framework Steps, Projects, Performance, Documents, Automation, Inventory, and Team</li><li>Click \"Upload Document\" to add a file; click any uploaded document to view, edit, or remove it</li><li>Use the ROI Calculator on the Performance tab to model payback period</li></ul>"};
+   window.APP_ABOUT = {"title":"About AI Business Framework","summary":"A step-by-step framework for building an AI-driven business, with documents, ROI calculator, and KPIs.","html":"<p><strong>AI Business Framework</strong> is a project hub built around a specific business-building methodology: a 4-step framework (Industry Selection → Business Model → Customer Targeting → Offer Creation) for launching an AI-driven business.</p>\n<p>It tracks KPIs like revenue, monthly recurring revenue, CAC, and LTV; includes a Documents section with real file upload (click a document to open the file you uploaded), an automation section, inventory, a team roster, and an ROI calculator for modeling payback period.</p>\n<p>It's meant to demonstrate a step-by-step \"framework as software\" pattern — turning a business methodology into an interactive tool rather than a static slide deck.</p><p style=\"margin-top:20px;margin-bottom:8px;font-weight:600;color:var(--color-text)\">Key Features</p><ul><li>4-step business framework (Industry Selection \u2192 Business Model \u2192 Customer Targeting \u2192 Offer Creation)</li><li>KPI tracking: revenue, MRR, CAC, LTV</li><li>Real document upload \u2014 click an uploaded document to open the actual file</li><li>Automation, Inventory, and Team sections, plus an ROI calculator</li></ul><p style=\"margin-top:20px;margin-bottom:8px;font-weight:600;color:var(--color-text)\">How to Use</p><ul><li>Use the sidebar to move through Dashboard, Framework Steps, Projects, Performance, Documents, Automation, Inventory, and Team</li><li>Click \"Upload Document\" to add a file; click any uploaded document to view, edit, or remove it</li><li>Use the ROI Calculator on the Performance tab to model payback period</li></ul>"};
   </script>
-    <script>
+      <script>
    /* Site chrome — shared footer + about-modal system (identical across the showcase) */
    (function () {
      function icons() { if (window.lucide && lucide.createIcons) lucide.createIcons(); }
@@ -3484,13 +3488,36 @@ console.log('- Ctrl/Cmd + 8: Team');
        btn.type = 'button';
        btn.title = 'About this app';
        btn.setAttribute('aria-label', 'About this app');
-       btn.innerHTML = ic('info', 'fas fa-circle-info');
+       btn.innerHTML = ic('info', 'fas fa-circle-info') + '<span class="tt-label">Info</span>';
        btn.addEventListener('click', window.openAboutModal);
        if (toggle) container.insertBefore(btn, toggle); else container.insertBefore(btn, container.firstChild);
        icons();
      }
 
-     function start() { buildFooter(); wireInfoButton(); }
+     function labelThemeToggle() {
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+         if (btn.querySelector('.tt-label')) return;
+         if (btn.textContent.trim().length > 0) return; // already shows its own text (e.g. "Toggle Dark Mode") — don't duplicate
+         var span = document.createElement('span');
+         span.className = 'tt-label';
+         span.textContent = 'Theme';
+         btn.appendChild(span);
+       });
+     }
+
+     function buildSummary() {
+       if (!window.APP_ABOUT || !window.APP_ABOUT.summary) return;
+       if (document.querySelector('.app-summary')) return;
+       var bar = document.createElement('div');
+       bar.className = 'app-summary';
+       bar.textContent = window.APP_ABOUT.summary;
+       var header = document.querySelector('header');
+       if (header) { header.parentNode.insertBefore(bar, header.nextSibling); return; }
+       var side = document.querySelector('.sidebar-header') || document.querySelector('.sidebar__header');
+       if (side) side.appendChild(bar);
+     }
+
+     function start() { buildFooter(); wireInfoButton(); labelThemeToggle(); buildSummary(); }
      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(start, 50); }); else setTimeout(start, 50);
    })();
   </script>

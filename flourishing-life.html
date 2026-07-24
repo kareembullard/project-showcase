@@ -2872,7 +2872,7 @@ body {
      .ph-cursor { display: none; }
    }
   </style>
-   <style>
+     <style>
    /* Site chrome — shared footer + about-modal system */
    .site-footer { margin-top: 32px; padding: 24px; border-top: 1px solid var(--color-border); background: var(--color-surface); }
    .sf-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; }
@@ -2882,7 +2882,11 @@ body {
    .sf-links { display: flex; gap: 20px; flex-wrap: wrap; }
    .sf-byline { font-size: 13px; color: var(--color-text-secondary); }
    .sf-byline a { display: inline; color: var(--color-primary); font-weight: 600; }
-   #appInfoBtn { flex-shrink: 0; }
+   #appInfoBtn { flex-shrink: 0; display: inline-flex !important; align-items: center; gap: 6px; }
+   [data-theme-toggle] { display: inline-flex !important; align-items: center; justify-content: center; gap: 6px; }
+   .tt-label { font-size: 13px; font-weight: 500; white-space: nowrap; }
+   .app-summary { padding: 10px 24px; background: var(--color-surface); border-bottom: 1px solid var(--color-border); color: var(--color-text-secondary); font-size: 13px; line-height: 1.5; }
+   .sidebar-header .app-summary, .sidebar__header .app-summary { padding: 4px 0 0; margin: 0; border: none; background: none; font-size: 12px; }
    .site-about-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 2500; display: flex; align-items: center; justify-content: center; padding: 20px; }
    .site-about-modal { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; max-width: 580px; width: 100%; max-height: 82vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,.3); }
    .sam-head { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; border-bottom: 1px solid var(--color-border); position: sticky; top: 0; background: var(--color-surface); }
@@ -5097,9 +5101,9 @@ function simulateApiCall(action) {
    })();
   </script>
   <script>
-   window.APP_ABOUT = {"title":"About Personal Growth Tracker","html":"<p><strong>Personal Growth Tracker</strong> (originally \"The Flourishing Life\") is a positive-psychology app built around a guided 14-step journey — from self-awareness and self-acceptance through communication, relationships, and workplace well-being.</p>\n<p>It tracks daily habits with streaks (gratitude, meditation, exercise, journaling), scores well-being across the five PERMA dimensions (Positive emotion, Engagement, Relationships, Meaning, Accomplishment), and offers a library of guided exercises you can browse by category.</p>\n<p>Each step is editable and clickable — a demonstration of how a wellness/coaching product might structure a long-form guided program as software.</p><p style=\"margin-top:20px;margin-bottom:8px;font-weight:600;color:var(--color-text)\">Key Features</p><ul><li>Guided 14-step positive-psychology journey</li><li>Daily habit tracking with streaks</li><li>PERMA well-being scoring across five dimensions</li><li>Library of guided exercises by category</li></ul><p style=\"margin-top:20px;margin-bottom:8px;font-weight:600;color:var(--color-text)\">How to Use</p><ul><li>Click any step card to view its details, mark it current or completed, or edit it</li><li>Check off daily habits on the dashboard to build your streaks</li><li>Browse the exercises library for guided activities by category</li></ul>"};
+   window.APP_ABOUT = {"title":"About Personal Growth Tracker","summary":"A 14-step positive-psychology journey with habit tracking and PERMA scoring.","html":"<p><strong>Personal Growth Tracker</strong> (originally \"The Flourishing Life\") is a positive-psychology app built around a guided 14-step journey — from self-awareness and self-acceptance through communication, relationships, and workplace well-being.</p>\n<p>It tracks daily habits with streaks (gratitude, meditation, exercise, journaling), scores well-being across the five PERMA dimensions (Positive emotion, Engagement, Relationships, Meaning, Accomplishment), and offers a library of guided exercises you can browse by category.</p>\n<p>Each step is editable and clickable — a demonstration of how a wellness/coaching product might structure a long-form guided program as software.</p><p style=\"margin-top:20px;margin-bottom:8px;font-weight:600;color:var(--color-text)\">Key Features</p><ul><li>Guided 14-step positive-psychology journey</li><li>Daily habit tracking with streaks</li><li>PERMA well-being scoring across five dimensions</li><li>Library of guided exercises by category</li></ul><p style=\"margin-top:20px;margin-bottom:8px;font-weight:600;color:var(--color-text)\">How to Use</p><ul><li>Click any step card to view its details, mark it current or completed, or edit it</li><li>Check off daily habits on the dashboard to build your streaks</li><li>Browse the exercises library for guided activities by category</li></ul>"};
   </script>
-    <script>
+      <script>
    /* Site chrome — shared footer + about-modal system (identical across the showcase) */
    (function () {
      function icons() { if (window.lucide && lucide.createIcons) lucide.createIcons(); }
@@ -5159,13 +5163,36 @@ function simulateApiCall(action) {
        btn.type = 'button';
        btn.title = 'About this app';
        btn.setAttribute('aria-label', 'About this app');
-       btn.innerHTML = ic('info', 'fas fa-circle-info');
+       btn.innerHTML = ic('info', 'fas fa-circle-info') + '<span class="tt-label">Info</span>';
        btn.addEventListener('click', window.openAboutModal);
        if (toggle) container.insertBefore(btn, toggle); else container.insertBefore(btn, container.firstChild);
        icons();
      }
 
-     function start() { buildFooter(); wireInfoButton(); }
+     function labelThemeToggle() {
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+         if (btn.querySelector('.tt-label')) return;
+         if (btn.textContent.trim().length > 0) return; // already shows its own text (e.g. "Toggle Dark Mode") — don't duplicate
+         var span = document.createElement('span');
+         span.className = 'tt-label';
+         span.textContent = 'Theme';
+         btn.appendChild(span);
+       });
+     }
+
+     function buildSummary() {
+       if (!window.APP_ABOUT || !window.APP_ABOUT.summary) return;
+       if (document.querySelector('.app-summary')) return;
+       var bar = document.createElement('div');
+       bar.className = 'app-summary';
+       bar.textContent = window.APP_ABOUT.summary;
+       var header = document.querySelector('header');
+       if (header) { header.parentNode.insertBefore(bar, header.nextSibling); return; }
+       var side = document.querySelector('.sidebar-header') || document.querySelector('.sidebar__header');
+       if (side) side.appendChild(bar);
+     }
+
+     function start() { buildFooter(); wireInfoButton(); labelThemeToggle(); buildSummary(); }
      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(start, 50); }); else setTimeout(start, 50);
    })();
   </script>
