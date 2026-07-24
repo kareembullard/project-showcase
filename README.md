@@ -35,7 +35,7 @@ Each link opens the app inside the hub (nav + home button included). Every app a
 </tr>
 <tr>
 <td width="50%"><img src="screenshots/learning-hub.jpg" alt="Learning & Media Tracker"><br><sub>Learning & Media Tracker</sub></td>
-<td width="50%"><img src="screenshots/ai-wealth-framework.jpg" alt="AI Business Framework"><br><sub>AI Business Framework</sub></td>
+<td width="50%"><img src="screenshots/ai-wealth-framework.png" alt="AI Business Framework"><br><sub>AI Business Framework</sub></td>
 </tr>
 <tr>
 <td width="50%"><img src="screenshots/feedly-clone.jpg" alt="RSS Feed Reader"><br><sub>RSS Feed Reader</sub></td>
@@ -46,8 +46,6 @@ Each link opens the app inside the hub (nav + home button included). Every app a
 <td width="50%"></td>
 </tr>
 </table>
-
-> Note: the AI Business Framework screenshot is still missing — drop `ai-wealth-framework.jpg` into `screenshots/` to fill that last slot.
 
 ## How it's built
 
