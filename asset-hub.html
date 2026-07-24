@@ -1896,11 +1896,11 @@ select.form-control {
    .ph-ripple { position: absolute; border-radius: 50%; background: rgba(255,255,255,.4);
      transform: translate(-50%,-50%) scale(0); animation: phRipple .6s ease-out forwards; pointer-events: none; }
    @keyframes phRipple { to { transform: translate(-50%,-50%) scale(1); opacity: 0; } }
-   .ph-cursor { position: fixed; top: 0; left: 0; width: 30px; height: 30px;
+   .ph-cursor { position: fixed; top: 0; left: 0; width: 16px; height: 16px;
      border: 2px solid var(--color-primary); border-radius: 50%; pointer-events: none; z-index: 9998;
      transition: width .25s ease, height .25s ease, background .25s ease, border-color .25s ease, opacity .25s ease;
-     opacity: .55; will-change: transform; }
-   .ph-cursor.hover { width: 50px; height: 50px; background: rgba(var(--color-primary-rgb), .12); opacity: .8; }
+     opacity: .28; will-change: transform; }
+   .ph-cursor.hover { width: 30px; height: 30px; background: rgba(var(--color-primary-rgb), .06); opacity: .45; }
    @media (max-width: 900px) { .ph-cursor { display: none; } }
    @media (prefers-reduced-motion: reduce) {
      html.ph-anim .ph-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
@@ -3973,7 +3973,7 @@ function initializeSettings() {
   <script>
    window.APP_ABOUT = {"title":"About AssetHub","html":"<p><strong>AssetHub</strong> is a digital asset management dashboard — a single place to catalog, search, and act on every reusable asset an organization owns, from infrastructure templates to automation workflows to brand files.</p>\n<p>The catalog you're browsing here isn't placeholder text: it's <strong>56 real assets</strong> imported from an internal EAAAL-2025 inventory, spanning technical infrastructure, automation workflows, business intelligence dashboards, sales &amp; marketing collateral, legal &amp; compliance documents, project management templates, training materials, brand assets, and client templates.</p>\n<p>Every action works: add, edit, and remove assets, projects, sales, and integrations; drag work through a kanban board; export data to CSV. It's meant to demonstrate the kind of internal tooling a growing team actually needs — not just a static mockup.</p>"};
   </script>
-  <script>
+    <script>
    /* Site chrome — shared footer + about-modal system (identical across the showcase) */
    (function () {
      function icons() { if (window.lucide && lucide.createIcons) lucide.createIcons(); }
@@ -3992,7 +3992,16 @@ function initializeSettings() {
          + '<a href="privacy.html">' + ic('shield-check', 'fas fa-shield-halved') + 'Privacy &amp; Terms</a>'
          + '<a href="https://github.com/kareembullard/project-showcase" target="_blank" rel="noopener">' + ic('github', 'fab fa-github') + 'GitHub</a></div>'
          + '</div>';
-       document.body.appendChild(f);
+       // Apps with a `position: fixed` sidebar (e.g. a `.side-nav`) take body out of normal flow for
+       // a plain appended child — append inside `.main-content` instead so the footer sits below the
+       // content (offset past the fixed sidebar) rather than overlapping it.
+       var target = document.body;
+       var fixedSide = document.querySelector('.side-nav');
+       if (fixedSide && getComputedStyle(fixedSide).position === 'fixed') {
+         var mc = document.querySelector('.main-content');
+         if (mc) target = mc;
+       }
+       target.appendChild(f);
        icons();
      }
 
