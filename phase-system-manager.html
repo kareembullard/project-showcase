@@ -1,0 +1,3490 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Phase System Management
+  </title>
+  <style>
+/*
+ * Converted to ProjectSuite CSS Architecture
+ * Date: 2025-11-29 04:36:35
+ * Bootstrap/utility classes mapped to ProjectSuite equivalents
+ * Original backed up to: ./asset_backups
+ */
+
+:root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
+  --color-bg-2: rgba(245, 158, 11, 0.08); /* Light yellow */
+  --color-bg-3: rgba(34, 197, 94, 0.08); /* Light green */
+  --color-bg-4: rgba(239, 68, 68, 0.08); /* Light red */
+  --color-bg-5: rgba(147, 51, 234, 0.08); /* Light purple */
+  --color-bg-6: rgba(249, 115, 22, 0.08); /* Light orange */
+  --color-bg-7: rgba(236, 72, 153, 0.08); /* Light pink */
+  --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* RGB versions for opacity control (Dark Mode) */
+    --color-gray-400-rgb: 119, 124, 124;
+    --color-teal-300-rgb: 50, 184, 198;
+    --color-gray-300-rgb: 167, 169, 169;
+    --color-gray-200-rgb: 245, 245, 245;
+
+    /* Background color tokens (Dark Mode) */
+    --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
+    --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
+    --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
+    --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
+    --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
+    --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
+    --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
+    --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
+
+    /* Semantic Color Tokens (Dark Mode) */
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-warning: var(--color-orange-400);
+    --color-info: var(--color-gray-300);
+    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+    /* Common style patterns - updated for dark mode */
+    --focus-ring: 0 0 0 3px var(--color-focus-ring);
+    --focus-outline: 2px solid var(--color-primary);
+    --status-bg-opacity: 0.15;
+    --status-border-opacity: 0.25;
+    --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+    /* RGB versions for dark mode */
+    --color-success-rgb: var(--color-teal-300-rgb);
+    --color-error-rgb: var(--color-red-400-rgb);
+    --color-warning-rgb: var(--color-orange-400-rgb);
+    --color-info-rgb: var(--color-gray-300-rgb);
+  }
+}
+
+/* Data attribute for manual theme switching */
+[data-color-scheme="dark"] {
+  /* RGB versions for opacity control (dark mode) */
+  --color-gray-400-rgb: 119, 124, 124;
+  --color-teal-300-rgb: 50, 184, 198;
+  --color-gray-300-rgb: 167, 169, 169;
+  --color-gray-200-rgb: 245, 245, 245;
+
+  /* Colorful background palette - Dark Mode */
+  --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
+  --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
+  --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
+  --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
+  --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
+  --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
+  --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
+  --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
+
+  /* Semantic Color Tokens (Dark Mode) */
+  --color-background: var(--color-charcoal-700);
+  --color-surface: var(--color-charcoal-800);
+  --color-text: var(--color-gray-200);
+  --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+  --color-primary: var(--color-teal-300);
+  --color-primary-hover: var(--color-teal-400);
+  --color-primary-active: var(--color-teal-800);
+  --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+  --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+  --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+  --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+  --color-error: var(--color-red-400);
+  --color-success: var(--color-teal-300);
+  --color-warning: var(--color-orange-400);
+  --color-info: var(--color-gray-300);
+  --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+  --color-btn-primary-text: var(--color-slate-900);
+  --color-card-border: rgba(var(--color-gray-400-rgb), 0.15);
+  --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+  --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+  /* Common style patterns - updated for dark mode */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for dark mode */
+  --color-success-rgb: var(--color-teal-300-rgb);
+  --color-error-rgb: var(--color-red-400-rgb);
+  --color-warning-rgb: var(--color-orange-400-rgb);
+  --color-info-rgb: var(--color-gray-300-rgb);
+}
+
+[data-color-scheme="light"] {
+  /* RGB versions for opacity control (light mode) */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+
+  /* RGB versions for light mode */
+  --color-success-rgb: var(--color-teal-500-rgb);
+  --color-error-rgb: var(--color-red-500-rgb);
+  --color-warning-rgb: var(--color-orange-500-rgb);
+  --color-info-rgb: var(--color-slate-500-rgb);
+}
+
+/* Base styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+h2 {
+  font-size: var(--font-size-3xl);
+}
+h3 {
+  font-size: var(--font-size-2xl);
+}
+h4 {
+  font-size: var(--font-size-xl);
+}
+h5 {
+  font-size: var(--font-size-lg);
+}
+h6 {
+  font-size: var(--font-size-md);
+}
+
+p {
+  margin: 0 0 var(--space-16) 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+code,
+pre {
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--font-size-base) * 0.95);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-sm);
+}
+
+code {
+  padding: var(--space-1) var(--space-4);
+}
+
+pre {
+  padding: var(--space-16);
+  margin: var(--space-16) 0;
+  overflow: auto;
+  border: 1px solid var(--color-border);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
+  border: none;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn--primary:active {
+  background: var(--color-primary-active);
+}
+
+.btn--secondary {
+  background: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.btn--secondary:hover {
+  background: var(--color-secondary-hover);
+}
+
+.btn--secondary:active {
+  background: var(--color-secondary-active);
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--outline:hover {
+  background: var(--color-secondary);
+}
+
+.btn--sm {
+  padding: var(--space-4) var(--space-12);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+}
+
+.btn--lg {
+  padding: var(--space-10) var(--space-20);
+  font-size: var(--font-size-lg);
+  border-radius: var(--radius-md);
+}
+
+.btn--full-width {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Form elements */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: var(--space-8) var(--space-12);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+textarea.form-control {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+}
+
+select.form-control {
+  padding: var(--space-8) var(--space-12);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: var(--select-caret-light);
+  background-repeat: no-repeat;
+  background-position: right var(--space-12) center;
+  background-size: 16px;
+  padding-right: var(--space-32);
+}
+
+/* Add a dark mode specific caret */
+@media (prefers-color-scheme: dark) {
+  select.form-control {
+    background-image: var(--select-caret-dark);
+  }
+}
+
+/* Also handle data-color-scheme */
+[data-color-scheme="dark"] select.form-control {
+  background-image: var(--select-caret-dark);
+}
+
+[data-color-scheme="light"] select.form-control {
+  background-image: var(--select-caret-light);
+}
+
+.form-control:focus {
+  border-color: var(--color-primary);
+  outline: var(--focus-outline);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-8);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.form-group {
+  margin-bottom: var(--space-16);
+}
+
+/* Card component */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card__body {
+  padding: var(--space-16);
+}
+
+.card__header,
+.card__footer {
+  padding: var(--space-16);
+  border-bottom: 1px solid var(--color-card-border-inner);
+}
+
+/* Status indicators - simplified with CSS variables */
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-6) var(--space-12);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.status--success {
+  background-color: rgba(
+    var(--color-success-rgb, 33, 128, 141),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-success);
+  border: 1px solid
+    rgba(var(--color-success-rgb, 33, 128, 141), var(--status-border-opacity));
+}
+
+.status--error {
+  background-color: rgba(
+    var(--color-error-rgb, 192, 21, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-error);
+  border: 1px solid
+    rgba(var(--color-error-rgb, 192, 21, 47), var(--status-border-opacity));
+}
+
+.status--warning {
+  background-color: rgba(
+    var(--color-warning-rgb, 168, 75, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-warning);
+  border: 1px solid
+    rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-border-opacity));
+}
+
+.status--info {
+  background-color: rgba(
+    var(--color-info-rgb, 98, 108, 113),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-info);
+  border: 1px solid
+    rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity));
+}
+
+/* Container layout */
+.section-content {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--space-16);
+  padding-left: var(--space-16);
+}
+
+@media (min-width: 640px) {
+  .section-content {
+    max-width: var(--container-sm);
+  }
+}
+@media (min-width: 768px) {
+  .section-content {
+    max-width: var(--container-md);
+  }
+}
+@media (min-width: 1024px) {
+  .section-content {
+    max-width: var(--container-lg);
+  }
+}
+@media (min-width: 1280px) {
+  .section-content {
+    max-width: var(--container-xl);
+  }
+}
+
+/* Utility classes */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-4 {
+  gap: var(--space-4);
+}
+.gap-8 {
+  gap: var(--space-8);
+}
+.gap-16 {
+  gap: var(--space-16);
+}
+
+.block {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Dark mode specifics */
+[data-color-scheme="dark"] .btn--outline {
+  border: 1px solid var(--color-border-secondary);
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+}
+
+/* END PERPLEXITY DESIGN SYSTEM */
+/* Application-specific styles */
+#app {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+/* Sidebar Styles */
+.side-nav {
+  width: 280px;
+  background-color: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.side-nav__header {
+  padding: var(--space-20);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.side-nav__title {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+.side-nav__section {
+  padding: var(--space-16) var(--space-20);
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.side-nav__section-title {
+  margin: 0 0 var(--space-12) 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.phase-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.phase-nav__item {
+  border-radius: var(--radius-base);
+  overflow: hidden;
+}
+
+.phase-nav__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-10) var(--space-12);
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-base);
+  transition: all var(--duration-fast) var(--ease-standard);
+  position: relative;
+}
+
+.phase-nav__link:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.phase-nav__link.active {
+  background-color: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.phase-nav__icon {
+  font-size: var(--font-size-lg);
+  width: 24px;
+  text-align: center;
+}
+
+.phase-nav__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.phase-nav__name {
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-2);
+}
+
+.phase-nav__description {
+  font-size: var(--font-size-xs);
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.phase-nav__badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: inherit;
+  padding: var(--space-2) var(--space-6);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  margin-left: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-20) var(--space-24);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.main-header h1 {
+  margin: 0;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.main-header__actions {
+  display: flex;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+/* Search Bar */
+.search-bar {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-16) var(--space-24);
+  display: flex;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.search-bar input {
+  flex: 1;
+}
+
+/* Content Area */
+.content-area {
+  flex: 1;
+  padding: var(--space-24);
+  overflow-y: auto;
+}
+
+.view {
+  display: block;
+}
+
+.view.hidden {
+  display: none;
+}
+
+/* Dashboard Styles */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-24);
+  align-items: start;
+}
+
+.dashboard-section {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  padding: var(--space-20);
+  box-shadow: var(--shadow-sm);
+}
+
+.dashboard-section--full {
+  grid-column: 1 / -1;
+}
+
+.dashboard-section h3 {
+  margin: 0 0 var(--space-16) 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+/* Velocity Grid */
+.velocity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-12);
+}
+
+.velocity-card {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-base);
+  padding: var(--space-12);
+  text-align: center;
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.velocity-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.velocity-card__icon {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-8);
+  display: block;
+}
+
+.velocity-card__count {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.velocity-card__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Sprint View */
+.sprint-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.sprint-task {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-base);
+  padding: var(--space-12);
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.sprint-task:hover {
+  border-color: var(--color-primary);
+}
+
+.sprint-task__priority {
+  width: 4px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.sprint-task__priority--H { background-color: #DC2626; }
+.sprint-task__priority--M { background-color: #D97706; }
+.sprint-task__priority--L { background-color: #059669; }
+.sprint-task__priority--X { background-color: #7C3AED; }
+
+.sprint-task__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.sprint-task__title {
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-sm);
+}
+
+.sprint-task__meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.sprint-task__progress {
+  width: 60px;
+  height: 4px;
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sprint-task__progress-bar {
+  height: 100%;
+  background-color: var(--color-success);
+  transition: width var(--duration-normal) var(--ease-standard);
+}
+
+/* Timeline */
+.timeline-container {
+  position: relative;
+  padding: var(--space-16) 0;
+}
+
+.timeline-item {
+  display: flex;
+  gap: var(--space-16);
+  margin-bottom: var(--space-20);
+  position: relative;
+}
+
+.timeline-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 32px;
+  bottom: -20px;
+  width: 2px;
+  background-color: var(--color-border);
+}
+
+.timeline-marker {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-content {
+  flex: 1;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-base);
+  padding: var(--space-12);
+}
+
+.timeline-title {
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-4);
+}
+
+.timeline-meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* Recent Items */
+.recent-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.recent-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-8);
+  background-color: var(--color-background);
+  border-radius: var(--radius-base);
+  border: 1px solid var(--color-card-border);
+  transition: all var(--duration-fast) var(--ease-standard);
+  cursor: pointer;
+}
+
+.recent-item:hover {
+  border-color: var(--color-primary);
+}
+
+.recent-item__icon {
+  font-size: var(--font-size-lg);
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.recent-item__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.recent-item__title {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-2);
+}
+
+.recent-item__meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* Phase View Styles */
+.phase-header {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  padding: var(--space-20);
+  margin-bottom: var(--space-24);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.phase-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.phase-icon {
+  font-size: var(--font-size-4xl);
+}
+
+.phase-info h2 {
+  margin: 0 0 var(--space-4) 0;
+  font-size: var(--font-size-3xl);
+}
+
+.phase-description {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+.phase-actions {
+  display: flex;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+/* Task Grid */
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-20);
+}
+
+.task-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  padding: var(--space-16);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-fast) var(--ease-standard);
+  cursor: pointer;
+  position: relative;
+}
+
+.task-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+}
+
+.task-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-12);
+}
+
+.task-card__priority {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: var(--space-4);
+}
+
+.task-card__priority--H { background-color: #DC2626; }
+.task-card__priority--M { background-color: #D97706; }
+.task-card__priority--L { background-color: #059669; }
+.task-card__priority--X { background-color: #7C3AED; }
+
+.task-card__actions {
+  display: flex;
+  gap: var(--space-8);
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.task-card:hover .task-card__actions {
+  opacity: 1;
+}
+
+.task-card__action {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.task-card__action:hover {
+  color: var(--color-primary);
+  background-color: var(--color-secondary);
+}
+
+.task-card__title {
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-8);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-tight);
+}
+
+.task-card__description {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-12);
+  line-height: var(--line-height-normal);
+}
+
+.task-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.task-card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.task-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.task-tag {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  padding: var(--space-2) var(--space-8);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.task-card__progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+}
+
+.task-card__progress-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.task-card__progress-bar {
+  flex: 1;
+  height: 4px;
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-sm);
+  margin: 0 var(--space-8);
+  overflow: hidden;
+}
+
+.task-card__progress-fill {
+  height: 100%;
+  background-color: var(--color-success);
+  transition: width var(--duration-normal) var(--ease-standard);
+}
+
+.task-card__progress-percentage {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  min-width: 28px;
+  text-align: right;
+}
+
+.task-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Analytics Styles */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--space-24);
+}
+
+.analytics-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  padding: var(--space-20);
+  box-shadow: var(--shadow-sm);
+}
+
+.analytics-card h3 {
+  margin: 0 0 var(--space-16) 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.analytics-card canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-16);
+}
+
+.metric-item {
+  text-align: center;
+  padding: var(--space-12);
+  background-color: var(--color-background);
+  border-radius: var(--radius-base);
+  border: 1px solid var(--color-card-border);
+}
+
+.metric-value {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.metric-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--space-20);
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal__content {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid var(--color-card-border);
+}
+
+.modal__content--small {
+  max-width: 400px;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-20) var(--space-24);
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.modal__header h3 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.modal__close {
+  background: none;
+  border: none;
+  font-size: var(--font-size-2xl);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.modal__close:hover {
+  color: var(--color-text);
+  background-color: var(--color-secondary);
+}
+
+.modal__body {
+  padding: var(--space-24);
+}
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-12);
+  padding: var(--space-20) var(--space-24);
+  border-top: 1px solid var(--color-card-border);
+}
+
+/* Form Row */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-16);
+}
+
+/* Loading Spinner */
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.loading.hidden {
+  display: none;
+}
+
+.loading__spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-secondary);
+  border-top: 4px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .side-nav {
+    transform: translateX(-100%);
+    transition: transform var(--duration-normal) var(--ease-standard);
+  }
+
+  .side-nav.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .main-header {
+    padding: var(--space-16);
+  }
+
+  .content-area {
+    padding: var(--space-16);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .task-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal {
+    padding: var(--space-12);
+  }
+
+  .modal__content {
+    max-height: 95vh;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  
+  
+  
+  
+  
+  <script>
+   /* Unified color-mode: no-flash init (shared standard) */
+   (function () {
+     try {
+       var s = localStorage.getItem('colorScheme');
+       if (s !== 'dark' && s !== 'light') {
+         s = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+       }
+       document.documentElement.setAttribute('data-color-scheme', s);
+     } catch (e) {}
+   })();
+  </script>
+  <style>
+   /* Unified typography — Space Grotesk headings + Inter body (shared standard) */
+   body { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+   h1, h2, h3, h4, h5, h6,
+   .logo, .logo span, .sidebar-header h2, .sidebar__title, .app-title {
+     font-family: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+     letter-spacing: -0.02em;
+   }
+  </style>
+   <style>
+   /* ============================================================
+      PROJECTSUITE ENHANCE — palette refresh (tangerine, no red) + motion
+      ============================================================ */
+   :root, [data-color-scheme="light"] {
+     --color-primary: #e2652a;
+     --color-primary-hover: #c9551e;
+     --color-primary-active: #b54a18;
+     --color-accent: #2a9d8f;
+     --color-accent-hover: #1e7a70;
+     --color-success: #17a673;
+     --color-warning: #e0930b;
+     --color-error: #d2691e;
+     --color-danger: #d2691e;
+     --color-info: #1e85ad;
+     --color-focus-ring: rgba(226, 101, 42, 0.4);
+     --color-btn-primary-text: #ffffff;
+     --color-primary-rgb: 226, 101, 42;
+     --color-success-rgb: 23, 166, 115;
+     --color-warning-rgb: 224, 147, 11;
+     --color-error-rgb: 210, 105, 30;
+     --color-info-rgb: 30, 133, 173;
+     --gradient-primary: linear-gradient(135deg, #e2652a 0%, #f5a623 100%);
+     --gradient-accent: linear-gradient(135deg, #2a9d8f 0%, #17a673 100%);
+   }
+   [data-color-scheme="dark"] {
+     --color-primary: #ff8a4c;
+     --color-primary-hover: #ff7a33;
+     --color-primary-active: #f26b21;
+     --color-accent: #3fb9aa;
+     --color-accent-hover: #2dd4a7;
+     --color-success: #2dd4a7;
+     --color-warning: #f5b23d;
+     --color-error: #ff9150;
+     --color-danger: #ff9150;
+     --color-info: #38a9ce;
+     --color-focus-ring: rgba(255, 138, 76, 0.4);
+     --color-btn-primary-text: #16150f;
+     --color-primary-rgb: 255, 138, 76;
+     --color-success-rgb: 45, 212, 167;
+     --color-warning-rgb: 245, 178, 61;
+     --color-error-rgb: 255, 145, 80;
+     --color-info-rgb: 56, 169, 206;
+     --gradient-primary: linear-gradient(135deg, #ff8a4c 0%, #f5b23d 100%);
+     --gradient-accent: linear-gradient(135deg, #3fb9aa 0%, #2dd4a7 100%);
+   }
+   @media (prefers-color-scheme: dark) {
+     :root:not([data-color-scheme="light"]) {
+       --color-primary: #ff8a4c; --color-primary-hover: #ff7a33; --color-primary-active: #f26b21;
+       --color-accent: #3fb9aa; --color-success: #2dd4a7; --color-warning: #f5b23d;
+       --color-error: #ff9150; --color-danger: #ff9150; --color-info: #38a9ce;
+       --color-primary-rgb: 255, 138, 76;
+       --gradient-primary: linear-gradient(135deg, #ff8a4c 0%, #f5b23d 100%);
+     }
+   }
+   html.ph-anim .ph-reveal { opacity: 0; transform: translateY(18px);
+     transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); will-change: opacity, transform; }
+   html.ph-anim .ph-reveal.in-view { opacity: 1; transform: none; }
+   .ph-card { position: relative; }
+   .ph-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+     background: var(--gradient-primary); transform: scaleX(0); transform-origin: left;
+     transition: transform .35s cubic-bezier(.16,1,.3,1); border-radius: 4px 4px 0 0; pointer-events: none; z-index: 1; }
+   .ph-card:hover::after { transform: scaleX(1); }
+   .ph-ripple { position: absolute; border-radius: 50%; background: rgba(255,255,255,.4);
+     transform: translate(-50%,-50%) scale(0); animation: phRipple .6s ease-out forwards; pointer-events: none; }
+   @keyframes phRipple { to { transform: translate(-50%,-50%) scale(1); opacity: 0; } }
+   .ph-cursor { position: fixed; top: 0; left: 0; width: 30px; height: 30px;
+     border: 2px solid var(--color-primary); border-radius: 50%; pointer-events: none; z-index: 9998;
+     transition: width .25s ease, height .25s ease, background .25s ease, border-color .25s ease, opacity .25s ease;
+     opacity: .55; will-change: transform; }
+   .ph-cursor.hover { width: 50px; height: 50px; background: rgba(var(--color-primary-rgb), .12); opacity: .8; }
+   @media (max-width: 900px) { .ph-cursor { display: none; } }
+   @media (prefers-reduced-motion: reduce) {
+     html.ph-anim .ph-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+     .ph-cursor { display: none; }
+   }
+  </style>
+ </head>
+ <body>
+  <div id="app">
+   <!-- Sidebar Navigation -->
+   <nav class="side-nav nav-bar">
+    <div class="sidebar__header nav-content">
+     <h2 class="sidebar__title">
+      Phase System
+     </h2>
+     <button class="btn btn--sm btn--outline" data-theme-toggle="" id="themeToggle" aria-label="Toggle color scheme">
+      <i class="fas fa-moon"></i>
+     </button>
+    </div>
+    <!-- Quick Actions -->
+    <div class="sidebar__section">
+     <button class="btn btn--primary btn--full-width" id="quickCaptureBtn">
+      ⚡ Quick Capture
+     </button>
+    </div>
+    <!-- Phase Navigation -->
+    <div class="sidebar__section">
+     <h3 class="sidebar__section-title">
+      Phases
+     </h3>
+     <ul class="phase-nav nav-links" id="phaseNav">
+      <!-- Phases will be populated by JavaScript -->
+     </ul>
+    </div>
+    <!-- System Actions -->
+    <div class="sidebar__section">
+     <button class="btn btn--secondary btn--full-width" id="analyticsBtn">
+      📊 Analytics
+     </button>
+     <button class="btn btn--secondary btn--full-width" id="exportBtn">
+      📤 Export Data
+     </button>
+    </div>
+   </nav>
+   <!-- Main Content -->
+   <main class="main-content">
+    <header class="main-header">
+     <h1 id="viewTitle">
+      Dashboard
+     </h1>
+     <div class="main-header__actions">
+      <button class="btn btn--outline" id="searchToggle">
+       🔍 Search
+      </button>
+      <button class="btn btn--primary" id="newTaskBtn">
+       + New Task
+      </button>
+     </div>
+    </header>
+    <!-- Search Bar -->
+    <div class="search-bar hidden" id="searchBar">
+     <input class="form-control" id="searchInput" placeholder="Search tasks, projects, or content..." type="text"/>
+     <button class="btn btn--outline" id="clearSearch">
+      Clear
+     </button>
+    </div>
+    <!-- Content Area -->
+    <div class="content-area" id="contentArea">
+     <!-- Dashboard View -->
+     <div class="view" id="dashboardView">
+      <div class="dashboard-grid">
+       <!-- Phase Velocity Cards -->
+       <section class="dashboard-section">
+        <h3>
+         Phase Velocity
+        </h3>
+        <div class="velocity-grid" id="velocityGrid">
+         <!-- Velocity cards will be populated by JavaScript -->
+        </div>
+       </section>
+       <!-- Active Sprint -->
+       <section class="dashboard-section">
+        <h3>
+         Active Sprint
+        </h3>
+        <div class="sprint-view" id="sprintView">
+         <!-- Sprint tasks will be populated by JavaScript -->
+        </div>
+       </section>
+       <!-- Timeline -->
+       <section class="dashboard-section dashboard-section--full">
+        <h3>
+         Project Timeline
+        </h3>
+        <div class="timeline-container" id="timelineContainer">
+         <!-- Timeline will be populated by JavaScript -->
+        </div>
+       </section>
+       <!-- Recent Items -->
+       <section class="dashboard-section">
+        <h3>
+         Recently Accessed
+        </h3>
+        <div class="recent-items" id="recentItems">
+         <!-- Recent items will be populated by JavaScript -->
+        </div>
+       </section>
+      </div>
+     </div>
+     <!-- Phase View -->
+     <div class="view hidden" id="phaseView">
+      <div class="phase-header">
+       <div class="phase-info">
+        <span class="phase-icon" id="phaseIcon">
+         💡
+        </span>
+        <h2 id="phaseName">
+         Phase Name
+        </h2>
+        <span class="phase-description" id="phaseDescription">
+         Description
+        </span>
+       </div>
+       <div class="phase-actions">
+        <select class="form-control" id="subdirectoryFilter">
+         <option value="">
+          All Subdirectories
+         </option>
+        </select>
+        <button class="btn btn--outline" id="bulkActionsBtn">
+         Bulk Actions
+        </button>
+       </div>
+      </div>
+      <div class="phase-content">
+       <div class="task-grid" id="taskGrid">
+        <!-- Tasks will be populated by JavaScript -->
+       </div>
+      </div>
+     </div>
+     <!-- Analytics View -->
+     <div class="view hidden" id="analyticsView">
+      <div class="analytics-grid">
+       <div class="analytics-card">
+        <h3>
+         Phase Performance
+        </h3>
+        <canvas height="200" id="phaseChart" width="400">
+        </canvas>
+       </div>
+       <div class="analytics-card">
+        <h3>
+         Priority Distribution
+        </h3>
+        <canvas height="200" id="priorityChart" width="400">
+        </canvas>
+       </div>
+       <div class="analytics-card">
+        <h3>
+         Task Status Flow
+        </h3>
+        <canvas height="200" id="statusChart" width="400">
+        </canvas>
+       </div>
+       <div class="analytics-card">
+        <h3>
+         Key Metrics
+        </h3>
+        <div class="metrics-grid" id="metricsGrid">
+         <!-- Metrics will be populated by JavaScript -->
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </main>
+   <!-- Task Modal -->
+   <div class="modal hidden" id="taskModal">
+    <div class="modal__content">
+     <div class="modal__header">
+      <h3 id="taskModalTitle">
+       New Task
+      </h3>
+      <button class="modal__close" id="taskModalClose">
+       ×
+      </button>
+     </div>
+     <form class="modal__body" id="taskForm">
+      <div class="form-group">
+       <label class="form-label">
+        Title
+       </label>
+       <input class="form-control" id="taskTitle" required="" type="text"/>
+      </div>
+      <div class="form-group">
+       <label class="form-label">
+        Description
+       </label>
+       <textarea class="form-control" id="taskDescription" rows="3"></textarea>
+      </div>
+      <div class="form-row">
+       <div class="form-group">
+        <label class="form-label">
+         Phase
+        </label>
+        <select class="form-control" id="taskPhase" required="">
+         <!-- Phases will be populated by JavaScript -->
+        </select>
+       </div>
+       <div class="form-group">
+        <label class="form-label">
+         Priority
+        </label>
+        <select class="form-control" id="taskPriority" required="">
+         <option value="H">
+          High (H)
+         </option>
+         <option value="M">
+          Medium (M)
+         </option>
+         <option value="L">
+          Low (L)
+         </option>
+         <option value="X">
+          Experimental (X)
+         </option>
+        </select>
+       </div>
+      </div>
+      <div class="form-row">
+       <div class="form-group">
+        <label class="form-label">
+         Project Code
+        </label>
+        <input class="form-control" id="taskProjectCode" type="text"/>
+       </div>
+       <div class="form-group">
+        <label class="form-label">
+         Status
+        </label>
+        <select class="form-control" id="taskStatus">
+         <option value="IDEATED">
+          Ideated
+         </option>
+         <option value="SCOPED">
+          Scoped
+         </option>
+         <option value="RESEARCHED">
+          Researched
+         </option>
+         <option value="SETUP">
+          Setup
+         </option>
+         <option value="DEVELOPMENT">
+          Development
+         </option>
+         <option value="EXECUTION">
+          Execution
+         </option>
+         <option value="OPTIMIZATION">
+          Optimization
+         </option>
+         <option value="ARCHIVED">
+          Archived
+         </option>
+        </select>
+       </div>
+      </div>
+      <div class="form-row">
+       <div class="form-group">
+        <label class="form-label">
+         Due Date
+        </label>
+        <input class="form-control" id="taskDueDate" type="date"/>
+       </div>
+       <div class="form-group">
+        <label class="form-label">
+         Estimated Hours
+        </label>
+        <input class="form-control" id="taskEstimatedHours" min="0" step="0.5" type="number"/>
+       </div>
+      </div>
+      <div class="form-group">
+       <label class="form-label">
+        Tags (comma-separated)
+       </label>
+       <input class="form-control" id="taskTags" placeholder="tag1, tag2, tag3" type="text"/>
+      </div>
+      <div class="form-group">
+       <label class="form-label">
+        Subdirectory
+       </label>
+       <select class="form-control" id="taskSubdirectory">
+        <!-- Subdirectories will be populated based on phase -->
+       </select>
+      </div>
+      <div class="form-group">
+       <label class="form-label">
+        Completion Percentage
+       </label>
+       <input class="form-control" id="taskCompletion" max="100" min="0" type="range" value="0"/>
+       <span id="taskCompletionValue">
+        0%
+       </span>
+      </div>
+     </form>
+     <div class="modal__footer">
+      <button class="btn btn--outline" id="taskModalCancel" type="button">
+       Cancel
+      </button>
+      <button class="btn btn--primary" form="taskForm" id="taskModalSave" type="submit">
+       Save Task
+      </button>
+     </div>
+    </div>
+   </div>
+   <!-- Quick Capture Modal -->
+   <div class="modal hidden" id="quickCaptureModal">
+    <div class="modal__content modal__content--small">
+     <div class="modal__header">
+      <h3>
+       Quick Capture
+      </h3>
+      <button class="modal__close" id="quickCaptureClose">
+       ×
+      </button>
+     </div>
+     <form class="modal__body" id="quickCaptureForm">
+      <div class="form-group">
+       <label class="form-label">
+        Quick Idea or Task
+       </label>
+       <textarea class="form-control" id="quickCaptureText" placeholder="Quickly capture an idea, task, or thought..." required="" rows="3"></textarea>
+      </div>
+      <div class="form-row">
+       <div class="form-group">
+        <label class="form-label">
+         Auto-suggest Phase
+        </label>
+        <select class="form-control" id="quickCapturePhase">
+         <option value="PSIdeate">
+          💡 PSIdeate (Ideas)
+         </option>
+        </select>
+       </div>
+       <div class="form-group">
+        <label class="form-label">
+         Priority
+        </label>
+        <select class="form-control" id="quickCapturePriority">
+         <option value="M">
+          Medium
+         </option>
+         <option value="H">
+          High
+         </option>
+         <option value="L">
+          Low
+         </option>
+         <option value="X">
+          Experimental
+         </option>
+        </select>
+       </div>
+      </div>
+     </form>
+     <div class="modal__footer">
+      <button class="btn btn--outline" id="quickCaptureCancel" type="button">
+       Cancel
+      </button>
+      <button class="btn btn--primary" form="quickCaptureForm" type="submit">
+       Capture
+      </button>
+     </div>
+    </div>
+   </div>
+   <!-- Loading Spinner -->
+   <div class="loading hidden" id="loading">
+    <div class="loading__spinner">
+    </div>
+   </div>
+  </div>
+  <script>
+// Phase System Management Application
+class PhaseSystemApp {
+    constructor() {
+        this.phases = [];
+        this.tasks = [];
+        this.currentView = 'dashboard';
+        this.currentPhase = null;
+        this.editingTask = null;
+        this.searchQuery = '';
+        this.filters = {
+            subdirectory: '',
+            priority: '',
+            status: '',
+            tags: []
+        };
+        
+        this.init();
+    }
+
+    init() {
+        this.loadData();
+        this.setupEventListeners();
+        this.renderPhaseNavigation();
+        this.showView('dashboard');
+        this.setupTheme();
+    }
+
+    loadData() {
+        // Load phases data
+        this.phases = [
+            {
+                id: "01", code: "PSIdeate", name: "Ideate", description: "Ideas, brainstorms, concepts",
+                color: "#8B5CF6", icon: "💡",
+                subdirectories: ["ACTIVE", "BACKLOG", "BRAINSTORMS", "CONCEPTS", "INSPIRATION", "FRAGMENTS", "VALIDATED"]
+            },
+            {
+                id: "02", code: "PSScope", name: "Scope", description: "Project planning, roadmaps",
+                color: "#06B6D4", icon: "🎯",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            },
+            {
+                id: "03", code: "PSResearch", name: "Research", description: "Intelligence, analysis, learning",
+                color: "#10B981", icon: "🔍",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            },
+            {
+                id: "04", code: "PSReview", name: "Review", description: "Evaluations, audits, assessments",
+                color: "#F59E0B", icon: "⭐",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            },
+            {
+                id: "05", code: "PSDocument", name: "Document", description: "Knowledge base, procedures",
+                color: "#6B7280", icon: "📄",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            },
+            {
+                id: "06", code: "PSEducate", name: "Educate", description: "Training, certifications, courses",
+                color: "#3B82F6", icon: "🎓",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            },
+            {
+                id: "08", code: "PSResource", name: "Resource", description: "Procurement, assets, inventory",
+                color: "#84CC16", icon: "📦",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            },
+            {
+                id: "09", code: "PSFinance", name: "Finance", description: "Budget, expenses, investments",
+                color: "#22C55E", icon: "💰",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            },
+            {
+                id: "10", code: "PSSetup", name: "Setup", description: "Systems, automation, infrastructure",
+                color: "#A855F7", icon: "⚙️",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            },
+            {
+                id: "11", code: "PSConduct", name: "Conduct", description: "Execution, delivery, performance",
+                color: "#EF4444", icon: "🚀",
+                subdirectories: ["ACTIVE", "SALES-PIPELINE", "CLIENT-WORK", "PERFORMANCE", "NETWORKING", "OPPORTUNITIES"]
+            },
+            {
+                id: "12", code: "PSDevelop", name: "Develop", description: "Creation, production, development",
+                color: "#F97316", icon: "🛠️",
+                subdirectories: ["ACTIVE", "CONTENT-CREATION", "PRODUCT-DEV", "MUSIC-PRODUCTION", "CREATIVE-PROJECTS", "PROTOTYPES"]
+            },
+            {
+                id: "13", code: "PSControl", name: "Control", description: "Operations, coordination, management",
+                color: "#64748B", icon: "📊",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            },
+            {
+                id: "14", code: "PSOptimize", name: "Optimize", description: "Improvements, efficiency, refinements",
+                color: "#06B6D4", icon: "📈",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            },
+            {
+                id: "15", code: "PSNetwork", name: "Network", description: "Professional relationships, partnerships",
+                color: "#8B5CF6", icon: "🤝",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            },
+            {
+                id: "16", code: "PSSocial", name: "Social", description: "Personal connections, social activities",
+                color: "#EC4899", icon: "👥",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            },
+            {
+                id: "17", code: "PSMarket", name: "Market", description: "Business development, marketing",
+                color: "#10B981", icon: "📢",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            },
+            {
+                id: "18", code: "PSLeisure", name: "Leisure", description: "Recreation, hobbies, renewal",
+                color: "#F59E0B", icon: "🎨",
+                subdirectories: ["ACTIVE", "BACKLOG", "COMPLETED", "TEMPLATES", "RESOURCES", "PROJECTS", "NOTES"]
+            }
+        ];
+
+        // Load sample tasks or from localStorage
+        const savedTasks = localStorage.getItem('psm_tasks');
+        if (savedTasks) {
+            this.tasks = JSON.parse(savedTasks);
+        } else {
+            this.tasks = [
+                {
+                    id: "1", title: "Apollo PM Role Acquisition", description: "Apply for Project Manager role at Apollo",
+                    phase: "PSConduct", priority: "H", projectCode: "SALES001", createdDate: "2025-07-20",
+                    dueDate: "2025-07-27", tags: ["revenue", "apollo", "project-management"],
+                    status: "EXECUTION", estimatedHours: 8, completionPercentage: 60,
+                    subdirectory: "SALES-PIPELINE"
+                },
+                {
+                    id: "2", title: "Suno Track Post-Production", description: "Complete post-production work on latest Suno music track",
+                    phase: "PSDevelop", priority: "M", projectCode: "MUSIC001", createdDate: "2025-07-20",
+                    tags: ["music", "suno", "production"], status: "DEVELOPMENT", estimatedHours: 4,
+                    completionPercentage: 30, subdirectory: "MUSIC-PRODUCTION"
+                },
+                {
+                    id: "3", title: "NotebookLM Automation Setup", description: "Set up automated workflow with NotebookLM integration",
+                    phase: "PSSetup", priority: "L", projectCode: "AUTO001", createdDate: "2025-07-20",
+                    tags: ["automation", "notebooklm", "workflow"], status: "SCOPED", estimatedHours: 6,
+                    completionPercentage: 10, subdirectory: "ACTIVE"
+                },
+                {
+                    id: "4", title: "Market Research for New Service", description: "Conduct comprehensive market analysis for new consulting service",
+                    phase: "PSResearch", priority: "M", projectCode: "MARKET001", createdDate: "2025-07-19",
+                    tags: ["market", "research", "consulting"], status: "EXECUTION", estimatedHours: 12,
+                    completionPercentage: 75, subdirectory: "ACTIVE"
+                },
+                {
+                    id: "5", title: "Personal Website Redesign", description: "Complete redesign of personal portfolio website",
+                    phase: "PSDevelop", priority: "L", projectCode: "WEB001", createdDate: "2025-07-18",
+                    tags: ["website", "portfolio", "design"], status: "DEVELOPMENT", estimatedHours: 20,
+                    completionPercentage: 40, subdirectory: "CREATIVE-PROJECTS"
+                }
+            ];
+            this.saveTasks();
+        }
+    }
+
+    saveTasks() {
+        localStorage.setItem('psm_tasks', JSON.stringify(this.tasks));
+    }
+
+    setupEventListeners() {
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.toggleTheme();
+            });
+        }
+
+        // Main navigation buttons
+        const analyticsBtn = document.getElementById('analyticsBtn');
+        const exportBtn = document.getElementById('exportBtn');
+        
+        if (analyticsBtn) {
+            analyticsBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.showView('analytics');
+            });
+        }
+        if (exportBtn) {
+            exportBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.exportData();
+            });
+        }
+
+        // Search
+        const searchToggle = document.getElementById('searchToggle');
+        const searchInput = document.getElementById('searchInput');
+        const clearSearch = document.getElementById('clearSearch');
+
+        if (searchToggle) {
+            searchToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.toggleSearch();
+            });
+        }
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => this.handleSearch(e.target.value));
+        }
+        if (clearSearch) {
+            clearSearch.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.clearSearch();
+            });
+        }
+
+        // Task management
+        const newTaskBtn = document.getElementById('newTaskBtn');
+        const quickCaptureBtn = document.getElementById('quickCaptureBtn');
+
+        if (newTaskBtn) {
+            newTaskBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.openTaskModal();
+            });
+        }
+        if (quickCaptureBtn) {
+            quickCaptureBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.openQuickCapture();
+            });
+        }
+
+        // Task modal
+        const taskModalClose = document.getElementById('taskModalClose');
+        const taskModalCancel = document.getElementById('taskModalCancel');
+        const taskForm = document.getElementById('taskForm');
+
+        if (taskModalClose) {
+            taskModalClose.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.closeTaskModal();
+            });
+        }
+        if (taskModalCancel) {
+            taskModalCancel.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.closeTaskModal();
+            });
+        }
+        if (taskForm) {
+            taskForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.handleTaskSubmit(e);
+            });
+        }
+
+        // Quick capture modal
+        const quickCaptureClose = document.getElementById('quickCaptureClose');
+        const quickCaptureCancel = document.getElementById('quickCaptureCancel');
+        const quickCaptureForm = document.getElementById('quickCaptureForm');
+
+        if (quickCaptureClose) {
+            quickCaptureClose.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.closeQuickCapture();
+            });
+        }
+        if (quickCaptureCancel) {
+            quickCaptureCancel.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.closeQuickCapture();
+            });
+        }
+        if (quickCaptureForm) {
+            quickCaptureForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.handleQuickCapture(e);
+            });
+        }
+
+        // Phase selection change in task form
+        const taskPhase = document.getElementById('taskPhase');
+        if (taskPhase) {
+            taskPhase.addEventListener('change', (e) => this.updateSubdirectoryOptions(e.target.value));
+        }
+
+        // Completion percentage slider
+        const taskCompletion = document.getElementById('taskCompletion');
+        if (taskCompletion) {
+            taskCompletion.addEventListener('input', (e) => {
+                const valueDisplay = document.getElementById('taskCompletionValue');
+                if (valueDisplay) {
+                    valueDisplay.textContent = `${e.target.value}%`;
+                }
+            });
+        }
+
+        // Filters
+        const subdirectoryFilter = document.getElementById('subdirectoryFilter');
+        if (subdirectoryFilter) {
+            subdirectoryFilter.addEventListener('change', (e) => {
+                this.filters.subdirectory = e.target.value;
+                this.renderCurrentView();
+            });
+        }
+
+        // Close modals on backdrop click
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('.modal')) {
+                this.closeTaskModal();
+                this.closeQuickCapture();
+            }
+        });
+
+        // Logo click to go back to dashboard - FIXED
+        const sidebarTitle = document.querySelector('.sidebar__title');
+        if (sidebarTitle) {
+            sidebarTitle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.showView('dashboard');
+            });
+            sidebarTitle.style.cursor = 'pointer';
+        }
+    }
+
+    // Theme is handled by the unified color-mode module (see end of <body>).
+    setupTheme() {}
+    toggleTheme() { if (window.toggleColorScheme) window.toggleColorScheme(); }
+    updateThemeToggle() {}
+
+    renderPhaseNavigation() {
+        const phaseNav = document.getElementById('phaseNav');
+        if (!phaseNav) return;
+        
+        phaseNav.innerHTML = '';
+
+        this.phases.forEach(phase => {
+            const taskCount = this.getTasksForPhase(phase.code).length;
+            
+            const li = document.createElement('li');
+            li.className = 'phase-nav__item';
+            
+            li.innerHTML = `
+                <a href="#" class="phase-nav__link" data-phase="${phase.code}">
+                    <span class="phase-nav__icon">${phase.icon}</span>
+                    <div class="phase-nav__info">
+                        <div class="phase-nav__name">${phase.name}</div>
+                        <div class="phase-nav__description">${phase.description}</div>
+                    </div>
+                    <span class="phase-nav__badge">${taskCount}</span>
+                </a>
+            `;
+            
+            // FIXED: Add proper event listener for phase navigation
+            const link = li.querySelector('.phase-nav__link');
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const phaseCode = link.getAttribute('data-phase');
+                this.showPhase(phaseCode);
+            });
+            
+            phaseNav.appendChild(li);
+        });
+
+        // Populate task form phase options
+        const taskPhaseSelect = document.getElementById('taskPhase');
+        const quickCapturePhaseSelect = document.getElementById('quickCapturePhase');
+        
+        [taskPhaseSelect, quickCapturePhaseSelect].forEach(select => {
+            if (select) {
+                select.innerHTML = '';
+                this.phases.forEach(phase => {
+                    const option = document.createElement('option');
+                    option.value = phase.code;
+                    option.textContent = `${phase.icon} ${phase.name}`;
+                    select.appendChild(option);
+                });
+            }
+        });
+    }
+
+    showView(viewName) {
+        this.currentView = viewName;
+        this.currentPhase = null; // Clear current phase when switching views
+        
+        // Hide all views
+        document.querySelectorAll('.view').forEach(view => view.classList.add('hidden'));
+        
+        // Update navigation active state
+        document.querySelectorAll('.phase-nav__link').forEach(link => link.classList.remove('active'));
+        
+        // Show selected view
+        if (viewName === 'dashboard') {
+            const dashboardView = document.getElementById('dashboardView');
+            if (dashboardView) {
+                dashboardView.classList.remove('hidden');
+            }
+            const viewTitle = document.getElementById('viewTitle');
+            if (viewTitle) {
+                viewTitle.textContent = 'Dashboard';
+            }
+            this.renderDashboard();
+        } else if (viewName === 'analytics') {
+            const analyticsView = document.getElementById('analyticsView');
+            if (analyticsView) {
+                analyticsView.classList.remove('hidden');
+            }
+            const viewTitle = document.getElementById('viewTitle');
+            if (viewTitle) {
+                viewTitle.textContent = 'Analytics';
+            }
+            this.renderAnalytics();
+        }
+    }
+
+    showPhase(phaseCode) {
+        const phase = this.phases.find(p => p.code === phaseCode);
+        if (!phase) return;
+
+        this.currentPhase = phase;
+        this.currentView = 'phase';
+        
+        // Update navigation
+        document.querySelectorAll('.view').forEach(view => view.classList.add('hidden'));
+        document.querySelectorAll('.phase-nav__link').forEach(link => link.classList.remove('active'));
+        
+        const activeLink = document.querySelector(`[data-phase="${phaseCode}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+        
+        // Show phase view
+        const phaseView = document.getElementById('phaseView');
+        if (phaseView) {
+            phaseView.classList.remove('hidden');
+        }
+        
+        const viewTitle = document.getElementById('viewTitle');
+        if (viewTitle) {
+            viewTitle.textContent = phase.name;
+        }
+        
+        this.renderPhaseView(phase);
+    }
+
+    renderDashboard() {
+        this.renderVelocityCards();
+        this.renderActiveSprint();
+        this.renderTimeline();
+        this.renderRecentItems();
+    }
+
+    renderVelocityCards() {
+        const velocityGrid = document.getElementById('velocityGrid');
+        if (!velocityGrid) return;
+        
+        velocityGrid.innerHTML = '';
+
+        this.phases.forEach(phase => {
+            const tasks = this.getTasksForPhase(phase.code);
+            const completedTasks = tasks.filter(t => t.completionPercentage >= 100).length;
+            const activeTasksCount = tasks.filter(t => t.completionPercentage < 100).length;
+
+            const card = document.createElement('div');
+            card.className = 'velocity-card';
+            card.style.borderLeftColor = phase.color;
+            card.style.borderLeftWidth = '3px';
+            
+            card.innerHTML = `
+                <span class="velocity-card__icon">${phase.icon}</span>
+                <span class="velocity-card__count">${activeTasksCount}</span>
+                <span class="velocity-card__label">${phase.name}</span>
+            `;
+            
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.showPhase(phase.code);
+            });
+            card.style.cursor = 'pointer';
+            velocityGrid.appendChild(card);
+        });
+    }
+
+    renderActiveSprint() {
+        const sprintView = document.getElementById('sprintView');
+        if (!sprintView) return;
+        
+        const highPriorityTasks = this.tasks
+            .filter(task => task.priority === 'H' && task.completionPercentage < 100)
+            .sort((a, b) => new Date(a.dueDate || '2099-12-31') - new Date(b.dueDate || '2099-12-31'))
+            .slice(0, 5);
+
+        if (highPriorityTasks.length === 0) {
+            sprintView.innerHTML = '<p style="color: var(--color-text-secondary);">No high priority tasks in current sprint</p>';
+            return;
+        }
+
+        sprintView.innerHTML = '';
+        highPriorityTasks.forEach(task => {
+            const phase = this.phases.find(p => p.code === task.phase);
+            const taskElement = document.createElement('div');
+            taskElement.className = 'sprint-task';
+            
+            taskElement.innerHTML = `
+                <div class="sprint-task__priority sprint-task__priority--${task.priority}"></div>
+                <div class="sprint-task__content">
+                    <div class="sprint-task__title">${task.title}</div>
+                    <div class="sprint-task__meta">
+                        ${phase ? phase.icon + ' ' + phase.name : ''} • 
+                        ${task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'No due date'} • 
+                        ${task.projectCode || 'No project'}
+                    </div>
+                </div>
+                <div class="sprint-task__progress">
+                    <div class="sprint-task__progress-bar" style="width: ${task.completionPercentage}%"></div>
+                </div>
+            `;
+            
+            taskElement.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.editTask(task);
+            });
+            taskElement.style.cursor = 'pointer';
+            sprintView.appendChild(taskElement);
+        });
+    }
+
+    renderTimeline() {
+        const timelineContainer = document.getElementById('timelineContainer');
+        if (!timelineContainer) return;
+        
+        const upcomingTasks = this.tasks
+            .filter(task => task.dueDate && new Date(task.dueDate) >= new Date())
+            .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))
+            .slice(0, 8);
+
+        if (upcomingTasks.length === 0) {
+            timelineContainer.innerHTML = '<p style="color: var(--color-text-secondary);">No upcoming deadlines</p>';
+            return;
+        }
+
+        timelineContainer.innerHTML = '';
+        upcomingTasks.forEach(task => {
+            const phase = this.phases.find(p => p.code === task.phase);
+            const dueDate = new Date(task.dueDate);
+            const isOverdue = dueDate < new Date();
+            const daysUntilDue = Math.ceil((dueDate - new Date()) / (1000 * 60 * 60 * 24));
+
+            const timelineItem = document.createElement('div');
+            timelineItem.className = 'timeline-item';
+            
+            timelineItem.innerHTML = `
+                <div class="timeline-marker" style="background-color: ${phase ? phase.color : '#6B7280'}">
+                    ${phase ? phase.icon : '📅'}
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-title">${task.title}</div>
+                    <div class="timeline-meta">
+                        Due: ${dueDate.toLocaleDateString()} 
+                        ${isOverdue ? '(Overdue)' : `(${daysUntilDue} days)`} • 
+                        ${task.projectCode || 'No project'} • 
+                        Priority: ${task.priority}
+                    </div>
+                </div>
+            `;
+            
+            if (isOverdue) {
+                timelineItem.style.borderLeftColor = '#DC2626';
+            }
+            
+            timelineContainer.appendChild(timelineItem);
+        });
+    }
+
+    renderRecentItems() {
+        const recentItems = document.getElementById('recentItems');
+        if (!recentItems) return;
+        
+        const recentTasks = this.tasks
+            .sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate))
+            .slice(0, 6);
+
+        if (recentTasks.length === 0) {
+            recentItems.innerHTML = '<p style="color: var(--color-text-secondary);">No recent items</p>';
+            return;
+        }
+
+        recentItems.innerHTML = '';
+        recentTasks.forEach(task => {
+            const phase = this.phases.find(p => p.code === task.phase);
+            const recentItem = document.createElement('div');
+            recentItem.className = 'recent-item';
+            
+            recentItem.innerHTML = `
+                <span class="recent-item__icon">${phase ? phase.icon : '📄'}</span>
+                <div class="recent-item__info">
+                    <div class="recent-item__title">${task.title}</div>
+                    <div class="recent-item__meta">
+                        ${phase ? phase.name : 'Unknown'} • 
+                        ${new Date(task.createdDate).toLocaleDateString()}
+                    </div>
+                </div>
+            `;
+            
+            recentItem.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.editTask(task);
+            });
+            recentItem.style.cursor = 'pointer';
+            recentItems.appendChild(recentItem);
+        });
+    }
+
+    renderPhaseView(phase) {
+        // Update phase header
+        const phaseIcon = document.getElementById('phaseIcon');
+        const phaseName = document.getElementById('phaseName');
+        const phaseDescription = document.getElementById('phaseDescription');
+
+        if (phaseIcon) phaseIcon.textContent = phase.icon;
+        if (phaseName) phaseName.textContent = phase.name;
+        if (phaseDescription) phaseDescription.textContent = phase.description;
+
+        // Update subdirectory filter
+        const subdirectoryFilter = document.getElementById('subdirectoryFilter');
+        if (subdirectoryFilter) {
+            subdirectoryFilter.innerHTML = '<option value="">All Subdirectories</option>';
+            phase.subdirectories.forEach(subdir => {
+                const option = document.createElement('option');
+                option.value = subdir;
+                option.textContent = subdir;
+                subdirectoryFilter.appendChild(option);
+            });
+        }
+
+        // Render tasks
+        this.renderPhaseTasks(phase);
+    }
+
+    renderPhaseTasks(phase) {
+        const taskGrid = document.getElementById('taskGrid');
+        if (!taskGrid) return;
+        
+        let tasks = this.getTasksForPhase(phase.code);
+
+        // Apply filters
+        if (this.filters.subdirectory) {
+            tasks = tasks.filter(task => task.subdirectory === this.filters.subdirectory);
+        }
+
+        if (this.searchQuery) {
+            const query = this.searchQuery.toLowerCase();
+            tasks = tasks.filter(task => 
+                task.title.toLowerCase().includes(query) ||
+                task.description.toLowerCase().includes(query) ||
+                task.tags.some(tag => tag.toLowerCase().includes(query)) ||
+                (task.projectCode && task.projectCode.toLowerCase().includes(query))
+            );
+        }
+
+        if (tasks.length === 0) {
+            taskGrid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 2rem; color: var(--color-text-secondary);">
+                    <p>No tasks found for ${phase.name}</p>
+                    <button class="btn btn--primary" id="createFirstTaskBtn">Create First Task</button>
+                </div>
+            `;
+            
+            // FIXED: Add event listener for create first task button
+            const createBtn = taskGrid.querySelector('#createFirstTaskBtn');
+            if (createBtn) {
+                createBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.openTaskModal(phase.code);
+                });
+            }
+            return;
+        }
+
+        taskGrid.innerHTML = '';
+        tasks.forEach(task => {
+            const taskCard = this.createTaskCard(task);
+            taskGrid.appendChild(taskCard);
+        });
+    }
+
+    createTaskCard(task) {
+        const phase = this.phases.find(p => p.code === task.phase);
+        const card = document.createElement('div');
+        card.className = 'task-card';
+        
+        const tagsHtml = task.tags.map(tag => `<span class="task-tag">${tag}</span>`).join('');
+        const dueDate = task.dueDate ? new Date(task.dueDate).toLocaleDateString() : null;
+        
+        card.innerHTML = `
+            <div class="task-card__header">
+                <div class="task-card__priority task-card__priority--${task.priority}"></div>
+                <div class="task-card__actions">
+                    <button class="task-card__action" title="Edit Task" data-action="edit">✏️</button>
+                    <button class="task-card__action" title="Delete Task" data-action="delete">🗑️</button>
+                </div>
+            </div>
+            
+            <h4 class="task-card__title">${task.title}</h4>
+            
+            ${task.description ? `<p class="task-card__description">${task.description}</p>` : ''}
+            
+            <div class="task-card__meta">
+                <span class="task-card__meta-item">
+                    <span>📊</span> ${task.status}
+                </span>
+                ${task.projectCode ? `<span class="task-card__meta-item"><span>📁</span> ${task.projectCode}</span>` : ''}
+                ${dueDate ? `<span class="task-card__meta-item"><span>📅</span> ${dueDate}</span>` : ''}
+                ${task.estimatedHours ? `<span class="task-card__meta-item"><span>⏱️</span> ${task.estimatedHours}h</span>` : ''}
+            </div>
+            
+            ${task.tags.length > 0 ? `<div class="task-card__tags">${tagsHtml}</div>` : ''}
+            
+            <div class="task-card__progress">
+                <span class="task-card__progress-label">Progress</span>
+                <div class="task-card__progress-bar">
+                    <div class="task-card__progress-fill" style="width: ${task.completionPercentage}%"></div>
+                </div>
+                <span class="task-card__progress-percentage">${task.completionPercentage}%</span>
+            </div>
+            
+            <div class="task-card__footer">
+                <span class="status status--${this.getStatusType(task.status)}">${task.status}</span>
+                <span style="font-size: var(--font-size-xs); color: var(--color-text-secondary);">
+                    Priority: ${task.priority}
+                </span>
+            </div>
+        `;
+
+        // FIXED: Add proper event listeners to prevent interference
+        card.addEventListener('click', (e) => {
+            // Only trigger edit if not clicking on action buttons
+            if (!e.target.closest('.task-card__action')) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.editTask(task);
+            }
+        });
+        
+        const editBtn = card.querySelector('[data-action="edit"]');
+        const deleteBtn = card.querySelector('[data-action="delete"]');
+        
+        if (editBtn) {
+            editBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.editTask(task);
+            });
+        }
+        
+        if (deleteBtn) {
+            deleteBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.deleteTask(task);
+            });
+        }
+
+        card.style.cursor = 'pointer';
+        return card;
+    }
+
+    getStatusType(status) {
+        const statusTypes = {
+            'IDEATED': 'info',
+            'SCOPED': 'info',
+            'RESEARCHED': 'info',
+            'SETUP': 'warning',
+            'DEVELOPMENT': 'warning',
+            'EXECUTION': 'success',
+            'OPTIMIZATION': 'success',
+            'ARCHIVED': 'info'
+        };
+        return statusTypes[status] || 'info';
+    }
+
+    renderAnalytics() {
+        this.renderMetrics();
+        setTimeout(() => {
+            this.renderCharts();
+        }, 100);
+    }
+
+    renderMetrics() {
+        const metricsGrid = document.getElementById('metricsGrid');
+        if (!metricsGrid) return;
+        
+        const totalTasks = this.tasks.length;
+        const completedTasks = this.tasks.filter(t => t.completionPercentage >= 100).length;
+        const highPriorityTasks = this.tasks.filter(t => t.priority === 'H').length;
+        const overdueTasks = this.tasks.filter(t => 
+            t.dueDate && new Date(t.dueDate) < new Date() && t.completionPercentage < 100
+        ).length;
+        
+        const avgCompletion = totalTasks > 0 ? 
+            Math.round(this.tasks.reduce((sum, task) => sum + task.completionPercentage, 0) / totalTasks) : 0;
+        
+        const totalEstimatedHours = this.tasks.reduce((sum, task) => sum + (task.estimatedHours || 0), 0);
+
+        const metrics = [
+            { label: 'Total Tasks', value: totalTasks },
+            { label: 'Completed', value: completedTasks },
+            { label: 'High Priority', value: highPriorityTasks },
+            { label: 'Overdue', value: overdueTasks },
+            { label: 'Avg Progress', value: `${avgCompletion}%` },
+            { label: 'Est. Hours', value: totalEstimatedHours }
+        ];
+
+        metricsGrid.innerHTML = '';
+        metrics.forEach(metric => {
+            const metricItem = document.createElement('div');
+            metricItem.className = 'metric-item';
+            metricItem.innerHTML = `
+                <span class="metric-value">${metric.value}</span>
+                <span class="metric-label">${metric.label}</span>
+            `;
+            metricsGrid.appendChild(metricItem);
+        });
+    }
+
+    renderCharts() {
+        this.renderPhaseChart();
+        this.renderPriorityChart();
+        this.renderStatusChart();
+    }
+
+    renderPhaseChart() {
+        const canvas = document.getElementById('phaseChart');
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        const phaseData = this.phases.map(phase => ({
+            name: phase.name,
+            count: this.getTasksForPhase(phase.code).length,
+            color: phase.color
+        })).filter(p => p.count > 0);
+        
+        if (phaseData.length === 0) {
+            ctx.fillStyle = '#666';
+            ctx.font = '14px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('No data available', canvas.width/2, canvas.height/2);
+            return;
+        }
+        
+        const maxCount = Math.max(...phaseData.map(p => p.count));
+        const barWidth = (canvas.width - 40) / phaseData.length;
+        const maxBarHeight = canvas.height - 60;
+        
+        phaseData.forEach((phase, index) => {
+            const barHeight = (phase.count / maxCount) * maxBarHeight;
+            const x = 20 + (index * barWidth);
+            const y = canvas.height - 40 - barHeight;
+            
+            ctx.fillStyle = phase.color;
+            ctx.fillRect(x, y, barWidth - 4, barHeight);
+            
+            ctx.fillStyle = '#666';
+            ctx.font = '10px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(phase.name.substring(0, 8), x + barWidth/2, canvas.height - 25);
+            ctx.fillText(phase.count.toString(), x + barWidth/2, y - 5);
+        });
+    }
+
+    renderPriorityChart() {
+        const canvas = document.getElementById('priorityChart');
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        const priorities = ['H', 'M', 'L', 'X'];
+        const colors = ['#DC2626', '#D97706', '#059669', '#7C3AED'];
+        const priorityData = priorities.map((priority, index) => ({
+            priority,
+            count: this.tasks.filter(t => t.priority === priority).length,
+            color: colors[index]
+        }));
+        
+        const total = priorityData.reduce((sum, p) => sum + p.count, 0);
+        if (total === 0) {
+            ctx.fillStyle = '#666';
+            ctx.font = '14px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('No data available', canvas.width/2, canvas.height/2);
+            return;
+        }
+        
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const radius = Math.min(centerX, centerY) - 20;
+        
+        let currentAngle = 0;
+        priorityData.forEach(priority => {
+            if (priority.count > 0) {
+                const sliceAngle = (priority.count / total) * 2 * Math.PI;
+                
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, currentAngle, currentAngle + sliceAngle);
+                ctx.closePath();
+                ctx.fillStyle = priority.color;
+                ctx.fill();
+                
+                const labelAngle = currentAngle + sliceAngle / 2;
+                const labelX = centerX + Math.cos(labelAngle) * (radius * 0.7);
+                const labelY = centerY + Math.sin(labelAngle) * (radius * 0.7);
+                
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 12px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(`${priority.priority}: ${priority.count}`, labelX, labelY);
+                
+                currentAngle += sliceAngle;
+            }
+        });
+    }
+
+    renderStatusChart() {
+        const canvas = document.getElementById('statusChart');
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        const statuses = ['IDEATED', 'SCOPED', 'RESEARCHED', 'SETUP', 'DEVELOPMENT', 'EXECUTION', 'OPTIMIZATION', 'ARCHIVED'];
+        const statusData = statuses.map(status => ({
+            status,
+            count: this.tasks.filter(t => t.status === status).length
+        })).filter(s => s.count > 0);
+        
+        if (statusData.length === 0) {
+            ctx.fillStyle = '#666';
+            ctx.font = '14px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('No data available', canvas.width/2, canvas.height/2);
+            return;
+        }
+        
+        const maxCount = Math.max(...statusData.map(s => s.count));
+        const barWidth = (canvas.width - 40) / statusData.length;
+        const maxBarHeight = canvas.height - 60;
+        
+        statusData.forEach((status, index) => {
+            const barHeight = (status.count / maxCount) * maxBarHeight;
+            const x = 20 + (index * barWidth);
+            const y = canvas.height - 40 - barHeight;
+            
+            ctx.fillStyle = '#1FB8CD';
+            ctx.fillRect(x, y, barWidth - 4, barHeight);
+            
+            ctx.fillStyle = '#666';
+            ctx.font = '8px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.save();
+            ctx.translate(x + barWidth/2, canvas.height - 10);
+            ctx.rotate(-Math.PI/4);
+            ctx.fillText(status, 0, 0);
+            ctx.restore();
+            
+            ctx.fillText(status.count.toString(), x + barWidth/2, y - 5);
+        });
+    }
+
+    getTasksForPhase(phaseCode) {
+        return this.tasks.filter(task => task.phase === phaseCode);
+    }
+
+    toggleSearch() {
+        const searchBar = document.getElementById('searchBar');
+        const searchInput = document.getElementById('searchInput');
+        
+        if (searchBar && searchInput) {
+            if (searchBar.classList.contains('hidden')) {
+                searchBar.classList.remove('hidden');
+                searchInput.focus();
+            } else {
+                searchBar.classList.add('hidden');
+                this.clearSearch();
+            }
+        }
+    }
+
+    handleSearch(query) {
+        this.searchQuery = query;
+        this.renderCurrentView();
+    }
+
+    clearSearch() {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.value = '';
+        }
+        this.searchQuery = '';
+        this.renderCurrentView();
+    }
+
+    renderCurrentView() {
+        if (this.currentView === 'dashboard') {
+            this.renderDashboard();
+        } else if (this.currentView === 'phase' && this.currentPhase) {
+            this.renderPhaseTasks(this.currentPhase);
+        } else if (this.currentView === 'analytics') {
+            this.renderAnalytics();
+        }
+        this.renderPhaseNavigation();
+    }
+
+    openTaskModal(phaseCode = null) {
+        this.editingTask = null;
+        const taskModalTitle = document.getElementById('taskModalTitle');
+        if (taskModalTitle) {
+            taskModalTitle.textContent = 'New Task';
+        }
+        
+        const form = document.getElementById('taskForm');
+        if (form) {
+            form.reset();
+        }
+        
+        if (phaseCode) {
+            const taskPhase = document.getElementById('taskPhase');
+            if (taskPhase) {
+                taskPhase.value = phaseCode;
+                this.updateSubdirectoryOptions(phaseCode);
+            }
+        }
+        
+        const taskCompletion = document.getElementById('taskCompletion');
+        const taskCompletionValue = document.getElementById('taskCompletionValue');
+        if (taskCompletion) taskCompletion.value = 0;
+        if (taskCompletionValue) taskCompletionValue.textContent = '0%';
+        
+        const taskModal = document.getElementById('taskModal');
+        if (taskModal) {
+            taskModal.classList.remove('hidden');
+        }
+    }
+
+    editTask(task) {
+        this.editingTask = task;
+        const taskModalTitle = document.getElementById('taskModalTitle');
+        if (taskModalTitle) {
+            taskModalTitle.textContent = 'Edit Task';
+        }
+        
+        const elements = {
+            taskTitle: task.title,
+            taskDescription: task.description || '',
+            taskPhase: task.phase,
+            taskPriority: task.priority,
+            taskProjectCode: task.projectCode || '',
+            taskStatus: task.status,
+            taskDueDate: task.dueDate || '',
+            taskEstimatedHours: task.estimatedHours || '',
+            taskTags: task.tags.join(', '),
+            taskCompletion: task.completionPercentage || 0
+        };
+
+        Object.entries(elements).forEach(([id, value]) => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.value = value;
+            }
+        });
+
+        const taskCompletionValue = document.getElementById('taskCompletionValue');
+        if (taskCompletionValue) {
+            taskCompletionValue.textContent = `${task.completionPercentage || 0}%`;
+        }
+        
+        this.updateSubdirectoryOptions(task.phase);
+        const taskSubdirectory = document.getElementById('taskSubdirectory');
+        if (taskSubdirectory) {
+            taskSubdirectory.value = task.subdirectory || '';
+        }
+        
+        const taskModal = document.getElementById('taskModal');
+        if (taskModal) {
+            taskModal.classList.remove('hidden');
+        }
+    }
+
+    updateSubdirectoryOptions(phaseCode) {
+        const phase = this.phases.find(p => p.code === phaseCode);
+        const subdirectorySelect = document.getElementById('taskSubdirectory');
+        
+        if (subdirectorySelect && phase) {
+            subdirectorySelect.innerHTML = '';
+            phase.subdirectories.forEach(subdir => {
+                const option = document.createElement('option');
+                option.value = subdir;
+                option.textContent = subdir;
+                subdirectorySelect.appendChild(option);
+            });
+        }
+    }
+
+    closeTaskModal() {
+        const taskModal = document.getElementById('taskModal');
+        if (taskModal) {
+            taskModal.classList.add('hidden');
+        }
+        this.editingTask = null;
+    }
+
+    handleTaskSubmit(e) {
+        e.preventDefault();
+        
+        const taskData = {
+            title: this.getElementValue('taskTitle'),
+            description: this.getElementValue('taskDescription'),
+            phase: this.getElementValue('taskPhase'),
+            priority: this.getElementValue('taskPriority'),
+            projectCode: this.getElementValue('taskProjectCode'),
+            status: this.getElementValue('taskStatus'),
+            dueDate: this.getElementValue('taskDueDate'),
+            estimatedHours: parseFloat(this.getElementValue('taskEstimatedHours')) || 0,
+            tags: this.getElementValue('taskTags').split(',').map(tag => tag.trim()).filter(tag => tag),
+            subdirectory: this.getElementValue('taskSubdirectory'),
+            completionPercentage: parseInt(this.getElementValue('taskCompletion'))
+        };
+        
+        if (this.editingTask) {
+            const index = this.tasks.findIndex(t => t.id === this.editingTask.id);
+            if (index !== -1) {
+                this.tasks[index] = { ...this.editingTask, ...taskData };
+            }
+        } else {
+            const newTask = {
+                id: Date.now().toString(),
+                createdDate: new Date().toISOString().split('T')[0],
+                ...taskData
+            };
+            this.tasks.push(newTask);
+        }
+        
+        this.saveTasks();
+        this.closeTaskModal();
+        this.renderCurrentView();
+    }
+
+    getElementValue(id) {
+        const element = document.getElementById(id);
+        return element ? element.value : '';
+    }
+
+    deleteTask(task) {
+        if (confirm(`Are you sure you want to delete "${task.title}"?`)) {
+            this.tasks = this.tasks.filter(t => t.id !== task.id);
+            this.saveTasks();
+            this.renderCurrentView();
+        }
+    }
+
+    openQuickCapture() {
+        const quickCaptureForm = document.getElementById('quickCaptureForm');
+        if (quickCaptureForm) {
+            quickCaptureForm.reset();
+        }
+        const quickCaptureModal = document.getElementById('quickCaptureModal');
+        if (quickCaptureModal) {
+            quickCaptureModal.classList.remove('hidden');
+        }
+    }
+
+    closeQuickCapture() {
+        const quickCaptureModal = document.getElementById('quickCaptureModal');
+        if (quickCaptureModal) {
+            quickCaptureModal.classList.add('hidden');
+        }
+    }
+
+    handleQuickCapture(e) {
+        e.preventDefault();
+        
+        const text = this.getElementValue('quickCaptureText');
+        const phase = this.getElementValue('quickCapturePhase');
+        const priority = this.getElementValue('quickCapturePriority');
+        
+        const suggestedPhase = this.suggestPhase(text) || phase;
+        
+        const newTask = {
+            id: Date.now().toString(),
+            title: text.substring(0, 100),
+            description: text.length > 100 ? text : '',
+            phase: suggestedPhase,
+            priority: priority,
+            projectCode: '',
+            status: 'IDEATED',
+            createdDate: new Date().toISOString().split('T')[0],
+            tags: this.extractTags(text),
+            subdirectory: 'ACTIVE',
+            completionPercentage: 0,
+            estimatedHours: 0
+        };
+        
+        this.tasks.push(newTask);
+        this.saveTasks();
+        this.closeQuickCapture();
+        this.renderCurrentView();
+    }
+
+    suggestPhase(text) {
+        const lowerText = text.toLowerCase();
+        
+        const phaseKeywords = {
+            'PSIdeate': ['idea', 'brainstorm', 'concept', 'think', 'imagine'],
+            'PSScope': ['plan', 'scope', 'roadmap', 'define', 'outline'],
+            'PSResearch': ['research', 'study', 'analyze', 'investigate', 'learn'],
+            'PSReview': ['review', 'audit', 'evaluate', 'assess', 'check'],
+            'PSDocument': ['document', 'write', 'record', 'note', 'knowledge'],
+            'PSEducate': ['learn', 'course', 'training', 'education', 'skill'],
+            'PSResource': ['buy', 'purchase', 'resource', 'tool', 'equipment'],
+            'PSFinance': ['budget', 'money', 'finance', 'cost', 'expense'],
+            'PSSetup': ['setup', 'configure', 'install', 'automation', 'system'],
+            'PSConduct': ['execute', 'deliver', 'perform', 'conduct', 'sales'],
+            'PSDevelop': ['develop', 'create', 'build', 'make', 'produce'],
+            'PSControl': ['manage', 'control', 'coordinate', 'operate', 'monitor'],
+            'PSOptimize': ['optimize', 'improve', 'enhance', 'refine', 'efficiency'],
+            'PSNetwork': ['network', 'connect', 'relationship', 'partnership', 'contact'],
+            'PSSocial': ['social', 'friend', 'family', 'personal', 'community'],
+            'PSMarket': ['market', 'marketing', 'promote', 'business', 'sell'],
+            'PSLeisure': ['leisure', 'hobby', 'fun', 'recreation', 'relax']
+        };
+        
+        for (const [phase, keywords] of Object.entries(phaseKeywords)) {
+            if (keywords.some(keyword => lowerText.includes(keyword))) {
+                return phase;
+            }
+        }
+        
+        return null;
+    }
+
+    extractTags(text) {
+        const words = text.toLowerCase().split(/\s+/);
+        const commonTags = ['idea', 'urgent', 'project', 'meeting', 'task', 'work', 'personal', 'automation', 'research'];
+        return words.filter(word => commonTags.includes(word)).slice(0, 3);
+    }
+
+    exportData() {
+        const data = {
+            phases: this.phases,
+            tasks: this.tasks,
+            exportDate: new Date().toISOString()
+        };
+        
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `phase-system-data-${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        
+        URL.revokeObjectURL(url);
+    }
+}
+
+// Initialize the application
+let app;
+document.addEventListener('DOMContentLoaded', () => {
+    app = new PhaseSystemApp();
+    window.app = app;
+});
+</script>
+  <script>
+   /* Unified color-mode toggle — shared standard across all apps */
+   (function () {
+     function preferred() {
+       try { var s = localStorage.getItem('colorScheme'); if (s === 'dark' || s === 'light') return s; } catch (e) {}
+       return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+     }
+     function current() { return document.documentElement.getAttribute('data-color-scheme') || preferred(); }
+     function swapIcon(btn, isDark) {
+       var lu = btn.querySelector('i[data-lucide="moon"], i[data-lucide="sun"], svg.lucide-moon, svg.lucide-sun');
+       if (lu) {
+         var ni = document.createElement('i');
+         ni.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+         if (lu.tagName.toLowerCase() === 'i' && lu.className) ni.className = lu.className;
+         lu.replaceWith(ni);
+         return;
+       }
+       var fa = btn.querySelector('i.fa-moon, i.fa-sun');
+       if (fa) { fa.classList.remove('fa-moon', 'fa-sun'); fa.classList.add(isDark ? 'fa-sun' : 'fa-moon'); }
+     }
+     function refreshIcons(theme) {
+       var isDark = theme === 'dark';
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (b) { swapIcon(b, isDark); });
+       if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
+     }
+     function apply(theme) {
+       document.documentElement.setAttribute('data-color-scheme', theme);
+       try { localStorage.setItem('colorScheme', theme); } catch (e) {}
+       refreshIcons(theme);
+     }
+     window.toggleColorScheme = function () { apply(current() === 'dark' ? 'light' : 'dark'); };
+     function wire() {
+       var t = preferred();
+       document.documentElement.setAttribute('data-color-scheme', t);
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+         var clone = btn.cloneNode(true);
+         clone.removeAttribute('onclick');
+         if (btn.parentNode) btn.parentNode.replaceChild(clone, btn);
+         clone.addEventListener('click', function (e) { e.preventDefault(); window.toggleColorScheme(); });
+       });
+       refreshIcons(t);
+     }
+     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', wire); }
+     else { wire(); }
+   })();
+  </script>
+   <script>
+   /* ProjectSuite Enhance — motion, counters, ripple, cursor, chart polish (shared) */
+   (function () {
+     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+     var docEl = document.documentElement;
+
+     if (window.Chart && Chart.defaults) {
+       try {
+         var cs = getComputedStyle(docEl);
+         var txt = (cs.getPropertyValue('--color-text-secondary') || '').trim() || '#8a8f98';
+         var grid = (cs.getPropertyValue('--color-border') || '').trim() || 'rgba(140,140,140,.15)';
+         Chart.defaults.font.family = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+         Chart.defaults.font.size = 12;
+         Chart.defaults.color = txt;
+         Chart.defaults.borderColor = grid;
+         var P = Chart.defaults.plugins || {};
+         if (P.legend) { P.legend.labels = P.legend.labels || {}; P.legend.labels.usePointStyle = true; P.legend.labels.boxWidth = 8; P.legend.labels.padding = 16; }
+         if (P.tooltip) { P.tooltip.usePointStyle = true; P.tooltip.padding = 10; P.tooltip.cornerRadius = 8; P.tooltip.boxPadding = 4; P.tooltip.titleFont = { weight: '600' }; }
+         var E = Chart.defaults.elements || {};
+         if (E.line) { E.line.tension = 0.35; E.line.borderWidth = 2; }
+         if (E.point) { E.point.radius = 0; E.point.hoverRadius = 5; E.point.hitRadius = 12; }
+         if (E.bar) { E.bar.borderRadius = 6; E.bar.borderSkipped = false; }
+         if (E.arc) { E.arc.borderWidth = 2; }
+         (function () {
+           function hexRgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(function(x){return x+x;}).join('');var n=parseInt(h.slice(0,6),16);return [(n>>16)&255,(n>>8)&255,n&255];}
+           function toRgb(c){var m;c=(''+c).trim();if(m=c.match(/^#([0-9a-fA-F]{3,8})$/))return hexRgb(m[1]);if(m=c.match(/rgba?\(([^)]+)\)/i)){var p=m[1].split(',').map(parseFloat);return [p[0],p[1],p[2]];}return null;}
+           function reddish(rgb){if(!rgb)return false;var r=rgb[0],g=rgb[1],b=rgb[2];var mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn;if(mx<70||d<28)return false;var h;if(mx===r)h=((g-b)/d)%6;else if(mx===g)h=(b-r)/d+2;else h=(r-g)/d+4;h*=60;if(h<0)h+=360;var s=d/mx;return s>0.32&&(h>=338||h<=14);}
+           function remap(c){if(typeof c!=='string')return c;var rgb=toRgb(c);if(!rgb||rgb.some(isNaN))return c;if(reddish(rgb)){var a=c.match(/rgba?\([^)]*,\s*([\d.]+)\s*\)/i);return a?'rgba(226,101,42,'+a[1]+')':'#e2652a';}return c;}
+           var keys=['backgroundColor','borderColor','pointBackgroundColor','pointBorderColor','hoverBackgroundColor','hoverBorderColor','pointHoverBackgroundColor'];
+           var plugin={id:'phRecolor',beforeInit:function(chart){(chart.data.datasets||[]).forEach(function(ds){keys.forEach(function(k){if(Array.isArray(ds[k]))ds[k]=ds[k].map(remap);else if(ds[k]!=null&&typeof ds[k]==='string')ds[k]=remap(ds[k]);});});}};
+           if (Chart.register) Chart.register(plugin); else if (Chart.plugins && Chart.plugins.register) Chart.plugins.register(plugin);
+         })();
+       } catch (e) {}
+     }
+
+     function countUp(el) {
+       if (el.children.length) return;
+       var raw = el.textContent.trim();
+       var m = raw.match(/^([^\d-]*)(-?[\d,]+(?:\.\d+)?)(.*)$/);
+       if (!m) return;
+       var prefix = m[1], numStr = m[2], suffix = m[3];
+       var decimals = (numStr.split('.')[1] || '').length;
+       var useComma = numStr.indexOf(',') > -1;
+       var target = parseFloat(numStr.replace(/,/g, ''));
+       if (isNaN(target)) return;
+       var dur = 1200, t0 = performance.now();
+       function fmt(n) {
+         var s = decimals ? n.toFixed(decimals) : String(Math.round(n));
+         if (useComma) s = Number(s).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+         return prefix + s + suffix;
+       }
+       function step(now) {
+         var p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 4);
+         el.textContent = fmt(target * e);
+         if (p < 1) requestAnimationFrame(step); else el.textContent = raw;
+       }
+       requestAnimationFrame(step);
+     }
+
+     function start() {
+       var IO = window.IntersectionObserver;
+       if (!reduce && IO) {
+         docEl.classList.add('ph-anim');
+         var revealSel = '.card, .kpi-card, .widget, .chart-container, .stat-card, .metric-card, .dashboard-card, .stat-display, .info-card, .summary-card, .chart-canvas-wrap';
+         var els = [];
+         document.querySelectorAll(revealSel).forEach(function (el) {
+           if (el.closest('.nav-bar')) return;
+           if (el.querySelector('.card, .kpi-card, .widget')) return;
+           el.classList.add('ph-reveal', 'ph-card');
+           els.push(el);
+         });
+         var io = new IO(function (entries) {
+           entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in-view'); io.unobserve(en.target); } });
+         }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+         els.forEach(function (el) { io.observe(el); });
+         setTimeout(function () { els.forEach(function (el) { el.classList.add('in-view'); }); }, 1600);
+       }
+
+       if (!reduce && IO) {
+         var numSel = '.kpi-value, .stat-number, .widget-value, .stat-value, .metric-value, .kpi-card .value, .stat__value, .metric__value';
+         var co = new IO(function (entries) {
+           entries.forEach(function (en) { if (en.isIntersecting) { countUp(en.target); co.unobserve(en.target); } });
+         }, { threshold: .6 });
+         document.querySelectorAll(numSel).forEach(function (el) {
+           if (el.closest('.nav-bar') || el.children.length) return;
+           if (/\d/.test(el.textContent) && /^[^\d-]*-?[\d,]+(?:\.\d+)?[^\d]*$/.test(el.textContent.trim())) co.observe(el);
+         });
+       }
+
+       document.addEventListener('click', function (e) {
+         if (reduce) return;
+         var btn = e.target.closest('.btn, button');
+         if (!btn || btn.closest('.nav-bar')) return;
+         var r = btn.getBoundingClientRect();
+         if (getComputedStyle(btn).position === 'static') btn.style.position = 'relative';
+         if (getComputedStyle(btn).overflow !== 'hidden') btn.style.overflow = 'hidden';
+         var s = document.createElement('span');
+         s.className = 'ph-ripple';
+         var size = Math.max(r.width, r.height);
+         s.style.width = s.style.height = size + 'px';
+         s.style.left = (e.clientX - r.left) + 'px';
+         s.style.top = (e.clientY - r.top) + 'px';
+         btn.appendChild(s);
+         setTimeout(function () { s.remove(); }, 640);
+       });
+
+       if (!reduce && window.matchMedia('(pointer:fine)').matches && window.innerWidth > 900) {
+         var ring = document.createElement('div');
+         ring.className = 'ph-cursor';
+         document.body.appendChild(ring);
+         var x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y;
+         document.addEventListener('mousemove', function (e) { x = e.clientX; y = e.clientY; });
+         (function loop() { rx += (x - rx) * .18; ry += (y - ry) * .18; ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)'; requestAnimationFrame(loop); })();
+         var hoverSel = 'a,button,.btn,.nav-tab,.tab-btn,.tab-item,.menu-item,.card,[role="button"],input,select,textarea,[data-theme-toggle]';
+         document.addEventListener('mouseover', function (e) { if (e.target.closest(hoverSel)) ring.classList.add('hover'); });
+         document.addEventListener('mouseout', function (e) { if (e.target.closest(hoverSel)) ring.classList.remove('hover'); });
+       }
+     }
+
+     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+     else start();
+   })();
+  </script>
+ </body>
+</html>

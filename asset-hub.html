@@ -1,0 +1,4074 @@
+<!DOCTYPE html>
+<html data-color-scheme="dark" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Digital Asset Management Platform
+  </title>
+  <style>
+/*
+ * Converted to ProjectSuite CSS Architecture
+ * Date: 2025-11-29 04:36:34
+ * Bootstrap/utility classes mapped to ProjectSuite equivalents
+ * Original backed up to: ./asset_backups
+ */
+
+
+:root {
+  /* Colors */
+  --color-background: rgba(252, 252, 249, 1);
+  --color-surface: rgba(255, 255, 253, 1);
+  --color-text: rgba(19, 52, 59, 1);
+  --color-text-secondary: rgba(98, 108, 113, 1);
+  --color-primary: rgba(33, 128, 141, 1);
+  --color-primary-hover: rgba(29, 116, 128, 1);
+  --color-primary-active: rgba(26, 104, 115, 1);
+  --color-secondary: rgba(94, 82, 64, 0.12);
+  --color-secondary-hover: rgba(94, 82, 64, 0.2);
+  --color-secondary-active: rgba(94, 82, 64, 0.25);
+  --color-border: rgba(94, 82, 64, 0.2);
+  --color-btn-primary-text: rgba(252, 252, 249, 1);
+  --color-card-border: rgba(94, 82, 64, 0.12);
+  --color-card-border-inner: rgba(94, 82, 64, 0.12);
+  --color-error: rgba(192, 21, 47, 1);
+  --color-success: rgba(33, 128, 141, 1);
+  --color-warning: rgba(168, 75, 47, 1);
+  --color-info: rgba(98, 108, 113, 1);
+  --color-focus-ring: rgba(33, 128, 141, 0.4);
+  --color-select-caret: rgba(19, 52, 59, 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: rgba(31, 33, 33, 1);
+    --color-surface: rgba(38, 40, 40, 1);
+    --color-text: rgba(245, 245, 245, 1);
+    --color-text-secondary: rgba(167, 169, 169, 0.7);
+    --color-primary: rgba(50, 184, 198, 1);
+    --color-primary-hover: rgba(45, 166, 178, 1);
+    --color-primary-active: rgba(41, 150, 161, 1);
+    --color-secondary: rgba(119, 124, 124, 0.15);
+    --color-secondary-hover: rgba(119, 124, 124, 0.25);
+    --color-secondary-active: rgba(119, 124, 124, 0.3);
+    --color-border: rgba(119, 124, 124, 0.3);
+    --color-error: rgba(255, 84, 89, 1);
+    --color-success: rgba(50, 184, 198, 1);
+    --color-warning: rgba(230, 129, 97, 1);
+    --color-info: rgba(167, 169, 169, 1);
+    --color-focus-ring: rgba(50, 184, 198, 0.4);
+    --color-btn-primary-text: rgba(19, 52, 59, 1);
+    --color-card-border: rgba(119, 124, 124, 0.2);
+    --color-card-border-inner: rgba(119, 124, 124, 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --button-border-secondary: rgba(119, 124, 124, 0.2);
+    --color-border-secondary: rgba(119, 124, 124, 0.2);
+    --color-select-caret: rgba(245, 245, 245, 0.8);
+
+    /* Common style patterns - updated for dark mode */
+    --focus-ring: 0 0 0 3px var(--color-focus-ring);
+    --focus-outline: 2px solid var(--color-primary);
+    --status-bg-opacity: 0.15;
+    --status-border-opacity: 0.25;
+    --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+    /* RGB versions for dark mode */
+    --color-success-rgb: 50, 184, 198;
+    --color-error-rgb: 255, 84, 89;
+    --color-warning-rgb: 230, 129, 97;
+    --color-info-rgb: 167, 169, 169;
+  }
+}
+
+/* Data attribute for manual theme switching */
+[data-color-scheme="dark"] {
+  --color-background: rgba(31, 33, 33, 1);
+  --color-surface: rgba(38, 40, 40, 1);
+  --color-text: rgba(245, 245, 245, 1);
+  --color-text-secondary: rgba(167, 169, 169, 0.7);
+  --color-primary: rgba(50, 184, 198, 1);
+  --color-primary-hover: rgba(45, 166, 178, 1);
+  --color-primary-active: rgba(41, 150, 161, 1);
+  --color-secondary: rgba(119, 124, 124, 0.15);
+  --color-secondary-hover: rgba(119, 124, 124, 0.25);
+  --color-secondary-active: rgba(119, 124, 124, 0.3);
+  --color-border: rgba(119, 124, 124, 0.3);
+  --color-error: rgba(255, 84, 89, 1);
+  --color-success: rgba(50, 184, 198, 1);
+  --color-warning: rgba(230, 129, 97, 1);
+  --color-info: rgba(167, 169, 169, 1);
+  --color-focus-ring: rgba(50, 184, 198, 0.4);
+  --color-btn-primary-text: rgba(19, 52, 59, 1);
+  --color-card-border: rgba(119, 124, 124, 0.15);
+  --color-card-border-inner: rgba(119, 124, 124, 0.15);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  --color-border-secondary: rgba(119, 124, 124, 0.2);
+  --color-select-caret: rgba(245, 245, 245, 0.8);
+
+  /* Common style patterns - updated for dark mode */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for dark mode */
+  --color-success-rgb: 50, 184, 198;
+  --color-error-rgb: 255, 84, 89;
+  --color-warning-rgb: 230, 129, 97;
+  --color-info-rgb: 167, 169, 169;
+}
+
+[data-color-scheme="light"] {
+  --color-background: rgba(252, 252, 249, 1);
+  --color-surface: rgba(255, 255, 253, 1);
+  --color-text: rgba(19, 52, 59, 1);
+  --color-text-secondary: rgba(98, 108, 113, 1);
+  --color-primary: rgba(33, 128, 141, 1);
+  --color-primary-hover: rgba(29, 116, 128, 1);
+  --color-primary-active: rgba(26, 104, 115, 1);
+  --color-secondary: rgba(94, 82, 64, 0.12);
+  --color-secondary-hover: rgba(94, 82, 64, 0.2);
+  --color-secondary-active: rgba(94, 82, 64, 0.25);
+  --color-border: rgba(94, 82, 64, 0.2);
+  --color-btn-primary-text: rgba(252, 252, 249, 1);
+  --color-card-border: rgba(94, 82, 64, 0.12);
+  --color-card-border-inner: rgba(94, 82, 64, 0.12);
+  --color-error: rgba(192, 21, 47, 1);
+  --color-success: rgba(33, 128, 141, 1);
+  --color-warning: rgba(168, 75, 47, 1);
+  --color-info: rgba(98, 108, 113, 1);
+  --color-focus-ring: rgba(33, 128, 141, 0.4);
+
+  /* RGB versions for light mode */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+}
+
+/* Base styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+h2 {
+  font-size: var(--font-size-3xl);
+}
+h3 {
+  font-size: var(--font-size-2xl);
+}
+h4 {
+  font-size: var(--font-size-xl);
+}
+h5 {
+  font-size: var(--font-size-lg);
+}
+h6 {
+  font-size: var(--font-size-md);
+}
+
+p {
+  margin: 0 0 var(--space-16) 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+code,
+pre {
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--font-size-base) * 0.95);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-sm);
+}
+
+code {
+  padding: var(--space-1) var(--space-4);
+}
+
+pre {
+  padding: var(--space-16);
+  margin: var(--space-16) 0;
+  overflow: auto;
+  border: 1px solid var(--color-border);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
+  border: none;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn--primary:active {
+  background: var(--color-primary-active);
+}
+
+.btn--secondary {
+  background: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.btn--secondary:hover {
+  background: var(--color-secondary-hover);
+}
+
+.btn--secondary:active {
+  background: var(--color-secondary-active);
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--outline:hover {
+  background: var(--color-secondary);
+}
+
+.btn--sm {
+  padding: var(--space-4) var(--space-12);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+}
+
+.btn--lg {
+  padding: var(--space-10) var(--space-20);
+  font-size: var(--font-size-lg);
+  border-radius: var(--radius-md);
+}
+
+.btn--full-width {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Form elements */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: var(--space-8) var(--space-12);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+textarea.form-control {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+}
+
+select.form-control {
+  padding: var(--space-8) var(--space-12);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: var(--select-caret-light);
+  background-repeat: no-repeat;
+  background-position: right var(--space-12) center;
+  background-size: 16px;
+  padding-right: var(--space-32);
+}
+
+/* Add a dark mode specific caret */
+@media (prefers-color-scheme: dark) {
+  select.form-control {
+    background-image: var(--select-caret-dark);
+  }
+}
+
+/* Also handle data-color-scheme */
+[data-color-scheme="dark"] select.form-control {
+  background-image: var(--select-caret-dark);
+}
+
+[data-color-scheme="light"] select.form-control {
+  background-image: var(--select-caret-light);
+}
+
+.form-control:focus {
+  border-color: var(--color-primary);
+  outline: var(--focus-outline);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-8);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.form-group {
+  margin-bottom: var(--space-16);
+}
+
+/* Card component */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card__body {
+  padding: var(--space-16);
+}
+
+.card__header,
+.card__footer {
+  padding: var(--space-16);
+  border-bottom: 1px solid var(--color-card-border-inner);
+}
+
+/* Status indicators - simplified with CSS variables */
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-6) var(--space-12);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.status--success {
+  background-color: rgba(
+    var(--color-success-rgb, 33, 128, 141),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-success);
+  border: 1px solid
+    rgba(var(--color-success-rgb, 33, 128, 141), var(--status-border-opacity));
+}
+
+.status--error {
+  background-color: rgba(
+    var(--color-error-rgb, 192, 21, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-error);
+  border: 1px solid
+    rgba(var(--color-error-rgb, 192, 21, 47), var(--status-border-opacity));
+}
+
+.status--warning {
+  background-color: rgba(
+    var(--color-warning-rgb, 168, 75, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-warning);
+  border: 1px solid
+    rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-border-opacity));
+}
+
+.status--info {
+  background-color: rgba(
+    var(--color-info-rgb, 98, 108, 113),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-info);
+  border: 1px solid
+    rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity));
+}
+
+/* Container layout */
+.section-content {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--space-16);
+  padding-left: var(--space-16);
+}
+
+@media (min-width: 640px) {
+  .section-content {
+    max-width: var(--container-sm);
+  }
+}
+@media (min-width: 768px) {
+  .section-content {
+    max-width: var(--container-md);
+  }
+}
+@media (min-width: 1024px) {
+  .section-content {
+    max-width: var(--container-lg);
+  }
+}
+@media (min-width: 1280px) {
+  .section-content {
+    max-width: var(--container-xl);
+  }
+}
+
+/* Utility classes */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-4 {
+  gap: var(--space-4);
+}
+.gap-8 {
+  gap: var(--space-8);
+}
+.gap-16 {
+  gap: var(--space-16);
+}
+
+.block {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Dark mode specifics */
+[data-color-scheme="dark"] .btn--outline {
+  border: 1px solid var(--color-border-secondary);
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+}
+
+/* Import and extend the design system */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Override font family for Inter */
+:root {
+  --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* App Container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+}
+
+/* Header */
+.header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-16) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-content {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-16);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.logo i {
+  color: var(--color-primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.notification-btn {
+  position: relative;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--color-error);
+  color: white;
+  font-size: var(--font-size-xs);
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.user-avatar:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* Main Content — side navigation layout */
+.main-content {
+  flex: 1;
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: var(--space-24) var(--space-16);
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-24);
+}
+
+/* Side Navigation (icon + title, vertical) */
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: calc(64px + var(--space-24));
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.nav-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  width: 100%;
+  padding: var(--space-10) var(--space-12);
+  border: none;
+  background: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-base);
+  transition: all var(--duration-fast) var(--ease-standard);
+  white-space: nowrap;
+  font-weight: var(--font-weight-medium);
+  text-align: left;
+  font-size: var(--font-size-base);
+}
+
+.nav-tab i {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.nav-tab:hover {
+  color: var(--color-text);
+  background-color: var(--color-secondary);
+}
+
+.nav-tab.active {
+  color: var(--color-btn-primary-text);
+  background-color: var(--color-primary);
+}
+
+/* Tab Content */
+.tab-content {
+  flex: 1;
+  min-width: 0;
+  min-height: 600px;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* Responsive: sidebar collapses to a horizontal scroller on narrow screens */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  .nav-bar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    position: static;
+  }
+  .nav-tabs {
+    flex-direction: row;
+  }
+  .nav-tab {
+    width: auto;
+  }
+}
+
+/* Dashboard */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-24);
+}
+
+.kpi-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-16);
+}
+
+.kpi-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  transition: all var(--duration-normal) var(--ease-standard);
+  cursor: pointer;
+}
+
+.kpi-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.kpi-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+}
+
+.kpi-content h3 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  color: var(--color-text);
+}
+
+.kpi-content p {
+  color: var(--color-text-secondary);
+  margin: var(--space-4) 0;
+}
+
+.kpi-change {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-2) var(--space-6);
+  border-radius: var(--radius-sm);
+}
+
+.kpi-change.positive {
+  color: var(--color-success);
+  background-color: rgba(var(--color-success-rgb), 0.1);
+}
+
+.kpi-change.negative {
+  color: var(--color-error);
+  background-color: rgba(var(--color-error-rgb), 0.1);
+}
+
+.dashboard-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--space-24);
+}
+
+.activity-feed {
+  width: 100%;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-12);
+  border-radius: var(--radius-base);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.activity-item:hover {
+  background-color: var(--color-secondary);
+}
+
+.activity-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-content h4 {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.activity-content p {
+  margin: var(--space-2) 0 0 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* Assets */
+.assets-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-24);
+  flex-wrap: wrap;
+  gap: var(--space-16);
+}
+
+.assets-header h2 {
+  margin: 0;
+}
+
+.assets-actions {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.assets-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-24);
+  gap: var(--space-16);
+  flex-wrap: wrap;
+}
+
+.search-controls {
+  display: flex;
+  gap: var(--space-8);
+  flex: 1;
+  max-width: 400px;
+}
+
+.view-controls {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.view-controls .btn.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.upload-zone {
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-32);
+  text-align: center;
+  margin-bottom: var(--space-24);
+  transition: all var(--duration-fast) var(--ease-standard);
+  cursor: pointer;
+}
+
+.upload-zone:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-secondary);
+}
+
+.upload-zone.drag-over {
+  border-color: var(--color-primary);
+  background-color: rgba(var(--color-success-rgb), 0.1);
+}
+
+.upload-content i {
+  font-size: var(--font-size-4xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-16);
+}
+
+.upload-content h3 {
+  margin: 0 0 var(--space-8) 0;
+  color: var(--color-text);
+}
+
+.upload-content p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.assets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-16);
+}
+
+.asset-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-16);
+  transition: all var(--duration-normal) var(--ease-standard);
+  cursor: pointer;
+}
+
+.asset-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.asset-preview {
+  width: 100%;
+  height: 120px;
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-12);
+  font-size: var(--font-size-2xl);
+  color: var(--color-primary);
+}
+
+.asset-info h4 {
+  margin: 0 0 var(--space-4) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.asset-info p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.asset-actions {
+  display: flex;
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+}
+
+/* Projects */
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-24);
+  flex-wrap: wrap;
+  gap: var(--space-16);
+}
+
+.projects-header h2 {
+  margin: 0;
+}
+
+.projects-actions {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-16);
+  overflow-x: auto;
+  padding-bottom: var(--space-16);
+}
+
+.kanban-column {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-16);
+  min-height: 400px;
+}
+
+.kanban-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-16);
+}
+
+.kanban-header h3 {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+.badge {
+  background-color: var(--color-primary);
+  color: white;
+  padding: var(--space-2) var(--space-8);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.kanban-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.project-card {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-base);
+  padding: var(--space-16);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.project-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.project-card h4 {
+  margin: 0 0 var(--space-8) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.project-progress {
+  margin: var(--space-12) 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  transition: width var(--duration-normal) var(--ease-standard);
+}
+
+.project-team {
+  display: flex;
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+}
+
+.team-member {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Analytics */
+.analytics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-24);
+  flex-wrap: wrap;
+  gap: var(--space-16);
+}
+
+.analytics-header h2 {
+  margin: 0;
+}
+
+.analytics-actions {
+  display: flex;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--space-24);
+}
+
+/* Automation */
+.automation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-24);
+  flex-wrap: wrap;
+  gap: var(--space-16);
+}
+
+.automation-header h2 {
+  margin: 0;
+}
+
+.automation-actions {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-16);
+}
+
+.workflow-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-16);
+  transition: all var(--duration-normal) var(--ease-standard);
+  cursor: pointer;
+}
+
+.workflow-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.workflow-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+}
+
+.workflow-content {
+  flex: 1;
+}
+
+.workflow-content h3 {
+  margin: 0 0 var(--space-8) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+.workflow-content p {
+  margin: 0 0 var(--space-12) 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.workflow-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.workflow-runs {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Sales */
+.sales-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-24);
+  flex-wrap: wrap;
+  gap: var(--space-16);
+}
+
+.sales-header h2 {
+  margin: 0;
+}
+
+.sales-actions {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.sales-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-16);
+  margin-bottom: var(--space-24);
+}
+
+.metric-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  transition: all var(--duration-normal) var(--ease-standard);
+  cursor: pointer;
+}
+
+.metric-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.metric-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+}
+
+.metric-content h3 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  color: var(--color-text);
+}
+
+.metric-content p {
+  color: var(--color-text-secondary);
+  margin: var(--space-4) 0;
+}
+
+.metric-change {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-2) var(--space-6);
+  border-radius: var(--radius-sm);
+}
+
+.metric-change.positive {
+  color: var(--color-success);
+  background-color: rgba(var(--color-success-rgb), 0.1);
+}
+
+.metric-change.negative {
+  color: var(--color-error);
+  background-color: rgba(var(--color-error-rgb), 0.1);
+}
+
+.sales-chart {
+  width: 100%;
+}
+
+/* Integrations */
+.integrations-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-24);
+  flex-wrap: wrap;
+  gap: var(--space-16);
+}
+
+.integrations-header h2 {
+  margin: 0;
+}
+
+.integrations-actions {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.integrations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-16);
+}
+
+.integration-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  transition: all var(--duration-normal) var(--ease-standard);
+  cursor: pointer;
+}
+
+.integration-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.integration-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+}
+
+.integration-content {
+  flex: 1;
+}
+
+.integration-content h3 {
+  margin: 0 0 var(--space-4) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+.integration-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+
+.integration-sync {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Settings */
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-24);
+  flex-wrap: wrap;
+  gap: var(--space-16);
+}
+
+.settings-header h2 {
+  margin: 0;
+}
+
+.settings-actions {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.settings-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--space-32);
+}
+
+.settings-section {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+}
+
+.settings-section h3 {
+  margin: 0 0 var(--space-20) 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.settings-group {
+  margin-bottom: var(--space-16);
+}
+
+.setting-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+}
+
+.setting-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.toggle-slider {
+  width: 44px;
+  height: 24px;
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-full);
+  position: relative;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.toggle-slider::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: var(--radius-full);
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.setting-toggle input[type="checkbox"]:checked + .toggle-slider {
+  background-color: var(--color-primary);
+}
+
+.setting-toggle input[type="checkbox"]:checked + .toggle-slider::after {
+  transform: translateX(20px);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-20);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: var(--space-4);
+  border-radius: var(--radius-base);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.modal-close:hover {
+  color: var(--color-text);
+  background-color: var(--color-secondary);
+}
+
+.modal-body {
+  padding: var(--space-20);
+}
+
+.notification-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-12);
+  padding: var(--space-12);
+  border-radius: var(--radius-base);
+  margin-bottom: var(--space-8);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.notification-item:hover {
+  background-color: var(--color-secondary);
+}
+
+.notification-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+}
+
+.notification-content h4 {
+  margin: 0 0 var(--space-4) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.notification-content p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.notification-time {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-4);
+}
+
+/* Utility classes */
+.clickable {
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.clickable:hover {
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 0 var(--space-12);
+  }
+
+  .main-content {
+    padding: var(--space-16) var(--space-12);
+  }
+
+  .nav-tabs {
+    padding: 0 var(--space-4);
+  }
+
+  .nav-tab span {
+    display: none;
+  }
+
+  .dashboard-grid {
+    gap: var(--space-16);
+  }
+
+  .kpi-cards {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .dashboard-charts {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .workflow-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kanban-board {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-content {
+    grid-template-columns: 1fr;
+  }
+
+  .assets-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-controls {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .assets-header,
+  .projects-header,
+  .analytics-header,
+  .automation-header,
+  .sales-header,
+  .integrations-header,
+  .settings-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .assets-actions,
+  .projects-actions,
+  .analytics-actions,
+  .automation-actions,
+  .sales-actions,
+  .integrations-actions,
+  .settings-actions {
+    justify-content: center;
+  }
+
+  .kpi-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .sales-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .integrations-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js">
+  </script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  
+  
+  
+  
+  <script>
+   /* Unified color-mode: no-flash init (shared standard) */
+   (function () {
+     try {
+       var s = localStorage.getItem('colorScheme');
+       if (s !== 'dark' && s !== 'light') {
+         s = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+       }
+       document.documentElement.setAttribute('data-color-scheme', s);
+     } catch (e) {}
+   })();
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   /* Unified typography — Space Grotesk headings + Inter body (shared standard) */
+   body { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+   h1, h2, h3, h4, h5, h6,
+   .logo, .logo span, .sidebar-header h2, .sidebar__title, .app-title {
+     font-family: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+     letter-spacing: -0.02em;
+   }
+  </style>
+  <style>
+   /* Interactive demo — modal forms, detail lists, pickers */
+   .ah-field { margin-bottom: 16px; }
+   .ah-field > label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--color-text); }
+   .ah-field input, .ah-field select, .ah-field textarea {
+     width: 100%; padding: 10px 12px; border: 1px solid var(--color-border);
+     border-radius: var(--radius-base, 8px); background: var(--color-background); color: var(--color-text);
+     font: inherit; font-size: 14px; }
+   .ah-field textarea { min-height: 90px; resize: vertical; }
+   .ah-field input:focus, .ah-field select:focus, .ah-field textarea:focus {
+     outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-focus-ring); }
+   .ah-row { display: flex; gap: 12px; } .ah-row .ah-field { flex: 1; }
+   .ah-modal-footer { display: flex; gap: 10px; justify-content: flex-end; margin-top: 22px; }
+   .ah-detail { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--color-border); font-size: 14px; }
+   .ah-detail:last-child { border-bottom: none; }
+   .ah-detail .k { color: var(--color-text-secondary); } .ah-detail .v { font-weight: 600; text-align: right; }
+   .ah-pick { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+   .ah-pick button { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--color-border);
+     border-radius: 8px; background: var(--color-background); color: var(--color-text); cursor: pointer; font: inherit; text-align: left; }
+   .ah-pick button:hover { border-color: var(--color-primary); background: var(--color-secondary); }
+   .ah-pick button:disabled { opacity: .5; cursor: not-allowed; }
+   .ah-pick i { color: var(--color-primary); }
+   .ah-note { color: var(--color-text-secondary); font-size: 13px; margin-bottom: 16px; }
+   .ah-progress { height: 8px; border-radius: 999px; background: var(--color-secondary); overflow: hidden; margin: 4px 0 2px; }
+   .ah-progress > span { display: block; height: 100%; background: var(--gradient-primary, var(--color-primary)); border-radius: 999px; }
+   .sales-recent table { width: 100%; border-collapse: collapse; }
+   .sales-recent th, .sales-recent td { padding: 10px 12px; text-align: left; font-size: 13px; border-bottom: 1px solid var(--color-border); }
+   .sales-recent th { color: var(--color-text-secondary); font-weight: 600; }
+   .integration-card.ah-syncing { opacity: .6; }
+  </style>
+  <style>
+   /* ============================================================
+      PROJECTSUITE ENHANCE — palette refresh (tangerine, no red) + motion
+      ============================================================ */
+   :root, [data-color-scheme="light"] {
+     --color-primary: #e2652a;
+     --color-primary-hover: #c9551e;
+     --color-primary-active: #b54a18;
+     --color-accent: #2a9d8f;
+     --color-accent-hover: #1e7a70;
+     --color-success: #17a673;
+     --color-warning: #e0930b;
+     --color-error: #d2691e;
+     --color-danger: #d2691e;
+     --color-info: #1e85ad;
+     --color-focus-ring: rgba(226, 101, 42, 0.4);
+     --color-btn-primary-text: #ffffff;
+     --color-primary-rgb: 226, 101, 42;
+     --color-success-rgb: 23, 166, 115;
+     --color-warning-rgb: 224, 147, 11;
+     --color-error-rgb: 210, 105, 30;
+     --color-info-rgb: 30, 133, 173;
+     --gradient-primary: linear-gradient(135deg, #e2652a 0%, #f5a623 100%);
+     --gradient-accent: linear-gradient(135deg, #2a9d8f 0%, #17a673 100%);
+   }
+   [data-color-scheme="dark"] {
+     --color-primary: #ff8a4c;
+     --color-primary-hover: #ff7a33;
+     --color-primary-active: #f26b21;
+     --color-accent: #3fb9aa;
+     --color-accent-hover: #2dd4a7;
+     --color-success: #2dd4a7;
+     --color-warning: #f5b23d;
+     --color-error: #ff9150;
+     --color-danger: #ff9150;
+     --color-info: #38a9ce;
+     --color-focus-ring: rgba(255, 138, 76, 0.4);
+     --color-btn-primary-text: #16150f;
+     --color-primary-rgb: 255, 138, 76;
+     --color-success-rgb: 45, 212, 167;
+     --color-warning-rgb: 245, 178, 61;
+     --color-error-rgb: 255, 145, 80;
+     --color-info-rgb: 56, 169, 206;
+     --gradient-primary: linear-gradient(135deg, #ff8a4c 0%, #f5b23d 100%);
+     --gradient-accent: linear-gradient(135deg, #3fb9aa 0%, #2dd4a7 100%);
+   }
+   @media (prefers-color-scheme: dark) {
+     :root:not([data-color-scheme="light"]) {
+       --color-primary: #ff8a4c; --color-primary-hover: #ff7a33; --color-primary-active: #f26b21;
+       --color-accent: #3fb9aa; --color-success: #2dd4a7; --color-warning: #f5b23d;
+       --color-error: #ff9150; --color-danger: #ff9150; --color-info: #38a9ce;
+       --color-primary-rgb: 255, 138, 76;
+       --gradient-primary: linear-gradient(135deg, #ff8a4c 0%, #f5b23d 100%);
+     }
+   }
+   html.ph-anim .ph-reveal { opacity: 0; transform: translateY(18px);
+     transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); will-change: opacity, transform; }
+   html.ph-anim .ph-reveal.in-view { opacity: 1; transform: none; }
+   .ph-card { position: relative; }
+   .ph-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+     background: var(--gradient-primary); transform: scaleX(0); transform-origin: left;
+     transition: transform .35s cubic-bezier(.16,1,.3,1); border-radius: 4px 4px 0 0; pointer-events: none; z-index: 1; }
+   .ph-card:hover::after { transform: scaleX(1); }
+   .ph-ripple { position: absolute; border-radius: 50%; background: rgba(255,255,255,.4);
+     transform: translate(-50%,-50%) scale(0); animation: phRipple .6s ease-out forwards; pointer-events: none; }
+   @keyframes phRipple { to { transform: translate(-50%,-50%) scale(1); opacity: 0; } }
+   .ph-cursor { position: fixed; top: 0; left: 0; width: 30px; height: 30px;
+     border: 2px solid var(--color-primary); border-radius: 50%; pointer-events: none; z-index: 9998;
+     transition: width .25s ease, height .25s ease, background .25s ease, border-color .25s ease, opacity .25s ease;
+     opacity: .55; will-change: transform; }
+   .ph-cursor.hover { width: 50px; height: 50px; background: rgba(var(--color-primary-rgb), .12); opacity: .8; }
+   @media (max-width: 900px) { .ph-cursor { display: none; } }
+   @media (prefers-reduced-motion: reduce) {
+     html.ph-anim .ph-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+     .ph-cursor { display: none; }
+   }
+  </style>
+ </head>
+ <body>
+  <div class="app-container">
+   <!-- Header -->
+   <header class="header">
+    <div class="header-content">
+     <div class="logo">
+      <i data-lucide="database">
+      </i>
+      <span>
+       AssetHub
+      </span>
+     </div>
+     <div class="header-actions">
+      <button class="btn btn--secondary btn--sm notification-btn" id="notificationBtn">
+       <i data-lucide="bell">
+       </i>
+       <span class="notification-badge">
+        3
+       </span>
+      </button>
+      <button class="btn btn--secondary btn--sm theme-toggle" data-theme-toggle="" id="themeToggle">
+       <i data-lucide="moon">
+       </i>
+      </button>
+      <div class="user-menu">
+       <button class="user-avatar" id="userMenuBtn">
+        <i data-lucide="user">
+        </i>
+       </button>
+      </div>
+     </div>
+    </div>
+   </header>
+   <!-- Main Content -->
+   <main class="main-content">
+    <!-- Navigation Tabs -->
+    <nav class="nav-bar">
+     <button class="nav-tab active" data-tab="dashboard">
+      <i data-lucide="layout-dashboard">
+      </i>
+      <span>
+       Dashboard
+      </span>
+     </button>
+     <button class="nav-tab" data-tab="assets">
+      <i data-lucide="folder">
+      </i>
+      <span>
+       Assets
+      </span>
+     </button>
+     <button class="nav-tab" data-tab="projects">
+      <i data-lucide="briefcase">
+      </i>
+      <span>
+       Projects
+      </span>
+     </button>
+     <button class="nav-tab" data-tab="analytics">
+      <i data-lucide="bar-chart-3">
+      </i>
+      <span>
+       Analytics
+      </span>
+     </button>
+     <button class="nav-tab" data-tab="automation">
+      <i data-lucide="zap">
+      </i>
+      <span>
+       Automation
+      </span>
+     </button>
+     <button class="nav-tab" data-tab="sales">
+      <i data-lucide="dollar-sign">
+      </i>
+      <span>
+       Sales
+      </span>
+     </button>
+     <button class="nav-tab" data-tab="integrations">
+      <i data-lucide="puzzle">
+      </i>
+      <span>
+       Integrations
+      </span>
+     </button>
+     <button class="nav-tab" data-tab="settings">
+      <i data-lucide="settings">
+      </i>
+      <span>
+       Settings
+      </span>
+     </button>
+    </nav>
+    <!-- Tab Content -->
+    <div class="tab-content">
+     <!-- Dashboard Tab -->
+     <div class="tab-pane active" id="dashboard">
+      <div class="dashboard-grid">
+       <div class="kpi-cards">
+        <div class="kpi-card clickable" data-action="view-assets">
+         <div class="kpi-icon">
+          <i data-lucide="folder">
+          </i>
+         </div>
+         <div class="kpi-content">
+          <h3 id="kpi-total-assets">
+           1,247
+          </h3>
+          <p>
+           Total Assets
+          </p>
+          <span class="kpi-change positive">
+           +12%
+          </span>
+         </div>
+        </div>
+        <div class="kpi-card clickable" data-action="view-projects">
+         <div class="kpi-icon">
+          <i data-lucide="briefcase">
+          </i>
+         </div>
+         <div class="kpi-content">
+          <h3>
+           23
+          </h3>
+          <p>
+           Active Projects
+          </p>
+          <span class="kpi-change positive">
+           +5%
+          </span>
+         </div>
+        </div>
+        <div class="kpi-card clickable" data-action="view-revenue">
+         <div class="kpi-icon">
+          <i data-lucide="dollar-sign">
+          </i>
+         </div>
+         <div class="kpi-content">
+          <h3>
+           $89,432
+          </h3>
+          <p>
+           Monthly Revenue
+          </p>
+          <span class="kpi-change positive">
+           +18%
+          </span>
+         </div>
+        </div>
+        <div class="kpi-card clickable" data-action="view-performance">
+         <div class="kpi-icon">
+          <i data-lucide="trending-up">
+          </i>
+         </div>
+         <div class="kpi-content">
+          <h3>
+           94%
+          </h3>
+          <p>
+           Performance Score
+          </p>
+          <span class="kpi-change positive">
+           +3%
+          </span>
+         </div>
+        </div>
+       </div>
+       <div class="dashboard-charts">
+        <div class="card">
+         <div class="card__header">
+          <h3>
+           Revenue Trends
+          </h3>
+          <button class="btn btn--sm btn--outline" id="exportRevenueBtn">
+           <i data-lucide="download">
+           </i>
+           Export
+          </button>
+         </div>
+         <div class="card__body">
+          <canvas height="200" id="revenueChart">
+          </canvas>
+         </div>
+        </div>
+        <div class="card">
+         <div class="card__header">
+          <h3>
+           Asset Distribution
+          </h3>
+          <button class="btn btn--sm btn--outline" id="viewAssetsBtn">
+           <i data-lucide="eye">
+           </i>
+           View All
+          </button>
+         </div>
+         <div class="card__body">
+          <canvas height="200" id="assetChart">
+          </canvas>
+         </div>
+        </div>
+       </div>
+       <div class="activity-feed">
+        <div class="card">
+         <div class="card__header">
+          <h3>
+           Recent Activity
+          </h3>
+          <button class="btn btn--sm btn--outline" id="viewAllActivityBtn">
+           <i data-lucide="external-link">
+           </i>
+           View All
+          </button>
+         </div>
+         <div class="card__body">
+          <div class="activity-list" id="activityList">
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- Assets Tab -->
+     <div class="tab-pane" id="assets">
+      <div class="assets-header">
+       <h2>
+        Asset Management
+       </h2>
+       <div class="assets-actions">
+        <button class="btn btn--primary" id="uploadAssetBtn">
+         <i data-lucide="upload">
+         </i>
+         Upload Assets
+        </button>
+        <button class="btn btn--secondary" id="createFolderBtn">
+         <i data-lucide="folder-plus">
+         </i>
+         New Folder
+        </button>
+       </div>
+      </div>
+      <div class="assets-toolbar">
+       <div class="search-controls">
+        <input class="form-control" id="assetSearch" placeholder="Search assets..." type="text"/>
+        <select class="form-control" id="assetFilter">
+         <option value="">
+          All Types
+         </option>
+         <option value="courses">
+          Courses
+         </option>
+         <option value="templates">
+          Templates
+         </option>
+         <option value="media">
+          Media
+         </option>
+         <option value="software">
+          Software
+         </option>
+        </select>
+       </div>
+       <div class="view-controls">
+        <button class="btn btn--sm btn--secondary" id="gridViewBtn">
+         <i data-lucide="grid-3x3">
+         </i>
+        </button>
+        <button class="btn btn--sm btn--secondary" id="listViewBtn">
+         <i data-lucide="list">
+         </i>
+        </button>
+       </div>
+      </div>
+      <div class="upload-zone" id="uploadZone">
+       <div class="upload-content">
+        <i data-lucide="upload-cloud">
+        </i>
+        <h3>
+         Drag &amp; Drop Files Here
+        </h3>
+        <p>
+         or click to browse
+        </p>
+       </div>
+      </div>
+      <div class="assets-grid" id="assetsGrid">
+       <!-- Assets will be populated by JavaScript -->
+      </div>
+     </div>
+     <!-- Projects Tab -->
+     <div class="tab-pane" id="projects">
+      <div class="projects-header">
+       <h2>
+        Project Management
+       </h2>
+       <div class="projects-actions">
+        <button class="btn btn--primary" id="newProjectBtn">
+         <i data-lucide="plus">
+         </i>
+         New Project
+        </button>
+        <button class="btn btn--secondary" id="exportProjectsBtn">
+         <i data-lucide="download">
+         </i>
+         Export
+        </button>
+       </div>
+      </div>
+      <div class="kanban-board">
+       <div class="kanban-column">
+        <div class="kanban-header">
+         <h3>
+          Planning
+         </h3>
+         <span class="badge">
+          1
+         </span>
+        </div>
+        <div class="kanban-cards" id="planningCards">
+        </div>
+       </div>
+       <div class="kanban-column">
+        <div class="kanban-header">
+         <h3>
+          In Progress
+         </h3>
+         <span class="badge">
+          1
+         </span>
+        </div>
+        <div class="kanban-cards" id="progressCards">
+        </div>
+       </div>
+       <div class="kanban-column">
+        <div class="kanban-header">
+         <h3>
+          Review
+         </h3>
+         <span class="badge">
+          1
+         </span>
+        </div>
+        <div class="kanban-cards" id="reviewCards">
+        </div>
+       </div>
+       <div class="kanban-column">
+        <div class="kanban-header">
+         <h3>
+          Completed
+         </h3>
+         <span class="badge">
+          0
+         </span>
+        </div>
+        <div class="kanban-cards" id="completedCards">
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- Analytics Tab -->
+     <div class="tab-pane" id="analytics">
+      <div class="analytics-header">
+       <h2>
+        Performance Analytics
+       </h2>
+       <div class="analytics-actions">
+        <select class="form-control" id="analyticsTimeframe">
+         <option value="7d">
+          Last 7 Days
+         </option>
+         <option selected="" value="30d">
+          Last 30 Days
+         </option>
+         <option value="90d">
+          Last 90 Days
+         </option>
+         <option value="1y">
+          Last Year
+         </option>
+        </select>
+        <button class="btn btn--secondary" id="exportAnalyticsBtn">
+         <i data-lucide="download">
+         </i>
+         Export Report
+        </button>
+       </div>
+      </div>
+      <div class="analytics-grid">
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Revenue Performance
+         </h3>
+         <button class="btn btn--sm btn--outline" id="revenueDetailsBtn">
+          <i data-lucide="eye">
+          </i>
+          Details
+         </button>
+        </div>
+        <div class="card__body">
+         <canvas height="200" id="analyticsRevenueChart">
+         </canvas>
+        </div>
+       </div>
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Asset Value Distribution
+         </h3>
+         <button class="btn btn--sm btn--outline" id="assetValueBtn">
+          <i data-lucide="info">
+          </i>
+          Info
+         </button>
+        </div>
+        <div class="card__body">
+         <canvas height="200" id="assetValueChart">
+         </canvas>
+        </div>
+       </div>
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Project Progress
+         </h3>
+         <button class="btn btn--sm btn--outline" id="projectProgressBtn">
+          <i data-lucide="bar-chart">
+          </i>
+          View Report
+         </button>
+        </div>
+        <div class="card__body">
+         <canvas height="200" id="projectProgressChart">
+         </canvas>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- Automation Tab -->
+     <div class="tab-pane" id="automation">
+      <div class="automation-header">
+       <h2>
+        Workflow Automation
+       </h2>
+       <div class="automation-actions">
+        <button class="btn btn--primary" id="createWorkflowBtn">
+         <i data-lucide="plus">
+         </i>
+         Create Workflow
+        </button>
+        <button class="btn btn--secondary" id="importWorkflowBtn">
+         <i data-lucide="upload">
+         </i>
+         Import
+        </button>
+       </div>
+      </div>
+      <div class="workflow-grid">
+       <div class="workflow-card clickable" data-workflow="asset-processing">
+        <div class="workflow-icon">
+         <i data-lucide="file-image">
+         </i>
+        </div>
+        <div class="workflow-content">
+         <h3>
+          Asset Processing
+         </h3>
+         <p>
+          Automatically resize and optimize uploaded images
+         </p>
+         <div class="workflow-status">
+          <span class="status status--success">
+           Active
+          </span>
+          <span class="workflow-runs">
+           1,247 runs
+          </span>
+         </div>
+        </div>
+        <button class="btn btn--sm btn--outline">
+         <i data-lucide="settings">
+         </i>
+        </button>
+       </div>
+       <div class="workflow-card clickable" data-workflow="project-notifications">
+        <div class="workflow-icon">
+         <i data-lucide="bell">
+         </i>
+        </div>
+        <div class="workflow-content">
+         <h3>
+          Project Notifications
+         </h3>
+         <p>
+          Send alerts when project milestones are reached
+         </p>
+         <div class="workflow-status">
+          <span class="status status--success">
+           Active
+          </span>
+          <span class="workflow-runs">
+           89 runs
+          </span>
+         </div>
+        </div>
+        <button class="btn btn--sm btn--outline">
+         <i data-lucide="settings">
+         </i>
+        </button>
+       </div>
+       <div class="workflow-card clickable" data-workflow="revenue-tracking">
+        <div class="workflow-icon">
+         <i data-lucide="dollar-sign">
+         </i>
+        </div>
+        <div class="workflow-content">
+         <h3>
+          Revenue Tracking
+         </h3>
+         <p>
+          Calculate ROI and performance metrics automatically
+         </p>
+         <div class="workflow-status">
+          <span class="status status--warning">
+           Paused
+          </span>
+          <span class="workflow-runs">
+           456 runs
+          </span>
+         </div>
+        </div>
+        <button class="btn btn--sm btn--outline">
+         <i data-lucide="settings">
+         </i>
+        </button>
+       </div>
+      </div>
+     </div>
+     <!-- Sales Tab -->
+     <div class="tab-pane" id="sales">
+      <div class="sales-header">
+       <h2>
+        Sales Dashboard
+       </h2>
+       <div class="sales-actions">
+        <button class="btn btn--primary" id="newSaleBtn">
+         <i data-lucide="plus">
+         </i>
+         New Sale
+        </button>
+        <button class="btn btn--secondary" id="exportSalesBtn">
+         <i data-lucide="download">
+         </i>
+         Export Data
+        </button>
+       </div>
+      </div>
+      <div class="sales-metrics">
+       <div class="metric-card clickable" data-metric="revenue">
+        <div class="metric-icon">
+         <i data-lucide="dollar-sign">
+         </i>
+        </div>
+        <div class="metric-content">
+         <h3>
+          $89,432
+         </h3>
+         <p>
+          Monthly Revenue
+         </p>
+         <span class="metric-change positive">
+          +18.2%
+         </span>
+        </div>
+       </div>
+       <div class="metric-card clickable" data-metric="orders">
+        <div class="metric-icon">
+         <i data-lucide="shopping-cart">
+         </i>
+        </div>
+        <div class="metric-content">
+         <h3>
+          1,247
+         </h3>
+         <p>
+          Total Orders
+         </p>
+         <span class="metric-change positive">
+          +12.5%
+         </span>
+        </div>
+       </div>
+       <div class="metric-card clickable" data-metric="conversion">
+        <div class="metric-icon">
+         <i data-lucide="target">
+         </i>
+        </div>
+        <div class="metric-content">
+         <h3>
+          3.2%
+         </h3>
+         <p>
+          Conversion Rate
+         </p>
+         <span class="metric-change negative">
+          -0.5%
+         </span>
+        </div>
+       </div>
+      </div>
+      <div class="sales-chart">
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Sales Performance
+         </h3>
+         <button class="btn btn--sm btn--outline" id="salesAnalyticsBtn">
+          <i data-lucide="bar-chart-3">
+          </i>
+          Advanced Analytics
+         </button>
+        </div>
+        <div class="card__body">
+         <canvas height="200" id="salesChart">
+         </canvas>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- Integrations Tab -->
+     <div class="tab-pane" id="integrations">
+      <div class="integrations-header">
+       <h2>
+        Platform Integrations
+       </h2>
+       <div class="integrations-actions">
+        <button class="btn btn--primary" id="addIntegrationBtn">
+         <i data-lucide="plus">
+         </i>
+         Add Integration
+        </button>
+        <button class="btn btn--secondary" id="syncAllBtn">
+         <i data-lucide="refresh-cw">
+         </i>
+         Sync All
+        </button>
+       </div>
+      </div>
+      <div class="integrations-grid" id="integrationsGrid">
+       <!-- Integrations will be populated by JavaScript -->
+      </div>
+     </div>
+     <!-- Settings Tab -->
+     <div class="tab-pane" id="settings">
+      <div class="settings-header">
+       <h2>
+        Settings
+       </h2>
+       <div class="settings-actions">
+        <button class="btn btn--primary" id="saveSettingsBtn">
+         <i data-lucide="save">
+         </i>
+         Save Changes
+        </button>
+        <button class="btn btn--secondary" id="resetSettingsBtn">
+         <i data-lucide="refresh-cw">
+         </i>
+         Reset
+        </button>
+       </div>
+      </div>
+      <div class="settings-content">
+       <div class="settings-section">
+        <h3>
+         General Settings
+        </h3>
+        <div class="settings-group">
+         <label class="form-label">
+          Theme Preference
+         </label>
+         <select class="form-control" id="themeSelect">
+          <option value="dark">
+           Dark Mode
+          </option>
+          <option value="light">
+           Light Mode
+          </option>
+          <option value="system">
+           System Default
+          </option>
+         </select>
+        </div>
+        <div class="settings-group">
+         <label class="form-label">
+          Language
+         </label>
+         <select class="form-control" id="languageSelect">
+          <option value="en">
+           English
+          </option>
+          <option value="es">
+           Spanish
+          </option>
+          <option value="fr">
+           French
+          </option>
+         </select>
+        </div>
+       </div>
+       <div class="settings-section">
+        <h3>
+         Notification Settings
+        </h3>
+        <div class="settings-group">
+         <label class="setting-toggle">
+          <input checked="" type="checkbox"/>
+          <span class="toggle-slider">
+          </span>
+          Email Notifications
+         </label>
+        </div>
+        <div class="settings-group">
+         <label class="setting-toggle">
+          <input type="checkbox"/>
+          <span class="toggle-slider">
+          </span>
+          Push Notifications
+         </label>
+        </div>
+       </div>
+       <div class="settings-section">
+        <h3>
+         Performance Settings
+        </h3>
+        <div class="settings-group">
+         <label class="setting-toggle">
+          <input checked="" type="checkbox"/>
+          <span class="toggle-slider">
+          </span>
+          Auto-sync Data
+         </label>
+        </div>
+        <div class="settings-group">
+         <label class="setting-toggle">
+          <input checked="" type="checkbox"/>
+          <span class="toggle-slider">
+          </span>
+          Enable Analytics
+         </label>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </main>
+  </div>
+  <!-- Modal for notifications -->
+  <div class="modal" id="notificationModal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h3>
+      Notifications
+     </h3>
+     <button class="modal-close" id="closeNotificationModal">
+      <i data-lucide="x">
+      </i>
+     </button>
+    </div>
+    <div class="modal-body" id="notificationList">
+     <!-- Notifications will be populated by JavaScript -->
+    </div>
+   </div>
+  </div>
+  <script>
+// Application data
+const appData = {
+  "kpi_data": {
+    "total_assets": 1247,
+    "active_projects": 23,
+    "monthly_revenue": 89432,
+    "performance_score": 94
+  },
+  "revenue_data": [
+    {"month": "Jan", "revenue": 65000, "target": 60000},
+    {"month": "Feb", "revenue": 72000, "target": 65000},
+    {"month": "Mar", "revenue": 78000, "target": 70000},
+    {"month": "Apr", "revenue": 85000, "target": 75000},
+    {"month": "May", "revenue": 89432, "target": 80000}
+  ],
+  "asset_types": [
+    {"type": "Courses", "count": 342, "value": 1250000},
+    {"type": "Templates", "count": 556, "value": 875000},
+    {"type": "Media", "count": 289, "value": 650000},
+    {"type": "Software", "count": 60, "value": 2100000}
+  ],
+  "projects": [
+    {"id": 1, "name": "Website Redesign", "status": "In Progress", "progress": 75, "team": ["Alice", "Bob"]},
+    {"id": 2, "name": "Mobile App", "status": "Planning", "progress": 25, "team": ["Charlie", "Diana"]},
+    {"id": 3, "name": "Content Strategy", "status": "Review", "progress": 90, "team": ["Eve", "Frank"]}
+  ],
+  "integrations": [
+    {"name": "Shopify", "status": "Connected", "last_sync": "2 minutes ago"},
+    {"name": "Mailchimp", "status": "Connected", "last_sync": "1 hour ago"},
+    {"name": "Google Analytics", "status": "Connected", "last_sync": "30 minutes ago"},
+    {"name": "Stripe", "status": "Connected", "last_sync": "5 minutes ago"},
+    {"name": "AWS S3", "status": "Connected", "last_sync": "15 minutes ago"}
+  ],
+  "recent_activity": [
+    {"action": "New asset uploaded", "user": "John Doe", "time": "2 minutes ago"},
+    {"action": "Project milestone completed", "user": "Jane Smith", "time": "15 minutes ago"},
+    {"action": "Revenue target reached", "user": "System", "time": "1 hour ago"}
+  ]
+};
+
+// Chart instances
+let revenueChart, assetChart, analyticsRevenueChart, assetValueChart, projectProgressChart, salesChart;
+
+// Initialize the application
+document.addEventListener('DOMContentLoaded', function() {
+  initializeIcons();
+  initializeTabNavigation();
+  initializeThemeToggle();
+  initializeNotifications();
+  initializeCharts();
+  initializeInteractiveElements();
+  initializeAssetManagement();
+  initializeProjectManagement();
+  initializeIntegrations();
+  initializeSettings();
+  populateActivityFeed();
+  populateAssets();
+  populateProjects();
+  populateIntegrations();
+});
+
+// Initialize Lucide icons
+function initializeIcons() {
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+}
+
+// Tab navigation
+function initializeTabNavigation() {
+  const tabButtons = document.querySelectorAll('.nav-tab');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetTab = button.dataset.tab;
+      
+      // Remove active class from all tabs and panes
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabPanes.forEach(pane => pane.classList.remove('active'));
+      
+      // Add active class to clicked tab and corresponding pane
+      button.classList.add('active');
+      document.getElementById(targetTab).classList.add('active');
+    });
+  });
+}
+
+// Theme toggle functionality
+function initializeThemeToggle() {
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = html.getAttribute('data-color-scheme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    html.setAttribute('data-color-scheme', newTheme);
+    
+    // Update icon
+    const icon = themeToggle.querySelector('i');
+    icon.setAttribute('data-lucide', newTheme === 'dark' ? 'sun' : 'moon');
+    lucide.createIcons();
+  });
+}
+
+// Notifications
+function initializeNotifications() {
+  const notificationBtn = document.getElementById('notificationBtn');
+  const notificationModal = document.getElementById('notificationModal');
+  const closeModalBtn = document.getElementById('closeNotificationModal');
+  
+  notificationBtn.addEventListener('click', () => {
+    notificationModal.classList.add('active');
+    populateNotifications();
+  });
+  
+  closeModalBtn.addEventListener('click', () => {
+    notificationModal.classList.remove('active');
+  });
+  
+  // Close modal when clicking outside
+  notificationModal.addEventListener('click', (e) => {
+    if (e.target === notificationModal) {
+      notificationModal.classList.remove('active');
+    }
+  });
+}
+
+function populateNotifications() {
+  const notificationList = document.getElementById('notificationList');
+  const notifications = [
+    { type: 'info', title: 'New asset uploaded', message: 'Website redesign mockup has been uploaded', time: '2 minutes ago' },
+    { type: 'success', title: 'Project completed', message: 'Mobile app prototype is ready for review', time: '15 minutes ago' },
+    { type: 'warning', title: 'Storage limit', message: 'You are approaching your storage limit', time: '1 hour ago' }
+  ];
+  
+  notificationList.innerHTML = notifications.map(notification => `
+    <div class="notification-item">
+      <div class="notification-icon">
+        <i data-lucide="${notification.type === 'info' ? 'info' : notification.type === 'success' ? 'check' : 'alert-triangle'}"></i>
+      </div>
+      <div class="notification-content">
+        <h4>${notification.title}</h4>
+        <p>${notification.message}</p>
+        <div class="notification-time">${notification.time}</div>
+      </div>
+    </div>
+  `).join('');
+  
+  lucide.createIcons();
+}
+
+// Initialize charts
+function initializeCharts() {
+  initializeRevenueChart();
+  initializeAssetChart();
+  initializeAnalyticsCharts();
+  initializeSalesChart();
+}
+
+function initializeRevenueChart() {
+  const ctx = document.getElementById('revenueChart');
+  if (!ctx) return;
+  
+  revenueChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: appData.revenue_data.map(d => d.month),
+      datasets: [{
+        label: 'Revenue',
+        data: appData.revenue_data.map(d => d.revenue),
+        borderColor: '#1FB8CD',
+        backgroundColor: 'rgba(31, 184, 205, 0.1)',
+        fill: true,
+        tension: 0.4
+      }, {
+        label: 'Target',
+        data: appData.revenue_data.map(d => d.target),
+        borderColor: '#FFC185',
+        backgroundColor: 'transparent',
+        borderDash: [5, 5]
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: function(value) {
+              return '$' + (value / 1000) + 'K';
+            }
+          }
+        }
+      }
+    }
+  });
+}
+
+function initializeAssetChart() {
+  const ctx = document.getElementById('assetChart');
+  if (!ctx) return;
+  
+  assetChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: appData.asset_types.map(d => d.type),
+      datasets: [{
+        data: appData.asset_types.map(d => d.count),
+        backgroundColor: ['#1FB8CD', '#FFC185', '#B4413C', '#ECEBD5']
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }
+  });
+}
+
+function initializeAnalyticsCharts() {
+  // Analytics Revenue Chart
+  const analyticsCtx = document.getElementById('analyticsRevenueChart');
+  if (analyticsCtx) {
+    analyticsRevenueChart = new Chart(analyticsCtx, {
+      type: 'bar',
+      data: {
+        labels: appData.revenue_data.map(d => d.month),
+        datasets: [{
+          label: 'Revenue',
+          data: appData.revenue_data.map(d => d.revenue),
+          backgroundColor: '#1FB8CD'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: function(value) {
+                return '$' + (value / 1000) + 'K';
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+  
+  // Asset Value Chart
+  const assetValueCtx = document.getElementById('assetValueChart');
+  if (assetValueCtx) {
+    assetValueChart = new Chart(assetValueCtx, {
+      type: 'pie',
+      data: {
+        labels: appData.asset_types.map(d => d.type),
+        datasets: [{
+          data: appData.asset_types.map(d => d.value),
+          backgroundColor: ['#1FB8CD', '#FFC185', '#B4413C', '#ECEBD5']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
+  }
+  
+  // Project Progress Chart
+  const projectProgressCtx = document.getElementById('projectProgressChart');
+  if (projectProgressCtx) {
+    projectProgressChart = new Chart(projectProgressCtx, {
+      type: 'bar',
+      data: {
+        labels: appData.projects.map(p => p.name),
+        datasets: [{
+          label: 'Progress %',
+          data: appData.projects.map(p => p.progress),
+          backgroundColor: ['#1FB8CD', '#FFC185', '#B4413C']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+              callback: function(value) {
+                return value + '%';
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+}
+
+function initializeSalesChart() {
+  const ctx = document.getElementById('salesChart');
+  if (!ctx) return;
+  
+  salesChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: appData.revenue_data.map(d => d.month),
+      datasets: [{
+        label: 'Sales',
+        data: appData.revenue_data.map(d => d.revenue),
+        borderColor: '#1FB8CD',
+        backgroundColor: 'rgba(31, 184, 205, 0.1)',
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: function(value) {
+              return '$' + (value / 1000) + 'K';
+            }
+          }
+        }
+      }
+    }
+  });
+}
+
+// Interactive elements
+function initializeInteractiveElements() {
+  // KPI card clicks
+  document.querySelectorAll('.kpi-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const action = card.dataset.action;
+      handleKPIClick(action);
+    });
+  });
+  
+  // Button clicks
+  document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+      if (!button.id) return;
+      
+      // Add click effect
+      button.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        button.style.transform = '';
+      }, 150);
+      
+      handleButtonClick(button.id, e);
+    });
+  });
+  
+  // Workflow card clicks
+  document.querySelectorAll('.workflow-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const workflow = card.dataset.workflow;
+      showToast(`Opening ${workflow} workflow settings`);
+    });
+  });
+  
+  // Metric card clicks
+  document.querySelectorAll('.metric-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const metric = card.dataset.metric;
+      showToast(`Viewing detailed ${metric} analytics`);
+    });
+  });
+}
+
+function handleKPIClick(action) {
+  const actions = {
+    'view-assets': 'assets',
+    'view-projects': 'projects',
+    'view-revenue': 'sales',
+    'view-performance': 'analytics'
+  };
+  
+  if (actions[action]) {
+    switchTab(actions[action]);
+  }
+}
+
+function handleButtonClick(buttonId, event) {
+  const actions = {
+    'exportRevenueBtn': () => showToast('Exporting revenue data...'),
+    'viewAssetsBtn': () => switchTab('assets'),
+    'viewAllActivityBtn': () => showToast('Opening activity log...'),
+    'uploadAssetBtn': () => document.getElementById('uploadZone').click(),
+    'createFolderBtn': () => showToast('Creating new folder...'),
+    'newProjectBtn': () => showToast('Creating new project...'),
+    'exportProjectsBtn': () => showToast('Exporting project data...'),
+    'exportAnalyticsBtn': () => showToast('Exporting analytics report...'),
+    'revenueDetailsBtn': () => showToast('Opening revenue details...'),
+    'assetValueBtn': () => showToast('Showing asset value breakdown...'),
+    'projectProgressBtn': () => showToast('Opening project progress report...'),
+    'createWorkflowBtn': () => showToast('Creating new workflow...'),
+    'importWorkflowBtn': () => showToast('Importing workflow...'),
+    'newSaleBtn': () => showToast('Creating new sale record...'),
+    'exportSalesBtn': () => showToast('Exporting sales data...'),
+    'salesAnalyticsBtn': () => showToast('Opening advanced sales analytics...'),
+    'addIntegrationBtn': () => showToast('Adding new integration...'),
+    'syncAllBtn': () => showToast('Syncing all integrations...'),
+    'saveSettingsBtn': () => showToast('Settings saved successfully!'),
+    'resetSettingsBtn': () => showToast('Settings reset to default')
+  };
+  
+  if (actions[buttonId]) {
+    actions[buttonId]();
+  }
+}
+
+function switchTab(tabName) {
+  document.querySelector(`[data-tab="${tabName}"]`).click();
+}
+
+function showToast(message) {
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  toast.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  `;
+  
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.style.transform = 'translateX(0)';
+  }, 100);
+  
+  setTimeout(() => {
+    toast.style.transform = 'translateX(100%)';
+    setTimeout(() => {
+      document.body.removeChild(toast);
+    }, 300);
+  }, 3000);
+}
+
+// Asset management
+function initializeAssetManagement() {
+  const uploadZone = document.getElementById('uploadZone');
+  const assetSearch = document.getElementById('assetSearch');
+  const assetFilter = document.getElementById('assetFilter');
+  const gridViewBtn = document.getElementById('gridViewBtn');
+  const listViewBtn = document.getElementById('listViewBtn');
+  
+  // Drag and drop
+  uploadZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadZone.classList.add('drag-over');
+  });
+  
+  uploadZone.addEventListener('dragleave', () => {
+    uploadZone.classList.remove('drag-over');
+  });
+  
+  uploadZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadZone.classList.remove('drag-over');
+    const files = Array.from(e.dataTransfer.files);
+    handleFileUpload(files);
+  });
+  
+  uploadZone.addEventListener('click', () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.multiple = true;
+    input.accept = '*/*';
+    input.onchange = (e) => handleFileUpload(Array.from(e.target.files));
+    input.click();
+  });
+  
+  // Search and filter
+  assetSearch.addEventListener('input', filterAssets);
+  assetFilter.addEventListener('change', filterAssets);
+  
+  // View toggle
+  gridViewBtn.addEventListener('click', () => {
+    gridViewBtn.classList.add('active');
+    listViewBtn.classList.remove('active');
+    document.getElementById('assetsGrid').className = 'assets-grid';
+  });
+  
+  listViewBtn.addEventListener('click', () => {
+    listViewBtn.classList.add('active');
+    gridViewBtn.classList.remove('active');
+    document.getElementById('assetsGrid').className = 'assets-list';
+  });
+}
+
+function handleFileUpload(files) {
+  files.forEach(file => {
+    showToast(`Uploading ${file.name}...`);
+  });
+  
+  // Simulate upload completion
+  setTimeout(() => {
+    showToast(`${files.length} file(s) uploaded successfully!`);
+    populateAssets();
+  }, 2000);
+}
+
+function filterAssets() {
+  const searchTerm = document.getElementById('assetSearch').value.toLowerCase();
+  const filterType = document.getElementById('assetFilter').value.toLowerCase();
+  
+  const assetCards = document.querySelectorAll('.asset-card');
+  assetCards.forEach(card => {
+    const title = card.querySelector('h4').textContent.toLowerCase();
+    const type = card.dataset.type || '';
+    
+    const matchesSearch = title.includes(searchTerm);
+    const matchesFilter = !filterType || type === filterType;
+    
+    card.style.display = matchesSearch && matchesFilter ? 'block' : 'none';
+  });
+}
+
+function populateAssets() {
+  const assetsGrid = document.getElementById('assetsGrid');
+  const assets = [
+    { name: 'Website Mockup', type: 'media', size: '2.3 MB', date: '2 days ago', icon: 'image' },
+    { name: 'User Guide Template', type: 'templates', size: '1.8 MB', date: '1 week ago', icon: 'file-text' },
+    { name: 'Video Tutorial', type: 'media', size: '45.2 MB', date: '3 days ago', icon: 'play' },
+    { name: 'Design System', type: 'templates', size: '5.1 MB', date: '1 day ago', icon: 'palette' },
+    { name: 'Analytics Dashboard', type: 'software', size: '12.4 MB', date: '5 days ago', icon: 'bar-chart' },
+    { name: 'Course Material', type: 'courses', size: '28.9 MB', date: '1 week ago', icon: 'book' }
+  ];
+  
+  assetsGrid.innerHTML = assets.map(asset => `
+    <div class="asset-card clickable" data-type="${asset.type}">
+      <div class="asset-preview">
+        <i data-lucide="${asset.icon}"></i>
+      </div>
+      <div class="asset-info">
+        <h4>${asset.name}</h4>
+        <p>${asset.size} • ${asset.date}</p>
+      </div>
+      <div class="asset-actions">
+        <button class="btn btn--sm btn--outline">
+          <i data-lucide="eye"></i>
+        </button>
+        <button class="btn btn--sm btn--outline">
+          <i data-lucide="download"></i>
+        </button>
+        <button class="btn btn--sm btn--outline">
+          <i data-lucide="trash"></i>
+        </button>
+      </div>
+    </div>
+  `).join('');
+  
+  lucide.createIcons();
+}
+
+// Project management
+function initializeProjectManagement() {
+  populateProjects();
+}
+
+function populateProjects() {
+  const statusColumns = {
+    'Planning': 'planningCards',
+    'In Progress': 'progressCards',
+    'Review': 'reviewCards',
+    'Completed': 'completedCards'
+  };
+  
+  // Clear existing cards
+  Object.values(statusColumns).forEach(columnId => {
+    const column = document.getElementById(columnId);
+    if (column) column.innerHTML = '';
+  });
+  
+  appData.projects.forEach(project => {
+    const columnId = statusColumns[project.status];
+    const column = document.getElementById(columnId);
+    
+    if (column) {
+      const card = document.createElement('div');
+      card.className = 'project-card clickable';
+      card.innerHTML = `
+        <h4>${project.name}</h4>
+        <div class="project-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: ${project.progress}%"></div>
+          </div>
+          <span>${project.progress}%</span>
+        </div>
+        <div class="project-team">
+          ${project.team.map(member => `
+            <div class="team-member">${member.charAt(0)}</div>
+          `).join('')}
+        </div>
+      `;
+      
+      card.addEventListener('click', () => {
+        showToast(`Opening ${project.name} project details`);
+      });
+      
+      column.appendChild(card);
+    }
+  });
+}
+
+// Activity feed
+function populateActivityFeed() {
+  const activityList = document.getElementById('activityList');
+  
+  activityList.innerHTML = appData.recent_activity.map(activity => `
+    <div class="activity-item">
+      <div class="activity-icon">
+        <i data-lucide="${getActivityIcon(activity.action)}"></i>
+      </div>
+      <div class="activity-content">
+        <h4>${activity.action}</h4>
+        <p>${activity.user} • ${activity.time}</p>
+      </div>
+    </div>
+  `).join('');
+  
+  lucide.createIcons();
+}
+
+function getActivityIcon(action) {
+  const iconMap = {
+    'New asset uploaded': 'upload',
+    'Project milestone completed': 'check-circle',
+    'Revenue target reached': 'target'
+  };
+  
+  return iconMap[action] || 'activity';
+}
+
+// Integrations
+function initializeIntegrations() {
+  populateIntegrations();
+}
+
+function populateIntegrations() {
+  const integrationsGrid = document.getElementById('integrationsGrid');
+  
+  const integrationIcons = {
+    'Shopify': 'shopping-bag',
+    'Mailchimp': 'mail',
+    'Google Analytics': 'bar-chart',
+    'Stripe': 'credit-card',
+    'AWS S3': 'cloud'
+  };
+  
+  integrationsGrid.innerHTML = appData.integrations.map(integration => `
+    <div class="integration-card clickable">
+      <div class="integration-icon">
+        <i data-lucide="${integrationIcons[integration.name]}"></i>
+      </div>
+      <div class="integration-content">
+        <h3>${integration.name}</h3>
+        <div class="integration-status">
+          <span class="status status--success">${integration.status}</span>
+        </div>
+        <div class="integration-sync">Last sync: ${integration.last_sync}</div>
+      </div>
+      <button class="btn btn--sm btn--outline">
+        <i data-lucide="settings"></i>
+      </button>
+    </div>
+  `).join('');
+  
+  // Add click handlers
+  document.querySelectorAll('.integration-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.btn')) return;
+      const name = card.querySelector('h3').textContent;
+      showToast(`Opening ${name} integration settings`);
+    });
+  });
+  
+  lucide.createIcons();
+}
+
+// Settings
+function initializeSettings() {
+  const themeSelect = document.getElementById('themeSelect');
+  const toggles = document.querySelectorAll('.setting-toggle input[type="checkbox"]');
+  
+  // Theme select
+  themeSelect.addEventListener('change', (e) => {
+    const theme = e.target.value;
+    if (theme !== 'system') {
+      document.documentElement.setAttribute('data-color-scheme', theme);
+    }
+    showToast(`Theme changed to ${theme}`);
+  });
+  
+  // Toggle switches
+  toggles.forEach(toggle => {
+    toggle.addEventListener('change', (e) => {
+      const label = e.target.parentNode.textContent.trim();
+      const status = e.target.checked ? 'enabled' : 'disabled';
+      showToast(`${label} ${status}`);
+    });
+  });
+}
+</script>
+  <script>
+   /* Unified color-mode toggle — shared standard across all apps */
+   (function () {
+     function preferred() {
+       try { var s = localStorage.getItem('colorScheme'); if (s === 'dark' || s === 'light') return s; } catch (e) {}
+       return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+     }
+     function current() { return document.documentElement.getAttribute('data-color-scheme') || preferred(); }
+     function swapIcon(btn, isDark) {
+       var lu = btn.querySelector('i[data-lucide="moon"], i[data-lucide="sun"], svg.lucide-moon, svg.lucide-sun');
+       if (lu) {
+         var ni = document.createElement('i');
+         ni.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+         if (lu.tagName.toLowerCase() === 'i' && lu.className) ni.className = lu.className;
+         lu.replaceWith(ni);
+         return;
+       }
+       var fa = btn.querySelector('i.fa-moon, i.fa-sun');
+       if (fa) { fa.classList.remove('fa-moon', 'fa-sun'); fa.classList.add(isDark ? 'fa-sun' : 'fa-moon'); }
+     }
+     function refreshIcons(theme) {
+       var isDark = theme === 'dark';
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (b) { swapIcon(b, isDark); });
+       if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
+     }
+     function apply(theme) {
+       document.documentElement.setAttribute('data-color-scheme', theme);
+       try { localStorage.setItem('colorScheme', theme); } catch (e) {}
+       refreshIcons(theme);
+     }
+     window.toggleColorScheme = function () { apply(current() === 'dark' ? 'light' : 'dark'); };
+     function wire() {
+       var t = preferred();
+       document.documentElement.setAttribute('data-color-scheme', t);
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+         var clone = btn.cloneNode(true);
+         clone.removeAttribute('onclick');
+         if (btn.parentNode) btn.parentNode.replaceChild(clone, btn);
+         clone.addEventListener('click', function (e) { e.preventDefault(); window.toggleColorScheme(); });
+       });
+       refreshIcons(t);
+     }
+     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', wire); }
+     else { wire(); }
+   })();
+  </script>
+  <script>
+   /* AssetHub — real EAAAL-2025 asset catalog (imported) + working asset store */
+   (function () {
+     var IMPORTED = [{"id":"TECH-001","name":"Azure Complete Infrastructure Deployment","category":"Technical Infrastructure","type":"technical-infrastructure","assetType":"Infrastructure Template","version":"3.2.1","file":"azure-infrastructure-complete.sh","description":"Complete Azure environment setup including VNet, NSGs, Key Vault, and Container Instances","dependencies":"Azure CLI, valid Azure subscription","usage":"Production infrastructure deployment","owner":"Technical Lead","size":"12.5 KB","date":"2025-09-14","icon":"server"},{"id":"TECH-002","name":"EAAAL Production Docker Stack","category":"Technical Infrastructure","type":"technical-infrastructure","assetType":"Container Configuration","version":"3.1.0","file":"docker-compose.yml","description":"Complete production container stack with N8N, PostgreSQL, Redis, Nginx, and monitoring","dependencies":"Docker Engine 20.10+, Docker Compose 2.0+","usage":"Application deployment and development","owner":"DevOps Team","size":"8.3 KB","date":"2025-09-14","icon":"server"},{"id":"TECH-003","name":"Enterprise Nginx Configuration","category":"Technical Infrastructure","type":"technical-infrastructure","assetType":"Web Server Configuration","version":"2.1.0","file":"nginx.conf","description":"Production-ready Nginx configuration with SSL, security headers, and performance optimization","dependencies":"Nginx 1.20+, SSL certificates","usage":"Reverse proxy and load balancing","owner":"Technical Lead","size":"4.7 KB","date":"2025-09-14","icon":"server"},{"id":"TECH-004","name":"Environment Variables Template","category":"Technical Infrastructure","type":"technical-infrastructure","assetType":"Configuration Template","version":"1.3.0","file":".env.template","description":"Complete environment configuration with security best practices","dependencies":"Docker Compose, Azure Key Vault","usage":"Environment setup and deployment","owner":"DevOps Team","size":"2.1 KB","date":"2025-09-14","icon":"server"},{"id":"TECH-005","name":"System Health Check Script","category":"Technical Infrastructure","type":"technical-infrastructure","assetType":"Monitoring Script","version":"2.0.1","file":"health-check.sh","description":"Comprehensive system health monitoring with Azure integration","dependencies":"Azure CLI, curl, bash 4.0+","usage":"Automated monitoring and alerting","owner":"Operations Team","size":"3.2 KB","date":"2025-09-14","icon":"server"},{"id":"TECH-006","name":"Prometheus Monitoring Config","category":"Technical Infrastructure","type":"technical-infrastructure","assetType":"Monitoring Configuration","version":"1.2.0","file":"prometheus.yml","description":"Application performance monitoring with custom metrics","dependencies":"Prometheus 2.40+","usage":"Performance monitoring and alerting","owner":"Technical Lead","size":"1.8 KB","date":"2025-09-14","icon":"server"},{"id":"TECH-007","name":"SSL Certificate Generation Scripts","category":"Technical Infrastructure","type":"technical-infrastructure","assetType":"Security Script","version":"1.1.0","file":"ssl-setup.sh","description":"Automated SSL certificate generation and renewal with Let's Encrypt","dependencies":"Certbot, DNS access","usage":"Certificate management and renewal","owner":"Security Team","size":"2.5 KB","date":"2025-09-14","icon":"server"},{"id":"TECH-008","name":"Automated Backup Scripts","category":"Technical Infrastructure","type":"technical-infrastructure","assetType":"Backup Script","version":"2.2.0","file":"backup-automation.sh","description":"Automated backup for databases, configurations, and critical data","dependencies":"Azure CLI, PostgreSQL client","usage":"Data protection and disaster recovery","owner":"Operations Team","size":"4.1 KB","date":"2025-09-14","icon":"server"},{"id":"AUTO-001","name":"Lead Capture and Initial Response","category":"Automation","type":"automation","assetType":"Make.com Workflow","version":"2.3.0","file":"lead-capture-workflow.json","description":"Automated lead capture from multiple sources with 90-second response guarantee","dependencies":"Make.com Pro account, Airtable base, email service","usage":"Client lead management","owner":"Automation Team","size":"450 operations/month average","date":"2025-09-14","icon":"zap"},{"id":"AUTO-002","name":"Client Onboarding Sequence","category":"Automation","type":"automation","assetType":"Make.com Workflow","version":"1.4.0","file":"client-onboarding.json","description":"Complete client onboarding from contract signature to project kickoff","dependencies":"DocuSign, Stripe, project management system","usage":"New client processing","owner":"Operations Team","size":"25 operations/month average","date":"2025-09-14","icon":"zap"},{"id":"AUTO-003","name":"Automated Follow-up Sequences","category":"Automation","type":"automation","assetType":"Make.com Workflow","version":"2.1.0","file":"follow-up-nurture.json","description":"Intelligent follow-up sequences based on lead behavior and engagement","dependencies":"Email marketing platform, CRM integration","usage":"Lead nurturing and conversion","owner":"Marketing Team","size":"1200 operations/month average","date":"2025-09-14","icon":"zap"},{"id":"AUTO-004","name":"AI Lead Scoring Engine","category":"Automation","type":"automation","assetType":"N8N Workflow","version":"3.0.0","file":"ai-lead-scoring.json","description":"Machine learning-based lead scoring with Google AI Studio integration","dependencies":"Google AI Studio API, training data, PostgreSQL","usage":"Lead qualification and prioritization","owner":"AI/ML Team","size":"—","date":"2025-09-14","icon":"zap"},{"id":"AUTO-005","name":"Third-Party API Orchestration","category":"Automation","type":"automation","assetType":"N8N Workflow","version":"2.2.1","file":"api-orchestration.json","description":"Complex API integrations with error handling and retry logic","dependencies":"Multiple third-party APIs, webhook endpoints","usage":"System integration and data synchronization","owner":"Technical Team","size":"—","date":"2025-09-14","icon":"zap"},{"id":"AUTO-006","name":"Data Processing Pipeline","category":"Automation","type":"automation","assetType":"N8N Workflow","version":"1.3.0","file":"data-processing-pipeline.json","description":"ETL processes for business intelligence and reporting","dependencies":"PostgreSQL, Power BI, data validation rules","usage":"Business intelligence and analytics","owner":"Analytics Team","size":"10K records/day average","date":"2025-09-14","icon":"zap"},{"id":"BI-001","name":"Executive Performance Dashboard","category":"Business Intelligence","type":"business-intelligence","assetType":"Power BI Report","version":"2.1.0","file":"executive-dashboard.pbix","description":"High-level KPIs and performance metrics for leadership team","dependencies":"Power BI Premium, live data connections, Airtable","usage":"Executive reporting and decision making","owner":"Analytics Team","size":"Real-time with 15-minute intervals","date":"2025-09-14","icon":"bar-chart-3"},{"id":"BI-002","name":"Client Success and Retention Analytics","category":"Business Intelligence","type":"business-intelligence","assetType":"Power BI Report","version":"1.5.0","file":"client-success-analytics.pbix","description":"Comprehensive client health scoring and success metrics","dependencies":"CRM data, project management data, survey responses","usage":"Client relationship management","owner":"Client Success Team","size":"—","date":"2025-09-14","icon":"bar-chart-3"},{"id":"BI-003","name":"Financial Performance Dashboard","category":"Business Intelligence","type":"business-intelligence","assetType":"Power BI Report","version":"2.0.0","file":"financial-dashboard.pbix","description":"Revenue, costs, profitability, and cash flow analysis","dependencies":"Accounting system integration, Stripe data","usage":"Financial planning and analysis","owner":"Finance Team","size":"—","date":"2025-09-14","icon":"bar-chart-3"},{"id":"BI-004","name":"EAAAL Master Data Model","category":"Business Intelligence","type":"business-intelligence","assetType":"Data Schema","version":"3.1.0","file":"master-data-model.sql","description":"Complete relational data model for all business entities","dependencies":"PostgreSQL 15+, referential integrity constraints","usage":"Database structure and relationships","owner":"Data Architecture Team","size":"—","date":"2025-09-14","icon":"bar-chart-3"},{"id":"BI-005","name":"Analytics Data Warehouse Schema","category":"Business Intelligence","type":"business-intelligence","assetType":"Data Warehouse Schema","version":"1.2.0","file":"analytics-dwh-schema.sql","description":"Optimized schema for business intelligence and reporting","dependencies":"PostgreSQL, ETL processes, data validation","usage":"Business intelligence and analytics","owner":"Analytics Team","size":"—","date":"2025-09-14","icon":"bar-chart-3"},{"id":"SALES-001","name":"Complete Sales Playbook","category":"Sales & Marketing","type":"sales-marketing","assetType":"Sales Documentation","version":"2.3.0","file":"sales-playbook-complete.pdf","description":"Comprehensive sales methodology, scripts, and objection handling","dependencies":"CRM system, sales training materials","usage":"Sales team training and performance","owner":"Sales Team","size":"—","date":"2025-09-14","icon":"trending-up"},{"id":"SALES-002","name":"Service Proposal Templates","category":"Sales & Marketing","type":"sales-marketing","assetType":"Document Template","version":"1.4.0","file":"proposal-templates.docx","description":"Professional proposal templates for all three service tiers","dependencies":"Microsoft Office, client discovery information","usage":"Sales proposal creation","owner":"Sales Team","size":"—","date":"2025-09-14","icon":"trending-up"},{"id":"SALES-003","name":"Client ROI Calculator","category":"Sales & Marketing","type":"sales-marketing","assetType":"Excel Tool","version":"2.0.0","file":"roi-calculator.xlsx","description":"Interactive ROI calculator for client value demonstration","dependencies":"Microsoft Excel, client operational data","usage":"Sales presentations and value demonstration","owner":"Sales Team","size":"—","date":"2025-09-14","icon":"trending-up"},{"id":"MARK-001","name":"Complete Email Marketing Suite","category":"Sales & Marketing","type":"sales-marketing","assetType":"Email Templates","version":"1.6.0","file":"email-sequences.zip","description":"15 email sequences for different stages of customer journey","dependencies":"Email marketing platform, CRM integration","usage":"Lead nurturing and client communication","owner":"Marketing Team","size":"—","date":"2025-09-14","icon":"megaphone"},{"id":"MARK-002","name":"Content Marketing Asset Library","category":"Sales & Marketing","type":"sales-marketing","assetType":"Content Collection","version":"2.1.0","file":"content-marketing-library.zip","description":"Blog posts, whitepapers, case studies, and social media content","dependencies":"Content management system, brand guidelines","usage":"Lead generation and thought leadership","owner":"Marketing Team","size":"—","date":"2025-09-14","icon":"megaphone"},{"id":"MARK-003","name":"LinkedIn Outreach Templates","category":"Sales & Marketing","type":"sales-marketing","assetType":"Social Media Templates","version":"1.3.0","file":"linkedin-outreach.docx","description":"Professional outreach templates for LinkedIn engagement","dependencies":"LinkedIn Sales Navigator, CRM integration","usage":"Prospecting and relationship building","owner":"Business Development Team","size":"—","date":"2025-09-14","icon":"megaphone"},{"id":"LEGAL-001","name":"Master Services Agreement Template","category":"Legal & Compliance","type":"legal-compliance","assetType":"Legal Contract","version":"2.0.0","file":"master-services-agreement.docx","description":"Comprehensive MSA covering all service offerings and legal protection","dependencies":"Legal review, state-specific modifications","usage":"Client contract execution","owner":"Legal Team","size":"—","date":"2025-09-14","icon":"scale"},{"id":"LEGAL-002","name":"Statement of Work Templates","category":"Legal & Compliance","type":"legal-compliance","assetType":"Legal Contract","version":"1.2.0","file":"sow-templates.zip","description":"Detailed SOW templates for each service tier","dependencies":"Master Services Agreement, project scope definition","usage":"Project-specific contract terms","owner":"Legal Team","size":"—","date":"2025-09-14","icon":"scale"},{"id":"LEGAL-003","name":"Privacy Policy and ToS","category":"Legal & Compliance","type":"legal-compliance","assetType":"Legal Documentation","version":"1.1.0","file":"privacy-terms.pdf","description":"GDPR-compliant privacy policy and comprehensive terms of service","dependencies":"Legal review, compliance requirements","usage":"Website and service legal compliance","owner":"Legal Team","size":"—","date":"2025-09-14","icon":"scale"},{"id":"COMP-001","name":"Data Security and Privacy Framework","category":"Legal & Compliance","type":"legal-compliance","assetType":"Compliance Documentation","version":"1.3.0","file":"data-security-framework.pdf","description":"Comprehensive data protection and security procedures","dependencies":"Technical infrastructure, training programs","usage":"Compliance audits and client assurance","owner":"Compliance Team","size":"—","date":"2025-09-14","icon":"shield-check"},{"id":"COMP-002","name":"Business Continuity and Disaster Recovery Plan","category":"Legal & Compliance","type":"legal-compliance","assetType":"Operational Documentation","version":"1.0.0","file":"business-continuity-plan.pdf","description":"Comprehensive BCP with disaster recovery procedures","dependencies":"Infrastructure redundancy, backup systems","usage":"Risk management and operational resilience","owner":"Operations Team","size":"—","date":"2025-09-14","icon":"shield-check"},{"id":"PM-001","name":"EAAAL-2025 Complete Jira <nav class=\"nav-toc nav-bar\">","category":"Project Management","type":"project-management","assetType":"Project Management Data","version":"3.0.0","file":"eaaal-jira-<nav class=\"nav-toc nav-bar\">.csv","description":"Complete project structure with 33 work items across 5 epics","dependencies":"Jira Software, proper CSV <nav class=\"nav-toc nav-bar\"> procedures","usage":"Project tracking and management","owner":"Project Management Office","size":"—","date":"2025-09-14","icon":"clipboard-list"},{"id":"PM-002","name":"EAAAL-2025 Project Charter","category":"Project Management","type":"project-management","assetType":"Project Documentation","version":"1.0.0","file":"project-charter.pdf","description":"Formal project authorization with scope, objectives, and success criteria","dependencies":"Stakeholder approval, resource allocation","usage":"Project governance and alignment","owner":"Project Manager","size":"—","date":"2025-09-14","icon":"clipboard-list"},{"id":"PM-003","name":"Risk Register and Management Plan","category":"Project Management","type":"project-management","assetType":"Risk Management","version":"1.1.0","file":"risk-management-plan.xlsx","description":"Comprehensive risk identification, assessment, and mitigation strategies","dependencies":"Regular risk reviews, mitigation plan execution","usage":"Risk management and contingency planning","owner":"Project Manager","size":"—","date":"2025-09-14","icon":"clipboard-list"},{"id":"SOP-001","name":"EAAAL Project Delivery Methodology","category":"Project Management","type":"project-management","assetType":"Process Documentation","version":"2.0.0","file":"project-delivery-methodology.pdf","description":"Standardized approach to project delivery across all service tiers","dependencies":"Team training, quality assurance processes","usage":"Consistent project delivery","owner":"Operations Team","size":"—","date":"2025-09-14","icon":"list-checks"},{"id":"SOP-002","name":"Quality Assurance Procedures","category":"Project Management","type":"project-management","assetType":"Process Documentation","version":"1.2.0","file":"qa-procedures.pdf","description":"Comprehensive QA processes for all deliverables","dependencies":"Testing tools, validation procedures","usage":"Quality control and client satisfaction","owner":"Quality Assurance Team","size":"—","date":"2025-09-14","icon":"list-checks"},{"id":"TRAIN-001","name":"Technical Team Training Curriculum","category":"Training & Documentation","type":"training-documentation","assetType":"Training Materials","version":"1.3.0","file":"technical-training-curriculum.zip","description":"Comprehensive training program for technical team members","dependencies":"Hands-on lab environment, certification paths","usage":"Team onboarding and skill development","owner":"Training Team","size":"—","date":"2025-09-14","icon":"graduation-cap"},{"id":"TRAIN-002","name":"Sales Team Training Program","category":"Training & Documentation","type":"training-documentation","assetType":"Training Materials","version":"1.1.0","file":"sales-training-program.pptx","description":"Complete sales training including methodology, tools, and processes","dependencies":"CRM system access, role-playing exercises","usage":"Sales team effectiveness and performance","owner":"Sales Team","size":"—","date":"2025-09-14","icon":"graduation-cap"},{"id":"TRAIN-003","name":"Client Success Training Materials","category":"Training & Documentation","type":"training-documentation","assetType":"Training Materials","version":"1.0.0","file":"client-success-training.pdf","description":"Training program for client success team members","dependencies":"Client management tools, case studies","usage":"Client relationship management excellence","owner":"Client Success Team","size":"—","date":"2025-09-14","icon":"graduation-cap"},{"id":"DOC-001","name":"System Administration Guide","category":"Training & Documentation","type":"training-documentation","assetType":"Technical Documentation","version":"2.1.0","file":"system-admin-guide.pdf","description":"Comprehensive guide for system administration and maintenance","dependencies":"Technical infrastructure access, administrative privileges","usage":"System administration and troubleshooting","owner":"Technical Team","size":"—","date":"2025-09-14","icon":"book-open"},{"id":"DOC-002","name":"End User Manual and Best Practices","category":"Training & Documentation","type":"training-documentation","assetType":"User Documentation","version":"1.2.0","file":"user-manual.pdf","description":"Complete user guide for all system components and processes","dependencies":"System access, training completion","usage":"User reference and self-service support","owner":"Documentation Team","size":"—","date":"2025-09-14","icon":"book-open"},{"id":"BRAND-001","name":"EAAAL Brand Guidelines","category":"Brand & Visual","type":"brand-visual","assetType":"Brand Documentation","version":"1.0.0","file":"brand-guidelines.pdf","description":"Comprehensive brand identity system with usage guidelines","dependencies":"Design tools, brand consistency monitoring","usage":"Marketing materials and communications","owner":"Brand Team","size":"—","date":"2025-09-14","icon":"palette"},{"id":"BRAND-002","name":"Logo and Visual Identity Package","category":"Brand & Visual","type":"brand-visual","assetType":"Visual Assets","version":"1.0.0","file":"logo-package.zip","description":"Complete logo package in multiple formats and variations","dependencies":"Adobe Creative Suite for editing","usage":"Marketing, presentations, and communications","owner":"Design Team","size":"—","date":"2025-09-14","icon":"palette"},{"id":"BRAND-003","name":"Marketing Collateral Templates","category":"Brand & Visual","type":"brand-visual","assetType":"Design Templates","version":"1.1.0","file":"marketing-templates.zip","description":"Professional templates for presentations, proposals, and marketing materials","dependencies":"Adobe Creative Suite, brand guidelines compliance","usage":"Marketing and sales materials creation","owner":"Design Team","size":"—","date":"2025-09-14","icon":"palette"},{"id":"PRESENT-001","name":"Gamma Dynamic Presentation Suite","category":"Brand & Visual","type":"brand-visual","assetType":"Presentation Templates","version":"2.0.0","file":"gamma-presentations.zip","description":"AI-powered presentation templates with live data integration","dependencies":"Gamma Pro account, data source connections","usage":"Client presentations and proposals","owner":"Sales Team","size":"—","date":"2025-09-14","icon":"presentation"},{"id":"DESIGN-001","name":"EAAAL Figma Design System","category":"Brand & Visual","type":"brand-visual","assetType":"Design System","version":"1.0.0","file":"eaaal-design-system.fig","description":"Complete design system with components and style guide","dependencies":"Figma Professional account, design team access","usage":"UI/UX design and brand consistency","owner":"Design Team","size":"—","date":"2025-09-14","icon":"pen-tool"},{"id":"CLIENT-001","name":"Comprehensive Client Discovery Questionnaire","category":"Client Templates","type":"client-templates","assetType":"Assessment Template","version":"1.2.0","file":"client-discovery-questionnaire.pdf","description":"Structured questionnaire for understanding client needs and current state","dependencies":"Sales process, client meeting schedule","usage":"Client needs assessment and proposal preparation","owner":"Sales Team","size":"—","date":"2025-09-14","icon":"file-text"},{"id":"CLIENT-002","name":"Technical Infrastructure Assessment","category":"Client Templates","type":"client-templates","assetType":"Assessment Checklist","version":"1.1.0","file":"technical-assessment.xlsx","description":"Comprehensive technical assessment for client readiness","dependencies":"Technical expertise, client system access","usage":"Technical feasibility and implementation planning","owner":"Technical Team","size":"—","date":"2025-09-14","icon":"file-text"},{"id":"CLIENT-003","name":"Client ROI Analysis Template","category":"Client Templates","type":"client-templates","assetType":"Financial Template","version":"1.0.0","file":"client-roi-analysis.xlsx","description":"Detailed ROI analysis template for client value demonstration","dependencies":"Client operational data, industry benchmarks","usage":"Value proposition and business case development","owner":"Sales Team","size":"—","date":"2025-09-14","icon":"file-text"},{"id":"CLIENT-004","name":"Project Kickoff Meeting Template","category":"Client Templates","type":"client-templates","assetType":"Meeting Template","version":"1.0.0","file":"project-kickoff-template.pptx","description":"Structured template for project kickoff meetings","dependencies":"Project charter, stakeholder identification","usage":"Project initiation and alignment","owner":"Project Management Team","size":"—","date":"2025-09-14","icon":"file-text"},{"id":"CLIENT-005","name":"Client Onboarding Checklist","category":"Client Templates","type":"client-templates","assetType":"Process Checklist","version":"1.1.0","file":"client-onboarding-checklist.pdf","description":"Complete checklist for client onboarding process","dependencies":"Contract execution, technical requirements","usage":"Consistent client onboarding experience","owner":"Operations Team","size":"—","date":"2025-09-14","icon":"file-text"}];
+     var ORIGINALS = [
+       { id:'GEN-001', name:'Website Mockup', category:'Brand & Visual', type:'brand-visual', assetType:'Design Mockup', size:'2.3 MB', date:'2 days ago', icon:'image', description:'Homepage visual mockup', owner:'Design Team' },
+       { id:'GEN-002', name:'User Guide Template', category:'Client Templates', type:'client-templates', assetType:'Document Template', size:'1.8 MB', date:'1 week ago', icon:'file-text', description:'Reusable end-user guide template', owner:'Docs Team' },
+       { id:'GEN-003', name:'Video Tutorial', category:'Training & Documentation', type:'training-documentation', assetType:'Video', size:'45.2 MB', date:'3 days ago', icon:'play', description:'Product walkthrough video', owner:'Training Team' },
+       { id:'GEN-004', name:'Design System', category:'Brand & Visual', type:'brand-visual', assetType:'Design System', size:'5.1 MB', date:'1 day ago', icon:'palette', description:'Component and token library', owner:'Design Team' },
+       { id:'GEN-005', name:'Analytics Dashboard', category:'Business Intelligence', type:'business-intelligence', assetType:'Dashboard', size:'12.4 MB', date:'5 days ago', icon:'bar-chart-3', description:'Operational analytics dashboard', owner:'Analytics Team' },
+       { id:'GEN-006', name:'Course Material', category:'Training & Documentation', type:'training-documentation', assetType:'Course', size:'28.9 MB', date:'1 week ago', icon:'graduation-cap', description:'Training course content pack', owner:'Training Team' }
+     ];
+     if (typeof appData !== 'undefined') { appData.assets = ORIGINALS.concat(IMPORTED); }
+
+     function icons(){ if(window.lucide&&lucide.createIcons)lucide.createIcons(); }
+     function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"})[c]; }); }
+     function fmtSize(b){ if(!b)return '—'; var u=['B','KB','MB','GB']; var i=Math.max(0,Math.floor(Math.log(b)/Math.log(1024))); return (b/Math.pow(1024,i)).toFixed(1)+' '+u[i]; }
+
+     function downloadAsset(a){
+       var txt = Object.keys(a).filter(function(k){return k!=='icon'&&k!=='type';}).map(function(k){return k.charAt(0).toUpperCase()+k.slice(1)+': '+a[k];}).join('\n');
+       var blob=new Blob([txt],{type:'text/plain'}); var url=URL.createObjectURL(blob);
+       var el=document.createElement('a'); el.href=url; el.download=(a.file||a.name||'asset')+'.txt'; document.body.appendChild(el); el.click(); el.remove();
+       setTimeout(function(){URL.revokeObjectURL(url);},1500);
+     }
+     function assetModal(a){
+       var rows=[['Asset ID',a.id],['Category',a.category],['Type',a.assetType],['Version',a.version],['File',a.file],['Description',a.description],['Dependencies',a.dependencies],['Usage',a.usage],['Owner',a.owner],['Size',a.size],['Last modified',a.date]]
+         .filter(function(r){return r[1];}).map(function(r){return '<div class="ah-detail"><span class="k">'+esc(r[0])+'</span><span class="v">'+esc(r[1])+'</span></div>';}).join("");
+       var ov=document.createElement('div'); ov.className='modal active';
+       ov.innerHTML='<div class="modal-content"><div class="modal-header"><h3></h3><button class="modal-close" type="button"><i data-lucide="x"></i></button></div><div class="modal-body">'+rows+'<div class="ah-modal-footer"><button class="btn btn--secondary" data-close>Close</button><button class="btn btn--primary" id="ahDl">Download metadata</button></div></div></div>';
+       ov.querySelector('h3').textContent=a.name;
+       document.body.appendChild(ov);
+       function close(){ov.remove(); document.removeEventListener('keydown',esckey);}
+       function esckey(e){ if(e.key==='Escape') close(); }
+       ov.querySelector('.modal-close').addEventListener('click',close);
+       ov.querySelector('[data-close]').addEventListener('click',close);
+       ov.addEventListener("click",function(e){if(e.target===ov)close();});
+       document.addEventListener('keydown',esckey);
+       ov.querySelector('#ahDl').addEventListener('click',function(){downloadAsset(a);});
+       icons();
+     }
+     function updateKPI(){ var el=document.getElementById('kpi-total-assets'); if(el&&typeof appData!=='undefined') el.textContent=(appData.assets||[]).length.toLocaleString(); }
+     function buildFilter(){
+       var sel=document.getElementById('assetFilter'); if(!sel) return;
+       var cats={}; (appData.assets||[]).forEach(function(a){ cats[a.category]=a.type; });
+       var cur=sel.value;
+       sel.innerHTML='<option value="">All Types</option>'+Object.keys(cats).sort().map(function(c){return '<option value="'+cats[c]+'">'+esc(c)+'</option>';}).join("");
+       if([].slice.call(sel.options).some(function(o){return o.value===cur;})) sel.value=cur;
+     }
+     window.populateAssets = function(){
+       var grid=document.getElementById('assetsGrid'); if(!grid||typeof appData==='undefined') return;
+       var list=(appData.assets||[]);
+       grid.innerHTML=list.map(function(a,i){
+         return '<div class="asset-card clickable" data-type="'+esc(a.type)+'" data-idx="'+i+'">'
+           +'<div class="asset-preview"><i data-lucide="'+esc(a.icon||"file")+'"></i></div>'
+           +'<div class="asset-info"><h4>'+esc(a.name)+'</h4><p>'+esc(a.category)+' &bull; '+esc(a.size||"—")+'</p></div>'
+           +'<div class="asset-actions"><button class="btn btn--sm btn--outline" data-act="view" title="View details"><i data-lucide="eye"></i></button>'
+           +'<button class="btn btn--sm btn--outline" data-act="download" title="Download"><i data-lucide="download"></i></button>'
+           +'<button class="btn btn--sm btn--outline" data-act="delete" title="Remove"><i data-lucide="trash"></i></button></div></div>';
+       }).join("");
+       grid.querySelectorAll('.asset-card').forEach(function(card){
+         var a=list[+card.dataset.idx];
+         card.addEventListener('click',function(e){
+           var act=e.target.closest('[data-act]');
+           if(act){ e.stopPropagation();
+             if(act.dataset.act==='download') downloadAsset(a);
+             else if(act.dataset.act==='delete'){ var ix=appData.assets.indexOf(a); if(ix>-1)appData.assets.splice(ix,1); window.populateAssets(); if(window.showToast)showToast('Removed '+a.name); }
+             else assetModal(a);
+             return;
+           }
+           assetModal(a);
+         });
+       });
+       icons(); updateKPI(); buildFilter();
+     };
+     window.handleFileUpload = function(files){
+       (files||[]).forEach(function(f){
+         appData.assets.unshift({ id:'UP-'+Date.now()+'-'+Math.floor((f.size||0)%1000), name:f.name, category:'Uploaded', type:'uploaded', assetType:(f.type||'File'), size:fmtSize(f.size), date:'just now', icon:'file', description:'Uploaded via AssetHub' });
+       });
+       window.populateAssets();
+       if(window.showToast) showToast((files.length||0)+' file(s) added to assets');
+     };
+     updateKPI();
+   })();
+  </script>
+  <script>
+   /* ============================================================
+      AssetHub interactive demo — makes the frame pages actually work
+      (real modal forms that add records, detail modals, CSV export, sync)
+      ============================================================ */
+   (function () {
+     function el(html) { var d = document.createElement('div'); d.innerHTML = html.trim(); return d.firstChild; }
+     function icons() { if (window.lucide && lucide.createIcons) lucide.createIcons(); }
+     function toast(m) { if (window.showToast) showToast(m); }
+
+     function modal(title, bodyHTML, onReady) {
+       var overlay = el('<div class="modal active"><div class="modal-content"><div class="modal-header"><h3></h3>'
+         + '<button class="modal-close" type="button"><i data-lucide="x"></i></button></div>'
+         + '<div class="modal-body"></div></div></div>');
+       overlay.querySelector('h3').textContent = title;
+       overlay.querySelector('.modal-body').innerHTML = bodyHTML;
+       document.body.appendChild(overlay);
+       function close() { overlay.remove(); document.removeEventListener('keydown', onEsc); }
+       function onEsc(e) { if (e.key === 'Escape') close(); }
+       overlay.querySelector('.modal-close').addEventListener('click', close);
+       overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+       overlay.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', close); });
+       document.addEventListener('keydown', onEsc);
+       icons();
+       if (onReady) onReady(overlay, close);
+       return { overlay: overlay, close: close };
+     }
+     function field(label, inner) { return '<div class="ah-field"><label>' + label + '</label>' + inner + '</div>'; }
+     function footer(label) { return '<div class="ah-modal-footer"><button type="button" class="btn btn--secondary" data-close>Cancel</button>'
+       + '<button type="submit" class="btn btn--primary">' + label + '</button></div>'; }
+     function detail(k, v) { return '<div class="ah-detail"><span class="k">' + k + '</span><span class="v">' + v + '</span></div>'; }
+     function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
+     function money(n) { return '$' + Number(n).toLocaleString('en-US'); }
+     function fv(f, n) { var e = f.querySelector('[name="' + n + '"]'); return e ? e.value : ''; }
+
+     function downloadCSV(filename, rows) {
+       var csv = rows.map(function (r) { return r.map(function (c) { c = ('' + c).replace(/"/g, '""'); return /[",\n]/.test(c) ? '"' + c + '"' : c; }).join(','); }).join('\n');
+       var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+       var url = URL.createObjectURL(blob);
+       var a = el('<a></a>'); a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+       setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+     }
+
+     /* ---------- Kanban helpers ---------- */
+     function kanbanCounts() {
+       var map = { 'planningCards': 'Planning', 'progressCards': 'In Progress', 'reviewCards': 'Review', 'completedCards': 'Completed' };
+       Object.keys(map).forEach(function (id) {
+         var col = document.getElementById(id); if (!col) return;
+         var head = col.parentElement.querySelector('.kanban-header .badge');
+         if (head) head.textContent = col.children.length;
+       });
+     }
+     function bindProjectCards() {
+       document.querySelectorAll('#projects .project-card').forEach(function (card) {
+         if (card.__ah) return; card.__ah = 1;
+         var clone = card.cloneNode(true); clone.__ah = 1; clone.classList.add('in-view');
+         card.parentNode.replaceChild(clone, card);
+         clone.addEventListener('click', function () {
+           var name = clone.querySelector('h4') ? clone.querySelector('h4').textContent : 'Project';
+           var p = (appData.projects || []).filter(function (x) { return x.name === name; })[0] || {};
+           modal(name, '<div class="ah-note">Project details</div>'
+             + detail('Status', esc(p.status || '—'))
+             + detail('Progress', (p.progress || 0) + '%')
+             + '<div class="ah-progress"><span style="width:' + (p.progress || 0) + '%"></span></div>'
+             + detail('Team', esc((p.team || []).join(', ') || '—'))
+             + detail('Project ID', '#' + (p.id || '—'))
+             + '<div class="ah-modal-footer"><button class="btn btn--secondary" data-close>Close</button>'
+             + '<button class="btn btn--primary" id="ahAdvance">Advance stage</button></div>',
+             function (m, close) {
+               m.querySelector('#ahAdvance').addEventListener('click', function () {
+                 var order = ['Planning', 'In Progress', 'Review', 'Completed'];
+                 var i = order.indexOf(p.status); if (i > -1 && i < 3) { p.status = order[i + 1]; p.progress = Math.max(p.progress || 0, [25, 50, 90, 100][i + 1]); }
+                 populateProjects(); bindProjectCards(); kanbanCounts(); icons(); close();
+                 toast('"' + name + '" moved to ' + p.status);
+               });
+             });
+         });
+       });
+     }
+
+     /* ---------- Actions ---------- */
+     function newProject() {
+       modal('New Project', '<form id="ahF">'
+         + field('Project name', '<input name="name" required placeholder="e.g. Q3 Campaign Site" autocomplete="off">')
+         + '<div class="ah-row">' + field('Stage', '<select name="status"><option>Planning</option><option>In Progress</option><option>Review</option><option>Completed</option></select>')
+         + field('Progress %', '<input name="progress" type="number" min="0" max="100" value="0">') + '</div>'
+         + field('Team members', '<input name="team" placeholder="Alice, Bob" autocomplete="off">')
+         + footer('Create project') + '</form>',
+         function (m, close) {
+           m.querySelector('#ahF').addEventListener('submit', function (e) {
+             e.preventDefault(); var f = e.target;
+             var p = { id: Date.now(), name: fv(f, 'name').trim() || 'Untitled Project', status: fv(f, 'status'),
+               progress: Math.max(0, Math.min(100, parseInt(fv(f, 'progress'), 10) || 0)),
+               team: fv(f, 'team').split(',').map(function (s) { return s.trim(); }).filter(Boolean) };
+             if (!p.team.length) p.team = ['You'];
+             appData.projects.push(p); populateProjects(); bindProjectCards(); kanbanCounts(); icons();
+             close(); toast('Project "' + p.name + '" created');
+           });
+         });
+     }
+
+     function newWorkflow(imported) {
+       modal(imported ? 'Import Workflow' : 'Create Workflow', '<form id="ahF">'
+         + (imported ? '<div class="ah-note">Paste a workflow name or config — we\'ll add it to your automations.</div>' : '')
+         + field('Workflow name', '<input name="name" required placeholder="e.g. Auto-tag new assets" autocomplete="off">')
+         + field('What it does', '<input name="desc" placeholder="Short description" autocomplete="off">')
+         + '<div class="ah-row">' + field('Trigger', '<select name="trigger"><option>On upload</option><option>On schedule</option><option>On milestone</option><option>Manual</option></select>')
+         + field('Status', '<select name="status"><option>Active</option><option>Paused</option></select>') + '</div>'
+         + footer(imported ? 'Import' : 'Create workflow') + '</form>',
+         function (m, close) {
+           m.querySelector('#ahF').addEventListener('submit', function (e) {
+             e.preventDefault(); var f = e.target;
+             var name = fv(f, 'name').trim() || 'New Workflow';
+             var status = fv(f, 'status'), cls = status === 'Active' ? 'status--success' : 'status--warning';
+             var grid = document.querySelector('#automation .workflow-grid');
+             var card = el('<div class="workflow-card clickable ph-card"><div class="workflow-icon"><i data-lucide="zap"></i></div>'
+               + '<div class="workflow-content"><h3>' + esc(name) + '</h3><p>' + (esc(fv(f, 'desc').trim()) || 'Custom automation workflow') + '</p>'
+               + '<div class="workflow-status"><span class="status ' + cls + '">' + status + '</span>'
+               + '<span class="workflow-runs">0 runs • ' + esc(fv(f, 'trigger')) + '</span></div></div>'
+               + '<button class="btn btn--sm btn--outline"><i data-lucide="settings"></i></button></div>');
+             grid.appendChild(card); bindWorkflowCards(); icons();
+             close(); toast('Workflow "' + name + '" ' + (imported ? 'imported' : 'created'));
+           });
+         });
+     }
+     function bindWorkflowCards() {
+       document.querySelectorAll('#automation .workflow-card').forEach(function (card) {
+         if (card.__ah) return; card.__ah = 1;
+         var clone = card.cloneNode(true); clone.__ah = 1; clone.classList.add('in-view'); card.parentNode.replaceChild(clone, card);
+         clone.addEventListener('click', function () {
+           var name = clone.querySelector('h3').textContent;
+           var desc = clone.querySelector('p') ? clone.querySelector('p').textContent : '';
+           var statusEl = clone.querySelector('.status');
+           var runs = clone.querySelector('.workflow-runs') ? clone.querySelector('.workflow-runs').textContent : '';
+           modal(name, '<div class="ah-note">' + esc(desc) + '</div>'
+             + detail('Status', esc(statusEl ? statusEl.textContent.trim() : '—'))
+             + detail('Activity', esc(runs))
+             + '<div class="ah-modal-footer"><button class="btn btn--secondary" data-close>Close</button>'
+             + '<button class="btn btn--primary" id="ahToggle"></button></div>',
+             function (m, close) {
+               var btn = m.querySelector('#ahToggle');
+               var active = statusEl && /active/i.test(statusEl.textContent);
+               btn.textContent = active ? 'Pause workflow' : 'Activate workflow';
+               btn.addEventListener('click', function () {
+                 if (!statusEl) return close();
+                 if (active) { statusEl.textContent = 'Paused'; statusEl.className = 'status status--warning'; }
+                 else { statusEl.textContent = 'Active'; statusEl.className = 'status status--success'; }
+                 close(); toast('"' + name + '" ' + (active ? 'paused' : 'activated'));
+               });
+             });
+         });
+       });
+     }
+
+     /* ---------- Sales ---------- */
+     function salesStore() { if (!appData.sales) appData.sales = []; return appData.sales; }
+     function ensureSalesList() {
+       var tab = document.getElementById('sales'); if (!tab || document.getElementById('ahSalesRecent')) return;
+       var card = el('<div class="card sales-recent ph-card" id="ahSalesRecent" style="margin-top:24px"><div class="card__header"><h3>Recent Sales</h3></div>'
+         + '<div class="card__body"><table><thead><tr><th>Customer</th><th>Product</th><th>Amount</th><th>When</th></tr></thead>'
+         + '<tbody id="ahSalesBody"><tr><td colspan="4" style="color:var(--color-text-secondary)">No sales recorded yet — click “New Sale”.</td></tr></tbody></table></div></div>');
+       tab.appendChild(card);
+     }
+     function renderSales() {
+       ensureSalesList(); var body = document.getElementById('ahSalesBody'); if (!body) return;
+       var s = salesStore();
+       if (!s.length) { body.innerHTML = '<tr><td colspan="4" style="color:var(--color-text-secondary)">No sales recorded yet — click “New Sale”.</td></tr>'; return; }
+       body.innerHTML = s.map(function (x) { return '<tr><td>' + esc(x.customer) + '</td><td>' + esc(x.product) + '</td><td>' + money(x.amount) + '</td><td>' + esc(x.when) + '</td></tr>'; }).join('');
+     }
+     function newSale() {
+       modal('New Sale', '<form id="ahF">'
+         + field('Customer', '<input name="customer" required placeholder="Acme Inc." autocomplete="off">')
+         + field('Product', '<input name="product" required placeholder="Enterprise License" autocomplete="off">')
+         + field('Amount (USD)', '<input name="amount" type="number" min="0" step="0.01" required placeholder="1200">')
+         + footer('Record sale') + '</form>',
+         function (m, close) {
+           m.querySelector('#ahF').addEventListener('submit', function (e) {
+             e.preventDefault(); var f = e.target;
+             var sale = { customer: fv(f, 'customer').trim(), product: fv(f, 'product').trim(), amount: parseFloat(fv(f, 'amount')) || 0, when: 'just now' };
+             salesStore().unshift(sale); renderSales();
+             var ord = document.querySelector('#sales [data-metric="orders"] h3');
+             if (ord) ord.textContent = (parseInt(ord.textContent.replace(/[^\d]/g, ''), 10) + 1).toLocaleString('en-US');
+             var rev = document.querySelector('#sales [data-metric="revenue"] h3');
+             if (rev) rev.textContent = money(parseInt(rev.textContent.replace(/[^\d]/g, ''), 10) + Math.round(sale.amount));
+             close(); toast('Sale to ' + sale.customer + ' recorded (' + money(sale.amount) + ')');
+           });
+         });
+     }
+     function bindMetricCards() {
+       document.querySelectorAll('#sales .metric-card').forEach(function (card) {
+         if (card.__ah) return; card.__ah = 1;
+         var clone = card.cloneNode(true); clone.__ah = 1; clone.classList.add('in-view'); card.parentNode.replaceChild(clone, card);
+         clone.addEventListener('click', function () {
+           var title = clone.querySelector('p') ? clone.querySelector('p').textContent : 'Metric';
+           var val = clone.querySelector('h3') ? clone.querySelector('h3').textContent : '';
+           var chg = clone.querySelector('.metric-change') ? clone.querySelector('.metric-change').textContent.trim() : '';
+           modal(title, detail('Current', esc(val)) + detail('Change vs last period', esc(chg))
+             + detail('Data source', 'Live demo dataset') + '<div class="ah-modal-footer"><button class="btn btn--primary" data-close>Close</button></div>');
+         });
+       });
+     }
+
+     /* ---------- Integrations ---------- */
+     var CATALOG = [ { name: 'Slack', icon: 'message-square' }, { name: 'Notion', icon: 'file-text' },
+       { name: 'HubSpot', icon: 'users' }, { name: 'Zapier', icon: 'zap' }, { name: 'Dropbox', icon: 'cloud' },
+       { name: 'QuickBooks', icon: 'calculator' }, { name: 'Salesforce', icon: 'cloud-lightning' }, { name: 'GitHub', icon: 'github' } ];
+     function addIntegration() {
+       var have = (appData.integrations || []).map(function (i) { return i.name; });
+       var opts = CATALOG.map(function (c) {
+         var disabled = have.indexOf(c.name) > -1;
+         return '<button type="button" data-name="' + c.name + '" data-icon="' + c.icon + '"' + (disabled ? ' disabled' : '') + '><i data-lucide="' + c.icon + '"></i><span>' + c.name + (disabled ? ' ✓' : '') + '</span></button>';
+       }).join('');
+       modal('Add Integration', '<div class="ah-note">Connect a platform to AssetHub.</div><div class="ah-pick">' + opts + '</div>',
+         function (m, close) {
+           m.querySelectorAll('.ah-pick button:not([disabled])').forEach(function (b) {
+             b.addEventListener('click', function () {
+               var name = b.dataset.name;
+               appData.integrations.push({ name: name, status: 'Connected', last_sync: 'just now', __icon: b.dataset.icon });
+               reRenderIntegrations(); close(); toast(name + ' connected');
+             });
+           });
+         });
+     }
+     function reRenderIntegrations() {
+       // re-run built-in populate, then patch icons for catalog additions + bind detail handlers
+       populateIntegrations();
+       var grid = document.getElementById('integrationsGrid');
+       (appData.integrations || []).forEach(function (integ, idx) {
+         if (integ.__icon) { var card = grid.children[idx]; if (card) { var i = card.querySelector('.integration-icon i'); if (i) i.setAttribute('data-lucide', integ.__icon); } }
+       });
+       icons(); bindIntegrationCards();
+     }
+     function bindIntegrationCards() {
+       document.querySelectorAll('#integrations .integration-card').forEach(function (card) {
+         if (card.__ah) return; card.__ah = 1;
+         var clone = card.cloneNode(true); clone.__ah = 1; clone.classList.add('in-view'); card.parentNode.replaceChild(clone, card);
+         clone.addEventListener('click', function () {
+           var name = clone.querySelector('h3').textContent;
+           var integ = (appData.integrations || []).filter(function (x) { return x.name === name; })[0] || {};
+           modal(name, detail('Status', esc(integ.status || 'Connected'))
+             + detail('Last sync', esc(integ.last_sync || '—'))
+             + '<div class="ah-modal-footer"><button class="btn btn--secondary" id="ahDisc">Disconnect</button>'
+             + '<button class="btn btn--primary" id="ahSyncOne">Sync now</button></div>',
+             function (m, close) {
+               m.querySelector('#ahSyncOne').addEventListener('click', function () { integ.last_sync = 'just now'; reRenderIntegrations(); close(); toast(name + ' synced'); });
+               m.querySelector('#ahDisc').addEventListener('click', function () {
+                 appData.integrations = appData.integrations.filter(function (x) { return x.name !== name; });
+                 reRenderIntegrations(); close(); toast(name + ' disconnected');
+               });
+             });
+         });
+       });
+     }
+     function syncAll() {
+       var cards = document.querySelectorAll('#integrations .integration-card');
+       if (!cards.length) return toast('No integrations to sync');
+       toast('Syncing ' + cards.length + ' integrations…');
+       cards.forEach(function (c, i) {
+         c.classList.add('ah-syncing');
+         setTimeout(function () {
+           c.classList.remove('ah-syncing');
+           var s = c.querySelector('.integration-sync'); if (s) s.textContent = 'Last sync: just now';
+         }, 500 + i * 250);
+       });
+       (appData.integrations || []).forEach(function (x) { x.last_sync = 'just now'; });
+       setTimeout(function () { toast('All integrations synced'); }, 700 + cards.length * 250);
+     }
+
+     /* ---------- Info modals + exports ---------- */
+     function infoRevenue() {
+       var rows = (appData.revenue_data || []).map(function (r) { return detail(r.month, money(r.revenue) + '  (target ' + money(r.target) + ')'); }).join('');
+       modal('Revenue Details', rows + '<div class="ah-modal-footer"><button class="btn btn--secondary" data-close>Close</button><button class="btn btn--primary" id="ahExp">Export CSV</button></div>',
+         function (m) { m.querySelector('#ahExp').addEventListener('click', exportRevenue); });
+     }
+     function infoAssetValue() {
+       var rows = (appData.asset_types || []).map(function (a) { return detail(a.type, a.count + ' items · ' + money(a.value)); }).join('');
+       modal('Asset Value Distribution', rows + '<div class="ah-modal-footer"><button class="btn btn--primary" data-close>Close</button></div>');
+     }
+     function infoProjectProgress() {
+       var rows = (appData.projects || []).map(function (p) { return detail(esc(p.name), p.status + ' · ' + p.progress + '%'); }).join('');
+       modal('Project Progress', rows + '<div class="ah-modal-footer"><button class="btn btn--primary" data-close>Close</button></div>');
+     }
+     function infoSalesAnalytics() {
+       var s = salesStore();
+       var total = s.reduce(function (a, b) { return a + b.amount; }, 0);
+       modal('Advanced Sales Analytics', detail('Recorded sales', s.length) + detail('New revenue (this session)', money(Math.round(total)))
+         + detail('Monthly revenue', money(appData.kpi_data.monthly_revenue)) + detail('Conversion rate', '3.2%')
+         + '<div class="ah-modal-footer"><button class="btn btn--primary" data-close>Close</button></div>');
+     }
+     function infoActivity() {
+       var rows = (appData.recent_activity || []).map(function (a) { return detail(esc(a.action), esc(a.user + ' · ' + a.time)); }).join('');
+       modal('Activity Log', rows + '<div class="ah-modal-footer"><button class="btn btn--primary" data-close>Close</button></div>');
+     }
+     function newFolder() {
+       modal('New Folder', '<form id="ahF">' + field('Folder name', '<input name="name" required placeholder="Marketing 2025" autocomplete="off">') + footer('Create folder') + '</form>',
+         function (m, close) { m.querySelector('#ahF').addEventListener('submit', function (e) { e.preventDefault(); var n = fv(e.target, 'name').trim() || 'New Folder'; close(); toast('Folder "' + n + '" created'); }); });
+     }
+     function exportProjects() { var rows = [['ID', 'Name', 'Status', 'Progress', 'Team']].concat((appData.projects || []).map(function (p) { return [p.id, p.name, p.status, p.progress + '%', (p.team || []).join(' / ')]; })); downloadCSV('projects.csv', rows); toast('Exported ' + (appData.projects || []).length + ' projects to CSV'); }
+     function exportSales() { var s = salesStore(); var rows = [['Customer', 'Product', 'Amount', 'When']].concat(s.map(function (x) { return [x.customer, x.product, x.amount, x.when]; })); if (!s.length) rows.push(['(no sales yet)', '', '', '']); downloadCSV('sales.csv', rows); toast('Exported sales to CSV'); }
+     function exportRevenue() { var rows = [['Month', 'Revenue', 'Target']].concat((appData.revenue_data || []).map(function (r) { return [r.month, r.revenue, r.target]; })); downloadCSV('revenue.csv', rows); toast('Exported revenue to CSV'); }
+     function exportAnalytics() { var rows = [['Metric', 'Value']]; var k = appData.kpi_data || {}; Object.keys(k).forEach(function (key) { rows.push([key.replace(/_/g, ' '), k[key]]); }); downloadCSV('analytics.csv', rows); toast('Exported analytics report'); }
+
+     /* ---------- Wire everything ---------- */
+     var REAL = {
+       newProjectBtn: newProject, exportProjectsBtn: exportProjects,
+       createWorkflowBtn: function () { newWorkflow(false); }, importWorkflowBtn: function () { newWorkflow(true); },
+       newSaleBtn: newSale, exportSalesBtn: exportSales, salesAnalyticsBtn: infoSalesAnalytics,
+       addIntegrationBtn: addIntegration, syncAllBtn: syncAll,
+       exportAnalyticsBtn: exportAnalytics, exportRevenueBtn: exportRevenue,
+       revenueDetailsBtn: infoRevenue, assetValueBtn: infoAssetValue, projectProgressBtn: infoProjectProgress,
+       viewAllActivityBtn: infoActivity, createFolderBtn: newFolder
+     };
+     // Override the global stub so the existing delegated .btn listener calls real actions
+     window.handleButtonClick = function (id) { if (REAL[id]) return REAL[id](); };
+
+     function bindAll() { bindProjectCards(); bindWorkflowCards(); bindMetricCards(); bindIntegrationCards(); ensureSalesList(); kanbanCounts(); }
+     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(bindAll, 0); });
+     else setTimeout(bindAll, 0);
+   })();
+  </script>
+  <script>
+   /* AssetHub — persist demo state (assets, projects, integrations, sales) to localStorage */
+   (function () {
+     if (typeof appData === 'undefined') return;
+     var KEY = 'assetHubState_v1';
+     function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
+     function snap() { return { assets: appData.assets || [], projects: appData.projects || [], integrations: appData.integrations || [], sales: appData.sales || [] }; }
+     function read() { try { var s = localStorage.getItem(KEY); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
+     var last = '';
+     function save() { try { var j = JSON.stringify(snap()); if (j !== last) { localStorage.setItem(KEY, j); last = j; } } catch (e) {} }
+
+     // Restore saved state over the defaults — runs synchronously, before the initial render
+     var saved = read();
+     if (saved) {
+       if (Array.isArray(saved.assets)) appData.assets = saved.assets;
+       if (Array.isArray(saved.projects)) appData.projects = saved.projects;
+       if (Array.isArray(saved.integrations)) appData.integrations = saved.integrations;
+       if (Array.isArray(saved.sales)) appData.sales = saved.sales;
+     } else {
+       try { localStorage.setItem(KEY, JSON.stringify(snap())); } catch (e) {}   // seed baseline (56 assets)
+     }
+     try { last = localStorage.getItem(KEY) || JSON.stringify(snap()); } catch (e) { last = ''; }
+
+     // Autosave — catches every mutation whatever its source (incl. sales, deletes)
+     setInterval(save, 1200);
+     window.addEventListener('beforeunload', save);
+     document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') save(); });
+
+     // After the app's initial render: re-draw restored sales + restore custom integration icons
+     function restoreView() {
+       if (appData.sales && appData.sales.length) {
+         var body = document.getElementById('ahSalesBody');
+         if (!body) {
+           var tab = document.getElementById('sales');
+           if (tab && !document.getElementById('ahSalesRecent')) {
+             var card = document.createElement('div');
+             card.className = 'card sales-recent ph-card'; card.id = 'ahSalesRecent'; card.style.marginTop = '24px';
+             card.innerHTML = '<div class="card__header"><h3>Recent Sales</h3></div><div class="card__body"><table><thead><tr><th>Customer</th><th>Product</th><th>Amount</th><th>When</th></tr></thead><tbody id="ahSalesBody"></tbody></table></div>';
+             tab.appendChild(card);
+             body = card.querySelector('#ahSalesBody');
+           }
+         }
+         if (body) {
+           body.innerHTML = appData.sales.map(function (x) { return '<tr><td>' + esc(x.customer) + '</td><td>' + esc(x.product) + '</td><td>$' + Number(x.amount || 0).toLocaleString() + '</td><td>' + esc(x.when) + '</td></tr>'; }).join('');
+           var ord = document.querySelector('#sales [data-metric="orders"] h3');
+           if (ord) ord.textContent = (parseInt(ord.textContent.replace(/[^\d]/g, ''), 10) + appData.sales.length).toLocaleString();
+           var rev = document.querySelector('#sales [data-metric="revenue"] h3');
+           if (rev) { var sum = appData.sales.reduce(function (s, x) { return s + Math.round(x.amount || 0); }, 0); rev.textContent = '$' + (parseInt(rev.textContent.replace(/[^\d]/g, ''), 10) + sum).toLocaleString(); }
+         }
+       }
+       var grid = document.getElementById('integrationsGrid');
+       if (grid) {
+         (appData.integrations || []).forEach(function (integ, idx) { if (integ && integ.__icon) { var card = grid.children[idx]; if (card) { var i = card.querySelector('.integration-icon i'); if (i) i.setAttribute('data-lucide', integ.__icon); } } });
+         if (window.lucide && lucide.createIcons) lucide.createIcons();
+       }
+     }
+     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(restoreView, 80); });
+     else setTimeout(restoreView, 80);
+   })();
+  </script>
+  <script>
+   /* ProjectSuite Enhance — motion, counters, ripple, cursor, chart polish (shared) */
+   (function () {
+     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+     var docEl = document.documentElement;
+
+     if (window.Chart && Chart.defaults) {
+       try {
+         var cs = getComputedStyle(docEl);
+         var txt = (cs.getPropertyValue('--color-text-secondary') || '').trim() || '#8a8f98';
+         var grid = (cs.getPropertyValue('--color-border') || '').trim() || 'rgba(140,140,140,.15)';
+         Chart.defaults.font.family = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+         Chart.defaults.font.size = 12;
+         Chart.defaults.color = txt;
+         Chart.defaults.borderColor = grid;
+         var P = Chart.defaults.plugins || {};
+         if (P.legend) { P.legend.labels = P.legend.labels || {}; P.legend.labels.usePointStyle = true; P.legend.labels.boxWidth = 8; P.legend.labels.padding = 16; }
+         if (P.tooltip) { P.tooltip.usePointStyle = true; P.tooltip.padding = 10; P.tooltip.cornerRadius = 8; P.tooltip.boxPadding = 4; P.tooltip.titleFont = { weight: '600' }; }
+         var E = Chart.defaults.elements || {};
+         if (E.line) { E.line.tension = 0.35; E.line.borderWidth = 2; }
+         if (E.point) { E.point.radius = 0; E.point.hoverRadius = 5; E.point.hitRadius = 12; }
+         if (E.bar) { E.bar.borderRadius = 6; E.bar.borderSkipped = false; }
+         if (E.arc) { E.arc.borderWidth = 2; }
+         (function () {
+           function hexRgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(function(x){return x+x;}).join('');var n=parseInt(h.slice(0,6),16);return [(n>>16)&255,(n>>8)&255,n&255];}
+           function toRgb(c){var m;c=(''+c).trim();if(m=c.match(/^#([0-9a-fA-F]{3,8})$/))return hexRgb(m[1]);if(m=c.match(/rgba?\(([^)]+)\)/i)){var p=m[1].split(',').map(parseFloat);return [p[0],p[1],p[2]];}return null;}
+           function reddish(rgb){if(!rgb)return false;var r=rgb[0],g=rgb[1],b=rgb[2];var mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn;if(mx<70||d<28)return false;var h;if(mx===r)h=((g-b)/d)%6;else if(mx===g)h=(b-r)/d+2;else h=(r-g)/d+4;h*=60;if(h<0)h+=360;var s=d/mx;return s>0.32&&(h>=338||h<=14);}
+           function remap(c){if(typeof c!=='string')return c;var rgb=toRgb(c);if(!rgb||rgb.some(isNaN))return c;if(reddish(rgb)){var a=c.match(/rgba?\([^)]*,\s*([\d.]+)\s*\)/i);return a?'rgba(226,101,42,'+a[1]+')':'#e2652a';}return c;}
+           var keys=['backgroundColor','borderColor','pointBackgroundColor','pointBorderColor','hoverBackgroundColor','hoverBorderColor','pointHoverBackgroundColor'];
+           var plugin={id:'phRecolor',beforeInit:function(chart){(chart.data.datasets||[]).forEach(function(ds){keys.forEach(function(k){if(Array.isArray(ds[k]))ds[k]=ds[k].map(remap);else if(ds[k]!=null&&typeof ds[k]==='string')ds[k]=remap(ds[k]);});});}};
+           if (Chart.register) Chart.register(plugin); else if (Chart.plugins && Chart.plugins.register) Chart.plugins.register(plugin);
+         })();
+       } catch (e) {}
+     }
+
+     function countUp(el) {
+       if (el.children.length) return;
+       var raw = el.textContent.trim();
+       var m = raw.match(/^([^\d-]*)(-?[\d,]+(?:\.\d+)?)(.*)$/);
+       if (!m) return;
+       var prefix = m[1], numStr = m[2], suffix = m[3];
+       var decimals = (numStr.split('.')[1] || '').length;
+       var useComma = numStr.indexOf(',') > -1;
+       var target = parseFloat(numStr.replace(/,/g, ''));
+       if (isNaN(target)) return;
+       var dur = 1200, t0 = performance.now();
+       function fmt(n) {
+         var s = decimals ? n.toFixed(decimals) : String(Math.round(n));
+         if (useComma) s = Number(s).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+         return prefix + s + suffix;
+       }
+       function step(now) {
+         var p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 4);
+         el.textContent = fmt(target * e);
+         if (p < 1) requestAnimationFrame(step); else el.textContent = raw;
+       }
+       requestAnimationFrame(step);
+     }
+
+     function start() {
+       var IO = window.IntersectionObserver;
+       if (!reduce && IO) {
+         docEl.classList.add('ph-anim');
+         var revealSel = '.card, .kpi-card, .widget, .chart-container, .stat-card, .metric-card, .dashboard-card, .stat-display, .info-card, .summary-card, .chart-canvas-wrap';
+         var els = [];
+         document.querySelectorAll(revealSel).forEach(function (el) {
+           if (el.closest('.nav-bar')) return;
+           if (el.querySelector('.card, .kpi-card, .widget')) return;
+           el.classList.add('ph-reveal', 'ph-card');
+           els.push(el);
+         });
+         var io = new IO(function (entries) {
+           entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in-view'); io.unobserve(en.target); } });
+         }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+         els.forEach(function (el) { io.observe(el); });
+         setTimeout(function () { els.forEach(function (el) { el.classList.add('in-view'); }); }, 1600);
+       }
+
+       if (!reduce && IO) {
+         var numSel = '.kpi-value, .stat-number, .widget-value, .stat-value, .metric-value, .kpi-card .value, .stat__value, .metric__value';
+         var co = new IO(function (entries) {
+           entries.forEach(function (en) { if (en.isIntersecting) { countUp(en.target); co.unobserve(en.target); } });
+         }, { threshold: .6 });
+         document.querySelectorAll(numSel).forEach(function (el) {
+           if (el.closest('.nav-bar') || el.children.length) return;
+           if (/\d/.test(el.textContent) && /^[^\d-]*-?[\d,]+(?:\.\d+)?[^\d]*$/.test(el.textContent.trim())) co.observe(el);
+         });
+       }
+
+       document.addEventListener('click', function (e) {
+         if (reduce) return;
+         var btn = e.target.closest('.btn, button');
+         if (!btn || btn.closest('.nav-bar')) return;
+         var r = btn.getBoundingClientRect();
+         if (getComputedStyle(btn).position === 'static') btn.style.position = 'relative';
+         if (getComputedStyle(btn).overflow !== 'hidden') btn.style.overflow = 'hidden';
+         var s = document.createElement('span');
+         s.className = 'ph-ripple';
+         var size = Math.max(r.width, r.height);
+         s.style.width = s.style.height = size + 'px';
+         s.style.left = (e.clientX - r.left) + 'px';
+         s.style.top = (e.clientY - r.top) + 'px';
+         btn.appendChild(s);
+         setTimeout(function () { s.remove(); }, 640);
+       });
+
+       if (!reduce && window.matchMedia('(pointer:fine)').matches && window.innerWidth > 900) {
+         var ring = document.createElement('div');
+         ring.className = 'ph-cursor';
+         document.body.appendChild(ring);
+         var x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y;
+         document.addEventListener('mousemove', function (e) { x = e.clientX; y = e.clientY; });
+         (function loop() { rx += (x - rx) * .18; ry += (y - ry) * .18; ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)'; requestAnimationFrame(loop); })();
+         var hoverSel = 'a,button,.btn,.nav-tab,.tab-btn,.tab-item,.menu-item,.card,[role="button"],input,select,textarea,[data-theme-toggle]';
+         document.addEventListener('mouseover', function (e) { if (e.target.closest(hoverSel)) ring.classList.add('hover'); });
+         document.addEventListener('mouseout', function (e) { if (e.target.closest(hoverSel)) ring.classList.remove('hover'); });
+       }
+     }
+
+     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+     else start();
+   })();
+  </script>
+ </body>
+</html>

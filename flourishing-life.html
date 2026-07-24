@@ -1,0 +1,5200 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   The Flourishing Life - Your Positive Psychology Journey
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+/*
+ * Converted to ProjectSuite CSS Architecture
+ * Date: 2025-11-29 04:36:35
+ * Bootstrap/utility classes mapped to ProjectSuite equivalents
+ * Original backed up to: ./asset_backups
+ */
+
+
+:root {
+  /* Colors */
+  --color-background: rgba(252, 252, 249, 1);
+  --color-surface: rgba(255, 255, 253, 1);
+  --color-text: rgba(19, 52, 59, 1);
+  --color-text-secondary: rgba(98, 108, 113, 1);
+  --color-primary: rgba(33, 128, 141, 1);
+  --color-primary-hover: rgba(29, 116, 128, 1);
+  --color-primary-active: rgba(26, 104, 115, 1);
+  --color-secondary: rgba(94, 82, 64, 0.12);
+  --color-secondary-hover: rgba(94, 82, 64, 0.2);
+  --color-secondary-active: rgba(94, 82, 64, 0.25);
+  --color-border: rgba(94, 82, 64, 0.2);
+  --color-btn-primary-text: rgba(252, 252, 249, 1);
+  --color-card-border: rgba(94, 82, 64, 0.12);
+  --color-card-border-inner: rgba(94, 82, 64, 0.12);
+  --color-error: rgba(192, 21, 47, 1);
+  --color-success: rgba(33, 128, 141, 1);
+  --color-warning: rgba(168, 75, 47, 1);
+  --color-info: rgba(98, 108, 113, 1);
+  --color-focus-ring: rgba(33, 128, 141, 0.4);
+  --color-select-caret: rgba(19, 52, 59, 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: rgba(31, 33, 33, 1);
+    --color-surface: rgba(38, 40, 40, 1);
+    --color-text: rgba(245, 245, 245, 1);
+    --color-text-secondary: rgba(167, 169, 169, 0.7);
+    --color-primary: rgba(50, 184, 198, 1);
+    --color-primary-hover: rgba(45, 166, 178, 1);
+    --color-primary-active: rgba(41, 150, 161, 1);
+    --color-secondary: rgba(119, 124, 124, 0.15);
+    --color-secondary-hover: rgba(119, 124, 124, 0.25);
+    --color-secondary-active: rgba(119, 124, 124, 0.3);
+    --color-border: rgba(119, 124, 124, 0.3);
+    --color-error: rgba(255, 84, 89, 1);
+    --color-success: rgba(50, 184, 198, 1);
+    --color-warning: rgba(230, 129, 97, 1);
+    --color-info: rgba(167, 169, 169, 1);
+    --color-focus-ring: rgba(50, 184, 198, 0.4);
+    --color-btn-primary-text: rgba(19, 52, 59, 1);
+    --color-card-border: rgba(119, 124, 124, 0.2);
+    --color-card-border-inner: rgba(119, 124, 124, 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --button-border-secondary: rgba(119, 124, 124, 0.2);
+    --color-border-secondary: rgba(119, 124, 124, 0.2);
+    --color-select-caret: rgba(245, 245, 245, 0.8);
+
+    /* Common style patterns - updated for dark mode */
+    --focus-ring: 0 0 0 3px var(--color-focus-ring);
+    --focus-outline: 2px solid var(--color-primary);
+    --status-bg-opacity: 0.15;
+    --status-border-opacity: 0.25;
+    --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+    /* RGB versions for dark mode */
+    --color-success-rgb: 50, 184, 198;
+    --color-error-rgb: 255, 84, 89;
+    --color-warning-rgb: 230, 129, 97;
+    --color-info-rgb: 167, 169, 169;
+  }
+}
+
+/* Data attribute for manual theme switching */
+[data-color-scheme="dark"] {
+  --color-background: rgba(31, 33, 33, 1);
+  --color-surface: rgba(38, 40, 40, 1);
+  --color-text: rgba(245, 245, 245, 1);
+  --color-text-secondary: rgba(167, 169, 169, 0.7);
+  --color-primary: rgba(50, 184, 198, 1);
+  --color-primary-hover: rgba(45, 166, 178, 1);
+  --color-primary-active: rgba(41, 150, 161, 1);
+  --color-secondary: rgba(119, 124, 124, 0.15);
+  --color-secondary-hover: rgba(119, 124, 124, 0.25);
+  --color-secondary-active: rgba(119, 124, 124, 0.3);
+  --color-border: rgba(119, 124, 124, 0.3);
+  --color-error: rgba(255, 84, 89, 1);
+  --color-success: rgba(50, 184, 198, 1);
+  --color-warning: rgba(230, 129, 97, 1);
+  --color-info: rgba(167, 169, 169, 1);
+  --color-focus-ring: rgba(50, 184, 198, 0.4);
+  --color-btn-primary-text: rgba(19, 52, 59, 1);
+  --color-card-border: rgba(119, 124, 124, 0.15);
+  --color-card-border-inner: rgba(119, 124, 124, 0.15);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  --color-border-secondary: rgba(119, 124, 124, 0.2);
+  --color-select-caret: rgba(245, 245, 245, 0.8);
+
+  /* Common style patterns - updated for dark mode */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for dark mode */
+  --color-success-rgb: 50, 184, 198;
+  --color-error-rgb: 255, 84, 89;
+  --color-warning-rgb: 230, 129, 97;
+  --color-info-rgb: 167, 169, 169;
+}
+
+[data-color-scheme="light"] {
+  --color-background: rgba(252, 252, 249, 1);
+  --color-surface: rgba(255, 255, 253, 1);
+  --color-text: rgba(19, 52, 59, 1);
+  --color-text-secondary: rgba(98, 108, 113, 1);
+  --color-primary: rgba(33, 128, 141, 1);
+  --color-primary-hover: rgba(29, 116, 128, 1);
+  --color-primary-active: rgba(26, 104, 115, 1);
+  --color-secondary: rgba(94, 82, 64, 0.12);
+  --color-secondary-hover: rgba(94, 82, 64, 0.2);
+  --color-secondary-active: rgba(94, 82, 64, 0.25);
+  --color-border: rgba(94, 82, 64, 0.2);
+  --color-btn-primary-text: rgba(252, 252, 249, 1);
+  --color-card-border: rgba(94, 82, 64, 0.12);
+  --color-card-border-inner: rgba(94, 82, 64, 0.12);
+  --color-error: rgba(192, 21, 47, 1);
+  --color-success: rgba(33, 128, 141, 1);
+  --color-warning: rgba(168, 75, 47, 1);
+  --color-info: rgba(98, 108, 113, 1);
+  --color-focus-ring: rgba(33, 128, 141, 0.4);
+
+  /* RGB versions for light mode */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+}
+
+/* Base styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+h2 {
+  font-size: var(--font-size-3xl);
+}
+h3 {
+  font-size: var(--font-size-2xl);
+}
+h4 {
+  font-size: var(--font-size-xl);
+}
+h5 {
+  font-size: var(--font-size-lg);
+}
+h6 {
+  font-size: var(--font-size-md);
+}
+
+p {
+  margin: 0 0 var(--space-16) 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+code,
+pre {
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--font-size-base) * 0.95);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-sm);
+}
+
+code {
+  padding: var(--space-1) var(--space-4);
+}
+
+pre {
+  padding: var(--space-16);
+  margin: var(--space-16) 0;
+  overflow: auto;
+  border: 1px solid var(--color-border);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
+  border: none;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn--primary:active {
+  background: var(--color-primary-active);
+}
+
+.btn--secondary {
+  background: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.btn--secondary:hover {
+  background: var(--color-secondary-hover);
+}
+
+.btn--secondary:active {
+  background: var(--color-secondary-active);
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--outline:hover {
+  background: var(--color-secondary);
+}
+
+.btn--sm {
+  padding: var(--space-4) var(--space-12);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+}
+
+.btn--lg {
+  padding: var(--space-10) var(--space-20);
+  font-size: var(--font-size-lg);
+  border-radius: var(--radius-md);
+}
+
+.btn--full-width {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Form elements */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: var(--space-8) var(--space-12);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+textarea.form-control {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+}
+
+select.form-control {
+  padding: var(--space-8) var(--space-12);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: var(--select-caret-light);
+  background-repeat: no-repeat;
+  background-position: right var(--space-12) center;
+  background-size: 16px;
+  padding-right: var(--space-32);
+}
+
+/* Add a dark mode specific caret */
+@media (prefers-color-scheme: dark) {
+  select.form-control {
+    background-image: var(--select-caret-dark);
+  }
+}
+
+/* Also handle data-color-scheme */
+[data-color-scheme="dark"] select.form-control {
+  background-image: var(--select-caret-dark);
+}
+
+[data-color-scheme="light"] select.form-control {
+  background-image: var(--select-caret-light);
+}
+
+.form-control:focus {
+  border-color: var(--color-primary);
+  outline: var(--focus-outline);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-8);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.form-group {
+  margin-bottom: var(--space-16);
+}
+
+/* Card component */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card__body {
+  padding: var(--space-16);
+}
+
+.card__header,
+.card__footer {
+  padding: var(--space-16);
+  border-bottom: 1px solid var(--color-card-border-inner);
+}
+
+/* Status indicators - simplified with CSS variables */
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-6) var(--space-12);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.status--success {
+  background-color: rgba(
+    var(--color-success-rgb, 33, 128, 141),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-success);
+  border: 1px solid
+    rgba(var(--color-success-rgb, 33, 128, 141), var(--status-border-opacity));
+}
+
+.status--error {
+  background-color: rgba(
+    var(--color-error-rgb, 192, 21, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-error);
+  border: 1px solid
+    rgba(var(--color-error-rgb, 192, 21, 47), var(--status-border-opacity));
+}
+
+.status--warning {
+  background-color: rgba(
+    var(--color-warning-rgb, 168, 75, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-warning);
+  border: 1px solid
+    rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-border-opacity));
+}
+
+.status--info {
+  background-color: rgba(
+    var(--color-info-rgb, 98, 108, 113),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-info);
+  border: 1px solid
+    rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity));
+}
+
+/* Container layout */
+.section-content {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--space-16);
+  padding-left: var(--space-16);
+}
+
+@media (min-width: 640px) {
+  .section-content {
+    max-width: var(--container-sm);
+  }
+}
+@media (min-width: 768px) {
+  .section-content {
+    max-width: var(--container-md);
+  }
+}
+@media (min-width: 1024px) {
+  .section-content {
+    max-width: var(--container-lg);
+  }
+}
+@media (min-width: 1280px) {
+  .section-content {
+    max-width: var(--container-xl);
+  }
+}
+
+/* Utility classes */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-4 {
+  gap: var(--space-4);
+}
+.gap-8 {
+  gap: var(--space-8);
+}
+.gap-16 {
+  gap: var(--space-16);
+}
+
+.block {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Dark mode specifics */
+[data-color-scheme="dark"] .btn--outline {
+  border: 1px solid var(--color-border-secondary);
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+}
+
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Root Variables */
+:root {
+  /* Light mode colors — aligned to shared ProjectSuite palette */
+  --color-background: rgba(252, 252, 249, 1);
+  --color-surface: rgba(255, 255, 253, 1);
+  --color-text: rgba(19, 52, 59, 1);
+  --color-text-secondary: rgba(98, 108, 113, 1);
+  --color-primary: rgba(33, 128, 141, 1);
+  --color-primary-hover: rgba(29, 116, 128, 1);
+  --color-secondary: rgba(29, 116, 128, 1);
+  --color-success: rgba(33, 128, 141, 1);
+  --color-warning: rgba(168, 75, 47, 1);
+  --color-error: rgba(192, 21, 47, 1);
+  --color-border: rgba(94, 82, 64, 0.2);
+  --color-card: rgba(255, 255, 253, 1);
+  --color-modal-bg: rgba(0, 0, 0, 0.5);
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+
+  /* Border radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Dark mode colors — aligned to shared ProjectSuite palette, driven by data-color-scheme */
+[data-color-scheme="dark"] {
+  --color-background: rgba(31, 33, 33, 1);
+  --color-surface: rgba(38, 40, 40, 1);
+  --color-text: rgba(245, 245, 245, 1);
+  --color-text-secondary: rgba(167, 169, 169, 0.9);
+  --color-primary: rgba(50, 184, 198, 1);
+  --color-primary-hover: rgba(45, 166, 178, 1);
+  --color-secondary: rgba(45, 166, 178, 1);
+  --color-success: rgba(50, 184, 198, 1);
+  --color-warning: rgba(230, 129, 97, 1);
+  --color-error: rgba(255, 84, 89, 1);
+  --color-border: rgba(119, 124, 124, 0.3);
+  --color-card: rgba(38, 40, 40, 1);
+  --color-modal-bg: rgba(0, 0, 0, 0.8);
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+.section-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* Header */
+.app-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-4) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--color-primary);
+}
+
+.app-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.theme-toggle, .notification-btn {
+  background: none;
+  border: none;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  color: var(--color-text);
+  position: relative;
+}
+
+.theme-toggle:hover, .notification-btn:hover {
+  background-color: var(--color-border);
+}
+
+.theme-icon, .notification-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--color-error);
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--radius-full);
+  min-width: 1.25rem;
+  text-align: center;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-border);
+}
+
+.profile-name {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* Navigation */
+.tab-navigation {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-2) 0;
+  overflow-x: auto;
+}
+
+.tab-list {
+  display: flex;
+  gap: var(--space-2);
+  min-width: max-content;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border: none;
+  background: none;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  background-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.tab-btn.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.tab-btn i {
+  width: 16px;
+  height: 16px;
+}
+
+/* Main Content */
+.main-content {
+  padding: var(--space-8) 0;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Hero Section */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+  margin-bottom: var(--space-12);
+}
+
+.hero-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-content p {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.hero-stats {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-wheel {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Current Focus */
+.current-focus {
+  margin-bottom: var(--space-12);
+}
+
+.focus-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+}
+
+.focus-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.focus-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-primary);
+}
+
+.focus-header h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.focus-card h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.focus-card p {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.focus-actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn--secondary {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-border);
+  transform: translateY(-1px);
+}
+
+.btn--sm {
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.75rem;
+}
+
+.btn i {
+  width: 16px;
+  height: 16px;
+}
+
+/* Journey Steps */
+.journey-steps {
+  margin-bottom: var(--space-12);
+}
+
+.journey-steps h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+.step-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.step-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.step-card.completed {
+  border-color: var(--color-success);
+  background: var((--color-success), transparen);
+}
+
+.step-card.current {
+  border-color: var(--color-primary);
+  background: var((--color-primary), transparent);
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-3);
+}
+
+.step-number {
+  background-color: var(--color-primary);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.step-status {
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.step-status.completed {
+  background-color: var(--color-success);
+  color: white;
+}
+
+.step-status.current {
+  background-color: var(--color-warning);
+  color: white;
+}
+
+.step-status.upcoming {
+  background-color: var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.step-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  line-height: 1.4;
+}
+
+.step-theme {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-2);
+}
+
+.step-part {
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+/* Recommendations */
+.recommendations {
+  margin-bottom: var(--space-12);
+}
+
+.recommendations h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.recommendation-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.recommendation-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.recommendation-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.rec-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.rec-icon i {
+  width: 24px;
+  height: 24px;
+}
+
+.rec-content {
+  flex: 1;
+}
+
+.rec-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.rec-content p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-1);
+}
+
+.rec-duration {
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+/* Assessment Hub */
+.assessment-hero {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.assessment-hero h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+}
+
+.assessment-hero p {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+}
+
+.perma-section {
+  margin-bottom: var(--space-12);
+}
+
+.assessment-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+}
+
+.assessment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.assessment-header h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.assessment-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--color-primary);
+}
+
+.assessment-badge {
+  background-color: var(--color-success);
+  color: white;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.perma-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.perma-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: var(--radius-lg);
+}
+
+.perma-scores {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.score-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.score-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  min-width: 120px;
+}
+
+.score-bar {
+  flex: 1;
+  height: 8px;
+  background-color: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  transition: width var(--transition-normal);
+}
+
+.score-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  min-width: 40px;
+  text-align: right;
+}
+
+.assessment-actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+/* Quick Assessments */
+.quick-assessments {
+  margin-bottom: var(--space-12);
+}
+
+.quick-assessments h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.assessment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-4);
+}
+
+.quick-assessment-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  text-align: center;
+}
+
+.quick-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+}
+
+.quick-assessment-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+}
+
+.mood-slider {
+  margin-bottom: var(--space-4);
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-border);
+  outline: none;
+  margin-bottom: var(--space-2);
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+}
+
+.energy-buttons {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.energy-btn {
+  flex: 1;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.energy-btn:hover {
+  background-color: var(--color-border);
+}
+
+.energy-btn.active {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.focus-rating {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.star {
+  font-size: 1.5rem;
+  color: var(--color-border);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.star.active {
+  color: var(--color-warning);
+}
+
+/* Timeline */
+.assessment-history {
+  margin-bottom: var(--space-12);
+}
+
+.assessment-history h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.history-timeline {
+  position: relative;
+  padding-left: var(--space-6);
+}
+
+.history-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--color-border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--space-6);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -7px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-background);
+}
+
+.timeline-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.timeline-content p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-1);
+}
+
+.timeline-date {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+/* Daily Practice */
+.practice-hero {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.practice-hero h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+}
+
+.practice-hero p {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+}
+
+.habit-tracker {
+  margin-bottom: var(--space-12);
+}
+
+.habit-tracker h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.habits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-4);
+}
+
+.habit-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.habit-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.habit-card.completed {
+  border-color: var(--color-success);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), transparent);
+}
+
+.habit-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0 auto var(--space-3) auto;
+}
+
+.habit-icon i {
+  width: 24px;
+  height: 24px;
+}
+
+.habit-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.habit-streak {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+}
+
+.habit-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.habit-checkbox:checked {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+/* Exercises */
+.todays-exercises, .exercise-library {
+  margin-bottom: var(--space-12);
+}
+
+.todays-exercises h3, .exercise-library h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.exercise-cards, .exercises-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+.exercise-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  transition: all var(--transition-fast);
+}
+
+.exercise-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.exercise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-3);
+}
+
+.exercise-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--color-primary);
+}
+
+.exercise-meta h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.exercise-category {
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.exercise-duration {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  background-color: var(--color-surface);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.exercise-card p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-4);
+}
+
+.exercise-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.library-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.library-filters {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.filter-btn {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 0.875rem;
+}
+
+.filter-btn:hover {
+  background-color: var(--color-border);
+}
+
+.filter-btn.active {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+/* Goal Setting */
+.goal-setting {
+  margin-bottom: var(--space-12);
+}
+
+.goal-setting h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.goal-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+.goal-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.goal-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-primary);
+}
+
+.goal-form {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.form-control {
+  flex: 1;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.875rem;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.goal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.goal-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.goal-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  cursor: pointer;
+}
+
+.goal-checkbox:checked {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.goal-text {
+  font-size: 0.875rem;
+}
+
+.goal-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.progress-bar {
+  width: 80px;
+  height: 6px;
+  background-color: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  transition: width var(--transition-normal);
+}
+
+.progress-text {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+/* Resources */
+.resources-hero {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.resources-hero h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+}
+
+.resources-hero p {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.search-bar {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.search-icon {
+  position: absolute;
+  left: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: var(--color-text-secondary);
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-3) var(--space-3) var(--space-10);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.875rem;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.resource-categories {
+  margin-bottom: var(--space-12);
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-4);
+}
+
+.category-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.category-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.category-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-primary);
+  margin: 0 auto var(--space-3) auto;
+}
+
+.category-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.category-card p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-2);
+}
+
+.resource-count {
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.featured-resources {
+  margin-bottom: var(--space-12);
+}
+
+.featured-resources h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+.resource-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.resource-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.resource-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.resource-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.resource-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.resource-card:hover .resource-overlay {
+  opacity: 1;
+}
+
+.play-btn {
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-full);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.play-btn:hover {
+  background-color: var(--color-primary-hover);
+  transform: scale(1.1);
+}
+
+.play-btn i {
+  width: 24px;
+  height: 24px;
+}
+
+.resource-content {
+  padding: var(--space-4);
+}
+
+.resource-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.resource-content p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-3);
+}
+
+.resource-meta {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.resource-type {
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.resource-duration {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.favorites {
+  margin-bottom: var(--space-12);
+}
+
+.favorites h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.favorites-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.favorite-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.favorite-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-error);
+}
+
+.favorite-content {
+  flex: 1;
+}
+
+.favorite-content h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.favorite-type {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+/* Analytics */
+.analytics-hero {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.analytics-hero h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+}
+
+.analytics-hero p {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+}
+
+.key-metrics {
+  margin-bottom: var(--space-12);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-4);
+}
+
+.metric-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.metric-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.metric-icon i {
+  width: 24px;
+  height: 24px;
+}
+
+.metric-content {
+  flex: 1;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: block;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+.metric-change {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.metric-change.positive {
+  color: var(--color-success);
+}
+
+.progress-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.chart-container {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+.chart-container h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+}
+
+/* Fixed-height relative wrapper prevents Chart.js infinite-growth with maintainAspectRatio:false */
+.chart-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 240px;
+}
+.chart-canvas-wrap canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.weekly-summary {
+  margin-bottom: var(--space-12);
+}
+
+.weekly-summary h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+.summary-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+.summary-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.summary-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-primary);
+}
+
+.summary-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.summary-list li {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  position: relative;
+  padding-left: var(--space-4);
+}
+
+.summary-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+
+/* Community */
+.community-hero {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.community-hero h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+}
+
+.community-hero p {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+}
+
+.community-stats {
+  margin-bottom: var(--space-12);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.stat-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  text-align: center;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-primary);
+  margin: 0 auto var(--space-3) auto;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.forum-categories {
+  margin-bottom: var(--space-12);
+}
+
+.forum-categories h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.category-forum-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.category-forum-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.forum-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.forum-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-primary);
+}
+
+.forum-header h4 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.category-forum-card p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-3);
+}
+
+.forum-meta {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.forum-posts, .forum-members {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.recent-discussions {
+  margin-bottom: var(--space-12);
+}
+
+.recent-discussions h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.discussions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.discussion-item {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  align-items: flex-start;
+}
+
+.discussion-avatar {
+  flex-shrink: 0;
+}
+
+.discussion-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+}
+
+.discussion-content {
+  flex: 1;
+}
+
+.discussion-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.discussion-content p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-2);
+}
+
+.discussion-meta {
+  display: flex;
+  gap: var(--space-3);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.upcoming-events {
+  margin-bottom: var(--space-12);
+}
+
+.upcoming-events h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.event-item {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  align-items: center;
+}
+
+.event-date {
+  flex-shrink: 0;
+  text-align: center;
+  background-color: var(--color-primary);
+  color: white;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  min-width: 60px;
+}
+
+.event-month {
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: block;
+}
+
+.event-day {
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: block;
+}
+
+.event-content {
+  flex: 1;
+}
+
+.event-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.event-content p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-2);
+}
+
+.event-meta {
+  display: flex;
+  gap: var(--space-3);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-modal-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background-color: var(--color-card);
+  border-radius: var(--radius-xl);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-xl);
+  transform: scale(0.9);
+  transition: transform var(--transition-normal);
+}
+
+.modal.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.modal-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  padding: var(--space-2);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+  background-color: var(--color-border);
+}
+
+.modal-close i {
+  width: 20px;
+  height: 20px;
+}
+
+.modal-body {
+  padding: var(--space-6);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .perma-content {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-charts {
+    grid-template-columns: 1fr;
+  }
+
+  .tab-list {
+    padding: 0 var(--space-4);
+  }
+
+  .tab-btn span {
+    display: none;
+  }
+
+  .header-actions {
+    gap: var(--space-2);
+  }
+
+  .profile-name {
+    display: none;
+  }
+
+  .focus-actions {
+    flex-direction: column;
+  }
+
+  .exercise-actions {
+    flex-direction: column;
+  }
+
+  .library-header {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .library-filters {
+    flex-wrap: wrap;
+  }
+
+  .goal-form {
+    flex-direction: column;
+  }
+
+  .discussion-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .event-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-content {
+    padding: 0 var(--space-3);
+  }
+
+  .hero-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendation-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .assessment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .habits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .exercises-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js">
+  </script>
+  <meta content="#1e293b" name="theme-color"/>
+  <meta content="Transform your life with positive psychology principles through our comprehensive 14-step journey" name="description"/>
+  
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  
+  
+  
+  
+  <script>
+   /* Unified color-mode: no-flash init (shared standard) */
+   (function () {
+     try {
+       var s = localStorage.getItem('colorScheme');
+       if (s !== 'dark' && s !== 'light') {
+         s = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+       }
+       document.documentElement.setAttribute('data-color-scheme', s);
+     } catch (e) {}
+   })();
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   /* Unified typography — Space Grotesk headings + Inter body (shared standard) */
+   body { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+   h1, h2, h3, h4, h5, h6,
+   .logo, .logo span, .sidebar-header h2, .sidebar__title, .app-title {
+     font-family: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+     letter-spacing: -0.02em;
+   }
+  </style>
+  <style>
+   /* Unified side navigation (shared standard) */
+   .app-shell {
+     display: flex; align-items: flex-start; gap: var(--space-24, 24px);
+     max-width: var(--container-xl, 1280px); margin: 0 auto;
+     padding: var(--space-24, 24px) var(--space-16, 16px); width: 100%;
+   }
+   .nav-bar {
+     width: 220px; flex-shrink: 0; position: sticky; top: calc(64px + var(--space-16, 16px));
+     background-color: var(--color-surface);
+     border: 1px solid var(--color-card-border, var(--color-border));
+     border-radius: var(--radius-lg, 12px); padding: var(--space-8, 8px);
+     box-shadow: var(--shadow-sm); margin: 0;
+   }
+   .nav-bar .nav-content, .nav-bar .section-content { padding: 0; max-width: none; margin: 0; }
+   .nav-bar .tab-list, .nav-bar .tab-buttons, .nav-bar .nav-links,
+   .nav-bar .section-content > div {
+     display: flex; flex-direction: column; gap: var(--space-4, 4px); width: 100%; border: none;
+   }
+   .nav-bar .nav-tab, .nav-bar .tab-btn, .nav-bar .tab-item,
+   .nav-bar .nav-item, .nav-bar .menu-item {
+     display: flex; align-items: center; gap: var(--space-12, 12px); width: 100%;
+     padding: var(--space-10, 10px) var(--space-12, 12px); border: none; background: none;
+     color: var(--color-text-secondary); cursor: pointer; border-radius: var(--radius-base, 8px);
+     font-weight: 500; text-align: left; white-space: nowrap; font-size: var(--font-size-base, 14px);
+   }
+   .nav-bar .nav-tab i, .nav-bar .tab-btn i, .nav-bar .tab-item i,
+   .nav-bar .nav-item i, .nav-bar .menu-item i, .nav-bar .menu-icon {
+     width: 18px; height: 18px; flex-shrink: 0; font-size: 16px;
+   }
+   .nav-bar .nav-tab:hover, .nav-bar .tab-btn:hover, .nav-bar .tab-item:hover,
+   .nav-bar .nav-item:hover, .nav-bar .menu-item:hover {
+     color: var(--color-text); background-color: var(--color-secondary);
+   }
+   .nav-bar .nav-tab--active, .nav-bar .nav-tab.active, .nav-bar .tab-btn.active,
+   .nav-bar .tab-item.active, .nav-bar .nav-item.active, .nav-bar .menu-item.active {
+     color: var(--color-btn-primary-text); background-color: var(--color-primary);
+   }
+   .main-content { flex: 1; min-width: 0; max-width: none; margin: 0; }
+   @media (max-width: 768px) {
+     .app-shell { flex-direction: column; }
+     .nav-bar { width: 100%; position: static; }
+     .nav-bar .tab-list, .nav-bar .tab-buttons, .nav-bar .nav-links, .nav-bar .section-content > div { flex-direction: row; overflow-x: auto; }
+     .nav-bar .nav-tab, .nav-bar .tab-btn, .nav-bar .tab-item, .nav-bar .nav-item, .nav-bar .menu-item { width: auto; }
+   }
+  </style>
+  <style>
+   /* flourishing-life uses a rem-based --space scale; pin sidebar spacing in px */
+   .app-shell { gap: 24px; padding: 24px 16px; }
+   .nav-bar { width: 220px; padding: 8px; overflow: visible; top: 80px; }
+   .nav-bar .tab-list { overflow: visible; min-width: 0; gap: 4px; }
+   .nav-bar .tab-btn { gap: 12px; padding: 10px 12px; justify-content: flex-start; font-size: 14px; }
+   .nav-bar .tab-btn i { width: 18px; height: 18px; }
+  </style>
+   <style>
+   /* ============================================================
+      PROJECTSUITE ENHANCE — palette refresh (tangerine, no red) + motion
+      ============================================================ */
+   :root, [data-color-scheme="light"] {
+     --color-primary: #e2652a;
+     --color-primary-hover: #c9551e;
+     --color-primary-active: #b54a18;
+     --color-accent: #2a9d8f;
+     --color-accent-hover: #1e7a70;
+     --color-success: #17a673;
+     --color-warning: #e0930b;
+     --color-error: #d2691e;
+     --color-danger: #d2691e;
+     --color-info: #1e85ad;
+     --color-focus-ring: rgba(226, 101, 42, 0.4);
+     --color-btn-primary-text: #ffffff;
+     --color-primary-rgb: 226, 101, 42;
+     --color-success-rgb: 23, 166, 115;
+     --color-warning-rgb: 224, 147, 11;
+     --color-error-rgb: 210, 105, 30;
+     --color-info-rgb: 30, 133, 173;
+     --gradient-primary: linear-gradient(135deg, #e2652a 0%, #f5a623 100%);
+     --gradient-accent: linear-gradient(135deg, #2a9d8f 0%, #17a673 100%);
+   }
+   [data-color-scheme="dark"] {
+     --color-primary: #ff8a4c;
+     --color-primary-hover: #ff7a33;
+     --color-primary-active: #f26b21;
+     --color-accent: #3fb9aa;
+     --color-accent-hover: #2dd4a7;
+     --color-success: #2dd4a7;
+     --color-warning: #f5b23d;
+     --color-error: #ff9150;
+     --color-danger: #ff9150;
+     --color-info: #38a9ce;
+     --color-focus-ring: rgba(255, 138, 76, 0.4);
+     --color-btn-primary-text: #16150f;
+     --color-primary-rgb: 255, 138, 76;
+     --color-success-rgb: 45, 212, 167;
+     --color-warning-rgb: 245, 178, 61;
+     --color-error-rgb: 255, 145, 80;
+     --color-info-rgb: 56, 169, 206;
+     --gradient-primary: linear-gradient(135deg, #ff8a4c 0%, #f5b23d 100%);
+     --gradient-accent: linear-gradient(135deg, #3fb9aa 0%, #2dd4a7 100%);
+   }
+   @media (prefers-color-scheme: dark) {
+     :root:not([data-color-scheme="light"]) {
+       --color-primary: #ff8a4c; --color-primary-hover: #ff7a33; --color-primary-active: #f26b21;
+       --color-accent: #3fb9aa; --color-success: #2dd4a7; --color-warning: #f5b23d;
+       --color-error: #ff9150; --color-danger: #ff9150; --color-info: #38a9ce;
+       --color-primary-rgb: 255, 138, 76;
+       --gradient-primary: linear-gradient(135deg, #ff8a4c 0%, #f5b23d 100%);
+     }
+   }
+   html.ph-anim .ph-reveal { opacity: 0; transform: translateY(18px);
+     transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); will-change: opacity, transform; }
+   html.ph-anim .ph-reveal.in-view { opacity: 1; transform: none; }
+   .ph-card { position: relative; }
+   .ph-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+     background: var(--gradient-primary); transform: scaleX(0); transform-origin: left;
+     transition: transform .35s cubic-bezier(.16,1,.3,1); border-radius: 4px 4px 0 0; pointer-events: none; z-index: 1; }
+   .ph-card:hover::after { transform: scaleX(1); }
+   .ph-ripple { position: absolute; border-radius: 50%; background: rgba(255,255,255,.4);
+     transform: translate(-50%,-50%) scale(0); animation: phRipple .6s ease-out forwards; pointer-events: none; }
+   @keyframes phRipple { to { transform: translate(-50%,-50%) scale(1); opacity: 0; } }
+   .ph-cursor { position: fixed; top: 0; left: 0; width: 30px; height: 30px;
+     border: 2px solid var(--color-primary); border-radius: 50%; pointer-events: none; z-index: 9998;
+     transition: width .25s ease, height .25s ease, background .25s ease, border-color .25s ease, opacity .25s ease;
+     opacity: .55; will-change: transform; }
+   .ph-cursor.hover { width: 50px; height: 50px; background: rgba(var(--color-primary-rgb), .12); opacity: .8; }
+   @media (max-width: 900px) { .ph-cursor { display: none; } }
+   @media (prefers-reduced-motion: reduce) {
+     html.ph-anim .ph-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+     .ph-cursor { display: none; }
+   }
+  </style>
+ </head>
+ <body>
+  <!-- Header -->
+  <header class="app-header">
+   <div class="section-content">
+    <div class="header-content">
+     <div class="logo-section">
+      <i class="logo-icon" data-lucide="sparkles">
+      </i>
+      <h1 class="app-title">
+       The Flourishing Life
+      </h1>
+     </div>
+     <div class="header-actions">
+      <button class="theme-toggle" data-theme-toggle="" id="themeToggle">
+       <i class="theme-icon" data-lucide="sun">
+       </i>
+      </button>
+      <button class="notification-btn" id="notificationBtn">
+       <i class="notification-icon" data-lucide="bell">
+       </i>
+       <span class="notification-badge">
+        3
+       </span>
+      </button>
+      <div class="user-profile">
+       <img alt="Profile" class="profile-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&amp;h=40&amp;fit=crop&amp;crop=face"/>
+       <span class="profile-name">
+        Welcome back!
+       </span>
+      </div>
+     </div>
+    </div>
+   </div>
+  </header>
+  <!-- Navigation Tabs -->
+  <div class="app-shell">
+  <nav class="tab-navigation nav-bar">
+   <div class="section-content nav-content">
+    <div class="tab-list">
+     <button class="tab-btn active" data-tab="journey">
+      <i data-lucide="map">
+      </i>
+      <span>
+       Journey Tracker
+      </span>
+     </button>
+     <button class="tab-btn" data-tab="assessment">
+      <i data-lucide="clipboard-check">
+      </i>
+      <span>
+       Assessment Hub
+      </span>
+     </button>
+     <button class="tab-btn" data-tab="practice">
+      <i data-lucide="calendar-check">
+      </i>
+      <span>
+       Daily Practice
+      </span>
+     </button>
+     <button class="tab-btn" data-tab="resources">
+      <i data-lucide="library">
+      </i>
+      <span>
+       Resource Library
+      </span>
+     </button>
+     <button class="tab-btn" data-tab="analytics">
+      <i data-lucide="bar-chart-3">
+      </i>
+      <span>
+       Analytics
+      </span>
+     </button>
+     <button class="tab-btn" data-tab="community">
+      <i data-lucide="users">
+      </i>
+      <span>
+       Community
+      </span>
+     </button>
+    </div>
+   </div>
+  </nav>
+  <!-- Main Content -->
+  <main class="main-content">
+   <!-- Journey Tracker Tab -->
+   <div class="tab-content active" id="journey">
+    <div class="section-content">
+     <!-- Hero Section -->
+     <section class="hero-section">
+      <div class="hero-content">
+       <h2>
+        Your Personal Growth Journey
+       </h2>
+       <p>
+        Transform your life through 14 powerful steps of positive psychology
+       </p>
+       <div class="hero-stats">
+        <div class="stat-item">
+         <span class="stat-number">
+          3
+         </span>
+         <span class="stat-label">
+          Steps Completed
+         </span>
+        </div>
+        <div class="stat-item">
+         <span class="stat-number">
+          45
+         </span>
+         <span class="stat-label">
+          Days Active
+         </span>
+        </div>
+        <div class="stat-item">
+         <span class="stat-number">
+          27
+         </span>
+         <span class="stat-label">
+          Exercises Done
+         </span>
+        </div>
+       </div>
+      </div>
+      <div class="hero-visual">
+       <img alt="Journey Progress Wheel" class="progress-wheel" src="https://pplx-res.cloudinary.com/image/upload/v1751511110/pplx_code_interpreter/928ce448_hhjboo.jpg"/>
+      </div>
+     </section>
+     <!-- Current Focus -->
+     <section class="current-focus">
+      <div class="focus-card">
+       <div class="focus-header">
+        <i class="focus-icon" data-lucide="target">
+        </i>
+        <h3>
+         Current Focus
+        </h3>
+       </div>
+       <h4>
+        Step 3: Learning to Accept Yourself
+       </h4>
+       <p>
+        Embracing Your Polymath Nature - Balance high standards with kindness toward yourself
+       </p>
+       <div class="focus-actions">
+        <button class="btn btn--primary">
+         <i data-lucide="play">
+         </i>
+         Continue Journey
+        </button>
+        <button class="btn btn--secondary">
+         <i data-lucide="book-open">
+         </i>
+         Read More
+        </button>
+       </div>
+      </div>
+     </section>
+     <!-- Journey Steps Grid -->
+     <section class="journey-steps">
+      <h3>
+       All Journey Steps
+      </h3>
+      <div class="steps-grid" id="stepsGrid">
+       <!-- Steps will be populated by JavaScript -->
+      </div>
+     </section>
+     <!-- Recommended Next Steps -->
+     <section class="recommendations">
+      <h3>
+       Recommended Next Steps
+      </h3>
+      <div class="recommendation-cards">
+       <div class="recommendation-card">
+        <div class="rec-icon">
+         <i data-lucide="shield-check">
+         </i>
+        </div>
+        <div class="rec-content">
+         <h4>
+          Build Character Strength
+         </h4>
+         <p>
+          Develop resilience and core virtues
+         </p>
+         <span class="rec-duration">
+          20 min
+         </span>
+        </div>
+        <button class="btn btn--sm">
+         Start
+        </button>
+       </div>
+       <div class="recommendation-card">
+        <div class="rec-icon">
+         <i data-lucide="brain">
+         </i>
+        </div>
+        <div class="rec-content">
+         <h4>
+          Stress Management
+         </h4>
+         <p>
+          Navigate complexity with confidence
+         </p>
+         <span class="rec-duration">
+          15 min
+         </span>
+        </div>
+        <button class="btn btn--sm">
+         Start
+        </button>
+       </div>
+       <div class="recommendation-card">
+        <div class="rec-icon">
+         <i data-lucide="heart">
+         </i>
+        </div>
+        <div class="rec-content">
+         <h4>
+          Holistic Wellness
+         </h4>
+         <p>
+          Align mind, body, and spirit
+         </p>
+         <span class="rec-duration">
+          25 min
+         </span>
+        </div>
+        <button class="btn btn--sm">
+         Start
+        </button>
+       </div>
+      </div>
+     </section>
+    </div>
+   </div>
+   <!-- Assessment Hub Tab -->
+   <div class="tab-content" id="assessment">
+    <div class="section-content">
+     <div class="assessment-hero">
+      <h2>
+       Assessment Hub
+      </h2>
+      <p>
+       Track your progress with comprehensive well-being assessments
+      </p>
+     </div>
+     <!-- PERMA Assessment -->
+     <section class="perma-section">
+      <div class="assessment-card">
+       <div class="assessment-header">
+        <i class="assessment-icon" data-lucide="radar">
+        </i>
+        <h3>
+         PERMA Model Assessment
+        </h3>
+        <span class="assessment-badge">
+         Updated Today
+        </span>
+       </div>
+       <div class="perma-content">
+        <div class="perma-chart">
+         <img alt="PERMA Radar Chart" class="chart-image" src="https://pplx-res.cloudinary.com/image/upload/v1751511159/pplx_code_interpreter/cb46d934_dfvsxp.jpg"/>
+        </div>
+        <div class="perma-scores">
+         <div class="score-item">
+          <span class="score-label">
+           Positive Emotions
+          </span>
+          <div class="score-bar">
+           <div class="score-fill" style="width: 70%">
+           </div>
+          </div>
+          <span class="score-value">
+           7/10
+          </span>
+         </div>
+         <div class="score-item">
+          <span class="score-label">
+           Engagement
+          </span>
+          <div class="score-bar">
+           <div class="score-fill" style="width: 80%">
+           </div>
+          </div>
+          <span class="score-value">
+           8/10
+          </span>
+         </div>
+         <div class="score-item">
+          <span class="score-label">
+           Relationships
+          </span>
+          <div class="score-bar">
+           <div class="score-fill" style="width: 60%">
+           </div>
+          </div>
+          <span class="score-value">
+           6/10
+          </span>
+         </div>
+         <div class="score-item">
+          <span class="score-label">
+           Meaning
+          </span>
+          <div class="score-bar">
+           <div class="score-fill" style="width: 70%">
+           </div>
+          </div>
+          <span class="score-value">
+           7/10
+          </span>
+         </div>
+         <div class="score-item">
+          <span class="score-label">
+           Accomplishment
+          </span>
+          <div class="score-bar">
+           <div class="score-fill" style="width: 60%">
+           </div>
+          </div>
+          <span class="score-value">
+           6/10
+          </span>
+         </div>
+        </div>
+       </div>
+       <div class="assessment-actions">
+        <button class="btn btn--primary">
+         <i data-lucide="refresh-cw">
+         </i>
+         Retake Assessment
+        </button>
+        <button class="btn btn--secondary">
+         <i data-lucide="download">
+         </i>
+         Download Report
+        </button>
+       </div>
+      </div>
+     </section>
+     <!-- Quick Assessments -->
+     <section class="quick-assessments">
+      <h3>
+       Quick Daily Check-ins
+      </h3>
+      <div class="assessment-grid">
+       <div class="quick-assessment-card">
+        <i class="quick-icon" data-lucide="smile">
+        </i>
+        <h4>
+         Mood Check
+        </h4>
+        <div class="mood-slider">
+         <input class="slider" max="10" min="1" type="range" value="7"/>
+         <div class="slider-labels">
+          <span>
+           😞
+          </span>
+          <span>
+           😐
+          </span>
+          <span>
+           😊
+          </span>
+         </div>
+        </div>
+        <button class="btn btn--sm">
+         Save
+        </button>
+       </div>
+       <div class="quick-assessment-card">
+        <i class="quick-icon" data-lucide="battery">
+        </i>
+        <h4>
+         Energy Level
+        </h4>
+        <div class="energy-buttons">
+         <button class="energy-btn">
+          Low
+         </button>
+         <button class="energy-btn">
+          Medium
+         </button>
+         <button class="energy-btn">
+          High
+         </button>
+        </div>
+        <button class="btn btn--sm">
+         Save
+        </button>
+       </div>
+       <div class="quick-assessment-card">
+        <i class="quick-icon" data-lucide="focus">
+        </i>
+        <h4>
+         Focus Score
+        </h4>
+        <div class="focus-rating">
+         <span class="star">
+          ★
+         </span>
+         <span class="star">
+          ★
+         </span>
+         <span class="star">
+          ★
+         </span>
+         <span class="star">
+          ★
+         </span>
+         <span class="star">
+          ★
+         </span>
+        </div>
+        <button class="btn btn--sm">
+         Save
+        </button>
+       </div>
+      </div>
+     </section>
+     <!-- Assessment History -->
+     <section class="assessment-history">
+      <h3>
+       Assessment History
+      </h3>
+      <div class="history-timeline">
+       <div class="timeline-item">
+        <div class="timeline-dot">
+        </div>
+        <div class="timeline-content">
+         <h4>
+          PERMA Assessment
+         </h4>
+         <p>
+          Overall well-being score: 6.8/10
+         </p>
+         <span class="timeline-date">
+          Today
+         </span>
+        </div>
+       </div>
+       <div class="timeline-item">
+        <div class="timeline-dot">
+        </div>
+        <div class="timeline-content">
+         <h4>
+          Character Strengths Survey
+         </h4>
+         <p>
+          Top strength: Perseverance
+         </p>
+         <span class="timeline-date">
+          3 days ago
+         </span>
+        </div>
+       </div>
+       <div class="timeline-item">
+        <div class="timeline-dot">
+        </div>
+        <div class="timeline-content">
+         <h4>
+          Stress Assessment
+         </h4>
+         <p>
+          Stress level: Moderate
+         </p>
+         <span class="timeline-date">
+          1 week ago
+         </span>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div>
+   </div>
+   <!-- Daily Practice Tab -->
+   <div class="tab-content" id="practice">
+    <div class="section-content">
+     <div class="practice-hero">
+      <h2>
+       Daily Practice
+      </h2>
+      <p>
+       Build lasting habits and engage in transformative exercises
+      </p>
+     </div>
+     <!-- Habit Tracker -->
+     <section class="habit-tracker">
+      <h3>
+       Habit Tracker
+      </h3>
+      <div class="habits-grid" id="habitsGrid">
+       <!-- Habits will be populated by JavaScript -->
+      </div>
+     </section>
+     <!-- Today's Exercises -->
+     <section class="todays-exercises">
+      <h3>
+       Today's Recommended Exercises
+      </h3>
+      <div class="exercise-cards">
+       <div class="exercise-card">
+        <div class="exercise-header">
+         <i class="exercise-icon" data-lucide="heart">
+         </i>
+         <div class="exercise-meta">
+          <h4>
+           Three Good Things
+          </h4>
+          <span class="exercise-category">
+           Gratitude
+          </span>
+         </div>
+         <span class="exercise-duration">
+          5 min
+         </span>
+        </div>
+        <p>
+         Write down three things that went well today and reflect on why they happened.
+        </p>
+        <div class="exercise-actions">
+         <button class="btn btn--primary">
+          <i data-lucide="play">
+          </i>
+          Start Exercise
+         </button>
+         <button class="btn btn--secondary">
+          <i data-lucide="bookmark">
+          </i>
+          Save for Later
+         </button>
+        </div>
+       </div>
+       <div class="exercise-card">
+        <div class="exercise-header">
+         <i class="exercise-icon" data-lucide="brain">
+         </i>
+         <div class="exercise-meta">
+          <h4>
+           Mindfulness Meditation
+          </h4>
+          <span class="exercise-category">
+           Mindfulness
+          </span>
+         </div>
+         <span class="exercise-duration">
+          10 min
+         </span>
+        </div>
+        <p>
+         Practice present-moment awareness with guided breathing exercises.
+        </p>
+        <div class="exercise-actions">
+         <button class="btn btn--primary">
+          <i data-lucide="play">
+          </i>
+          Start Exercise
+         </button>
+         <button class="btn btn--secondary">
+          <i data-lucide="bookmark">
+          </i>
+          Save for Later
+         </button>
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- Exercise Library -->
+     <section class="exercise-library">
+      <div class="library-header">
+       <h3>
+        Exercise Library
+       </h3>
+       <div class="library-filters">
+        <button class="filter-btn" data-filter="all">
+         All
+        </button>
+        <button class="filter-btn" data-filter="gratitude">
+         Gratitude
+        </button>
+        <button class="filter-btn" data-filter="character">
+         Character
+        </button>
+        <button class="filter-btn" data-filter="relationships">
+         Relationships
+        </button>
+        <button class="filter-btn" data-filter="purpose">
+         Purpose
+        </button>
+       </div>
+      </div>
+      <div class="exercises-grid" id="exercisesGrid">
+       <!-- Exercises will be populated by JavaScript -->
+      </div>
+     </section>
+     <!-- Goal Setting -->
+     <section class="goal-setting">
+      <h3>
+       Goal Setting
+      </h3>
+      <div class="goal-card">
+       <div class="goal-header">
+        <i class="goal-icon" data-lucide="target">
+        </i>
+        <h4>
+         Set Your Weekly Goals
+        </h4>
+       </div>
+       <div class="goal-form">
+        <input class="form-control" placeholder="Enter a SMART goal..." type="text"/>
+        <button class="btn btn--primary">
+         <i data-lucide="plus">
+         </i>
+         Add Goal
+        </button>
+       </div>
+       <div class="goals-list">
+        <div class="goal-item">
+         <div class="goal-content">
+          <input class="goal-checkbox" type="checkbox"/>
+          <span class="goal-text">
+           Complete 5 gratitude journal entries
+          </span>
+         </div>
+         <div class="goal-progress">
+          <div class="progress-bar">
+           <div class="progress-fill" style="width: 60%">
+           </div>
+          </div>
+          <span class="progress-text">
+           3/5
+          </span>
+         </div>
+        </div>
+        <div class="goal-item">
+         <div class="goal-content">
+          <input class="goal-checkbox" type="checkbox"/>
+          <span class="goal-text">
+           Meditate for 10 minutes daily
+          </span>
+         </div>
+         <div class="goal-progress">
+          <div class="progress-bar">
+           <div class="progress-fill" style="width: 80%">
+           </div>
+          </div>
+          <span class="progress-text">
+           4/5
+          </span>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div>
+   </div>
+   <!-- Resource Library Tab -->
+   <div class="tab-content" id="resources">
+    <div class="section-content">
+     <div class="resources-hero">
+      <h2>
+       Resource Library
+      </h2>
+      <p>
+       Access curated content to support your flourishing journey
+      </p>
+      <div class="search-bar">
+       <i class="search-icon" data-lucide="search">
+       </i>
+       <input class="search-input" placeholder="Search resources..." type="text"/>
+      </div>
+     </div>
+     <!-- Resource Categories -->
+     <section class="resource-categories">
+      <div class="category-grid">
+       <div class="category-card">
+        <i class="category-icon" data-lucide="video">
+        </i>
+        <h3>
+         Video Library
+        </h3>
+        <p>
+         Guided sessions and educational content
+        </p>
+        <span class="resource-count">
+         24 videos
+        </span>
+       </div>
+       <div class="category-card">
+        <i class="category-icon" data-lucide="headphones">
+        </i>
+        <h3>
+         Audio Meditations
+        </h3>
+        <p>
+         Guided meditations and relaxation
+        </p>
+        <span class="resource-count">
+         18 tracks
+        </span>
+       </div>
+       <div class="category-card">
+        <i class="category-icon" data-lucide="file-text">
+        </i>
+        <h3>
+         Worksheets
+        </h3>
+        <p>
+         Interactive exercises and templates
+        </p>
+        <span class="resource-count">
+         15 downloads
+        </span>
+       </div>
+       <div class="category-card">
+        <i class="category-icon" data-lucide="book-open">
+        </i>
+        <h3>
+         Articles
+        </h3>
+        <p>
+         In-depth guides and research
+        </p>
+        <span class="resource-count">
+         32 articles
+        </span>
+       </div>
+      </div>
+     </section>
+     <!-- Featured Resources -->
+     <section class="featured-resources">
+      <h3>
+       Featured Resources
+      </h3>
+      <div class="resources-grid">
+       <div class="resource-card">
+        <div class="resource-image">
+         <img alt="Mindfulness Guide" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&amp;h=200&amp;fit=crop"/>
+         <div class="resource-overlay">
+          <button class="play-btn">
+           <i data-lucide="play">
+           </i>
+          </button>
+         </div>
+        </div>
+        <div class="resource-content">
+         <h4>
+          Complete Mindfulness Guide
+         </h4>
+         <p>
+          Learn the fundamentals of mindfulness meditation
+         </p>
+         <div class="resource-meta">
+          <span class="resource-type">
+           Video
+          </span>
+          <span class="resource-duration">
+           15 min
+          </span>
+         </div>
+        </div>
+       </div>
+       <div class="resource-card">
+        <div class="resource-image">
+         <img alt="Character Strengths" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=300&amp;h=200&amp;fit=crop"/>
+         <div class="resource-overlay">
+          <button class="play-btn">
+           <i data-lucide="download">
+           </i>
+          </button>
+         </div>
+        </div>
+        <div class="resource-content">
+         <h4>
+          Character Strengths Workbook
+         </h4>
+         <p>
+          Identify and develop your core strengths
+         </p>
+         <div class="resource-meta">
+          <span class="resource-type">
+           PDF
+          </span>
+          <span class="resource-duration">
+           12 pages
+          </span>
+         </div>
+        </div>
+       </div>
+       <div class="resource-card">
+        <div class="resource-image">
+         <img alt="Gratitude Practice" src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=300&amp;h=200&amp;fit=crop"/>
+         <div class="resource-overlay">
+          <button class="play-btn">
+           <i data-lucide="headphones">
+           </i>
+          </button>
+         </div>
+        </div>
+        <div class="resource-content">
+         <h4>
+          Gratitude Meditation
+         </h4>
+         <p>
+          Cultivate thankfulness and appreciation
+         </p>
+         <div class="resource-meta">
+          <span class="resource-type">
+           Audio
+          </span>
+          <span class="resource-duration">
+           8 min
+          </span>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- My Favorites -->
+     <section class="favorites">
+      <h3>
+       My Favorites
+      </h3>
+      <div class="favorites-list">
+       <div class="favorite-item">
+        <i class="favorite-icon" data-lucide="heart">
+        </i>
+        <div class="favorite-content">
+         <h4>
+          Values Clarification Exercise
+         </h4>
+         <span class="favorite-type">
+          Worksheet
+         </span>
+        </div>
+        <button class="btn btn--sm">
+         Open
+        </button>
+       </div>
+       <div class="favorite-item">
+        <i class="favorite-icon" data-lucide="heart">
+        </i>
+        <div class="favorite-content">
+         <h4>
+          Stress Management Techniques
+         </h4>
+         <span class="favorite-type">
+          Video
+         </span>
+        </div>
+        <button class="btn btn--sm">
+         Open
+        </button>
+       </div>
+      </div>
+     </section>
+    </div>
+   </div>
+   <!-- Analytics Dashboard Tab -->
+   <div class="tab-content" id="analytics">
+    <div class="section-content">
+     <div class="analytics-hero">
+      <h2>
+       Analytics Dashboard
+      </h2>
+      <p>
+       Track your progress and insights across all dimensions
+      </p>
+     </div>
+     <!-- Key Metrics -->
+     <section class="key-metrics">
+      <div class="metrics-grid">
+       <div class="metric-card">
+        <div class="metric-icon">
+         <i data-lucide="trending-up">
+         </i>
+        </div>
+        <div class="metric-content">
+         <span class="metric-value">
+          6.8
+         </span>
+         <span class="metric-label">
+          Overall Well-being
+         </span>
+         <span class="metric-change positive">
+          +0.3 this week
+         </span>
+        </div>
+       </div>
+       <div class="metric-card">
+        <div class="metric-icon">
+         <i data-lucide="calendar-check">
+         </i>
+        </div>
+        <div class="metric-content">
+         <span class="metric-value">
+          85%
+         </span>
+         <span class="metric-label">
+          Habit Completion
+         </span>
+         <span class="metric-change positive">
+          +5% this week
+         </span>
+        </div>
+       </div>
+       <div class="metric-card">
+        <div class="metric-icon">
+         <i data-lucide="target">
+         </i>
+        </div>
+        <div class="metric-content">
+         <span class="metric-value">
+          12
+         </span>
+         <span class="metric-label">
+          Goals Achieved
+         </span>
+         <span class="metric-change positive">
+          +2 this month
+         </span>
+        </div>
+       </div>
+       <div class="metric-card">
+        <div class="metric-icon">
+         <i data-lucide="flame">
+         </i>
+        </div>
+        <div class="metric-content">
+         <span class="metric-value">
+          15
+         </span>
+         <span class="metric-label">
+          Longest Streak
+         </span>
+         <span class="metric-change">
+          Journaling
+         </span>
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- Progress Charts -->
+     <section class="progress-charts">
+      <div class="chart-container">
+       <h3>
+        Journey Progress
+       </h3>
+       <div class="chart-canvas-wrap">
+        <canvas id="progressChart"></canvas>
+       </div>
+      </div>
+      <div class="chart-container">
+       <h3>
+        Mood Trends
+       </h3>
+       <div class="chart-canvas-wrap">
+        <canvas id="moodChart"></canvas>
+       </div>
+      </div>
+     </section>
+     <!-- Weekly Summary -->
+     <section class="weekly-summary">
+      <h3>
+       This Week's Highlights
+      </h3>
+      <div class="summary-grid">
+       <div class="summary-card">
+        <div class="summary-header">
+         <i class="summary-icon" data-lucide="check-circle">
+         </i>
+         <h4>
+          Achievements
+         </h4>
+        </div>
+        <ul class="summary-list">
+         <li>
+          Completed 5 gratitude entries
+         </li>
+         <li>
+          Maintained meditation streak
+         </li>
+         <li>
+          Finished Step 3 exercises
+         </li>
+        </ul>
+       </div>
+       <div class="summary-card">
+        <div class="summary-header">
+         <i class="summary-icon" data-lucide="lightbulb">
+         </i>
+         <h4>
+          Insights
+         </h4>
+        </div>
+        <ul class="summary-list">
+         <li>
+          Mood improves after exercise
+         </li>
+         <li>
+          Best focus time: 9-11 AM
+         </li>
+         <li>
+          Gratitude boosts positivity
+         </li>
+        </ul>
+       </div>
+       <div class="summary-card">
+        <div class="summary-header">
+         <i class="summary-icon" data-lucide="arrow-right">
+         </i>
+         <h4>
+          Next Steps
+         </h4>
+        </div>
+        <ul class="summary-list">
+         <li>
+          Begin Character Development
+         </li>
+         <li>
+          Increase meditation duration
+         </li>
+         <li>
+          Add social connection goals
+         </li>
+        </ul>
+       </div>
+      </div>
+     </section>
+    </div>
+   </div>
+   <!-- Community Connect Tab -->
+   <div class="tab-content" id="community">
+    <div class="section-content">
+     <div class="community-hero">
+      <h2>
+       Community Connect
+      </h2>
+      <p>
+       Join a supportive community of fellow flourishers
+      </p>
+     </div>
+     <!-- Community Stats -->
+     <section class="community-stats">
+      <div class="stats-grid">
+       <div class="stat-card">
+        <i class="stat-icon" data-lucide="users">
+        </i>
+        <span class="stat-number">
+         2,847
+        </span>
+        <span class="stat-label">
+         Active Members
+        </span>
+       </div>
+       <div class="stat-card">
+        <i class="stat-icon" data-lucide="message-circle">
+        </i>
+        <span class="stat-number">
+         156
+        </span>
+        <span class="stat-label">
+         Daily Posts
+        </span>
+       </div>
+       <div class="stat-card">
+        <i class="stat-icon" data-lucide="calendar">
+        </i>
+        <span class="stat-number">
+         24
+        </span>
+        <span class="stat-label">
+         Meetups This Month
+        </span>
+       </div>
+      </div>
+     </section>
+     <!-- Forum Categories -->
+     <section class="forum-categories">
+      <h3>
+       Discussion Forums
+      </h3>
+      <div class="categories-grid">
+       <div class="category-forum-card">
+        <div class="forum-header">
+         <i class="forum-icon" data-lucide="compass">
+         </i>
+         <h4>
+          Journey Beginners
+         </h4>
+        </div>
+        <p>
+         New to positive psychology? Start here!
+        </p>
+        <div class="forum-meta">
+         <span class="forum-posts">
+          342 posts
+         </span>
+         <span class="forum-members">
+          89 members
+         </span>
+        </div>
+       </div>
+       <div class="category-forum-card">
+        <div class="forum-header">
+         <i class="forum-icon" data-lucide="star">
+         </i>
+         <h4>
+          Success Stories
+         </h4>
+        </div>
+        <p>
+         Share your wins and celebrate progress
+        </p>
+        <div class="forum-meta">
+         <span class="forum-posts">
+          198 posts
+         </span>
+         <span class="forum-members">
+          156 members
+         </span>
+        </div>
+       </div>
+       <div class="category-forum-card">
+        <div class="forum-header">
+         <i class="forum-icon" data-lucide="help-circle">
+         </i>
+         <h4>
+          Expert Q&amp;A
+         </h4>
+        </div>
+        <p>
+         Get answers from psychology professionals
+        </p>
+        <div class="forum-meta">
+         <span class="forum-posts">
+          87 posts
+         </span>
+         <span class="forum-members">
+          234 members
+         </span>
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- Recent Discussions -->
+     <section class="recent-discussions">
+      <h3>
+       Recent Discussions
+      </h3>
+      <div class="discussions-list">
+       <div class="discussion-item">
+        <div class="discussion-avatar">
+         <img alt="User" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&amp;h=40&amp;fit=crop&amp;crop=face"/>
+        </div>
+        <div class="discussion-content">
+         <h4>
+          How to maintain gratitude practice during tough times?
+         </h4>
+         <p>
+          I've been struggling to keep up with my gratitude journal lately...
+         </p>
+         <div class="discussion-meta">
+          <span class="discussion-author">
+           Sarah M.
+          </span>
+          <span class="discussion-time">
+           2 hours ago
+          </span>
+          <span class="discussion-replies">
+           12 replies
+          </span>
+         </div>
+        </div>
+        <button class="btn btn--sm">
+         Join Discussion
+        </button>
+       </div>
+       <div class="discussion-item">
+        <div class="discussion-avatar">
+         <img alt="User" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&amp;h=40&amp;fit=crop&amp;crop=face"/>
+        </div>
+        <div class="discussion-content">
+         <h4>
+          Celebrating my 30-day meditation streak!
+         </h4>
+         <p>
+          Just wanted to share this milestone with everyone who inspired me...
+         </p>
+         <div class="discussion-meta">
+          <span class="discussion-author">
+           Mike R.
+          </span>
+          <span class="discussion-time">
+           4 hours ago
+          </span>
+          <span class="discussion-replies">
+           8 replies
+          </span>
+         </div>
+        </div>
+        <button class="btn btn--sm">
+         Join Discussion
+        </button>
+       </div>
+      </div>
+     </section>
+     <!-- Upcoming Events -->
+     <section class="upcoming-events">
+      <h3>
+       Upcoming Events
+      </h3>
+      <div class="events-list">
+       <div class="event-item">
+        <div class="event-date">
+         <span class="event-month">
+          Jul
+         </span>
+         <span class="event-day">
+          15
+         </span>
+        </div>
+        <div class="event-content">
+         <h4>
+          Virtual Meditation Group
+         </h4>
+         <p>
+          Join us for a guided group meditation session
+         </p>
+         <div class="event-meta">
+          <span class="event-time">
+           7:00 PM EST
+          </span>
+          <span class="event-attendees">
+           23 attending
+          </span>
+         </div>
+        </div>
+        <button class="btn btn--primary">
+         Join Event
+        </button>
+       </div>
+       <div class="event-item">
+        <div class="event-date">
+         <span class="event-month">
+          Jul
+         </span>
+         <span class="event-day">
+          22
+         </span>
+        </div>
+        <div class="event-content">
+         <h4>
+          Character Strengths Workshop
+         </h4>
+         <p>
+          Discover and develop your unique strengths
+         </p>
+         <div class="event-meta">
+          <span class="event-time">
+           2:00 PM EST
+          </span>
+          <span class="event-attendees">
+           15 attending
+          </span>
+         </div>
+        </div>
+        <button class="btn btn--primary">
+         Join Event
+        </button>
+       </div>
+      </div>
+     </section>
+    </div>
+   </div>
+  </main>
+  </div>
+  <!-- Modal for Step Details -->
+  <div class="modal" id="stepModal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h3 id="modalTitle">
+      Step Details
+     </h3>
+     <button class="modal-close" id="modalClose">
+      <i data-lucide="x">
+      </i>
+     </button>
+    </div>
+    <div class="modal-body" id="modalBody">
+     <!-- Content will be populated by JavaScript -->
+    </div>
+   </div>
+  </div>
+  <script>
+// Application Data
+const journeyData = {
+  "journey_steps": [
+    {"step": 1, "part": "Personal Effectiveness", "title": "A Reality Check—Your Unique Starting Point", "theme": "Self-Awareness Foundation", "completed": true, "current": false},
+    {"step": 2, "part": "Personal Effectiveness", "title": "Making Positive Choices—Living by Your Rules", "theme": "Decision-Making", "completed": true, "current": false},
+    {"step": 3, "part": "Personal Effectiveness", "title": "Learning to Accept Yourself—Embracing Your Polymath Nature", "theme": "Self-Compassion", "completed": true, "current": true},
+    {"step": 4, "part": "Personal Effectiveness", "title": "Building Strength Through Character Development", "theme": "Resilience & Virtues", "completed": false, "current": false},
+    {"step": 5, "part": "Personal Effectiveness", "title": "Understanding Stress—Navigating Complexity", "theme": "Stress Management", "completed": false, "current": false},
+    {"step": 6, "part": "Personal Effectiveness", "title": "Developing Holistic Wellness Skills", "theme": "Mind-Body-Spirit Alignment", "completed": false, "current": false},
+    {"step": 7, "part": "Personal Effectiveness", "title": "Experiencing Positive Emotions—Fueling Your Vision", "theme": "Gratitude & Joy", "completed": false, "current": false},
+    {"step": 8, "part": "Personal Effectiveness", "title": "Creating a Meaningful Vision—Your Blueprint for Impact", "theme": "Purpose Setting", "completed": false, "current": false},
+    {"step": 9, "part": "Interpersonal Effectiveness", "title": "Developing Emotional Intelligence—Connecting Authentically", "theme": "Emotional Intelligence", "completed": false, "current": false},
+    {"step": 10, "part": "Interpersonal Effectiveness", "title": "Building Effective Communication Skills", "theme": "Communication Skills", "completed": false, "current": false},
+    {"step": 11, "part": "Interpersonal Effectiveness", "title": "Establishing Positive Relationships", "theme": "Relationship Building", "completed": false, "current": false},
+    {"step": 12, "part": "Occupational Effectiveness", "title": "Navigating the Professional World—Your Ideal Work Environment", "theme": "Workplace Culture", "completed": false, "current": false},
+    {"step": 13, "part": "Occupational Effectiveness", "title": "Designing Your Career—Aligning Passion with Purpose", "theme": "Career Design", "completed": false, "current": false},
+    {"step": 14, "part": "Occupational Effectiveness", "title": "Applying Positive Psychology at Work", "theme": "Workplace Well-being", "completed": false, "current": false}
+  ],
+  "perma_scores": {"positive_emotions": 7, "engagement": 8, "relationships": 6, "meaning": 7, "accomplishment": 6},
+  "daily_habits": [
+    {"name": "Morning Gratitude", "streak": 12, "completed_today": true, "icon": "heart"},
+    {"name": "Mindful Meditation", "streak": 8, "completed_today": true, "icon": "brain"},
+    {"name": "Exercise", "streak": 5, "completed_today": false, "icon": "activity"},
+    {"name": "Journaling", "streak": 15, "completed_today": true, "icon": "book"},
+    {"name": "Connect with Others", "streak": 3, "completed_today": false, "icon": "users"}
+  ],
+  "sample_exercises": [
+    {"name": "Three Good Things", "category": "gratitude", "duration": "5 min", "difficulty": "Easy", "description": "Write down three things that went well today", "icon": "heart"},
+    {"name": "Strengths Identification", "category": "character", "duration": "15 min", "difficulty": "Medium", "description": "Identify your top 5 character strengths", "icon": "shield"},
+    {"name": "Values Clarification", "category": "purpose", "duration": "20 min", "difficulty": "Medium", "description": "Explore and define your core values", "icon": "compass"},
+    {"name": "Loving-Kindness Meditation", "category": "relationships", "duration": "10 min", "difficulty": "Easy", "description": "Practice compassion for self and others", "icon": "heart"},
+    {"name": "Mindful Breathing", "category": "gratitude", "duration": "8 min", "difficulty": "Easy", "description": "Focus on breath awareness and present moment", "icon": "wind"},
+    {"name": "Goal Setting Workshop", "category": "purpose", "duration": "30 min", "difficulty": "Medium", "description": "Create SMART goals for personal growth", "icon": "target"}
+  ]
+};
+
+// DOM Elements
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+const themeToggle = document.getElementById('themeToggle');
+const modal = document.getElementById('stepModal');
+const modalClose = document.getElementById('modalClose');
+const stepsGrid = document.getElementById('stepsGrid');
+const habitsGrid = document.getElementById('habitsGrid');
+const exercisesGrid = document.getElementById('exercisesGrid');
+
+// Initialize app
+document.addEventListener('DOMContentLoaded', function() {
+    initializeApp();
+    setupEventListeners();
+    populateContent();
+    createCharts();
+    lucide.createIcons();
+});
+
+function initializeApp() {
+    // Set default theme to dark mode
+    document.body.classList.add('dark-mode');
+    updateThemeIcon();
+    
+    // Initialize service worker for PWA
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').catch(console.error);
+    }
+}
+
+function setupEventListeners() {
+    // Tab navigation
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => switchTab(button.dataset.tab));
+    });
+
+    // Theme toggle
+    themeToggle.addEventListener('click', toggleTheme);
+
+    // Modal
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // Filter buttons
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => filterExercises(button.dataset.filter));
+    });
+
+    // Energy buttons
+    const energyButtons = document.querySelectorAll('.energy-btn');
+    energyButtons.forEach(button => {
+        button.addEventListener('click', () => selectEnergyLevel(button));
+    });
+
+    // Star ratings
+    const stars = document.querySelectorAll('.star');
+    stars.forEach(star => {
+        star.addEventListener('click', () => setStarRating(star));
+    });
+
+    // Goal form
+    const goalForm = document.querySelector('.goal-form');
+    if (goalForm) {
+        const goalInput = goalForm.querySelector('.form-control');
+        const addGoalBtn = goalForm.querySelector('.btn');
+        
+        addGoalBtn.addEventListener('click', () => addGoal(goalInput.value));
+        goalInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addGoal(goalInput.value);
+        });
+    }
+
+    // Clickable cards
+    setupClickableCards();
+}
+
+function setupClickableCards() {
+    // Exercise cards
+    document.querySelectorAll('.exercise-card').forEach(card => {
+        const startBtn = card.querySelector('.btn--primary');
+        const saveBtn = card.querySelector('.btn--secondary');
+        
+        if (startBtn) {
+            startBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const exerciseName = card.querySelector('h4').textContent;
+                startExercise(exerciseName);
+            });
+        }
+        
+        if (saveBtn) {
+            saveBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const exerciseName = card.querySelector('h4').textContent;
+                saveExercise(exerciseName);
+            });
+        }
+    });
+
+    // Recommendation cards
+    document.querySelectorAll('.recommendation-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const title = card.querySelector('h4').textContent;
+            startRecommendation(title);
+        });
+    });
+
+    // Category cards
+    document.querySelectorAll('.category-card, .category-forum-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const title = card.querySelector('h3, h4').textContent;
+            openCategory(title);
+        });
+    });
+
+    // Resource cards
+    document.querySelectorAll('.resource-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const title = card.querySelector('h4').textContent;
+            openResource(title);
+        });
+    });
+
+    // Play buttons
+    document.querySelectorAll('.play-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const card = btn.closest('.resource-card');
+            const title = card.querySelector('h4').textContent;
+            playResource(title);
+        });
+    });
+
+    // Discussion and event items
+    document.querySelectorAll('.discussion-item, .event-item').forEach(item => {
+        const btn = item.querySelector('.btn');
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const title = item.querySelector('h4').textContent;
+                joinDiscussion(title);
+            });
+        }
+    });
+}
+
+function switchTab(tabName) {
+    // Update active tab button
+    tabButtons.forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+
+    // Update active tab content
+    tabContents.forEach(content => content.classList.remove('active'));
+    document.getElementById(tabName).classList.add('active');
+
+    // Trigger animations
+    animateTabContent(tabName);
+}
+
+function animateTabContent(tabName) {
+    const content = document.getElementById(tabName);
+    content.style.opacity = '0';
+    content.style.transform = 'translateY(20px)';
+    
+    setTimeout(() => {
+        content.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        content.style.opacity = '1';
+        content.style.transform = 'translateY(0)';
+    }, 50);
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    updateThemeIcon();
+    showToast('Theme updated successfully!');
+}
+
+function updateThemeIcon() {
+    const icon = themeToggle.querySelector('i');
+    if (document.body.classList.contains('dark-mode')) {
+        icon.setAttribute('data-lucide', 'sun');
+    } else {
+        icon.setAttribute('data-lucide', 'moon');
+    }
+    lucide.createIcons();
+}
+
+function populateContent() {
+    populateJourneySteps();
+    populateHabits();
+    populateExercises();
+}
+
+function populateJourneySteps() {
+    if (!stepsGrid) return;
+    
+    stepsGrid.innerHTML = '';
+    
+    journeyData.journey_steps.forEach(step => {
+        const stepCard = createStepCard(step);
+        stepsGrid.appendChild(stepCard);
+    });
+}
+
+function createStepCard(step) {
+    const card = document.createElement('div');
+    card.className = `step-card ${step.completed ? 'completed' : ''} ${step.current ? 'current' : ''}`;
+    card.addEventListener('click', () => openStepModal(step));
+    
+    const statusClass = step.completed ? 'completed' : step.current ? 'current' : 'upcoming';
+    const statusText = step.completed ? 'Completed' : step.current ? 'Current' : 'Upcoming';
+    
+    card.innerHTML = `
+        <div class="step-header">
+            <div class="step-number">${step.step}</div>
+            <div class="step-status ${statusClass}">${statusText}</div>
+        </div>
+        <h4 class="step-title">${step.title}</h4>
+        <p class="step-theme">${step.theme}</p>
+        <div class="step-part">${step.part}</div>
+    `;
+    
+    return card;
+}
+
+function populateHabits() {
+    if (!habitsGrid) return;
+    
+    habitsGrid.innerHTML = '';
+    
+    journeyData.daily_habits.forEach(habit => {
+        const habitCard = createHabitCard(habit);
+        habitsGrid.appendChild(habitCard);
+    });
+}
+
+function createHabitCard(habit) {
+    const card = document.createElement('div');
+    card.className = `habit-card ${habit.completed_today ? 'completed' : ''}`;
+    
+    card.innerHTML = `
+        <div class="habit-icon">
+            <i data-lucide="${habit.icon}"></i>
+        </div>
+        <h4 class="habit-name">${habit.name}</h4>
+        <p class="habit-streak">${habit.streak} day streak</p>
+        <input type="checkbox" class="habit-checkbox" ${habit.completed_today ? 'checked' : ''}>
+    `;
+    
+    const checkbox = card.querySelector('.habit-checkbox');
+    checkbox.addEventListener('change', () => toggleHabit(habit, checkbox.checked));
+    
+    return card;
+}
+
+function populateExercises() {
+    if (!exercisesGrid) return;
+    
+    exercisesGrid.innerHTML = '';
+    
+    journeyData.sample_exercises.forEach(exercise => {
+        const exerciseCard = createExerciseCard(exercise);
+        exercisesGrid.appendChild(exerciseCard);
+    });
+}
+
+function createExerciseCard(exercise) {
+    const card = document.createElement('div');
+    card.className = 'exercise-card';
+    card.dataset.category = exercise.category;
+    
+    card.innerHTML = `
+        <div class="exercise-header">
+            <i data-lucide="${exercise.icon}" class="exercise-icon"></i>
+            <div class="exercise-meta">
+                <h4>${exercise.name}</h4>
+                <span class="exercise-category">${exercise.category}</span>
+            </div>
+            <span class="exercise-duration">${exercise.duration}</span>
+        </div>
+        <p>${exercise.description}</p>
+        <div class="exercise-actions">
+            <button class="btn btn--primary">
+                <i data-lucide="play"></i>
+                Start Exercise
+            </button>
+            <button class="btn btn--secondary">
+                <i data-lucide="bookmark"></i>
+                Save for Later
+            </button>
+        </div>
+    `;
+    
+    return card;
+}
+
+function openStepModal(step) {
+    const modal = document.getElementById('stepModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    
+    modalTitle.textContent = `Step ${step.step}: ${step.title}`;
+    modalBody.innerHTML = `
+        <div class="modal-step-info">
+            <p><strong>Theme:</strong> ${step.theme}</p>
+            <p><strong>Part:</strong> ${step.part}</p>
+            <p><strong>Status:</strong> ${step.completed ? 'Completed' : step.current ? 'Current' : 'Upcoming'}</p>
+            <hr style="margin: 1rem 0; border: 1px solid var(--color-border);">
+            <p>This step focuses on ${step.theme.toLowerCase()} as part of your ${step.part.toLowerCase()} journey.</p>
+            <div class="modal-actions" style="margin-top: 1.5rem; display: flex; gap: 0.75rem;">
+                <button class="btn btn--primary" onclick="startStep(${step.step})">
+                    <i data-lucide="play"></i>
+                    ${step.completed ? 'Review Step' : 'Start Step'}
+                </button>
+                <button class="btn btn--secondary" onclick="closeModal()">
+                    <i data-lucide="x"></i>
+                    Close
+                </button>
+            </div>
+        </div>
+    `;
+    
+    modal.classList.add('active');
+    lucide.createIcons();
+}
+
+function closeModal() {
+    const modal = document.getElementById('stepModal');
+    modal.classList.remove('active');
+}
+
+function startStep(stepNumber) {
+    showToast(`Starting Step ${stepNumber}...`);
+    closeModal();
+    // Here you would navigate to the step content
+}
+
+function toggleHabit(habit, completed) {
+    habit.completed_today = completed;
+    if (completed) {
+        habit.streak++;
+        showToast(`${habit.name} completed! 🎉`);
+    } else {
+        showToast(`${habit.name} unchecked`);
+    }
+}
+
+function filterExercises(filter) {
+    // Update active filter button
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+    
+    // Filter exercise cards
+    const exerciseCards = document.querySelectorAll('.exercise-card');
+    exerciseCards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeIn 0.3s ease';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+function selectEnergyLevel(button) {
+    document.querySelectorAll('.energy-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    button.classList.add('active');
+    showToast(`Energy level set to ${button.textContent}`);
+}
+
+function setStarRating(clickedStar) {
+    const stars = document.querySelectorAll('.star');
+    const rating = Array.from(stars).indexOf(clickedStar) + 1;
+    
+    stars.forEach((star, index) => {
+        if (index < rating) {
+            star.classList.add('active');
+        } else {
+            star.classList.remove('active');
+        }
+    });
+    
+    showToast(`Focus score set to ${rating}/5`);
+}
+
+function addGoal(goalText) {
+    if (!goalText.trim()) return;
+    
+    const goalsList = document.querySelector('.goals-list');
+    const goalItem = document.createElement('div');
+    goalItem.className = 'goal-item';
+    
+    goalItem.innerHTML = `
+        <div class="goal-content">
+            <input type="checkbox" class="goal-checkbox">
+            <span class="goal-text">${goalText}</span>
+        </div>
+        <div class="goal-progress">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <span class="progress-text">0/1</span>
+        </div>
+    `;
+    
+    goalsList.appendChild(goalItem);
+    document.querySelector('.goal-form .form-control').value = '';
+    showToast('Goal added successfully!');
+}
+
+function startExercise(exerciseName) {
+    showToast(`Starting ${exerciseName}...`);
+    // Here you would navigate to the exercise
+}
+
+function saveExercise(exerciseName) {
+    showToast(`${exerciseName} saved to favorites!`);
+}
+
+function startRecommendation(title) {
+    showToast(`Starting ${title}...`);
+}
+
+function openCategory(title) {
+    showToast(`Opening ${title}...`);
+}
+
+function openResource(title) {
+    showToast(`Opening ${title}...`);
+}
+
+function playResource(title) {
+    showToast(`Playing ${title}...`);
+}
+
+function joinDiscussion(title) {
+    showToast(`Joining ${title}...`);
+}
+
+function showToast(message) {
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: var(--color-success);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        z-index: 2000;
+        animation: slideIn 0.3s ease;
+        box-shadow: var(--shadow-lg);
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Remove toast after 3 seconds
+    setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => {
+            document.body.removeChild(toast);
+        }, 300);
+    }, 3000);
+}
+
+function createCharts() {
+    createProgressChart();
+    createMoodChart();
+}
+
+function createProgressChart() {
+    const ctx = document.getElementById('progressChart');
+    if (!ctx) return;
+    
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+            datasets: [{
+                label: 'Journey Progress',
+                data: [10, 25, 35, 50, 65, 75],
+                borderColor: 'rgba(33, 128, 141, 1)',
+                backgroundColor: 'rgba(33, 128, 141, 0.12)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%';
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+function createMoodChart() {
+    const ctx = document.getElementById('moodChart');
+    if (!ctx) return;
+    
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+                label: 'Mood Score',
+                data: [6, 7, 8, 6, 9, 8, 7],
+                borderColor: 'rgba(168, 75, 47, 1)',
+                backgroundColor: 'rgba(168, 75, 47, 0.12)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 10,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Add CSS animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+    
+    .toast {
+        animation: slideIn 0.3s ease;
+    }
+    
+    .step-card:hover {
+        animation: pulse 0.3s ease;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.02); }
+        100% { transform: scale(1); }
+    }
+    
+    .habit-card.completed .habit-icon {
+        animation: bounce 0.5s ease;
+    }
+    
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+    }
+`;
+document.head.appendChild(style);
+
+// Notification handling
+document.getElementById('notificationBtn').addEventListener('click', () => {
+    showToast('Notifications: You have 3 new updates!');
+});
+
+// Search functionality
+const searchInput = document.querySelector('.search-input');
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        if (query.length > 2) {
+            showToast(`Searching for "${query}"...`);
+        }
+    });
+}
+
+// Slider functionality
+const sliders = document.querySelectorAll('.slider');
+sliders.forEach(slider => {
+    slider.addEventListener('input', (e) => {
+        const value = e.target.value;
+        showToast(`Mood level set to ${value}/10`);
+    });
+});
+
+// Make assessment buttons functional
+document.querySelectorAll('.btn').forEach(btn => {
+    if (btn.textContent.includes('Retake Assessment')) {
+        btn.addEventListener('click', () => {
+            showToast('Starting PERMA assessment...');
+        });
+    }
+    if (btn.textContent.includes('Download Report')) {
+        btn.addEventListener('click', () => {
+            showToast('Downloading assessment report...');
+        });
+    }
+    if (btn.textContent.includes('Save')) {
+        btn.addEventListener('click', () => {
+            showToast('Assessment saved!');
+        });
+    }
+    if (btn.textContent.includes('Join Event')) {
+        btn.addEventListener('click', () => {
+            const eventTitle = btn.closest('.event-item').querySelector('h4').textContent;
+            showToast(`Joining ${eventTitle}...`);
+        });
+    }
+    if (btn.textContent.includes('Join Discussion')) {
+        btn.addEventListener('click', () => {
+            const discussionTitle = btn.closest('.discussion-item').querySelector('h4').textContent;
+            showToast(`Joining discussion: ${discussionTitle}...`);
+        });
+    }
+});
+
+// Add keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+    }
+    
+    // Tab navigation with arrow keys
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        const activeTab = document.querySelector('.tab-btn.active');
+        const allTabs = Array.from(document.querySelectorAll('.tab-btn'));
+        const currentIndex = allTabs.indexOf(activeTab);
+        
+        let newIndex;
+        if (e.key === 'ArrowLeft') {
+            newIndex = currentIndex > 0 ? currentIndex - 1 : allTabs.length - 1;
+        } else {
+            newIndex = currentIndex < allTabs.length - 1 ? currentIndex + 1 : 0;
+        }
+        
+        allTabs[newIndex].click();
+    }
+});
+
+// Initialize tooltips and interactive elements
+setTimeout(() => {
+    lucide.createIcons();
+    
+    // Add hover effects to metric cards
+    document.querySelectorAll('.metric-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-2px)';
+            card.style.boxShadow = 'var(--shadow-lg)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = '';
+        });
+    });
+    
+    // Add click animations to all buttons
+    document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                btn.style.transform = 'scale(1)';
+            }, 100);
+        });
+    });
+}, 500);
+
+// PWA install prompt
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    
+    // Show install button
+    const installBtn = document.createElement('button');
+    installBtn.textContent = 'Install App';
+    installBtn.className = 'btn btn--primary';
+    installBtn.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000;
+    `;
+    
+    installBtn.addEventListener('click', () => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                showToast('App installed successfully!');
+            }
+            deferredPrompt = null;
+            document.body.removeChild(installBtn);
+        });
+    });
+    
+    document.body.appendChild(installBtn);
+});
+
+// Add loading states
+function showLoading(element) {
+    element.style.opacity = '0.5';
+    element.style.pointerEvents = 'none';
+}
+
+function hideLoading(element) {
+    element.style.opacity = '1';
+    element.style.pointerEvents = 'auto';
+}
+
+// Simulate API calls with loading states
+function simulateApiCall(action) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, 1000 + Math.random() * 1000);
+    });
+}
+</script>
+  <script>
+   /* Unified color-mode toggle — shared standard across all apps */
+   (function () {
+     function preferred() {
+       try { var s = localStorage.getItem('colorScheme'); if (s === 'dark' || s === 'light') return s; } catch (e) {}
+       return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+     }
+     function current() { return document.documentElement.getAttribute('data-color-scheme') || preferred(); }
+     function swapIcon(btn, isDark) {
+       var lu = btn.querySelector('i[data-lucide="moon"], i[data-lucide="sun"], svg.lucide-moon, svg.lucide-sun');
+       if (lu) {
+         var ni = document.createElement('i');
+         ni.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+         if (lu.tagName.toLowerCase() === 'i' && lu.className) ni.className = lu.className;
+         lu.replaceWith(ni);
+         return;
+       }
+       var fa = btn.querySelector('i.fa-moon, i.fa-sun');
+       if (fa) { fa.classList.remove('fa-moon', 'fa-sun'); fa.classList.add(isDark ? 'fa-sun' : 'fa-moon'); }
+     }
+     function refreshIcons(theme) {
+       var isDark = theme === 'dark';
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (b) { swapIcon(b, isDark); });
+       if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
+     }
+     function apply(theme) {
+       document.documentElement.setAttribute('data-color-scheme', theme);
+       try { localStorage.setItem('colorScheme', theme); } catch (e) {}
+       refreshIcons(theme);
+     }
+     window.toggleColorScheme = function () { apply(current() === 'dark' ? 'light' : 'dark'); };
+     function wire() {
+       var t = preferred();
+       document.documentElement.setAttribute('data-color-scheme', t);
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+         var clone = btn.cloneNode(true);
+         clone.removeAttribute('onclick');
+         if (btn.parentNode) btn.parentNode.replaceChild(clone, btn);
+         clone.addEventListener('click', function (e) { e.preventDefault(); window.toggleColorScheme(); });
+       });
+       refreshIcons(t);
+     }
+     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', wire); }
+     else { wire(); }
+   })();
+  </script>
+   <script>
+   /* Flourishing — persistence + editable journey steps & habits */
+   (function () {
+     if (typeof journeyData === 'undefined') return;
+     var KEY = 'flourishingState_v1';
+     function read() { try { var s = localStorage.getItem(KEY); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
+     function snap() { return { journey_steps: journeyData.journey_steps, daily_habits: journeyData.daily_habits, perma_scores: journeyData.perma_scores }; }
+     var s = read();
+     if (s) { if (Array.isArray(s.journey_steps)) journeyData.journey_steps = s.journey_steps; if (Array.isArray(s.daily_habits)) journeyData.daily_habits = s.daily_habits; if (s.perma_scores) journeyData.perma_scores = s.perma_scores; }
+     else { try { localStorage.setItem(KEY, JSON.stringify(snap())); } catch (e) {} }
+     var last = ''; try { last = localStorage.getItem(KEY) || ''; } catch (e) {}
+     function save() { try { var j = JSON.stringify(snap()); if (j !== last) { localStorage.setItem(KEY, j); last = j; } } catch (e) {} }
+     setInterval(save, 1200); window.addEventListener('beforeunload', save);
+     document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') save(); });
+
+     function icons() { if (window.lucide && lucide.createIcons) lucide.createIcons(); }
+     function esc(v) { return String(v == null ? '' : v).replace(/"/g, '&quot;'); }
+     function fld(l, inner) { return '<div style="margin-bottom:14px"><label style="display:block;font-weight:600;font-size:13px;margin-bottom:6px">' + l + '</label>' + inner + '</div>'; }
+     var IN = 'width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:8px;background:var(--color-background);color:var(--color-text);font:inherit;font-size:14px';
+
+     window.openStepModal = function (step) {
+       var modal = document.getElementById('stepModal');
+       var modalTitle = document.getElementById('modalTitle');
+       var modalBody = document.getElementById('modalBody');
+       var status = step.completed ? 'completed' : step.current ? 'current' : 'upcoming';
+       modalTitle.textContent = 'Edit Step ' + step.step;
+       modalBody.innerHTML = '<form id="stepEdit">'
+         + fld('Title', '<input name="title" value="' + esc(step.title) + '" style="' + IN + '" required>')
+         + '<div style="display:flex;gap:12px">' + fld('Theme', '<input name="theme" value="' + esc(step.theme) + '" style="' + IN + '">') + fld('Part', '<input name="part" value="' + esc(step.part) + '" style="' + IN + '">') + '</div>'
+         + fld('Status', '<select name="status" style="' + IN + '">' + [['upcoming', 'Upcoming'], ['current', 'Current'], ['completed', 'Completed']].map(function (o) { return '<option value="' + o[0] + '"' + (o[0] === status ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select>')
+         + '<div style="display:flex;gap:10px;justify-content:flex-end;margin-top:18px"><button type="button" class="btn btn--secondary" onclick="closeModal()">Cancel</button><button type="submit" class="btn btn--primary">Save changes</button></div></form>';
+       modal.classList.add('active'); icons();
+       function fv(n) { var e = modalBody.querySelector('[name="' + n + '"]'); return e ? e.value : ''; }
+       modalBody.querySelector('#stepEdit').addEventListener('submit', function (e) {
+         e.preventDefault();
+         step.title = fv('title').trim() || step.title; step.theme = fv('theme').trim(); step.part = fv('part').trim();
+         var st = fv('status');
+         if (st === 'current') { journeyData.journey_steps.forEach(function (x) { x.current = false; }); step.current = true; step.completed = false; }
+         else if (st === 'completed') { step.completed = true; step.current = false; }
+         else { step.completed = false; step.current = false; }
+         try { closeModal(); } catch (e2) { modal.classList.remove('active'); }
+         try { populateJourneySteps(); } catch (e3) {} icons(); save();
+       });
+     };
+
+     // habit checkboxes persist
+     function wireHabits() {
+       var grid = document.getElementById('habitsGrid'); if (!grid) return;
+       grid.addEventListener('change', function (e) {
+         var cb = e.target.closest('.habit-checkbox'); if (!cb) return;
+         var card = cb.closest('.habit-card'); var nameEl = card && card.querySelector('.habit-name');
+         var name = nameEl ? nameEl.textContent.trim() : '';
+         var h = (journeyData.daily_habits || []).filter(function (x) { return x.name === name; })[0];
+         if (h) { h.completed_today = cb.checked; save(); }
+       });
+     }
+     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(wireHabits, 80); }); else setTimeout(wireHabits, 80);
+   })();
+  </script>
+  <script>
+   /* ProjectSuite Enhance — motion, counters, ripple, cursor, chart polish (shared) */
+   (function () {
+     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+     var docEl = document.documentElement;
+
+     if (window.Chart && Chart.defaults) {
+       try {
+         var cs = getComputedStyle(docEl);
+         var txt = (cs.getPropertyValue('--color-text-secondary') || '').trim() || '#8a8f98';
+         var grid = (cs.getPropertyValue('--color-border') || '').trim() || 'rgba(140,140,140,.15)';
+         Chart.defaults.font.family = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+         Chart.defaults.font.size = 12;
+         Chart.defaults.color = txt;
+         Chart.defaults.borderColor = grid;
+         var P = Chart.defaults.plugins || {};
+         if (P.legend) { P.legend.labels = P.legend.labels || {}; P.legend.labels.usePointStyle = true; P.legend.labels.boxWidth = 8; P.legend.labels.padding = 16; }
+         if (P.tooltip) { P.tooltip.usePointStyle = true; P.tooltip.padding = 10; P.tooltip.cornerRadius = 8; P.tooltip.boxPadding = 4; P.tooltip.titleFont = { weight: '600' }; }
+         var E = Chart.defaults.elements || {};
+         if (E.line) { E.line.tension = 0.35; E.line.borderWidth = 2; }
+         if (E.point) { E.point.radius = 0; E.point.hoverRadius = 5; E.point.hitRadius = 12; }
+         if (E.bar) { E.bar.borderRadius = 6; E.bar.borderSkipped = false; }
+         if (E.arc) { E.arc.borderWidth = 2; }
+         (function () {
+           function hexRgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(function(x){return x+x;}).join('');var n=parseInt(h.slice(0,6),16);return [(n>>16)&255,(n>>8)&255,n&255];}
+           function toRgb(c){var m;c=(''+c).trim();if(m=c.match(/^#([0-9a-fA-F]{3,8})$/))return hexRgb(m[1]);if(m=c.match(/rgba?\(([^)]+)\)/i)){var p=m[1].split(',').map(parseFloat);return [p[0],p[1],p[2]];}return null;}
+           function reddish(rgb){if(!rgb)return false;var r=rgb[0],g=rgb[1],b=rgb[2];var mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn;if(mx<70||d<28)return false;var h;if(mx===r)h=((g-b)/d)%6;else if(mx===g)h=(b-r)/d+2;else h=(r-g)/d+4;h*=60;if(h<0)h+=360;var s=d/mx;return s>0.32&&(h>=338||h<=14);}
+           function remap(c){if(typeof c!=='string')return c;var rgb=toRgb(c);if(!rgb||rgb.some(isNaN))return c;if(reddish(rgb)){var a=c.match(/rgba?\([^)]*,\s*([\d.]+)\s*\)/i);return a?'rgba(226,101,42,'+a[1]+')':'#e2652a';}return c;}
+           var keys=['backgroundColor','borderColor','pointBackgroundColor','pointBorderColor','hoverBackgroundColor','hoverBorderColor','pointHoverBackgroundColor'];
+           var plugin={id:'phRecolor',beforeInit:function(chart){(chart.data.datasets||[]).forEach(function(ds){keys.forEach(function(k){if(Array.isArray(ds[k]))ds[k]=ds[k].map(remap);else if(ds[k]!=null&&typeof ds[k]==='string')ds[k]=remap(ds[k]);});});}};
+           if (Chart.register) Chart.register(plugin); else if (Chart.plugins && Chart.plugins.register) Chart.plugins.register(plugin);
+         })();
+       } catch (e) {}
+     }
+
+     function countUp(el) {
+       if (el.children.length) return;
+       var raw = el.textContent.trim();
+       var m = raw.match(/^([^\d-]*)(-?[\d,]+(?:\.\d+)?)(.*)$/);
+       if (!m) return;
+       var prefix = m[1], numStr = m[2], suffix = m[3];
+       var decimals = (numStr.split('.')[1] || '').length;
+       var useComma = numStr.indexOf(',') > -1;
+       var target = parseFloat(numStr.replace(/,/g, ''));
+       if (isNaN(target)) return;
+       var dur = 1200, t0 = performance.now();
+       function fmt(n) {
+         var s = decimals ? n.toFixed(decimals) : String(Math.round(n));
+         if (useComma) s = Number(s).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+         return prefix + s + suffix;
+       }
+       function step(now) {
+         var p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 4);
+         el.textContent = fmt(target * e);
+         if (p < 1) requestAnimationFrame(step); else el.textContent = raw;
+       }
+       requestAnimationFrame(step);
+     }
+
+     function start() {
+       var IO = window.IntersectionObserver;
+       if (!reduce && IO) {
+         docEl.classList.add('ph-anim');
+         var revealSel = '.card, .kpi-card, .widget, .chart-container, .stat-card, .metric-card, .dashboard-card, .stat-display, .info-card, .summary-card, .chart-canvas-wrap';
+         var els = [];
+         document.querySelectorAll(revealSel).forEach(function (el) {
+           if (el.closest('.nav-bar')) return;
+           if (el.querySelector('.card, .kpi-card, .widget')) return;
+           el.classList.add('ph-reveal', 'ph-card');
+           els.push(el);
+         });
+         var io = new IO(function (entries) {
+           entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in-view'); io.unobserve(en.target); } });
+         }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+         els.forEach(function (el) { io.observe(el); });
+         setTimeout(function () { els.forEach(function (el) { el.classList.add('in-view'); }); }, 1600);
+       }
+
+       if (!reduce && IO) {
+         var numSel = '.kpi-value, .stat-number, .widget-value, .stat-value, .metric-value, .kpi-card .value, .stat__value, .metric__value';
+         var co = new IO(function (entries) {
+           entries.forEach(function (en) { if (en.isIntersecting) { countUp(en.target); co.unobserve(en.target); } });
+         }, { threshold: .6 });
+         document.querySelectorAll(numSel).forEach(function (el) {
+           if (el.closest('.nav-bar') || el.children.length) return;
+           if (/\d/.test(el.textContent) && /^[^\d-]*-?[\d,]+(?:\.\d+)?[^\d]*$/.test(el.textContent.trim())) co.observe(el);
+         });
+       }
+
+       document.addEventListener('click', function (e) {
+         if (reduce) return;
+         var btn = e.target.closest('.btn, button');
+         if (!btn || btn.closest('.nav-bar')) return;
+         var r = btn.getBoundingClientRect();
+         if (getComputedStyle(btn).position === 'static') btn.style.position = 'relative';
+         if (getComputedStyle(btn).overflow !== 'hidden') btn.style.overflow = 'hidden';
+         var s = document.createElement('span');
+         s.className = 'ph-ripple';
+         var size = Math.max(r.width, r.height);
+         s.style.width = s.style.height = size + 'px';
+         s.style.left = (e.clientX - r.left) + 'px';
+         s.style.top = (e.clientY - r.top) + 'px';
+         btn.appendChild(s);
+         setTimeout(function () { s.remove(); }, 640);
+       });
+
+       if (!reduce && window.matchMedia('(pointer:fine)').matches && window.innerWidth > 900) {
+         var ring = document.createElement('div');
+         ring.className = 'ph-cursor';
+         document.body.appendChild(ring);
+         var x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y;
+         document.addEventListener('mousemove', function (e) { x = e.clientX; y = e.clientY; });
+         (function loop() { rx += (x - rx) * .18; ry += (y - ry) * .18; ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)'; requestAnimationFrame(loop); })();
+         var hoverSel = 'a,button,.btn,.nav-tab,.tab-btn,.tab-item,.menu-item,.card,[role="button"],input,select,textarea,[data-theme-toggle]';
+         document.addEventListener('mouseover', function (e) { if (e.target.closest(hoverSel)) ring.classList.add('hover'); });
+         document.addEventListener('mouseout', function (e) { if (e.target.closest(hoverSel)) ring.classList.remove('hover'); });
+       }
+     }
+
+     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+     else start();
+   })();
+  </script>
+ </body>
+</html>

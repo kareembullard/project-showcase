@@ -1,0 +1,2634 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   FeedReader - Your Personal RSS Reader
+  </title>
+  <style>
+/*
+ * Converted to ProjectSuite CSS Architecture
+ * Date: 2025-11-29 04:36:35
+ * Bootstrap/utility classes mapped to ProjectSuite equivalents
+ * Original backed up to: ./asset_backups
+ */
+
+
+:root {
+  /* Colors */
+  --color-background: rgba(252, 252, 249, 1);
+  --color-surface: rgba(255, 255, 253, 1);
+  --color-text: rgba(19, 52, 59, 1);
+  --color-text-secondary: rgba(98, 108, 113, 1);
+  --color-primary: rgba(33, 128, 141, 1);
+  --color-primary-hover: rgba(29, 116, 128, 1);
+  --color-primary-active: rgba(26, 104, 115, 1);
+  --color-secondary: rgba(94, 82, 64, 0.12);
+  --color-secondary-hover: rgba(94, 82, 64, 0.2);
+  --color-secondary-active: rgba(94, 82, 64, 0.25);
+  --color-border: rgba(94, 82, 64, 0.2);
+  --color-btn-primary-text: rgba(252, 252, 249, 1);
+  --color-card-border: rgba(94, 82, 64, 0.12);
+  --color-card-border-inner: rgba(94, 82, 64, 0.12);
+  --color-error: rgba(192, 21, 47, 1);
+  --color-success: rgba(33, 128, 141, 1);
+  --color-warning: rgba(168, 75, 47, 1);
+  --color-info: rgba(98, 108, 113, 1);
+  --color-focus-ring: rgba(33, 128, 141, 0.4);
+  --color-select-caret: rgba(19, 52, 59, 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: rgba(31, 33, 33, 1);
+    --color-surface: rgba(38, 40, 40, 1);
+    --color-text: rgba(245, 245, 245, 1);
+    --color-text-secondary: rgba(167, 169, 169, 0.7);
+    --color-primary: rgba(50, 184, 198, 1);
+    --color-primary-hover: rgba(45, 166, 178, 1);
+    --color-primary-active: rgba(41, 150, 161, 1);
+    --color-secondary: rgba(119, 124, 124, 0.15);
+    --color-secondary-hover: rgba(119, 124, 124, 0.25);
+    --color-secondary-active: rgba(119, 124, 124, 0.3);
+    --color-border: rgba(119, 124, 124, 0.3);
+    --color-error: rgba(255, 84, 89, 1);
+    --color-success: rgba(50, 184, 198, 1);
+    --color-warning: rgba(230, 129, 97, 1);
+    --color-info: rgba(167, 169, 169, 1);
+    --color-focus-ring: rgba(50, 184, 198, 0.4);
+    --color-btn-primary-text: rgba(19, 52, 59, 1);
+    --color-card-border: rgba(119, 124, 124, 0.2);
+    --color-card-border-inner: rgba(119, 124, 124, 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --button-border-secondary: rgba(119, 124, 124, 0.2);
+    --color-border-secondary: rgba(119, 124, 124, 0.2);
+    --color-select-caret: rgba(245, 245, 245, 0.8);
+
+    /* Common style patterns - updated for dark mode */
+    --focus-ring: 0 0 0 3px var(--color-focus-ring);
+    --focus-outline: 2px solid var(--color-primary);
+    --status-bg-opacity: 0.15;
+    --status-border-opacity: 0.25;
+    --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+    /* RGB versions for dark mode */
+    --color-success-rgb: 50, 184, 198;
+    --color-error-rgb: 255, 84, 89;
+    --color-warning-rgb: 230, 129, 97;
+    --color-info-rgb: 167, 169, 169;
+  }
+}
+
+/* Data attribute for manual theme switching */
+[data-color-scheme="dark"] {
+  --color-background: rgba(31, 33, 33, 1);
+  --color-surface: rgba(38, 40, 40, 1);
+  --color-text: rgba(245, 245, 245, 1);
+  --color-text-secondary: rgba(167, 169, 169, 0.7);
+  --color-primary: rgba(50, 184, 198, 1);
+  --color-primary-hover: rgba(45, 166, 178, 1);
+  --color-primary-active: rgba(41, 150, 161, 1);
+  --color-secondary: rgba(119, 124, 124, 0.15);
+  --color-secondary-hover: rgba(119, 124, 124, 0.25);
+  --color-secondary-active: rgba(119, 124, 124, 0.3);
+  --color-border: rgba(119, 124, 124, 0.3);
+  --color-error: rgba(255, 84, 89, 1);
+  --color-success: rgba(50, 184, 198, 1);
+  --color-warning: rgba(230, 129, 97, 1);
+  --color-info: rgba(167, 169, 169, 1);
+  --color-focus-ring: rgba(50, 184, 198, 0.4);
+  --color-btn-primary-text: rgba(19, 52, 59, 1);
+  --color-card-border: rgba(119, 124, 124, 0.15);
+  --color-card-border-inner: rgba(119, 124, 124, 0.15);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  --color-border-secondary: rgba(119, 124, 124, 0.2);
+  --color-select-caret: rgba(245, 245, 245, 0.8);
+
+  /* Common style patterns - updated for dark mode */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for dark mode */
+  --color-success-rgb: 50, 184, 198;
+  --color-error-rgb: 255, 84, 89;
+  --color-warning-rgb: 230, 129, 97;
+  --color-info-rgb: 167, 169, 169;
+}
+
+[data-color-scheme="light"] {
+  --color-background: rgba(252, 252, 249, 1);
+  --color-surface: rgba(255, 255, 253, 1);
+  --color-text: rgba(19, 52, 59, 1);
+  --color-text-secondary: rgba(98, 108, 113, 1);
+  --color-primary: rgba(33, 128, 141, 1);
+  --color-primary-hover: rgba(29, 116, 128, 1);
+  --color-primary-active: rgba(26, 104, 115, 1);
+  --color-secondary: rgba(94, 82, 64, 0.12);
+  --color-secondary-hover: rgba(94, 82, 64, 0.2);
+  --color-secondary-active: rgba(94, 82, 64, 0.25);
+  --color-border: rgba(94, 82, 64, 0.2);
+  --color-btn-primary-text: rgba(252, 252, 249, 1);
+  --color-card-border: rgba(94, 82, 64, 0.12);
+  --color-card-border-inner: rgba(94, 82, 64, 0.12);
+  --color-error: rgba(192, 21, 47, 1);
+  --color-success: rgba(33, 128, 141, 1);
+  --color-warning: rgba(168, 75, 47, 1);
+  --color-info: rgba(98, 108, 113, 1);
+  --color-focus-ring: rgba(33, 128, 141, 0.4);
+
+  /* RGB versions for light mode */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+}
+
+/* Base styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+h2 {
+  font-size: var(--font-size-3xl);
+}
+h3 {
+  font-size: var(--font-size-2xl);
+}
+h4 {
+  font-size: var(--font-size-xl);
+}
+h5 {
+  font-size: var(--font-size-lg);
+}
+h6 {
+  font-size: var(--font-size-md);
+}
+
+p {
+  margin: 0 0 var(--space-16) 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+code,
+pre {
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--font-size-base) * 0.95);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-sm);
+}
+
+code {
+  padding: var(--space-1) var(--space-4);
+}
+
+pre {
+  padding: var(--space-16);
+  margin: var(--space-16) 0;
+  overflow: auto;
+  border: 1px solid var(--color-border);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
+  border: none;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn--primary:active {
+  background: var(--color-primary-active);
+}
+
+.btn--secondary {
+  background: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.btn--secondary:hover {
+  background: var(--color-secondary-hover);
+}
+
+.btn--secondary:active {
+  background: var(--color-secondary-active);
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--outline:hover {
+  background: var(--color-secondary);
+}
+
+.btn--sm {
+  padding: var(--space-4) var(--space-12);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+}
+
+.btn--lg {
+  padding: var(--space-10) var(--space-20);
+  font-size: var(--font-size-lg);
+  border-radius: var(--radius-md);
+}
+
+.btn--full-width {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Form elements */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: var(--space-8) var(--space-12);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+textarea.form-control {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+}
+
+select.form-control {
+  padding: var(--space-8) var(--space-12);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: var(--select-caret-light);
+  background-repeat: no-repeat;
+  background-position: right var(--space-12) center;
+  background-size: 16px;
+  padding-right: var(--space-32);
+}
+
+/* Add a dark mode specific caret */
+@media (prefers-color-scheme: dark) {
+  select.form-control {
+    background-image: var(--select-caret-dark);
+  }
+}
+
+/* Also handle data-color-scheme */
+[data-color-scheme="dark"] select.form-control {
+  background-image: var(--select-caret-dark);
+}
+
+[data-color-scheme="light"] select.form-control {
+  background-image: var(--select-caret-light);
+}
+
+.form-control:focus {
+  border-color: var(--color-primary);
+  outline: var(--focus-outline);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-8);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.form-group {
+  margin-bottom: var(--space-16);
+}
+
+/* Card component */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card__body {
+  padding: var(--space-16);
+}
+
+.card__header,
+.card__footer {
+  padding: var(--space-16);
+  border-bottom: 1px solid var(--color-card-border-inner);
+}
+
+/* Status indicators - simplified with CSS variables */
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-6) var(--space-12);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.status--success {
+  background-color: rgba(
+    var(--color-success-rgb, 33, 128, 141),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-success);
+  border: 1px solid
+    rgba(var(--color-success-rgb, 33, 128, 141), var(--status-border-opacity));
+}
+
+.status--error {
+  background-color: rgba(
+    var(--color-error-rgb, 192, 21, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-error);
+  border: 1px solid
+    rgba(var(--color-error-rgb, 192, 21, 47), var(--status-border-opacity));
+}
+
+.status--warning {
+  background-color: rgba(
+    var(--color-warning-rgb, 168, 75, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-warning);
+  border: 1px solid
+    rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-border-opacity));
+}
+
+.status--info {
+  background-color: rgba(
+    var(--color-info-rgb, 98, 108, 113),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-info);
+  border: 1px solid
+    rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity));
+}
+
+/* Container layout */
+.section-content {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--space-16);
+  padding-left: var(--space-16);
+}
+
+@media (min-width: 640px) {
+  .section-content {
+    max-width: var(--container-sm);
+  }
+}
+@media (min-width: 768px) {
+  .section-content {
+    max-width: var(--container-md);
+  }
+}
+@media (min-width: 1024px) {
+  .section-content {
+    max-width: var(--container-lg);
+  }
+}
+@media (min-width: 1280px) {
+  .section-content {
+    max-width: var(--container-xl);
+  }
+}
+
+/* Utility classes */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-4 {
+  gap: var(--space-4);
+}
+.gap-8 {
+  gap: var(--space-8);
+}
+.gap-16 {
+  gap: var(--space-16);
+}
+
+.block {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Dark mode specifics */
+[data-color-scheme="dark"] .btn--outline {
+  border: 1px solid var(--color-border-secondary);
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+}
+
+/* Additional styles for the RSS Reader app */
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-12) var(--space-16);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+  position: relative;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.sidebar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  padding: var(--space-8);
+  border-radius: var(--radius-base);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.sidebar-toggle:hover {
+  background: var(--color-secondary);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+.logo i {
+  font-size: var(--font-size-2xl);
+}
+
+.header-center {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 var(--space-24);
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+}
+
+.search-container i {
+  position: absolute;
+  left: var(--space-12);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--space-8) var(--space-12) var(--space-8) var(--space-32);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-background);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  padding: var(--space-8);
+  border-radius: var(--radius-base);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.theme-toggle:hover {
+  background: var(--color-secondary);
+}
+
+.add-feed-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-16);
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+  border: none;
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.add-feed-btn:hover {
+  background: var(--color-primary-hover);
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.side-nav {
+  width: 280px;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  overflow-y: auto;
+  transition: transform var(--duration-normal) var(--ease-standard);
+}
+
+.sidebar-nav {
+  padding: var(--space-16);
+}
+
+.nav-section {
+  margin-bottom: var(--space-24);
+}
+
+.nav-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-12);
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-10) var(--space-12);
+  border-radius: var(--radius-base);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+  font-size: var(--font-size-sm);
+}
+
+.nav-item:hover {
+  background: var(--color-secondary);
+}
+
+.nav-item.active {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.nav-item i {
+  width: 16px;
+  text-align: center;
+  font-size: var(--font-size-sm);
+}
+
+.nav-item span:first-of-type {
+  flex: 1;
+}
+
+.unread-count {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+  font-size: var(--font-size-xs);
+  padding: var(--space-2) var(--space-6);
+  border-radius: var(--radius-full);
+  min-width: 20px;
+  text-align: center;
+  font-weight: var(--font-weight-semibold);
+}
+
+.nav-item.active .unread-count {
+  background: var(--color-background);
+  color: var(--color-primary);
+}
+
+.category-group {
+  margin-bottom: var(--space-16);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-12);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  border-radius: var(--radius-base);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.category-header:hover {
+  background: var(--color-secondary);
+}
+
+.category-header i {
+  font-size: var(--font-size-xs);
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.category-header.collapsed i {
+  transform: rotate(-90deg);
+}
+
+.category-feeds {
+  padding-left: var(--space-20);
+  margin-top: var(--space-4);
+}
+
+.category-feeds.collapsed {
+  display: none;
+}
+
+.feed-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-6) var(--space-8);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.feed-item:hover {
+  background: var(--color-secondary);
+}
+
+.feed-item.active {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+/* Content Area */
+.content-area {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.article-list {
+  width: 400px;
+  background: var(--color-background);
+  border-right: 1px solid var(--color-border);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-16);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.list-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.list-actions {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.articles-container {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.article-item {
+  display: flex;
+  gap: var(--space-12);
+  padding: var(--space-16);
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.article-item:hover {
+  background: var(--color-secondary);
+}
+
+.article-item.active {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.article-item.read {
+  opacity: 0.7;
+}
+
+.article-thumbnail {
+  width: 80px;
+  height: 60px;
+  border-radius: var(--radius-base);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.article-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.article-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+
+.article-source {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.article-time {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.article-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  line-height: var(--line-height-tight);
+  margin: 0 0 var(--space-4) 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.article-excerpt {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.article-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.article-actions {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.article-action {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.article-action:hover {
+  color: var(--color-primary);
+}
+
+.article-action.active {
+  color: var(--color-primary);
+}
+
+/* Reading Pane */
+.reading-pane {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--color-surface);
+}
+
+.reading-pane-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-32);
+}
+
+.welcome-message {
+  text-align: center;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-32);
+}
+
+.welcome-message i {
+  font-size: 48px;
+  margin-bottom: var(--space-16);
+  color: var(--color-primary);
+}
+
+.welcome-message h3 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+}
+
+.article-reading-header {
+  margin-bottom: var(--space-24);
+}
+
+.article-reading-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-16);
+}
+
+.article-reading-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  margin-bottom: var(--space-16);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.article-reading-actions {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.article-reading-image {
+  width: 100%;
+  max-width: 600px;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-24);
+}
+
+.article-reading-content {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+}
+
+.article-reading-content p {
+  margin-bottom: var(--space-20);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-normal) var(--ease-standard), visibility var(--duration-normal) var(--ease-standard);
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-20);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.modal-header h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.modal-close:hover {
+  color: var(--color-text);
+}
+
+.modal-body {
+  padding: var(--space-20);
+}
+
+.modal-actions {
+  display: flex;
+  gap: var(--space-8);
+  justify-content: flex-end;
+  margin-top: var(--space-20);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .side-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1500;
+    transform: translateX(-100%);
+    width: 280px;
+  }
+
+  .side-nav.active {
+    transform: translateX(0);
+  }
+
+  .mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1400;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--duration-normal) var(--ease-standard), visibility var(--duration-normal) var(--ease-standard);
+  }
+
+  .mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .article-list {
+    width: 100%;
+  }
+
+  .reading-pane {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1300;
+    transform: translateX(100%);
+    transition: transform var(--duration-normal) var(--ease-standard);
+  }
+
+  .reading-pane.active {
+    transform: translateX(0);
+  }
+
+  .reading-pane-content {
+    padding: var(--space-16);
+  }
+
+  .header-center {
+    margin: 0 var(--space-8);
+  }
+
+  .add-feed-btn span {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-item {
+    padding: var(--space-12);
+  }
+
+  .article-thumbnail {
+    width: 60px;
+    height: 45px;
+  }
+
+  .list-actions {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .reading-pane-content {
+    padding: var(--space-12);
+  }
+
+  .article-reading-title {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* Dark mode specific adjustments */
+@media (prefers-color-scheme: dark) {
+  .article-item.active {
+    background: var(--color-primary);
+    color: var(--color-btn-primary-text);
+  }
+
+  .article-item.active .article-title,
+  .article-item.active .article-source,
+  .article-item.active .article-time,
+  .article-item.active .article-excerpt {
+    color: var(--color-btn-primary-text);
+  }
+}
+
+[data-color-scheme="dark"] .article-item.active {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+[data-color-scheme="dark"] .article-item.active .article-title,
+[data-color-scheme="dark"] .article-item.active .article-source,
+[data-color-scheme="dark"] .article-item.active .article-time,
+[data-color-scheme="dark"] .article-item.active .article-excerpt {
+  color: var(--color-btn-primary-text);
+}
+
+/* Loading states */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-32);
+  color: var(--color-text-secondary);
+}
+
+.loading i {
+  margin-right: var(--space-8);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+</style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+  
+  
+  
+  
+  <script>
+   /* Unified color-mode: no-flash init (shared standard) */
+   (function () {
+     try {
+       var s = localStorage.getItem('colorScheme');
+       if (s !== 'dark' && s !== 'light') {
+         s = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+       }
+       document.documentElement.setAttribute('data-color-scheme', s);
+     } catch (e) {}
+   })();
+  </script>
+  <style>
+   /* Unified typography — Space Grotesk headings + Inter body (shared standard) */
+   body { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+   h1, h2, h3, h4, h5, h6,
+   .logo, .logo span, .sidebar-header h2, .sidebar__title, .app-title {
+     font-family: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+     letter-spacing: -0.02em;
+   }
+  </style>
+   <style>
+   /* ============================================================
+      PROJECTSUITE ENHANCE — palette refresh (tangerine, no red) + motion
+      ============================================================ */
+   :root, [data-color-scheme="light"] {
+     --color-primary: #e2652a;
+     --color-primary-hover: #c9551e;
+     --color-primary-active: #b54a18;
+     --color-accent: #2a9d8f;
+     --color-accent-hover: #1e7a70;
+     --color-success: #17a673;
+     --color-warning: #e0930b;
+     --color-error: #d2691e;
+     --color-danger: #d2691e;
+     --color-info: #1e85ad;
+     --color-focus-ring: rgba(226, 101, 42, 0.4);
+     --color-btn-primary-text: #ffffff;
+     --color-primary-rgb: 226, 101, 42;
+     --color-success-rgb: 23, 166, 115;
+     --color-warning-rgb: 224, 147, 11;
+     --color-error-rgb: 210, 105, 30;
+     --color-info-rgb: 30, 133, 173;
+     --gradient-primary: linear-gradient(135deg, #e2652a 0%, #f5a623 100%);
+     --gradient-accent: linear-gradient(135deg, #2a9d8f 0%, #17a673 100%);
+   }
+   [data-color-scheme="dark"] {
+     --color-primary: #ff8a4c;
+     --color-primary-hover: #ff7a33;
+     --color-primary-active: #f26b21;
+     --color-accent: #3fb9aa;
+     --color-accent-hover: #2dd4a7;
+     --color-success: #2dd4a7;
+     --color-warning: #f5b23d;
+     --color-error: #ff9150;
+     --color-danger: #ff9150;
+     --color-info: #38a9ce;
+     --color-focus-ring: rgba(255, 138, 76, 0.4);
+     --color-btn-primary-text: #16150f;
+     --color-primary-rgb: 255, 138, 76;
+     --color-success-rgb: 45, 212, 167;
+     --color-warning-rgb: 245, 178, 61;
+     --color-error-rgb: 255, 145, 80;
+     --color-info-rgb: 56, 169, 206;
+     --gradient-primary: linear-gradient(135deg, #ff8a4c 0%, #f5b23d 100%);
+     --gradient-accent: linear-gradient(135deg, #3fb9aa 0%, #2dd4a7 100%);
+   }
+   @media (prefers-color-scheme: dark) {
+     :root:not([data-color-scheme="light"]) {
+       --color-primary: #ff8a4c; --color-primary-hover: #ff7a33; --color-primary-active: #f26b21;
+       --color-accent: #3fb9aa; --color-success: #2dd4a7; --color-warning: #f5b23d;
+       --color-error: #ff9150; --color-danger: #ff9150; --color-info: #38a9ce;
+       --color-primary-rgb: 255, 138, 76;
+       --gradient-primary: linear-gradient(135deg, #ff8a4c 0%, #f5b23d 100%);
+     }
+   }
+   html.ph-anim .ph-reveal { opacity: 0; transform: translateY(18px);
+     transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); will-change: opacity, transform; }
+   html.ph-anim .ph-reveal.in-view { opacity: 1; transform: none; }
+   .ph-card { position: relative; }
+   .ph-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+     background: var(--gradient-primary); transform: scaleX(0); transform-origin: left;
+     transition: transform .35s cubic-bezier(.16,1,.3,1); border-radius: 4px 4px 0 0; pointer-events: none; z-index: 1; }
+   .ph-card:hover::after { transform: scaleX(1); }
+   .ph-ripple { position: absolute; border-radius: 50%; background: rgba(255,255,255,.4);
+     transform: translate(-50%,-50%) scale(0); animation: phRipple .6s ease-out forwards; pointer-events: none; }
+   @keyframes phRipple { to { transform: translate(-50%,-50%) scale(1); opacity: 0; } }
+   .ph-cursor { position: fixed; top: 0; left: 0; width: 30px; height: 30px;
+     border: 2px solid var(--color-primary); border-radius: 50%; pointer-events: none; z-index: 9998;
+     transition: width .25s ease, height .25s ease, background .25s ease, border-color .25s ease, opacity .25s ease;
+     opacity: .55; will-change: transform; }
+   .ph-cursor.hover { width: 50px; height: 50px; background: rgba(var(--color-primary-rgb), .12); opacity: .8; }
+   @media (max-width: 900px) { .ph-cursor { display: none; } }
+   @media (prefers-reduced-motion: reduce) {
+     html.ph-anim .ph-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+     .ph-cursor { display: none; }
+   }
+  </style>
+ </head>
+ <body>
+  <div class="app-container">
+   <!-- Header -->
+   <header class="header">
+    <div class="header-left">
+     <button class="sidebar-toggle" id="sidebarToggle">
+      <i class="fas fa-bars">
+      </i>
+     </button>
+     <div class="logo">
+      <i class="fas fa-rss">
+      </i>
+      <span>
+       FeedReader
+      </span>
+     </div>
+    </div>
+    <div class="header-center">
+     <div class="search-container">
+      <i class="fas fa-search">
+      </i>
+      <input class="search-input" id="searchInput" placeholder="Search articles..." type="text"/>
+     </div>
+    </div>
+    <div class="header-right">
+     <button class="theme-toggle" data-theme-toggle="" id="themeToggle">
+      <i class="fas fa-moon">
+      </i>
+     </button>
+     <button class="add-feed-btn" id="addFeedBtn">
+      <i class="fas fa-plus">
+      </i>
+      Add Feed
+     </button>
+    </div>
+   </header>
+   <!-- Main Content -->
+   <main class="main-content">
+    <!-- Sidebar -->
+    <aside class="side-nav" id="sidebar">
+     <nav class="sidebar-nav nav-bar">
+      <div class="nav-section nav-content">
+       <h3 class="nav-title">
+        Views
+       </h3>
+       <ul class="nav-list nav-links">
+        <li class="nav-item" data-view="today">
+         <i class="fas fa-calendar-day">
+         </i>
+         <span>
+          Today
+         </span>
+         <span class="unread-count" id="todayCount">
+          0
+         </span>
+        </li>
+        <li class="nav-item" data-view="all">
+         <i class="fas fa-list">
+         </i>
+         <span>
+          All Articles
+         </span>
+         <span class="unread-count" id="allCount">
+          0
+         </span>
+        </li>
+        <li class="nav-item" data-view="saved">
+         <i class="fas fa-bookmark">
+         </i>
+         <span>
+          Saved
+         </span>
+         <span class="unread-count" id="savedCount">
+          0
+         </span>
+        </li>
+       </ul>
+      </div>
+      <div class="nav-section">
+       <h3 class="nav-title">
+        Categories
+       </h3>
+       <div class="categories-list" id="categoriesList">
+        <!-- Categories will be populated by JavaScript -->
+       </div>
+      </div>
+     </nav>
+    </aside>
+    <!-- Content Area -->
+    <div class="content-area">
+     <!-- Article List -->
+     <div class="article-list" id="articleList">
+      <div class="list-header">
+       <h2 class="list-title" id="listTitle">
+        Today
+       </h2>
+       <div class="list-actions">
+        <button class="btn btn--outline btn--sm" id="markAllReadBtn">
+         <i class="fas fa-check">
+         </i>
+         Mark All Read
+        </button>
+        <button class="btn btn--outline btn--sm" id="refreshBtn">
+         <i class="fas fa-refresh">
+         </i>
+         Refresh
+        </button>
+       </div>
+      </div>
+      <div class="articles-container" id="articlesContainer">
+       <!-- Articles will be populated by JavaScript -->
+      </div>
+     </div>
+     <!-- Reading Pane -->
+     <div class="reading-pane" id="readingPane">
+      <div class="reading-pane-content">
+       <div class="welcome-message">
+        <i class="fas fa-newspaper">
+        </i>
+        <h3>
+         Welcome to FeedReader
+        </h3>
+        <p>
+         Select an article to start reading, or explore your feeds in the sidebar.
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </main>
+   <!-- Add Feed Modal -->
+   <div class="modal" id="addFeedModal">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h3>
+       Add New Feed
+      </h3>
+      <button class="modal-close" id="modalClose">
+       <i class="fas fa-times">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+      <form id="addFeedForm">
+       <div class="form-group">
+        <label class="form-label" for="feedUrl">
+         RSS Feed URL
+        </label>
+        <input class="form-control" id="feedUrl" placeholder="https://example.com/feed.xml" required="" type="url"/>
+       </div>
+       <div class="form-group">
+        <label class="form-label" for="feedCategory">
+         Category
+        </label>
+        <select class="form-control" id="feedCategory">
+         <option value="">
+          Select a category
+         </option>
+        </select>
+       </div>
+       <div class="form-group">
+        <label class="form-label" for="feedName">
+         Custom Name (optional)
+        </label>
+        <input class="form-control" id="feedName" placeholder="Custom feed name" type="text"/>
+       </div>
+       <div class="modal-actions">
+        <button class="btn btn--outline" id="cancelAddFeed" type="button">
+         Cancel
+        </button>
+        <button class="btn btn--primary" type="submit">
+         Add Feed
+        </button>
+       </div>
+      </form>
+     </div>
+    </div>
+   </div>
+   <!-- Mobile overlay -->
+   <div class="mobile-overlay" id="mobileOverlay">
+   </div>
+  </div>
+  <script>
+// RSS Reader Application
+class RSSReader {
+  constructor() {
+    this.feeds = {};
+    this.articles = [];
+    this.currentView = 'today';
+    this.currentArticle = null;
+    this.currentFeed = null;
+    this.searchQuery = '';
+    this.isDarkMode = false;
+    
+    this.init();
+  }
+
+  async init() {
+    this.setupEventListeners();
+    await this.loadFeedsData();
+    this.setupTheme();
+    this.renderSidebar();
+    this.renderArticles();
+    this.updateCounts();
+  }
+
+  async loadFeedsData() {
+    try {
+      const response = await fetch('https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/6cf648be9ff94c13103d2a9c376dfb44/ece98641-e9c2-4779-8c8a-55c6bfeb792f/8be368a3.json');
+      const data = await response.json();
+      
+      this.feeds = data.categories || {};
+      this.articles = this.generateSampleArticles();
+    } catch (error) {
+      console.error('Error loading feeds data:', error);
+      this.setupFallbackData();
+    }
+  }
+
+  setupFallbackData() {
+    this.feeds = {
+      "AI": ["The AI Advantage", "Fireship", "OpenAI", "Perplexity"],
+      "Tech": ["The Verge", "TechCrunch", "Wired", "GitHub"],
+      "Productivity": ["Better Than Yesterday", "Notion", "Todoist"],
+      "News": ["BBC", "Reuters", "Associated Press"]
+    };
+    this.articles = this.generateSampleArticles();
+  }
+
+  generateSampleArticles() {
+    const sampleArticles = [
+      {
+        id: 1,
+        title: "The Future of AI in Content Creation",
+        source: "The AI Advantage",
+        category: "AI",
+        publishDate: "2025-01-15T10:30:00Z",
+        readTime: "5 min read",
+        thumbnail: "https://picsum.photos/400/250?random=1",
+        excerpt: "Exploring how artificial intelligence is revolutionizing the way we create and consume content across different platforms. From automated writing to personalized recommendations, AI is reshaping the digital landscape.",
+        content: `
+          <p>Artificial intelligence has fundamentally transformed how we approach content creation, moving from simple automation to sophisticated creative partnerships between humans and machines.</p>
+          
+          <p>The evolution of AI in content creation has been remarkable. What started as basic template-filling algorithms has evolved into sophisticated systems capable of understanding context, tone, and audience preferences. Today's AI tools can write articles, create videos, generate images, and even compose music that rivals human creativity.</p>
+          
+          <p>However, the true power of AI in content creation lies not in replacement, but in augmentation. The most successful content creators are those who have learned to work alongside AI, using it to enhance their creative process rather than replace their unique human perspective.</p>
+          
+          <p>Looking ahead, we can expect even more sophisticated AI tools that understand not just what to create, but how to create it in ways that resonate with specific audiences. The future of content creation is collaborative, with AI serving as a powerful creative partner.</p>
+        `,
+        isRead: false,
+        isSaved: false
+      },
+      {
+        id: 2,
+        title: "Building Better Productivity Habits That Actually Stick",
+        source: "Better Than Yesterday",
+        category: "Productivity",
+        publishDate: "2025-01-14T14:20:00Z",
+        readTime: "8 min read",
+        thumbnail: "https://picsum.photos/400/250?random=2",
+        excerpt: "A comprehensive guide to developing sustainable productivity habits that actually stick. Learn the science behind habit formation and practical strategies for long-term success.",
+        content: `
+          <p>Productivity isn't about doing more things—it's about doing the right things consistently. The key to lasting productivity lies in building systems and habits that support your goals without requiring constant willpower.</p>
+          
+          <p>The science of habit formation reveals that successful habits follow a simple loop: cue, routine, reward. By understanding this loop, we can design habits that naturally integrate into our daily lives.</p>
+          
+          <p>Start small and be specific. Instead of "exercise more," try "do 10 push-ups after brewing my morning coffee." This specificity creates clear cues and makes the habit easier to track and maintain.</p>
+          
+          <p>The most important factor in habit formation is consistency, not intensity. It's better to do something small every day than something big sporadically. Focus on showing up consistently, and let the habit grow naturally over time.</p>
+          
+          <p>Remember that productivity habits should serve your life, not dominate it. The goal is to create systems that give you more freedom and energy to focus on what matters most to you.</p>
+        `,
+        isRead: false,
+        isSaved: true
+      },
+      {
+        id: 3,
+        title: "React 19: What's New and Exciting for Developers",
+        source: "Fireship",
+        category: "Tech",
+        publishDate: "2025-01-13T09:15:00Z",
+        readTime: "12 min read",
+        thumbnail: "https://picsum.photos/400/250?random=3",
+        excerpt: "Deep dive into the latest React features and improvements in version 19. From concurrent features to improved developer experience, here's what you need to know.",
+        content: `
+          <p>React 19 introduces several groundbreaking features that will change how we build user interfaces. The focus has been on improving performance, developer experience, and making React more intuitive for both new and experienced developers.</p>
+          
+          <p>One of the most significant additions is the React Compiler, which automatically optimizes your components for performance. This means less manual optimization and more time focusing on building great user experiences.</p>
+          
+          <p>The new Actions API simplifies form handling and async operations, making it easier to manage loading states, error handling, and optimistic updates. This reduces boilerplate code and makes common patterns more straightforward.</p>
+          
+          <p>Server Components have been refined and are now more stable, offering better performance for data-heavy applications. The integration between client and server components is smoother, providing a more seamless development experience.</p>
+          
+          <p>For developers upgrading from previous versions, React 19 maintains backward compatibility while encouraging adoption of new patterns. The migration path is clear and well-documented, making the upgrade process manageable.</p>
+        `,
+        isRead: true,
+        isSaved: false
+      },
+      {
+        id: 4,
+        title: "The Psychology of Procrastination: Why We Delay and How to Stop",
+        source: "Better Than Yesterday",
+        category: "Productivity",
+        publishDate: "2025-01-12T16:45:00Z",
+        readTime: "6 min read",
+        thumbnail: "https://picsum.photos/400/250?random=4",
+        excerpt: "Understanding the root causes of procrastination and evidence-based strategies to overcome it. Learn why willpower isn't enough and what actually works.",
+        content: `
+          <p>Procrastination isn't a character flaw—it's a complex psychological phenomenon rooted in our brain's natural tendency to avoid discomfort. Understanding this helps us develop more effective strategies to overcome it.</p>
+          
+          <p>Research shows that procrastination often stems from fear: fear of failure, fear of success, or fear of not being perfect. When we frame tasks as threats to our self-worth, our brain activates avoidance behaviors as a protective mechanism.</p>
+          
+          <p>The solution isn't more willpower—it's changing how we think about and approach tasks. Break large projects into smaller, less threatening pieces. Focus on starting rather than finishing. Often, the hardest part is simply beginning.</p>
+          
+          <p>Environment plays a crucial role in procrastination. Remove distractions, create clear workspaces, and use tools that support focus. Sometimes the problem isn't motivation—it's that our environment is working against us.</p>
+          
+          <p>Finally, practice self-compassion. Beating yourself up for procrastinating only creates more negative emotions, which leads to more avoidance. Treat yourself with the same kindness you'd show a good friend facing the same challenge.</p>
+        `,
+        isRead: false,
+        isSaved: false
+      },
+      {
+        id: 5,
+        title: "Machine Learning Breakthroughs in 2025: What's Coming Next",
+        source: "The AI Advantage",
+        category: "AI",
+        publishDate: "2025-01-11T11:30:00Z",
+        readTime: "10 min read",
+        thumbnail: "https://picsum.photos/400/250?random=5",
+        excerpt: "Exploring the latest developments in machine learning and their potential impact on various industries. From healthcare to finance, AI is reshaping our world.",
+        content: `
+          <p>The field of machine learning continues to evolve at an unprecedented pace, with 2025 bringing several breakthrough developments that promise to revolutionize how we work, learn, and interact with technology.</p>
+          
+          <p>One of the most significant advances has been in multimodal AI systems that can understand and generate content across text, images, audio, and video simultaneously. This convergence of capabilities is enabling more natural and intuitive human-AI interactions.</p>
+          
+          <p>In healthcare, AI models are now capable of diagnosing diseases with accuracy that matches or exceeds human specialists. The integration of AI into medical imaging, drug discovery, and personalized treatment plans is accelerating the pace of medical innovation.</p>
+          
+          <p>The democratization of AI tools continues, with user-friendly interfaces making advanced machine learning capabilities accessible to non-technical users. This is enabling innovation across industries and empowering individuals to leverage AI in their personal and professional lives.</p>
+          
+          <p>Looking ahead, the focus is shifting toward responsible AI development, with emphasis on transparency, fairness, and ethical considerations. The goal is to ensure that AI benefits society as a whole while minimizing potential risks and unintended consequences.</p>
+        `,
+        isRead: false,
+        isSaved: true
+      },
+      {
+        id: 6,
+        title: "The Future of Web Development: Trends to Watch",
+        source: "The Verge",
+        category: "Tech",
+        publishDate: "2025-01-10T13:20:00Z",
+        readTime: "7 min read",
+        thumbnail: "https://picsum.photos/400/250?random=6",
+        excerpt: "From WebAssembly to edge computing, explore the technologies that will shape the future of web development. Stay ahead of the curve with these emerging trends.",
+        content: `
+          <p>Web development continues to evolve rapidly, with new technologies and paradigms emerging that promise to make the web faster, more capable, and more accessible than ever before.</p>
+          
+          <p>WebAssembly (WASM) is gaining traction as a way to run high-performance applications in the browser. This technology allows developers to use languages like Rust, C++, and Go to build web applications that perform nearly as well as native apps.</p>
+          
+          <p>Edge computing is transforming how we think about web architecture. By processing data closer to users, edge computing reduces latency and improves performance, especially for real-time applications and IoT devices.</p>
+          
+          <p>The rise of serverless architecture continues, with developers embracing functions-as-a-service (FaaS) for their scalability and cost-effectiveness. This shift is changing how we design and deploy web applications.</p>
+          
+          <p>Progressive Web Apps (PWAs) are becoming more sophisticated, blurring the line between web and native applications. With improved offline capabilities and better integration with device features, PWAs offer a compelling alternative to traditional mobile apps.</p>
+        `,
+        isRead: true,
+        isSaved: false
+      }
+    ];
+
+    // Add today's date to some articles for "Today" view
+    const today = new Date();
+    sampleArticles.forEach((article, index) => {
+      if (index < 3) {
+        article.publishDate = today.toISOString();
+      }
+    });
+
+    // Re-stamp dates relative to now so "Today"/counts work, and add a source link
+    const SOURCE_URLS = {
+      "The AI Advantage": "https://www.youtube.com/@aiadvantage",
+      "Fireship": "https://fireship.io/",
+      "OpenAI": "https://openai.com/blog",
+      "Perplexity": "https://www.perplexity.ai/",
+      "The Verge": "https://www.theverge.com/",
+      "TechCrunch": "https://techcrunch.com/",
+      "Wired": "https://www.wired.com/",
+      "GitHub": "https://github.blog/",
+      "Better Than Yesterday": "https://www.youtube.com/@BetterThanYesterday",
+      "Notion": "https://www.notion.so/blog",
+      "Todoist": "https://www.todoist.com/inspiration",
+      "BBC": "https://www.bbc.com/news",
+      "Reuters": "https://www.reuters.com/",
+      "Associated Press": "https://apnews.com/"
+    };
+    const now = Date.now(), DAY = 86400000;
+    sampleArticles.forEach((a, i) => {
+      const daysBack = i < 2 ? 0 : (i - 1);           // first two are "today"
+      a.publishDate = new Date(now - daysBack * DAY - i * 3600000).toISOString();
+      const base = SOURCE_URLS[a.source] || 'https://www.google.com/search?q=';
+      a.url = a.url || (SOURCE_URLS[a.source] ? base : base + encodeURIComponent(a.title + ' ' + a.source));
+    });
+    return sampleArticles;
+  }
+
+  setupEventListeners() {
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      this.toggleTheme();
+    });
+
+    // Sidebar toggle (mobile)
+    document.getElementById('sidebarToggle').addEventListener('click', () => {
+      this.toggleSidebar();
+    });
+
+    // Mobile overlay
+    document.getElementById('mobileOverlay').addEventListener('click', () => {
+      this.closeSidebar();
+    });
+
+    // Search
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      this.searchQuery = e.target.value;
+      this.renderArticles();
+    });
+
+    // View navigation
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        const view = e.currentTarget.dataset.view;
+        if (view) {
+          this.setCurrentView(view);
+        }
+      });
+    });
+
+    // Mark all read
+    document.getElementById('markAllReadBtn').addEventListener('click', () => {
+      this.markAllRead();
+    });
+
+    // Refresh
+    document.getElementById('refreshBtn').addEventListener('click', () => {
+      this.refreshArticles();
+    });
+
+    // Add feed modal
+    document.getElementById('addFeedBtn').addEventListener('click', () => {
+      this.showAddFeedModal();
+    });
+
+    document.getElementById('modalClose').addEventListener('click', () => {
+      this.hideAddFeedModal();
+    });
+
+    document.getElementById('cancelAddFeed').addEventListener('click', () => {
+      this.hideAddFeedModal();
+    });
+
+    document.getElementById('addFeedForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      this.addFeed();
+    });
+
+    // Close modal on background click
+    document.getElementById('addFeedModal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        this.hideAddFeedModal();
+      }
+    });
+
+    // Close reading pane on mobile
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        this.closeReadingPane();
+      }
+    });
+  }
+
+  setupTheme() {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    this.isDarkMode = prefersDark;
+    this.updateThemeIcon();
+  }
+
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    document.documentElement.setAttribute('data-color-scheme', this.isDarkMode ? 'dark' : 'light');
+    this.updateThemeIcon();
+  }
+
+  updateThemeIcon() {
+    const icon = document.querySelector('#themeToggle i');
+    icon.className = this.isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
+  }
+
+  toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('mobileOverlay');
+    
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+  }
+
+  closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('mobileOverlay');
+    
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+  }
+
+  setCurrentView(view) {
+    this.currentView = view;
+    this.currentFeed = null;
+    
+    // Update active nav item
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.classList.remove('active');
+      if (item.dataset.view === view) {
+        item.classList.add('active');
+      }
+    });
+
+    // Update feed items
+    document.querySelectorAll('.feed-item').forEach(item => {
+      item.classList.remove('active');
+    });
+
+    this.renderArticles();
+    this.updateListTitle();
+  }
+
+  setCurrentFeed(category, feed) {
+    this.currentView = null;
+    this.currentFeed = { category, feed };
+    
+    // Update active states
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.classList.remove('active');
+    });
+
+    document.querySelectorAll('.feed-item').forEach(item => {
+      item.classList.remove('active');
+      if (item.dataset.feed === feed) {
+        item.classList.add('active');
+      }
+    });
+
+    this.renderArticles();
+    this.updateListTitle();
+  }
+
+  updateListTitle() {
+    const titleElement = document.getElementById('listTitle');
+    if (this.currentView) {
+      titleElement.textContent = this.currentView.charAt(0).toUpperCase() + this.currentView.slice(1);
+    } else if (this.currentFeed) {
+      titleElement.textContent = this.currentFeed.feed;
+    }
+  }
+
+  renderSidebar() {
+    const categoriesList = document.getElementById('categoriesList');
+    categoriesList.innerHTML = '';
+
+    Object.entries(this.feeds).forEach(([category, feeds]) => {
+      const categoryGroup = document.createElement('div');
+      categoryGroup.className = 'category-group';
+      
+      const categoryHeader = document.createElement('div');
+      categoryHeader.className = 'category-header';
+      categoryHeader.innerHTML = `
+        <i class="fas fa-chevron-down"></i>
+        <span>${category}</span>
+      `;
+      
+      const categoryFeedsContainer = document.createElement('div');
+      categoryFeedsContainer.className = 'category-feeds';
+      
+      feeds.forEach(feed => {
+        const feedItem = document.createElement('div');
+        feedItem.className = 'feed-item';
+        feedItem.dataset.feed = feed;
+        feedItem.innerHTML = `
+          <i class="fas fa-rss"></i>
+          <span>${feed}</span>
+        `;
+        
+        feedItem.addEventListener('click', () => {
+          this.setCurrentFeed(category, feed);
+        });
+        
+        categoryFeedsContainer.appendChild(feedItem);
+      });
+      
+      categoryHeader.addEventListener('click', () => {
+        categoryHeader.classList.toggle('collapsed');
+        categoryFeedsContainer.classList.toggle('collapsed');
+      });
+      
+      categoryGroup.appendChild(categoryHeader);
+      categoryGroup.appendChild(categoryFeedsContainer);
+      categoriesList.appendChild(categoryGroup);
+    });
+  }
+
+  getFilteredArticles() {
+    let filteredArticles = [...this.articles];
+
+    // Filter by search query
+    if (this.searchQuery) {
+      const query = this.searchQuery.toLowerCase();
+      filteredArticles = filteredArticles.filter(article => 
+        article.title.toLowerCase().includes(query) ||
+        article.excerpt.toLowerCase().includes(query) ||
+        article.source.toLowerCase().includes(query)
+      );
+    }
+
+    // Filter by view
+    if (this.currentView === 'today') {
+      const today = new Date();
+      const todayStr = today.toISOString().split('T')[0];
+      filteredArticles = filteredArticles.filter(article => 
+        article.publishDate.startsWith(todayStr)
+      );
+    } else if (this.currentView === 'saved') {
+      filteredArticles = filteredArticles.filter(article => article.isSaved);
+    } else if (this.currentFeed) {
+      filteredArticles = filteredArticles.filter(article => 
+        article.source === this.currentFeed.feed
+      );
+    }
+
+    return filteredArticles.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+  }
+
+  renderArticles() {
+    const articlesContainer = document.getElementById('articlesContainer');
+    const filteredArticles = this.getFilteredArticles();
+
+    if (filteredArticles.length === 0) {
+      articlesContainer.innerHTML = `
+        <div class="loading">
+          <i class="fas fa-inbox"></i>
+          <span>No articles found</span>
+        </div>
+      `;
+      return;
+    }
+
+    articlesContainer.innerHTML = filteredArticles.map(article => `
+      <div class="article-item ${article.isRead ? 'read' : ''}" data-id="${article.id}">
+        <img src="${article.thumbnail}" alt="" class="article-thumbnail">
+        <div class="article-content">
+          <div class="article-header">
+            <span class="article-source">${article.source}</span>
+            <span class="article-time">${this.formatDate(article.publishDate)}</span>
+          </div>
+          <h3 class="article-title">${article.title}</h3>
+          <p class="article-excerpt">${article.excerpt}</p>
+          <div class="article-footer">
+            <span class="article-time">${article.readTime}</span>
+            <div class="article-actions">
+              <button class="article-action ${article.isSaved ? 'active' : ''}" data-action="save">
+                <i class="fas fa-bookmark"></i>
+              </button>
+              <button class="article-action ${article.isRead ? 'active' : ''}" data-action="read" title="Mark read">
+                <i class="fas fa-check"></i>
+              </button>
+              <button class="article-action" data-action="open" title="Open original article">
+                <i class="fas fa-external-link-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    // Add event listeners to articles
+    document.querySelectorAll('.article-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        if (!e.target.closest('.article-action')) {
+          const articleId = parseInt(item.dataset.id);
+          this.openArticle(articleId);
+        }
+      });
+    });
+
+    // Add event listeners to article actions
+    document.querySelectorAll('.article-action').forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const articleId = parseInt(button.closest('.article-item').dataset.id);
+        const action = button.dataset.action;
+        
+        if (action === 'save') {
+          this.toggleSaveArticle(articleId);
+        } else if (action === 'read') {
+          this.toggleReadArticle(articleId);
+        } else if (action === 'open') {
+          const art = this.articles.find(a => a.id === articleId);
+          if (art && art.url) window.open(art.url, '_blank', 'noopener');
+        }
+      });
+    });
+
+    this.updateCounts();
+  }
+
+  openArticle(articleId) {
+    const article = this.articles.find(a => a.id === articleId);
+    if (!article) return;
+
+    this.currentArticle = article;
+    
+    // Mark as read
+    if (!article.isRead) {
+      article.isRead = true;
+      this.renderArticles();
+    }
+
+    // Update active article
+    document.querySelectorAll('.article-item').forEach(item => {
+      item.classList.remove('active');
+      if (parseInt(item.dataset.id) === articleId) {
+        item.classList.add('active');
+      }
+    });
+
+    this.renderReadingPane();
+    
+    // Show reading pane on mobile
+    if (window.innerWidth <= 768) {
+      document.getElementById('readingPane').classList.add('active');
+    }
+  }
+
+  renderReadingPane() {
+    const readingPane = document.getElementById('readingPane');
+    const readingContent = readingPane.querySelector('.reading-pane-content');
+    
+    if (!this.currentArticle) {
+      readingContent.innerHTML = `
+        <div class="welcome-message">
+          <i class="fas fa-newspaper"></i>
+          <h3>Welcome to FeedReader</h3>
+          <p>Select an article to start reading, or explore your feeds in the sidebar.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const article = this.currentArticle;
+    readingContent.innerHTML = `
+      <div class="article-reading-header">
+        <h1 class="article-reading-title">${article.title}</h1>
+        <div class="article-reading-meta">
+          <span>${article.source}</span>
+          <span>•</span>
+          <span>${this.formatDate(article.publishDate)}</span>
+          <span>•</span>
+          <span>${article.readTime}</span>
+        </div>
+        <div class="article-reading-actions">
+          <a class="btn btn--primary btn--sm" href="${article.url}" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-external-link-alt"></i>
+            Read original
+          </a>
+          <button class="btn btn--outline btn--sm" onclick="rssReader.toggleSaveArticle(${article.id})">
+            <i class="fas fa-bookmark"></i>
+            ${article.isSaved ? 'Unsave' : 'Save'}
+          </button>
+          <button class="btn btn--outline btn--sm" onclick="rssReader.closeReadingPane()">
+            <i class="fas fa-times"></i>
+            Close
+          </button>
+        </div>
+      </div>
+      <img src="${article.thumbnail}" alt="" class="article-reading-image">
+      <div class="article-reading-content">
+        ${article.content}
+      </div>
+    `;
+  }
+
+  closeReadingPane() {
+    if (window.innerWidth <= 768) {
+      document.getElementById('readingPane').classList.remove('active');
+    }
+    
+    document.querySelectorAll('.article-item').forEach(item => {
+      item.classList.remove('active');
+    });
+  }
+
+  toggleSaveArticle(articleId) {
+    const article = this.articles.find(a => a.id === articleId);
+    if (article) {
+      article.isSaved = !article.isSaved;
+      this.renderArticles();
+      if (this.currentArticle && this.currentArticle.id === articleId) {
+        this.renderReadingPane();
+      }
+    }
+  }
+
+  toggleReadArticle(articleId) {
+    const article = this.articles.find(a => a.id === articleId);
+    if (article) {
+      article.isRead = !article.isRead;
+      this.renderArticles();
+    }
+  }
+
+  markAllRead() {
+    const filteredArticles = this.getFilteredArticles();
+    filteredArticles.forEach(article => {
+      article.isRead = true;
+    });
+    this.renderArticles();
+  }
+
+  refreshArticles() {
+    const refreshBtn = document.getElementById('refreshBtn');
+    const icon = refreshBtn.querySelector('i');
+    
+    icon.style.animation = 'spin 1s linear infinite';
+    
+    setTimeout(() => {
+      icon.style.animation = '';
+      this.renderArticles();
+    }, 1000);
+  }
+
+  updateCounts() {
+    const todayArticles = this.articles.filter(article => {
+      const today = new Date().toISOString().split('T')[0];
+      return article.publishDate.startsWith(today) && !article.isRead;
+    });
+    
+    const allUnread = this.articles.filter(article => !article.isRead);
+    const savedArticles = this.articles.filter(article => article.isSaved);
+
+    document.getElementById('todayCount').textContent = todayArticles.length;
+    document.getElementById('allCount').textContent = allUnread.length;
+    document.getElementById('savedCount').textContent = savedArticles.length;
+  }
+
+  showAddFeedModal() {
+    const modal = document.getElementById('addFeedModal');
+    const categorySelect = document.getElementById('feedCategory');
+    
+    // Populate category options
+    categorySelect.innerHTML = '<option value="">Select a category</option>';
+    Object.keys(this.feeds).forEach(category => {
+      const option = document.createElement('option');
+      option.value = category;
+      option.textContent = category;
+      categorySelect.appendChild(option);
+    });
+    
+    modal.classList.add('active');
+  }
+
+  hideAddFeedModal() {
+    const modal = document.getElementById('addFeedModal');
+    modal.classList.remove('active');
+    document.getElementById('addFeedForm').reset();
+  }
+
+  addFeed() {
+    const feedUrl = document.getElementById('feedUrl').value;
+    const feedCategory = document.getElementById('feedCategory').value;
+    const feedName = document.getElementById('feedName').value;
+    
+    if (!feedUrl || !feedCategory) {
+      alert('Please fill in all required fields');
+      return;
+    }
+    
+    const feedDisplayName = feedName || this.extractFeedName(feedUrl);
+    
+    // Add to feeds data
+    if (!this.feeds[feedCategory]) {
+      this.feeds[feedCategory] = [];
+    }
+    
+    if (!this.feeds[feedCategory].includes(feedDisplayName)) {
+      this.feeds[feedCategory].push(feedDisplayName);
+      this.renderSidebar();
+      this.hideAddFeedModal();
+      
+      // Show success message
+      this.showNotification('Feed added successfully!', 'success');
+    } else {
+      this.showNotification('Feed already exists!', 'warning');
+    }
+  }
+
+  extractFeedName(url) {
+    try {
+      const domain = new URL(url).hostname;
+      return domain.replace('www.', '').split('.')[0];
+    } catch {
+      return 'New Feed';
+    }
+  }
+
+  showNotification(message, type = 'info') {
+    // Simple notification system
+    const notification = document.createElement('div');
+    notification.className = `notification notification--${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 12px 16px;
+      border-radius: 6px;
+      color: white;
+      font-weight: 500;
+      z-index: 3000;
+      animation: slideIn 0.3s ease-out;
+    `;
+    
+    const colors = {
+      success: '#22c55e',
+      warning: '#f59e0b',
+      error: '#ef4444',
+      info: '#3b82f6'
+    };
+    
+    notification.style.backgroundColor = colors[type] || colors.info;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.remove();
+    }, 3000);
+  }
+
+  formatDate(dateString) {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now - date);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 1) {
+      return 'Today';
+    } else if (diffDays === 2) {
+      return 'Yesterday';
+    } else if (diffDays <= 7) {
+      return `${diffDays - 1} days ago`;
+    } else {
+      return date.toLocaleDateString();
+    }
+  }
+}
+
+// Initialize the RSS Reader
+const rssReader = new RSSReader();
+
+// Add CSS animation for notifications
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+`;
+document.head.appendChild(style);
+</script>
+  <script>
+   /* Unified color-mode toggle — shared standard across all apps */
+   (function () {
+     function preferred() {
+       try { var s = localStorage.getItem('colorScheme'); if (s === 'dark' || s === 'light') return s; } catch (e) {}
+       return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+     }
+     function current() { return document.documentElement.getAttribute('data-color-scheme') || preferred(); }
+     function swapIcon(btn, isDark) {
+       var lu = btn.querySelector('i[data-lucide="moon"], i[data-lucide="sun"], svg.lucide-moon, svg.lucide-sun');
+       if (lu) {
+         var ni = document.createElement('i');
+         ni.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+         if (lu.tagName.toLowerCase() === 'i' && lu.className) ni.className = lu.className;
+         lu.replaceWith(ni);
+         return;
+       }
+       var fa = btn.querySelector('i.fa-moon, i.fa-sun');
+       if (fa) { fa.classList.remove('fa-moon', 'fa-sun'); fa.classList.add(isDark ? 'fa-sun' : 'fa-moon'); }
+     }
+     function refreshIcons(theme) {
+       var isDark = theme === 'dark';
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (b) { swapIcon(b, isDark); });
+       if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
+     }
+     function apply(theme) {
+       document.documentElement.setAttribute('data-color-scheme', theme);
+       try { localStorage.setItem('colorScheme', theme); } catch (e) {}
+       refreshIcons(theme);
+     }
+     window.toggleColorScheme = function () { apply(current() === 'dark' ? 'light' : 'dark'); };
+     function wire() {
+       var t = preferred();
+       document.documentElement.setAttribute('data-color-scheme', t);
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+         var clone = btn.cloneNode(true);
+         clone.removeAttribute('onclick');
+         if (btn.parentNode) btn.parentNode.replaceChild(clone, btn);
+         clone.addEventListener('click', function (e) { e.preventDefault(); window.toggleColorScheme(); });
+       });
+       refreshIcons(t);
+     }
+     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', wire); }
+     else { wire(); }
+   })();
+  </script>
+   <script>
+   /* Feedly — persist read/saved state + feeds */
+   (function () {
+     var KEY = 'feedlyState_v1';
+     function read() { try { var s = localStorage.getItem(KEY); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
+     function ready() { return typeof rssReader !== 'undefined' && rssReader && Array.isArray(rssReader.articles) && rssReader.articles.length; }
+     function snap() { if (!ready()) return null; return { read: rssReader.articles.filter(function (a) { return a.isRead; }).map(function (a) { return a.id; }), saved: rssReader.articles.filter(function (a) { return a.isSaved; }).map(function (a) { return a.id; }), feeds: rssReader.feeds }; }
+     var last = '';
+     function save() { var sn = snap(); if (!sn) return; try { var j = JSON.stringify(sn); if (j !== last) { localStorage.setItem(KEY, j); last = j; } } catch (e) {} }
+     var tries = 0;
+     (function init() {
+       if (ready()) {
+         var s = read();
+         if (s) {
+           if (Array.isArray(s.read)) rssReader.articles.forEach(function (a) { a.isRead = s.read.indexOf(a.id) > -1; });
+           if (Array.isArray(s.saved)) rssReader.articles.forEach(function (a) { a.isSaved = s.saved.indexOf(a.id) > -1; });
+           if (s.feeds && typeof s.feeds === 'object') rssReader.feeds = s.feeds;
+           try { if (rssReader.renderSidebar) rssReader.renderSidebar(); } catch (e) {}
+           try { rssReader.renderArticles(); } catch (e) {}
+           try { if (rssReader.updateCounts) rssReader.updateCounts(); } catch (e) {}
+         }
+         try { last = localStorage.getItem(KEY) || ''; } catch (e) {}
+         if (!s) save();
+         return;
+       }
+       if (tries++ > 60) return; setTimeout(init, 80);
+     })();
+     setInterval(save, 1500); window.addEventListener('beforeunload', save);
+     document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') save(); });
+   })();
+  </script>
+  <script>
+   /* ProjectSuite Enhance — motion, counters, ripple, cursor, chart polish (shared) */
+   (function () {
+     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+     var docEl = document.documentElement;
+
+     if (window.Chart && Chart.defaults) {
+       try {
+         var cs = getComputedStyle(docEl);
+         var txt = (cs.getPropertyValue('--color-text-secondary') || '').trim() || '#8a8f98';
+         var grid = (cs.getPropertyValue('--color-border') || '').trim() || 'rgba(140,140,140,.15)';
+         Chart.defaults.font.family = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+         Chart.defaults.font.size = 12;
+         Chart.defaults.color = txt;
+         Chart.defaults.borderColor = grid;
+         var P = Chart.defaults.plugins || {};
+         if (P.legend) { P.legend.labels = P.legend.labels || {}; P.legend.labels.usePointStyle = true; P.legend.labels.boxWidth = 8; P.legend.labels.padding = 16; }
+         if (P.tooltip) { P.tooltip.usePointStyle = true; P.tooltip.padding = 10; P.tooltip.cornerRadius = 8; P.tooltip.boxPadding = 4; P.tooltip.titleFont = { weight: '600' }; }
+         var E = Chart.defaults.elements || {};
+         if (E.line) { E.line.tension = 0.35; E.line.borderWidth = 2; }
+         if (E.point) { E.point.radius = 0; E.point.hoverRadius = 5; E.point.hitRadius = 12; }
+         if (E.bar) { E.bar.borderRadius = 6; E.bar.borderSkipped = false; }
+         if (E.arc) { E.arc.borderWidth = 2; }
+         (function () {
+           function hexRgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(function(x){return x+x;}).join('');var n=parseInt(h.slice(0,6),16);return [(n>>16)&255,(n>>8)&255,n&255];}
+           function toRgb(c){var m;c=(''+c).trim();if(m=c.match(/^#([0-9a-fA-F]{3,8})$/))return hexRgb(m[1]);if(m=c.match(/rgba?\(([^)]+)\)/i)){var p=m[1].split(',').map(parseFloat);return [p[0],p[1],p[2]];}return null;}
+           function reddish(rgb){if(!rgb)return false;var r=rgb[0],g=rgb[1],b=rgb[2];var mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn;if(mx<70||d<28)return false;var h;if(mx===r)h=((g-b)/d)%6;else if(mx===g)h=(b-r)/d+2;else h=(r-g)/d+4;h*=60;if(h<0)h+=360;var s=d/mx;return s>0.32&&(h>=338||h<=14);}
+           function remap(c){if(typeof c!=='string')return c;var rgb=toRgb(c);if(!rgb||rgb.some(isNaN))return c;if(reddish(rgb)){var a=c.match(/rgba?\([^)]*,\s*([\d.]+)\s*\)/i);return a?'rgba(226,101,42,'+a[1]+')':'#e2652a';}return c;}
+           var keys=['backgroundColor','borderColor','pointBackgroundColor','pointBorderColor','hoverBackgroundColor','hoverBorderColor','pointHoverBackgroundColor'];
+           var plugin={id:'phRecolor',beforeInit:function(chart){(chart.data.datasets||[]).forEach(function(ds){keys.forEach(function(k){if(Array.isArray(ds[k]))ds[k]=ds[k].map(remap);else if(ds[k]!=null&&typeof ds[k]==='string')ds[k]=remap(ds[k]);});});}};
+           if (Chart.register) Chart.register(plugin); else if (Chart.plugins && Chart.plugins.register) Chart.plugins.register(plugin);
+         })();
+       } catch (e) {}
+     }
+
+     function countUp(el) {
+       if (el.children.length) return;
+       var raw = el.textContent.trim();
+       var m = raw.match(/^([^\d-]*)(-?[\d,]+(?:\.\d+)?)(.*)$/);
+       if (!m) return;
+       var prefix = m[1], numStr = m[2], suffix = m[3];
+       var decimals = (numStr.split('.')[1] || '').length;
+       var useComma = numStr.indexOf(',') > -1;
+       var target = parseFloat(numStr.replace(/,/g, ''));
+       if (isNaN(target)) return;
+       var dur = 1200, t0 = performance.now();
+       function fmt(n) {
+         var s = decimals ? n.toFixed(decimals) : String(Math.round(n));
+         if (useComma) s = Number(s).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+         return prefix + s + suffix;
+       }
+       function step(now) {
+         var p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 4);
+         el.textContent = fmt(target * e);
+         if (p < 1) requestAnimationFrame(step); else el.textContent = raw;
+       }
+       requestAnimationFrame(step);
+     }
+
+     function start() {
+       var IO = window.IntersectionObserver;
+       if (!reduce && IO) {
+         docEl.classList.add('ph-anim');
+         var revealSel = '.card, .kpi-card, .widget, .chart-container, .stat-card, .metric-card, .dashboard-card, .stat-display, .info-card, .summary-card, .chart-canvas-wrap';
+         var els = [];
+         document.querySelectorAll(revealSel).forEach(function (el) {
+           if (el.closest('.nav-bar')) return;
+           if (el.querySelector('.card, .kpi-card, .widget')) return;
+           el.classList.add('ph-reveal', 'ph-card');
+           els.push(el);
+         });
+         var io = new IO(function (entries) {
+           entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in-view'); io.unobserve(en.target); } });
+         }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+         els.forEach(function (el) { io.observe(el); });
+         setTimeout(function () { els.forEach(function (el) { el.classList.add('in-view'); }); }, 1600);
+       }
+
+       if (!reduce && IO) {
+         var numSel = '.kpi-value, .stat-number, .widget-value, .stat-value, .metric-value, .kpi-card .value, .stat__value, .metric__value';
+         var co = new IO(function (entries) {
+           entries.forEach(function (en) { if (en.isIntersecting) { countUp(en.target); co.unobserve(en.target); } });
+         }, { threshold: .6 });
+         document.querySelectorAll(numSel).forEach(function (el) {
+           if (el.closest('.nav-bar') || el.children.length) return;
+           if (/\d/.test(el.textContent) && /^[^\d-]*-?[\d,]+(?:\.\d+)?[^\d]*$/.test(el.textContent.trim())) co.observe(el);
+         });
+       }
+
+       document.addEventListener('click', function (e) {
+         if (reduce) return;
+         var btn = e.target.closest('.btn, button');
+         if (!btn || btn.closest('.nav-bar')) return;
+         var r = btn.getBoundingClientRect();
+         if (getComputedStyle(btn).position === 'static') btn.style.position = 'relative';
+         if (getComputedStyle(btn).overflow !== 'hidden') btn.style.overflow = 'hidden';
+         var s = document.createElement('span');
+         s.className = 'ph-ripple';
+         var size = Math.max(r.width, r.height);
+         s.style.width = s.style.height = size + 'px';
+         s.style.left = (e.clientX - r.left) + 'px';
+         s.style.top = (e.clientY - r.top) + 'px';
+         btn.appendChild(s);
+         setTimeout(function () { s.remove(); }, 640);
+       });
+
+       if (!reduce && window.matchMedia('(pointer:fine)').matches && window.innerWidth > 900) {
+         var ring = document.createElement('div');
+         ring.className = 'ph-cursor';
+         document.body.appendChild(ring);
+         var x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y;
+         document.addEventListener('mousemove', function (e) { x = e.clientX; y = e.clientY; });
+         (function loop() { rx += (x - rx) * .18; ry += (y - ry) * .18; ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)'; requestAnimationFrame(loop); })();
+         var hoverSel = 'a,button,.btn,.nav-tab,.tab-btn,.tab-item,.menu-item,.card,[role="button"],input,select,textarea,[data-theme-toggle]';
+         document.addEventListener('mouseover', function (e) { if (e.target.closest(hoverSel)) ring.classList.add('hover'); });
+         document.addEventListener('mouseout', function (e) { if (e.target.closest(hoverSel)) ring.classList.remove('hover'); });
+       }
+     }
+
+     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+     else start();
+   })();
+  </script>
+ </body>
+</html>

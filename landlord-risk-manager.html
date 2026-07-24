@@ -1,0 +1,3014 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Landlord Risk Management Dashboard
+  </title>
+  <style>
+/*
+ * Converted to ProjectSuite CSS Architecture
+ * Date: 2025-11-29 04:36:35
+ * Bootstrap/utility classes mapped to ProjectSuite equivalents
+ * Original backed up to: ./asset_backups
+ */
+
+
+:root {
+  /* Colors */
+  --color-background: rgba(252, 252, 249, 1);
+  --color-surface: rgba(255, 255, 253, 1);
+  --color-text: rgba(19, 52, 59, 1);
+  --color-text-secondary: rgba(98, 108, 113, 1);
+  --color-primary: rgba(33, 128, 141, 1);
+  --color-primary-hover: rgba(29, 116, 128, 1);
+  --color-primary-active: rgba(26, 104, 115, 1);
+  --color-secondary: rgba(94, 82, 64, 0.12);
+  --color-secondary-hover: rgba(94, 82, 64, 0.2);
+  --color-secondary-active: rgba(94, 82, 64, 0.25);
+  --color-border: rgba(94, 82, 64, 0.2);
+  --color-btn-primary-text: rgba(252, 252, 249, 1);
+  --color-card-border: rgba(94, 82, 64, 0.12);
+  --color-card-border-inner: rgba(94, 82, 64, 0.12);
+  --color-error: rgba(192, 21, 47, 1);
+  --color-success: rgba(33, 128, 141, 1);
+  --color-warning: rgba(168, 75, 47, 1);
+  --color-info: rgba(98, 108, 113, 1);
+  --color-focus-ring: rgba(33, 128, 141, 0.4);
+  --color-select-caret: rgba(19, 52, 59, 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: rgba(31, 33, 33, 1);
+    --color-surface: rgba(38, 40, 40, 1);
+    --color-text: rgba(245, 245, 245, 1);
+    --color-text-secondary: rgba(167, 169, 169, 0.7);
+    --color-primary: rgba(50, 184, 198, 1);
+    --color-primary-hover: rgba(45, 166, 178, 1);
+    --color-primary-active: rgba(41, 150, 161, 1);
+    --color-secondary: rgba(119, 124, 124, 0.15);
+    --color-secondary-hover: rgba(119, 124, 124, 0.25);
+    --color-secondary-active: rgba(119, 124, 124, 0.3);
+    --color-border: rgba(119, 124, 124, 0.3);
+    --color-error: rgba(255, 84, 89, 1);
+    --color-success: rgba(50, 184, 198, 1);
+    --color-warning: rgba(230, 129, 97, 1);
+    --color-info: rgba(167, 169, 169, 1);
+    --color-focus-ring: rgba(50, 184, 198, 0.4);
+    --color-btn-primary-text: rgba(19, 52, 59, 1);
+    --color-card-border: rgba(119, 124, 124, 0.2);
+    --color-card-border-inner: rgba(119, 124, 124, 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --button-border-secondary: rgba(119, 124, 124, 0.2);
+    --color-border-secondary: rgba(119, 124, 124, 0.2);
+    --color-select-caret: rgba(245, 245, 245, 0.8);
+
+    /* Common style patterns - updated for dark mode */
+    --focus-ring: 0 0 0 3px var(--color-focus-ring);
+    --focus-outline: 2px solid var(--color-primary);
+    --status-bg-opacity: 0.15;
+    --status-border-opacity: 0.25;
+    --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+    /* RGB versions for dark mode */
+    --color-success-rgb: 50, 184, 198;
+    --color-error-rgb: 255, 84, 89;
+    --color-warning-rgb: 230, 129, 97;
+    --color-info-rgb: 167, 169, 169;
+  }
+}
+
+/* Data attribute for manual theme switching */
+[data-color-scheme="dark"] {
+  --color-background: rgba(31, 33, 33, 1);
+  --color-surface: rgba(38, 40, 40, 1);
+  --color-text: rgba(245, 245, 245, 1);
+  --color-text-secondary: rgba(167, 169, 169, 0.7);
+  --color-primary: rgba(50, 184, 198, 1);
+  --color-primary-hover: rgba(45, 166, 178, 1);
+  --color-primary-active: rgba(41, 150, 161, 1);
+  --color-secondary: rgba(119, 124, 124, 0.15);
+  --color-secondary-hover: rgba(119, 124, 124, 0.25);
+  --color-secondary-active: rgba(119, 124, 124, 0.3);
+  --color-border: rgba(119, 124, 124, 0.3);
+  --color-error: rgba(255, 84, 89, 1);
+  --color-success: rgba(50, 184, 198, 1);
+  --color-warning: rgba(230, 129, 97, 1);
+  --color-info: rgba(167, 169, 169, 1);
+  --color-focus-ring: rgba(50, 184, 198, 0.4);
+  --color-btn-primary-text: rgba(19, 52, 59, 1);
+  --color-card-border: rgba(119, 124, 124, 0.15);
+  --color-card-border-inner: rgba(119, 124, 124, 0.15);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  --color-border-secondary: rgba(119, 124, 124, 0.2);
+  --color-select-caret: rgba(245, 245, 245, 0.8);
+
+  /* Common style patterns - updated for dark mode */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for dark mode */
+  --color-success-rgb: 50, 184, 198;
+  --color-error-rgb: 255, 84, 89;
+  --color-warning-rgb: 230, 129, 97;
+  --color-info-rgb: 167, 169, 169;
+}
+
+[data-color-scheme="light"] {
+  --color-background: rgba(252, 252, 249, 1);
+  --color-surface: rgba(255, 255, 253, 1);
+  --color-text: rgba(19, 52, 59, 1);
+  --color-text-secondary: rgba(98, 108, 113, 1);
+  --color-primary: rgba(33, 128, 141, 1);
+  --color-primary-hover: rgba(29, 116, 128, 1);
+  --color-primary-active: rgba(26, 104, 115, 1);
+  --color-secondary: rgba(94, 82, 64, 0.12);
+  --color-secondary-hover: rgba(94, 82, 64, 0.2);
+  --color-secondary-active: rgba(94, 82, 64, 0.25);
+  --color-border: rgba(94, 82, 64, 0.2);
+  --color-btn-primary-text: rgba(252, 252, 249, 1);
+  --color-card-border: rgba(94, 82, 64, 0.12);
+  --color-card-border-inner: rgba(94, 82, 64, 0.12);
+  --color-error: rgba(192, 21, 47, 1);
+  --color-success: rgba(33, 128, 141, 1);
+  --color-warning: rgba(168, 75, 47, 1);
+  --color-info: rgba(98, 108, 113, 1);
+  --color-focus-ring: rgba(33, 128, 141, 0.4);
+
+  /* RGB versions for light mode */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+}
+
+/* Base styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+h2 {
+  font-size: var(--font-size-3xl);
+}
+h3 {
+  font-size: var(--font-size-2xl);
+}
+h4 {
+  font-size: var(--font-size-xl);
+}
+h5 {
+  font-size: var(--font-size-lg);
+}
+h6 {
+  font-size: var(--font-size-md);
+}
+
+p {
+  margin: 0 0 var(--space-16) 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+code,
+pre {
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--font-size-base) * 0.95);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-sm);
+}
+
+code {
+  padding: var(--space-1) var(--space-4);
+}
+
+pre {
+  padding: var(--space-16);
+  margin: var(--space-16) 0;
+  overflow: auto;
+  border: 1px solid var(--color-border);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
+  border: none;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn--primary:active {
+  background: var(--color-primary-active);
+}
+
+.btn--secondary {
+  background: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.btn--secondary:hover {
+  background: var(--color-secondary-hover);
+}
+
+.btn--secondary:active {
+  background: var(--color-secondary-active);
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--outline:hover {
+  background: var(--color-secondary);
+}
+
+.btn--sm {
+  padding: var(--space-4) var(--space-12);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+}
+
+.btn--lg {
+  padding: var(--space-10) var(--space-20);
+  font-size: var(--font-size-lg);
+  border-radius: var(--radius-md);
+}
+
+.btn--full-width {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Form elements */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: var(--space-8) var(--space-12);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+textarea.form-control {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+}
+
+select.form-control {
+  padding: var(--space-8) var(--space-12);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: var(--select-caret-light);
+  background-repeat: no-repeat;
+  background-position: right var(--space-12) center;
+  background-size: 16px;
+  padding-right: var(--space-32);
+}
+
+/* Add a dark mode specific caret */
+@media (prefers-color-scheme: dark) {
+  select.form-control {
+    background-image: var(--select-caret-dark);
+  }
+}
+
+/* Also handle data-color-scheme */
+[data-color-scheme="dark"] select.form-control {
+  background-image: var(--select-caret-dark);
+}
+
+[data-color-scheme="light"] select.form-control {
+  background-image: var(--select-caret-light);
+}
+
+.form-control:focus {
+  border-color: var(--color-primary);
+  outline: var(--focus-outline);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-8);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.form-group {
+  margin-bottom: var(--space-16);
+}
+
+/* Card component */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card__body {
+  padding: var(--space-16);
+}
+
+.card__header,
+.card__footer {
+  padding: var(--space-16);
+  border-bottom: 1px solid var(--color-card-border-inner);
+}
+
+/* Status indicators - simplified with CSS variables */
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-6) var(--space-12);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.status--success {
+  background-color: rgba(
+    var(--color-success-rgb, 33, 128, 141),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-success);
+  border: 1px solid
+    rgba(var(--color-success-rgb, 33, 128, 141), var(--status-border-opacity));
+}
+
+.status--error {
+  background-color: rgba(
+    var(--color-error-rgb, 192, 21, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-error);
+  border: 1px solid
+    rgba(var(--color-error-rgb, 192, 21, 47), var(--status-border-opacity));
+}
+
+.status--warning {
+  background-color: rgba(
+    var(--color-warning-rgb, 168, 75, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-warning);
+  border: 1px solid
+    rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-border-opacity));
+}
+
+.status--info {
+  background-color: rgba(
+    var(--color-info-rgb, 98, 108, 113),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-info);
+  border: 1px solid
+    rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity));
+}
+
+/* Container layout */
+.section-content {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--space-16);
+  padding-left: var(--space-16);
+}
+
+@media (min-width: 640px) {
+  .section-content {
+    max-width: var(--container-sm);
+  }
+}
+@media (min-width: 768px) {
+  .section-content {
+    max-width: var(--container-md);
+  }
+}
+@media (min-width: 1024px) {
+  .section-content {
+    max-width: var(--container-lg);
+  }
+}
+@media (min-width: 1280px) {
+  .section-content {
+    max-width: var(--container-xl);
+  }
+}
+
+/* Utility classes */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-4 {
+  gap: var(--space-4);
+}
+.gap-8 {
+  gap: var(--space-8);
+}
+.gap-16 {
+  gap: var(--space-16);
+}
+
+.block {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Dark mode specifics */
+[data-color-scheme="dark"] .btn--outline {
+  border: 1px solid var(--color-border-secondary);
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+}
+
+/* App-specific styles */
+.app-container {
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+.header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-16) 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-title {
+  color: var(--color-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: var(--space-12);
+}
+
+/* Navigation Tabs */
+.nav-tabs {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: var(--space-16) var(--space-20);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all var(--duration-fast) var(--ease-standard);
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: var(--color-text);
+  background-color: var(--color-secondary);
+}
+
+.tab-btn.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* Main Content */
+.main-content {
+  padding: var(--space-32) 0;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  gap: var(--space-24);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.overview-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-16);
+  margin-bottom: var(--space-24);
+}
+
+.metric-card {
+  text-align: center;
+}
+
+.metric-value {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin: var(--space-8) 0;
+}
+
+.metric-value.risk-high {
+  color: var(--color-error);
+}
+
+.metric-value.risk-medium {
+  color: var(--color-warning);
+}
+
+.metric-change {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.metric-change.positive {
+  color: var(--color-success);
+}
+
+.metric-change.negative {
+  color: var(--color-error);
+}
+
+/* Property List */
+.property-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.property-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-16);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  background-color: var(--color-surface);
+}
+
+.property-info h4 {
+  margin: 0 0 var(--space-4) 0;
+  color: var(--color-text);
+}
+
+.property-details {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.property-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-8);
+}
+
+.rent-amount {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+/* Alert List */
+.alert-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.alert-item {
+  padding: var(--space-12);
+  border-radius: var(--radius-base);
+  border-left: 4px solid;
+}
+
+.alert-item.high {
+  background-color: rgba(var(--color-error-rgb), 0.1);
+  border-left-color: var(--color-error);
+}
+
+.alert-item.medium {
+  background-color: rgba(var(--color-warning-rgb), 0.1);
+  border-left-color: var(--color-warning);
+}
+
+.alert-item.low {
+  background-color: rgba(var(--color-success-rgb), 0.1);
+  border-left-color: var(--color-success);
+}
+
+/* Calculator Grid */
+.calculator-grid {
+  display: grid;
+  gap: var(--space-24);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .calculator-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .calculator-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.calculator-card {
+  height: fit-content;
+}
+
+.calculation-result {
+  margin-top: var(--space-16);
+  padding: var(--space-16);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-base);
+  border: 1px solid var(--color-border);
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+}
+
+.result-label {
+  font-weight: var(--font-weight-medium);
+}
+
+.result-value {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+.result-value.negative {
+  color: var(--color-error);
+}
+
+.result-total {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-8);
+  margin-top: var(--space-8);
+  font-size: var(--font-size-lg);
+}
+
+/* Tenant Grid */
+.tenant-grid {
+  display: grid;
+  gap: var(--space-24);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .tenant-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tenant-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.risk-indicator {
+  margin-top: var(--space-16);
+}
+
+.recommendations {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.recommendation-item {
+  padding: var(--space-12);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-base);
+  border-left: 3px solid var(--color-primary);
+}
+
+.communication-history {
+  margin-top: var(--space-16);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.communication-item {
+  padding: var(--space-12);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.communication-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+/* Assessment Grid */
+.assessment-grid {
+  display: grid;
+  gap: var(--space-24);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .assessment-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  margin-bottom: var(--space-16);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-primary);
+}
+
+.risk-score-result,
+.property-risk-result {
+  margin-top: var(--space-16);
+  padding: var(--space-16);
+  border-radius: var(--radius-base);
+  text-align: center;
+}
+
+.risk-score {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin: var(--space-8) 0;
+}
+
+.risk-score.low {
+  color: var(--color-success);
+}
+
+.risk-score.medium {
+  color: var(--color-warning);
+}
+
+.risk-score.high {
+  color: var(--color-error);
+}
+
+.risk-level {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-12);
+}
+
+.risk-factors {
+  text-align: left;
+  margin-top: var(--space-12);
+}
+
+.risk-factor {
+  padding: var(--space-8);
+  margin-bottom: var(--space-8);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-secondary);
+}
+
+/* Reports Grid */
+.reports-grid {
+  display: grid;
+  gap: var(--space-24);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .reports-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .reports-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.report-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-12) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.report-item:last-child {
+  border-bottom: none;
+}
+
+.report-label {
+  font-weight: var(--font-weight-medium);
+}
+
+.report-value {
+  font-weight: var(--font-weight-bold);
+}
+
+.report-value.risk-high {
+  color: var(--color-error);
+}
+
+.report-value.risk-medium {
+  color: var(--color-warning);
+}
+
+.action-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-12);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-base);
+}
+
+.action-priority {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.action-priority.high {
+  background-color: var(--color-error);
+}
+
+.action-priority.medium {
+  background-color: var(--color-warning);
+}
+
+.action-priority.low {
+  background-color: var(--color-success);
+}
+
+.action-text {
+  flex: 1;
+  font-size: var(--font-size-sm);
+}
+
+.action-date {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* Chart container */
+#risk-chart {
+  max-width: 100%;
+  height: 300px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 767px) {
+  .dashboard-grid,
+  .calculator-grid,
+  .tenant-grid,
+  .assessment-grid,
+  .reports-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .property-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-12);
+  }
+
+  .property-status {
+    align-items: flex-start;
+  }
+
+  .tab-buttons {
+    justify-content: flex-start;
+  }
+
+  .tab-btn {
+    padding: var(--space-12) var(--space-16);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Loading and error states */
+.loading {
+  text-align: center;
+  padding: var(--space-32);
+  color: var(--color-text-secondary);
+}
+
+.error {
+  background-color: rgba(var(--color-error-rgb), 0.1);
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  padding: var(--space-16);
+  border-radius: var(--radius-base);
+  margin: var(--space-16) 0;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utility classes */
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.text-sm {
+  font-size: var(--font-size-sm);
+}
+
+.text-lg {
+  font-size: var(--font-size-lg);
+}
+
+/* Print styles */
+@media print {
+  .header,
+  .nav-tabs,
+  .btn {
+    display: none !important;
+  }
+
+  .main-content {
+    padding: 0;
+  }
+
+  .card {
+    border: 1px solid #000;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+}
+</style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  
+  
+  
+  
+  <script>
+   /* Unified color-mode: no-flash init (shared standard) */
+   (function () {
+     try {
+       var s = localStorage.getItem('colorScheme');
+       if (s !== 'dark' && s !== 'light') {
+         s = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+       }
+       document.documentElement.setAttribute('data-color-scheme', s);
+     } catch (e) {}
+   })();
+  </script>
+  <style>
+   /* Unified typography — Space Grotesk headings + Inter body (shared standard) */
+   body { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+   h1, h2, h3, h4, h5, h6,
+   .logo, .logo span, .sidebar-header h2, .sidebar__title, .app-title {
+     font-family: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+     letter-spacing: -0.02em;
+   }
+  </style>
+  <style>
+   /* Unified side navigation (shared standard) */
+   .app-shell {
+     display: flex; align-items: flex-start; gap: var(--space-24, 24px);
+     max-width: var(--container-xl, 1280px); margin: 0 auto;
+     padding: var(--space-24, 24px) var(--space-16, 16px); width: 100%;
+   }
+   .nav-bar {
+     width: 220px; flex-shrink: 0; position: sticky; top: calc(64px + var(--space-16, 16px));
+     background-color: var(--color-surface);
+     border: 1px solid var(--color-card-border, var(--color-border));
+     border-radius: var(--radius-lg, 12px); padding: var(--space-8, 8px);
+     box-shadow: var(--shadow-sm); margin: 0;
+   }
+   .nav-bar .nav-content, .nav-bar .section-content { padding: 0; max-width: none; margin: 0; }
+   .nav-bar .tab-list, .nav-bar .tab-buttons, .nav-bar .nav-links,
+   .nav-bar .section-content > div {
+     display: flex; flex-direction: column; gap: var(--space-4, 4px); width: 100%; border: none;
+   }
+   .nav-bar .nav-tab, .nav-bar .tab-btn, .nav-bar .tab-item,
+   .nav-bar .nav-item, .nav-bar .menu-item {
+     display: flex; align-items: center; gap: var(--space-12, 12px); width: 100%;
+     padding: var(--space-10, 10px) var(--space-12, 12px); border: none; background: none;
+     color: var(--color-text-secondary); cursor: pointer; border-radius: var(--radius-base, 8px);
+     font-weight: 500; text-align: left; white-space: nowrap; font-size: var(--font-size-base, 14px);
+   }
+   .nav-bar .nav-tab i, .nav-bar .tab-btn i, .nav-bar .tab-item i,
+   .nav-bar .nav-item i, .nav-bar .menu-item i, .nav-bar .menu-icon {
+     width: 18px; height: 18px; flex-shrink: 0; font-size: 16px;
+   }
+   .nav-bar .nav-tab:hover, .nav-bar .tab-btn:hover, .nav-bar .tab-item:hover,
+   .nav-bar .nav-item:hover, .nav-bar .menu-item:hover {
+     color: var(--color-text); background-color: var(--color-secondary);
+   }
+   .nav-bar .nav-tab--active, .nav-bar .nav-tab.active, .nav-bar .tab-btn.active,
+   .nav-bar .tab-item.active, .nav-bar .nav-item.active, .nav-bar .menu-item.active {
+     color: var(--color-btn-primary-text); background-color: var(--color-primary);
+   }
+   .main-content { flex: 1; min-width: 0; max-width: none; margin: 0; }
+   @media (max-width: 768px) {
+     .app-shell { flex-direction: column; }
+     .nav-bar { width: 100%; position: static; }
+     .nav-bar .tab-list, .nav-bar .tab-buttons, .nav-bar .nav-links, .nav-bar .section-content > div { flex-direction: row; overflow-x: auto; }
+     .nav-bar .nav-tab, .nav-bar .tab-btn, .nav-bar .tab-item, .nav-bar .nav-item, .nav-bar .menu-item { width: auto; }
+   }
+  </style>
+   <style>
+   /* ============================================================
+      PROJECTSUITE ENHANCE — palette refresh (tangerine, no red) + motion
+      ============================================================ */
+   :root, [data-color-scheme="light"] {
+     --color-primary: #e2652a;
+     --color-primary-hover: #c9551e;
+     --color-primary-active: #b54a18;
+     --color-accent: #2a9d8f;
+     --color-accent-hover: #1e7a70;
+     --color-success: #17a673;
+     --color-warning: #e0930b;
+     --color-error: #d2691e;
+     --color-danger: #d2691e;
+     --color-info: #1e85ad;
+     --color-focus-ring: rgba(226, 101, 42, 0.4);
+     --color-btn-primary-text: #ffffff;
+     --color-primary-rgb: 226, 101, 42;
+     --color-success-rgb: 23, 166, 115;
+     --color-warning-rgb: 224, 147, 11;
+     --color-error-rgb: 210, 105, 30;
+     --color-info-rgb: 30, 133, 173;
+     --gradient-primary: linear-gradient(135deg, #e2652a 0%, #f5a623 100%);
+     --gradient-accent: linear-gradient(135deg, #2a9d8f 0%, #17a673 100%);
+   }
+   [data-color-scheme="dark"] {
+     --color-primary: #ff8a4c;
+     --color-primary-hover: #ff7a33;
+     --color-primary-active: #f26b21;
+     --color-accent: #3fb9aa;
+     --color-accent-hover: #2dd4a7;
+     --color-success: #2dd4a7;
+     --color-warning: #f5b23d;
+     --color-error: #ff9150;
+     --color-danger: #ff9150;
+     --color-info: #38a9ce;
+     --color-focus-ring: rgba(255, 138, 76, 0.4);
+     --color-btn-primary-text: #16150f;
+     --color-primary-rgb: 255, 138, 76;
+     --color-success-rgb: 45, 212, 167;
+     --color-warning-rgb: 245, 178, 61;
+     --color-error-rgb: 255, 145, 80;
+     --color-info-rgb: 56, 169, 206;
+     --gradient-primary: linear-gradient(135deg, #ff8a4c 0%, #f5b23d 100%);
+     --gradient-accent: linear-gradient(135deg, #3fb9aa 0%, #2dd4a7 100%);
+   }
+   @media (prefers-color-scheme: dark) {
+     :root:not([data-color-scheme="light"]) {
+       --color-primary: #ff8a4c; --color-primary-hover: #ff7a33; --color-primary-active: #f26b21;
+       --color-accent: #3fb9aa; --color-success: #2dd4a7; --color-warning: #f5b23d;
+       --color-error: #ff9150; --color-danger: #ff9150; --color-info: #38a9ce;
+       --color-primary-rgb: 255, 138, 76;
+       --gradient-primary: linear-gradient(135deg, #ff8a4c 0%, #f5b23d 100%);
+     }
+   }
+   html.ph-anim .ph-reveal { opacity: 0; transform: translateY(18px);
+     transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); will-change: opacity, transform; }
+   html.ph-anim .ph-reveal.in-view { opacity: 1; transform: none; }
+   .ph-card { position: relative; }
+   .ph-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+     background: var(--gradient-primary); transform: scaleX(0); transform-origin: left;
+     transition: transform .35s cubic-bezier(.16,1,.3,1); border-radius: 4px 4px 0 0; pointer-events: none; z-index: 1; }
+   .ph-card:hover::after { transform: scaleX(1); }
+   .ph-ripple { position: absolute; border-radius: 50%; background: rgba(255,255,255,.4);
+     transform: translate(-50%,-50%) scale(0); animation: phRipple .6s ease-out forwards; pointer-events: none; }
+   @keyframes phRipple { to { transform: translate(-50%,-50%) scale(1); opacity: 0; } }
+   .ph-cursor { position: fixed; top: 0; left: 0; width: 30px; height: 30px;
+     border: 2px solid var(--color-primary); border-radius: 50%; pointer-events: none; z-index: 9998;
+     transition: width .25s ease, height .25s ease, background .25s ease, border-color .25s ease, opacity .25s ease;
+     opacity: .55; will-change: transform; }
+   .ph-cursor.hover { width: 50px; height: 50px; background: rgba(var(--color-primary-rgb), .12); opacity: .8; }
+   @media (max-width: 900px) { .ph-cursor { display: none; } }
+   @media (prefers-reduced-motion: reduce) {
+     html.ph-anim .ph-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+     .ph-cursor { display: none; }
+   }
+  </style>
+ </head>
+ <body>
+  <div class="app-container">
+   <!-- Header -->
+   <header class="header">
+    <div class="section-content">
+     <div class="header-content">
+      <h1 class="app-title">
+       Risk Management Hub
+      </h1>
+      <div class="header-actions">
+       <button class="btn btn--outline btn--sm" data-theme-toggle="" id="theme-toggle" aria-label="Toggle color scheme">
+        <i class="fas fa-moon"></i>
+       </button>
+      </div>
+     </div>
+    </div>
+   </header>
+   <!-- Navigation -->
+   <div class="app-shell">
+   <nav class="nav-bar">
+    <div class="section-content nav-content">
+     <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="dashboard">
+       <i class="fas fa-gauge-high"></i>
+       <span>Dashboard</span>
+      </button>
+      <button class="tab-btn" data-tab="calculator">
+       <i class="fas fa-calculator"></i>
+       <span>Risk Calculator</span>
+      </button>
+      <button class="tab-btn" data-tab="tenant">
+       <i class="fas fa-user-check"></i>
+       <span>Tenant Status</span>
+      </button>
+      <button class="tab-btn" data-tab="assessment">
+       <i class="fas fa-clipboard-check"></i>
+       <span>Risk Assessment</span>
+      </button>
+      <button class="tab-btn" data-tab="reports">
+       <i class="fas fa-file-lines"></i>
+       <span>Reports</span>
+      </button>
+     </div>
+    </div>
+   </nav>
+   <!-- Main Content -->
+   <main class="main-content">
+    <div class="section-content">
+     <!-- Dashboard Tab -->
+     <div class="tab-content active" id="dashboard">
+      <div class="dashboard-grid">
+       <!-- Overview Cards -->
+       <div class="overview-cards">
+        <div class="card metric-card">
+         <div class="card__body">
+          <h3>
+           Total Properties
+          </h3>
+          <div class="metric-value" id="kpi-total-properties">
+           2
+          </div>
+          <div class="metric-change positive">
+           +0 this month
+          </div>
+         </div>
+        </div>
+        <div class="card metric-card">
+         <div class="card__body">
+          <h3>
+           High Risk
+          </h3>
+          <div class="metric-value risk-high" id="kpi-high-risk">
+           1
+          </div>
+          <div class="metric-change negative">
+           Needs attention
+          </div>
+         </div>
+        </div>
+        <div class="card metric-card">
+         <div class="card__body">
+          <h3>
+           Monthly Revenue
+          </h3>
+          <div class="metric-value" id="kpi-revenue">
+           $5,000
+          </div>
+          <div class="metric-change positive">
+           On track
+          </div>
+         </div>
+        </div>
+       </div>
+       <!-- Property List -->
+       <div class="card">
+        <div class="card__header" style="display:flex;align-items:center;justify-content:space-between">
+         <h3>
+          Property Overview
+         </h3>
+         <button class="btn btn--primary btn--sm" id="addPropertyBtn">
+          <i class="fas fa-plus"></i>
+          Add Property
+         </button>
+        </div>
+        <div class="card__body">
+         <div class="property-list" id="property-list">
+          <!-- Properties will be populated by JavaScript -->
+         </div>
+        </div>
+       </div>
+       <!-- Alerts -->
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Risk Alerts
+         </h3>
+        </div>
+        <div class="card__body">
+         <div class="alert-list" id="alert-list">
+          <!-- Alerts will be populated by JavaScript -->
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- Risk Calculator Tab -->
+     <div class="tab-content" id="calculator">
+      <h2>
+       Risk Calculators
+      </h2>
+      <div class="calculator-grid">
+       <!-- Financial Loss Calculator -->
+       <div class="card calculator-card">
+        <div class="card__header">
+         <h3>
+          Financial Loss Calculator
+         </h3>
+        </div>
+        <div class="card__body">
+         <div class="form-group">
+          <label class="form-label">
+           Monthly Rent ($)
+          </label>
+          <input class="form-control" id="monthly-rent" type="number" value="2800"/>
+         </div>
+         <div class="form-group">
+          <label class="form-label">
+           Months of Non-Payment
+          </label>
+          <input class="form-control" id="months-nonpay" type="number" value="3"/>
+         </div>
+         <div class="form-group">
+          <label class="form-label">
+           Legal Costs ($)
+          </label>
+          <input class="form-control" id="legal-costs" type="number" value="2500"/>
+         </div>
+         <div class="form-group">
+          <label class="form-label">
+           Property Damage Estimate ($)
+          </label>
+          <input class="form-control" id="damage-costs" type="number" value="1200"/>
+         </div>
+         <button class="btn btn--primary" onclick="calculateFinancialLoss()">
+          Calculate Loss
+         </button>
+         <div class="calculation-result" id="financial-result">
+         </div>
+        </div>
+       </div>
+       <!-- Eviction Cost Calculator -->
+       <div class="card calculator-card">
+        <div class="card__header">
+         <h3>
+          Eviction Cost Calculator
+         </h3>
+        </div>
+        <div class="card__body">
+         <div class="form-group">
+          <label class="form-label">
+           State
+          </label>
+          <select class="form-control" id="eviction-state">
+           <option value="florida">
+            Florida
+           </option>
+           <option value="california">
+            California
+           </option>
+           <option value="texas">
+            Texas
+           </option>
+          </select>
+         </div>
+         <div class="form-group">
+          <label class="form-label">
+           Monthly Rent ($)
+          </label>
+          <input class="form-control" id="eviction-rent" type="number" value="2800"/>
+         </div>
+         <div class="form-group">
+          <label class="form-label">
+           Additional Legal Fees ($)
+          </label>
+          <input class="form-control" id="additional-legal" type="number" value="0"/>
+         </div>
+         <div class="form-group">
+          <label class="form-label">
+           Cleanup Costs ($)
+          </label>
+          <input class="form-control" id="cleanup-costs" type="number" value="1200"/>
+         </div>
+         <button class="btn btn--primary" onclick="calculateEvictionCost()">
+          Calculate Eviction Cost
+         </button>
+         <div class="calculation-result" id="eviction-result">
+         </div>
+        </div>
+       </div>
+       <!-- ROI Impact Calculator -->
+       <div class="card calculator-card">
+        <div class="card__header">
+         <h3>
+          ROI Impact Calculator
+         </h3>
+        </div>
+        <div class="card__body">
+         <div class="form-group">
+          <label class="form-label">
+           Property Value ($)
+          </label>
+          <input class="form-control" id="property-value" type="number" value="350000"/>
+         </div>
+         <div class="form-group">
+          <label class="form-label">
+           Monthly Rent ($)
+          </label>
+          <input class="form-control" id="roi-rent" type="number" value="2800"/>
+         </div>
+         <div class="form-group">
+          <label class="form-label">
+           Vacancy Period (months)
+          </label>
+          <input class="form-control" id="vacancy-period" type="number" value="3"/>
+         </div>
+         <div class="form-group">
+          <label class="form-label">
+           Repair Costs ($)
+          </label>
+          <input class="form-control" id="repair-costs" type="number" value="5000"/>
+         </div>
+         <button class="btn btn--primary" onclick="calculateROIImpact()">
+          Calculate ROI Impact
+         </button>
+         <div class="calculation-result" id="roi-result">
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- Tenant Status Tab -->
+     <div class="tab-content" id="tenant">
+      <h2>
+       Tenant Status Tracker
+      </h2>
+      <div class="tenant-grid">
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Current Tenant Status
+         </h3>
+        </div>
+        <div class="card__body">
+         <div class="form-group">
+          <label class="form-label">
+           Select Property
+          </label>
+          <select class="form-control" id="property-select">
+           <option value="1">
+            123 Ocean Drive, Miami FL
+           </option>
+           <option value="2">
+            456 Biscayne Blvd, Miami FL
+           </option>
+          </select>
+         </div>
+         <div class="form-group">
+          <label class="form-label">
+           Tenant Status
+          </label>
+          <select class="form-control" id="tenant-status" onchange="updateTenantStatus()">
+           <option value="current">
+            Current
+           </option>
+           <option value="late_1_30">
+            Late (1-30 days)
+           </option>
+           <option value="late_30">
+            Late (30+ days)
+           </option>
+           <option value="notice_served">
+            Notice Served
+           </option>
+           <option value="legal_action">
+            Legal Action
+           </option>
+           <option value="evicted">
+            Evicted
+           </option>
+          </select>
+         </div>
+         <div class="risk-indicator" id="risk-indicator">
+          <span class="status status--success">
+           Low Risk
+          </span>
+         </div>
+        </div>
+       </div>
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Recommended Actions
+         </h3>
+        </div>
+        <div class="card__body">
+         <div class="recommendations" id="recommendations">
+          <!-- Recommendations will be populated by JavaScript -->
+         </div>
+        </div>
+       </div>
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Communication Log
+         </h3>
+        </div>
+        <div class="card__body">
+         <div class="form-group">
+          <label class="form-label">
+           Add Note
+          </label>
+          <textarea class="form-control" id="communication-note" placeholder="Enter communication details..." rows="3"></textarea>
+         </div>
+         <button class="btn btn--secondary" onclick="addCommunicationNote()">
+          Add Note
+         </button>
+         <div class="communication-history" id="communication-history">
+          <!-- Communication history will be displayed here -->
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- Risk Assessment Tab -->
+     <div class="tab-content" id="assessment">
+      <h2>
+       Risk Assessment Tool
+      </h2>
+      <div class="assessment-grid">
+       <!-- Tenant Risk Score -->
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Tenant Risk Score
+         </h3>
+        </div>
+        <div class="card__body">
+         <div class="form-group">
+          <label class="form-label">
+           Credit Score Range
+          </label>
+          <select class="form-control" id="credit-score">
+           <option value="excellent">
+            Excellent (750+)
+           </option>
+           <option value="good">
+            Good (650-749)
+           </option>
+           <option value="fair">
+            Fair (550-649)
+           </option>
+           <option value="poor">
+            Poor (Below 550)
+           </option>
+          </select>
+         </div>
+         <div class="form-group">
+          <label class="form-label">
+           Employment Status
+          </label>
+          <select class="form-control" id="employment-status">
+           <option value="stable">
+            Stable Full-time
+           </option>
+           <option value="contract">
+            Contract/Freelance
+           </option>
+           <option value="unemployed">
+            Unemployed
+           </option>
+          </select>
+         </div>
+         <div class="form-group">
+          <label class="form-label">
+           Income to Rent Ratio
+          </label>
+          <select class="form-control" id="income-ratio">
+           <option value="ideal">
+            3x or higher
+           </option>
+           <option value="acceptable">
+            2.5x - 3x
+           </option>
+           <option value="risky">
+            2x - 2.5x
+           </option>
+           <option value="dangerous">
+            Below 2x
+           </option>
+          </select>
+         </div>
+         <div class="form-group">
+          <label class="form-label">
+           Rental History
+          </label>
+          <select class="form-control" id="rental-history">
+           <option value="excellent">
+            Excellent
+           </option>
+           <option value="good">
+            Good
+           </option>
+           <option value="fair">
+            Fair
+           </option>
+           <option value="poor">
+            Poor
+           </option>
+          </select>
+         </div>
+         <button class="btn btn--primary" onclick="calculateTenantRisk()">
+          Calculate Risk Score
+         </button>
+         <div class="risk-score-result" id="tenant-risk-result">
+         </div>
+        </div>
+       </div>
+       <!-- Property Risk Assessment -->
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Property Risk Assessment
+         </h3>
+        </div>
+        <div class="card__body">
+         <div class="checkbox-group">
+          <label class="checkbox-label">
+           <input id="high-crime-area" type="checkbox"/>
+           High crime area
+          </label>
+          <label class="checkbox-label">
+           <input id="older-building" type="checkbox"/>
+           Building over 20 years old
+          </label>
+          <label class="checkbox-label">
+           <input id="declining-market" type="checkbox"/>
+           Declining market area
+          </label>
+          <label class="checkbox-label">
+           <input id="insurance-issues" type="checkbox"/>
+           Insurance coverage gaps
+          </label>
+          <label class="checkbox-label">
+           <input id="maintenance-backlog" type="checkbox"/>
+           Maintenance backlog
+          </label>
+         </div>
+         <button class="btn btn--primary" onclick="assessPropertyRisk()">
+          Assess Property Risk
+         </button>
+         <div class="property-risk-result" id="property-risk-result">
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- Reports Tab -->
+     <div class="tab-content" id="reports">
+      <h2>
+       Risk Reports &amp; Analytics
+      </h2>
+      <div class="reports-grid">
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Risk Summary
+         </h3>
+        </div>
+        <div class="card__body">
+         <canvas height="200" id="risk-chart" width="400">
+         </canvas>
+        </div>
+       </div>
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Monthly Overview
+         </h3>
+        </div>
+        <div class="card__body">
+         <div class="report-item">
+          <span class="report-label">
+           Total Properties:
+          </span>
+          <span class="report-value">
+           2
+          </span>
+         </div>
+         <div class="report-item">
+          <span class="report-label">
+           High Risk Properties:
+          </span>
+          <span class="report-value risk-high">
+           1
+          </span>
+         </div>
+         <div class="report-item">
+          <span class="report-label">
+           Late Payments:
+          </span>
+          <span class="report-value risk-medium">
+           1
+          </span>
+         </div>
+         <div class="report-item">
+          <span class="report-label">
+           Potential Monthly Loss:
+          </span>
+          <span class="report-value">
+           $2,200
+          </span>
+         </div>
+        </div>
+       </div>
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Action Items
+         </h3>
+        </div>
+        <div class="card__body">
+         <div class="action-items" id="action-items">
+          <!-- Action items will be populated by JavaScript -->
+         </div>
+        </div>
+       </div>
+       <div class="card">
+        <div class="card__header">
+         <h3>
+          Generate Report
+         </h3>
+        </div>
+        <div class="card__body">
+         <div class="form-group">
+          <label class="form-label">
+           Report Type
+          </label>
+          <select class="form-control" id="report-type">
+           <option value="monthly">
+            Monthly Summary
+           </option>
+           <option value="risk">
+            Risk Analysis
+           </option>
+           <option value="financial">
+            Financial Impact
+           </option>
+          </select>
+         </div>
+         <button class="btn btn--primary" onclick="generateReport()">
+          Generate Report
+         </button>
+         <button class="btn btn--outline" onclick="exportReport()">
+          Export PDF
+         </button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </main>
+   </div>
+  </div>
+  <script>
+// Application data
+const appData = {
+  "sampleProperties": [
+    {
+      "id": 1,
+      "address": "123 Ocean Drive, Miami FL",
+      "rent": 2800,
+      "tenant": "John Smith",
+      "status": "current",
+      "riskLevel": "low",
+      "lastPayment": "2025-06-01"
+    },
+    {
+      "id": 2,
+      "address": "456 Biscayne Blvd, Miami FL",
+      "rent": 2200,
+      "tenant": "Sarah Johnson",
+      "status": "late_30",
+      "riskLevel": "high",
+      "lastPayment": "2025-05-15"
+    }
+  ],
+  "riskFactors": {
+    "financial": {
+      "avgEvictionCost": 6500,
+      "avgLegalFees": 2500,
+      "avgCleanupCost": 1200,
+      "avgTimeToEvict": 90
+    },
+    "tenantScoring": {
+      "creditScore": {"excellent": 750, "good": 650, "fair": 550, "poor": 450},
+      "incomeRatio": {"ideal": 3, "acceptable": 2.5, "risky": 2, "dangerous": 1.5},
+      "employmentWeight": {"stable": 25, "contract": 15, "unemployed": 0}
+    }
+  },
+  "recommendations": {
+    "late_payment": [
+      "Send 3-day pay or quit notice",
+      "Contact tenant to discuss payment plan",
+      "Review lease terms for late fees",
+      "Document all communications"
+    ],
+    "high_risk_tenant": [
+      "Increase property inspections",
+      "Consider rent guarantee insurance", 
+      "Prepare legal documentation",
+      "Build emergency fund for property"
+    ],
+    "property_issues": [
+      "Address safety violations immediately",
+      "Update insurance coverage",
+      "Create maintenance schedule",
+      "Document property condition"
+    ]
+  },
+  "stateData": {
+    "florida": {
+      "noticeRequired": 3,
+      "avgEvictionTime": 75,
+      "avgLegalCost": 2800
+    },
+    "california": {
+      "noticeRequired": 3,
+      "avgEvictionTime": 120,
+      "avgLegalCost": 4500
+    },
+    "texas": {
+      "noticeRequired": 3,
+      "avgEvictionTime": 45,
+      "avgLegalCost": 2200
+    }
+  }
+};
+
+// Global variables
+let communicationLog = [];
+let savedScenarios = [];
+
+// Initialize the application
+document.addEventListener('DOMContentLoaded', function() {
+    // Add a small delay to ensure DOM is fully ready
+    setTimeout(() => {
+        initializeApp();
+    }, 100);
+});
+
+function initializeApp() {
+    try {
+        setupTabNavigation();
+        setupThemeToggle();
+        loadDashboardData();
+        setupPropertySelect();
+        updateTenantStatus();
+        
+        // Load reports data with delay to ensure elements exist
+        setTimeout(() => {
+            loadActionItems();
+            createRiskChart();
+        }, 200);
+    } catch (error) {
+        console.error('Error initializing app:', error);
+    }
+}
+
+// Tab Navigation
+function setupTabNavigation() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tabId = button.getAttribute('data-tab');
+            
+            // Remove active class from all tabs and contents
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked tab and corresponding content
+            button.classList.add('active');
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+                
+                // Refresh reports when reports tab is clicked
+                if (tabId === 'reports') {
+                    setTimeout(() => {
+                        loadActionItems();
+                        createRiskChart();
+                    }, 100);
+                }
+            }
+        });
+    });
+}
+
+// Theme is handled by the unified color-mode module (see end of <body>).
+function setupThemeToggle() {}
+function updateThemeToggleText() {}
+
+// Dashboard Data
+function loadDashboardData() {
+    loadPropertyList();
+    loadAlerts();
+}
+
+function loadPropertyList() {
+    const propertyList = document.getElementById('property-list');
+    if (!propertyList) return;
+    
+    propertyList.innerHTML = appData.sampleProperties.map(property => `
+        <div class="property-item" data-id="${property.id}" style="cursor:pointer">
+            <div class="property-info">
+                <h4>${property.address}</h4>
+                <div class="property-details">
+                    Tenant: ${property.tenant} | Last Payment: ${formatDate(property.lastPayment)}
+                </div>
+            </div>
+            <div class="property-status">
+                <div class="rent-amount">$${property.rent.toLocaleString()}/month</div>
+                <span class="status status--${getRiskStatusClass(property.riskLevel)}">${capitalizeFirst(property.riskLevel)} Risk</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+function loadAlerts() {
+    const alertList = document.getElementById('alert-list');
+    if (!alertList) return;
+    
+    const alerts = generateAlerts();
+    
+    alertList.innerHTML = alerts.map(alert => `
+        <div class="alert-item ${alert.level}">
+            <strong>${alert.title}</strong><br>
+            ${alert.message}
+        </div>
+    `).join('');
+}
+
+function generateAlerts() {
+    const alerts = [];
+    
+    appData.sampleProperties.forEach(property => {
+        if (property.status === 'late_30') {
+            alerts.push({
+                level: 'high',
+                title: 'Urgent: Late Payment',
+                message: `${property.tenant} at ${property.address} is 30+ days late. Consider legal action.`
+            });
+        } else if (property.riskLevel === 'high') {
+            alerts.push({
+                level: 'medium',
+                title: 'High Risk Property',
+                message: `Monitor ${property.address} closely for potential issues.`
+            });
+        }
+    });
+    
+    if (alerts.length === 0) {
+        alerts.push({
+            level: 'low',
+            title: 'All Clear',
+            message: 'No urgent issues requiring immediate attention.'
+        });
+    }
+    
+    return alerts;
+}
+
+// Calculator Functions
+function calculateFinancialLoss() {
+    const monthlyRent = parseFloat(document.getElementById('monthly-rent').value) || 0;
+    const monthsNonPay = parseFloat(document.getElementById('months-nonpay').value) || 0;
+    const legalCosts = parseFloat(document.getElementById('legal-costs').value) || 0;
+    const damageCosts = parseFloat(document.getElementById('damage-costs').value) || 0;
+    
+    const lostRent = monthlyRent * monthsNonPay;
+    const totalLoss = lostRent + legalCosts + damageCosts;
+    const cashFlowImpact = monthlyRent * (monthsNonPay + 2); // Include vacancy period
+    
+    const resultHtml = `
+        <div class="result-item">
+            <span class="result-label">Lost Rent:</span>
+            <span class="result-value negative">$${lostRent.toLocaleString()}</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Legal Costs:</span>
+            <span class="result-value negative">$${legalCosts.toLocaleString()}</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Damage Costs:</span>
+            <span class="result-value negative">$${damageCosts.toLocaleString()}</span>
+        </div>
+        <div class="result-item result-total">
+            <span class="result-label">Total Potential Loss:</span>
+            <span class="result-value negative">$${totalLoss.toLocaleString()}</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Cash Flow Impact:</span>
+            <span class="result-value negative">$${cashFlowImpact.toLocaleString()}</span>
+        </div>
+    `;
+    
+    const resultElement = document.getElementById('financial-result');
+    if (resultElement) {
+        resultElement.innerHTML = resultHtml;
+    }
+}
+
+function calculateEvictionCost() {
+    const state = document.getElementById('eviction-state').value;
+    const monthlyRent = parseFloat(document.getElementById('eviction-rent').value) || 0;
+    const additionalLegal = parseFloat(document.getElementById('additional-legal').value) || 0;
+    const cleanupCosts = parseFloat(document.getElementById('cleanup-costs').value) || 0;
+    
+    const stateInfo = appData.stateData[state];
+    const baseLegalCost = stateInfo.avgLegalCost + additionalLegal;
+    const lostRentDays = Math.ceil(stateInfo.avgEvictionTime / 30);
+    const lostRent = monthlyRent * lostRentDays;
+    const totalCost = baseLegalCost + lostRent + cleanupCosts;
+    
+    const resultHtml = `
+        <div class="result-item">
+            <span class="result-label">Legal & Court Fees:</span>
+            <span class="result-value negative">$${baseLegalCost.toLocaleString()}</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Lost Rent (${lostRentDays} months):</span>
+            <span class="result-value negative">$${lostRent.toLocaleString()}</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Cleanup Costs:</span>
+            <span class="result-value negative">$${cleanupCosts.toLocaleString()}</span>
+        </div>
+        <div class="result-item result-total">
+            <span class="result-label">Total Eviction Cost:</span>
+            <span class="result-value negative">$${totalCost.toLocaleString()}</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Estimated Time:</span>
+            <span class="result-value">${stateInfo.avgEvictionTime} days</span>
+        </div>
+    `;
+    
+    const resultElement = document.getElementById('eviction-result');
+    if (resultElement) {
+        resultElement.innerHTML = resultHtml;
+    }
+}
+
+function calculateROIImpact() {
+    const propertyValue = parseFloat(document.getElementById('property-value').value) || 0;
+    const monthlyRent = parseFloat(document.getElementById('roi-rent').value) || 0;
+    const vacancyPeriod = parseFloat(document.getElementById('vacancy-period').value) || 0;
+    const repairCosts = parseFloat(document.getElementById('repair-costs').value) || 0;
+    
+    const annualRent = monthlyRent * 12;
+    const normalROI = (annualRent / propertyValue) * 100;
+    const lostRent = monthlyRent * vacancyPeriod;
+    const impactedAnnualRent = annualRent - lostRent;
+    const impactedROI = ((impactedAnnualRent - repairCosts) / propertyValue) * 100;
+    const roiLoss = normalROI - impactedROI;
+    
+    const resultHtml = `
+        <div class="result-item">
+            <span class="result-label">Normal Annual ROI:</span>
+            <span class="result-value">${normalROI.toFixed(2)}%</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Lost Rent:</span>
+            <span class="result-value negative">$${lostRent.toLocaleString()}</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Repair Costs:</span>
+            <span class="result-value negative">$${repairCosts.toLocaleString()}</span>
+        </div>
+        <div class="result-item result-total">
+            <span class="result-label">Impacted ROI:</span>
+            <span class="result-value negative">${impactedROI.toFixed(2)}%</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">ROI Loss:</span>
+            <span class="result-value negative">${roiLoss.toFixed(2)}%</span>
+        </div>
+    `;
+    
+    const resultElement = document.getElementById('roi-result');
+    if (resultElement) {
+        resultElement.innerHTML = resultHtml;
+    }
+}
+
+// Tenant Status Management
+function setupPropertySelect() {
+    const propertySelect = document.getElementById('property-select');
+    if (!propertySelect) return;
+    
+    propertySelect.innerHTML = appData.sampleProperties.map(property => 
+        `<option value="${property.id}">${property.address}</option>`
+    ).join('');
+    
+    // Set initial tenant status based on selected property
+    const selectedProperty = appData.sampleProperties.find(p => p.id == propertySelect.value);
+    if (selectedProperty) {
+        const tenantStatusSelect = document.getElementById('tenant-status');
+        if (tenantStatusSelect) {
+            tenantStatusSelect.value = selectedProperty.status;
+        }
+    }
+    
+    propertySelect.addEventListener('change', updateTenantStatus);
+}
+
+function updateTenantStatus() {
+    const propertySelect = document.getElementById('property-select');
+    const tenantStatusSelect = document.getElementById('tenant-status');
+    
+    if (!propertySelect || !tenantStatusSelect) return;
+    
+    const propertyId = parseInt(propertySelect.value);
+    const tenantStatus = tenantStatusSelect.value;
+    const property = appData.sampleProperties.find(p => p.id === propertyId);
+    
+    if (property) {
+        property.status = tenantStatus;
+        updateRiskIndicator(tenantStatus);
+        updateRecommendations(tenantStatus);
+        updateCommunicationHistory();
+    }
+}
+
+function updateRiskIndicator(status) {
+    const riskIndicator = document.getElementById('risk-indicator');
+    if (!riskIndicator) return;
+    
+    let riskLevel, statusClass;
+    
+    switch (status) {
+        case 'current':
+            riskLevel = 'Low Risk';
+            statusClass = 'success';
+            break;
+        case 'late_1_30':
+            riskLevel = 'Medium Risk';
+            statusClass = 'warning';
+            break;
+        case 'late_30':
+        case 'notice_served':
+        case 'legal_action':
+            riskLevel = 'High Risk';
+            statusClass = 'error';
+            break;
+        case 'evicted':
+            riskLevel = 'Critical';
+            statusClass = 'error';
+            break;
+        default:
+            riskLevel = 'Unknown';
+            statusClass = 'info';
+    }
+    
+    riskIndicator.innerHTML = `<span class="status status--${statusClass}">${riskLevel}</span>`;
+}
+
+function updateRecommendations(status) {
+    const recommendationsContainer = document.getElementById('recommendations');
+    if (!recommendationsContainer) return;
+    
+    let recommendations = [];
+    
+    if (status.includes('late') || status === 'notice_served' || status === 'legal_action') {
+        recommendations = appData.recommendations.late_payment;
+    } else if (status === 'evicted') {
+        recommendations = [
+            "Begin property restoration process",
+            "Screen new tenants thoroughly",
+            "Update security deposits",
+            "Review lease terms for improvements"
+        ];
+    } else {
+        recommendations = [
+            "Continue regular property inspections",
+            "Maintain good tenant relationships",
+            "Keep emergency fund updated",
+            "Monitor market conditions"
+        ];
+    }
+    
+    recommendationsContainer.innerHTML = recommendations.map(rec => `
+        <div class="recommendation-item">${rec}</div>
+    `).join('');
+}
+
+// Communication Log
+function addCommunicationNote() {
+    const noteTextElement = document.getElementById('communication-note');
+    const propertySelectElement = document.getElementById('property-select');
+    
+    if (!noteTextElement || !propertySelectElement) return;
+    
+    const noteText = noteTextElement.value.trim();
+    if (!noteText) return;
+    
+    const note = {
+        date: new Date(),
+        text: noteText,
+        propertyId: parseInt(propertySelectElement.value)
+    };
+    
+    communicationLog.unshift(note);
+    noteTextElement.value = '';
+    updateCommunicationHistory();
+}
+
+function updateCommunicationHistory() {
+    const historyContainer = document.getElementById('communication-history');
+    const propertySelectElement = document.getElementById('property-select');
+    
+    if (!historyContainer || !propertySelectElement) return;
+    
+    const propertyId = parseInt(propertySelectElement.value);
+    const propertyNotes = communicationLog.filter(note => note.propertyId === propertyId);
+    
+    if (propertyNotes.length === 0) {
+        historyContainer.innerHTML = '<div class="communication-item"><div class="communication-text">No communication history for this property.</div></div>';
+        return;
+    }
+    
+    historyContainer.innerHTML = propertyNotes.map(note => `
+        <div class="communication-item">
+            <div class="communication-date">${formatDate(note.date)}</div>
+            <div class="communication-text">${note.text}</div>
+        </div>
+    `).join('');
+}
+
+// Risk Assessment
+function calculateTenantRisk() {
+    const creditScore = document.getElementById('credit-score')?.value;
+    const employmentStatus = document.getElementById('employment-status')?.value;
+    const incomeRatio = document.getElementById('income-ratio')?.value;
+    const rentalHistory = document.getElementById('rental-history')?.value;
+    
+    if (!creditScore || !employmentStatus || !incomeRatio || !rentalHistory) return;
+    
+    let score = 0;
+    let factors = [];
+    
+    // Credit Score (0-30 points)
+    switch (creditScore) {
+        case 'excellent': score += 30; break;
+        case 'good': score += 20; break;
+        case 'fair': score += 10; break;
+        case 'poor': score += 0; factors.push('Poor credit score increases risk'); break;
+    }
+    
+    // Employment (0-25 points)
+    switch (employmentStatus) {
+        case 'stable': score += 25; break;
+        case 'contract': score += 15; factors.push('Contract employment adds uncertainty'); break;
+        case 'unemployed': score += 0; factors.push('Unemployment is high risk factor'); break;
+    }
+    
+    // Income Ratio (0-25 points)
+    switch (incomeRatio) {
+        case 'ideal': score += 25; break;
+        case 'acceptable': score += 15; break;
+        case 'risky': score += 8; factors.push('Low income ratio increases risk'); break;
+        case 'dangerous': score += 0; factors.push('Very low income ratio is dangerous'); break;
+    }
+    
+    // Rental History (0-20 points)
+    switch (rentalHistory) {
+        case 'excellent': score += 20; break;
+        case 'good': score += 15; break;
+        case 'fair': score += 8; break;
+        case 'poor': score += 0; factors.push('Poor rental history indicates risk'); break;
+    }
+    
+    let riskLevel, riskClass;
+    if (score >= 80) {
+        riskLevel = 'Low Risk';
+        riskClass = 'low';
+    } else if (score >= 60) {
+        riskLevel = 'Medium Risk';
+        riskClass = 'medium';
+    } else {
+        riskLevel = 'High Risk';
+        riskClass = 'high';
+    }
+    
+    const resultHtml = `
+        <div class="risk-score ${riskClass}">${score}</div>
+        <div class="risk-level">${riskLevel}</div>
+        <div class="risk-factors">
+            <h4>Risk Factors:</h4>
+            ${factors.length > 0 ? factors.map(factor => `<div class="risk-factor">${factor}</div>`).join('') : '<div class="risk-factor">No significant risk factors identified</div>'}
+        </div>
+    `;
+    
+    const resultElement = document.getElementById('tenant-risk-result');
+    if (resultElement) {
+        resultElement.innerHTML = resultHtml;
+    }
+}
+
+function assessPropertyRisk() {
+    const checkboxes = {
+        'high-crime-area': 'Located in high crime area',
+        'older-building': 'Building age may require more maintenance',
+        'declining-market': 'Market conditions may affect property value',
+        'insurance-issues': 'Insurance gaps create financial exposure',
+        'maintenance-backlog': 'Deferred maintenance increases costs'
+    };
+    
+    let riskCount = 0;
+    let identifiedRisks = [];
+    
+    Object.keys(checkboxes).forEach(id => {
+        const checkbox = document.getElementById(id);
+        if (checkbox && checkbox.checked) {
+            riskCount++;
+            identifiedRisks.push(checkboxes[id]);
+        }
+    });
+    
+    let riskLevel, riskClass;
+    if (riskCount <= 1) {
+        riskLevel = 'Low Risk';
+        riskClass = 'low';
+    } else if (riskCount <= 3) {
+        riskLevel = 'Medium Risk';
+        riskClass = 'medium';
+    } else {
+        riskLevel = 'High Risk';
+        riskClass = 'high';
+    }
+    
+    const resultHtml = `
+        <div class="risk-level ${riskClass}">${riskLevel}</div>
+        <div class="risk-factors">
+            <h4>Identified Risk Factors:</h4>
+            ${identifiedRisks.length > 0 ? identifiedRisks.map(risk => `<div class="risk-factor">${risk}</div>`).join('') : '<div class="risk-factor">No significant property risks identified</div>'}
+        </div>
+    `;
+    
+    const resultElement = document.getElementById('property-risk-result');
+    if (resultElement) {
+        resultElement.innerHTML = resultHtml;
+    }
+}
+
+// Reports and Analytics
+function loadActionItems() {
+    const actionItems = document.getElementById('action-items');
+    if (!actionItems) return;
+    
+    try {
+        const items = generateActionItems();
+        
+        actionItems.innerHTML = items.map(item => `
+            <div class="action-item">
+                <div class="action-priority ${item.priority}"></div>
+                <div class="action-text">${item.text}</div>
+                <div class="action-date">${item.date}</div>
+            </div>
+        `).join('');
+    } catch (error) {
+        console.error('Error loading action items:', error);
+        actionItems.innerHTML = '<div class="action-item"><div class="action-text">Error loading action items</div></div>';
+    }
+}
+
+function generateActionItems() {
+    const items = [];
+    
+    appData.sampleProperties.forEach(property => {
+        if (property.status === 'late_30') {
+            items.push({
+                priority: 'high',
+                text: `Follow up on late payment for ${property.address}`,
+                date: 'Due: Today'
+            });
+        }
+        
+        if (property.riskLevel === 'high') {
+            items.push({
+                priority: 'medium',
+                text: `Schedule inspection for ${property.address}`,
+                date: 'Due: Within 7 days'
+            });
+        }
+    });
+    
+    items.push({
+        priority: 'low',
+        text: 'Review monthly financial reports',
+        date: 'Due: End of month'
+    });
+    
+    return items;
+}
+
+function createRiskChart() {
+    const canvas = document.getElementById('risk-chart');
+    if (!canvas) return;
+    
+    try {
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size
+        canvas.width = 400;
+        canvas.height = 300;
+        
+        // Simple bar chart for risk distribution
+        const data = {
+            low: 1,
+            medium: 0,
+            high: 1
+        };
+        
+        const colors = ['#21808D', '#A84B2F', '#C0152F'];
+        const labels = ['Low Risk', 'Medium Risk', 'High Risk'];
+        const values = [data.low, data.medium, data.high];
+        
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Chart dimensions
+        const chartWidth = canvas.width - 100;
+        const chartHeight = canvas.height - 100;
+        const barWidth = chartWidth / values.length - 20;
+        const maxValue = Math.max(...values) || 1;
+        
+        // Draw bars
+        values.forEach((value, index) => {
+            const barHeight = (value / maxValue) * chartHeight;
+            const x = 50 + index * (barWidth + 20);
+            const y = canvas.height - 50 - barHeight;
+            
+            ctx.fillStyle = colors[index];
+            ctx.fillRect(x, y, barWidth, barHeight);
+            
+            // Draw labels
+            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-text') || '#333';
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(labels[index], x + barWidth / 2, canvas.height - 20);
+            ctx.fillText(value.toString(), x + barWidth / 2, y - 5);
+        });
+        
+        // Draw title
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-text') || '#333';
+        ctx.font = 'bold 16px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Risk Distribution', canvas.width / 2, 30);
+        
+    } catch (error) {
+        console.error('Error creating risk chart:', error);
+    }
+}
+
+function generateReport() {
+    const reportTypeElement = document.getElementById('report-type');
+    if (!reportTypeElement) return;
+    
+    const reportType = reportTypeElement.value;
+    
+    // Simulate report generation
+    alert(`Generating ${reportType} report... This would typically open a new window with the detailed report.`);
+}
+
+function exportReport() {
+    // Simulate PDF export
+    alert('Report exported to PDF. This would typically trigger a download.');
+}
+
+// Utility Functions
+function formatDate(date) {
+    if (typeof date === 'string') {
+        date = new Date(date);
+    }
+    return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    });
+}
+
+function capitalizeFirst(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function getRiskStatusClass(riskLevel) {
+    switch (riskLevel) {
+        case 'low': return 'success';
+        case 'medium': return 'warning';
+        case 'high': return 'error';
+        default: return 'info';
+    }
+}
+
+// Make functions globally available for onclick handlers
+window.calculateFinancialLoss = calculateFinancialLoss;
+window.calculateEvictionCost = calculateEvictionCost;
+window.calculateROIImpact = calculateROIImpact;
+window.updateTenantStatus = updateTenantStatus;
+window.addCommunicationNote = addCommunicationNote;
+window.calculateTenantRisk = calculateTenantRisk;
+window.assessPropertyRisk = assessPropertyRisk;
+window.generateReport = generateReport;
+window.exportReport = exportReport;
+</script>
+  <script>
+   /* Unified color-mode toggle — shared standard across all apps */
+   (function () {
+     function preferred() {
+       try { var s = localStorage.getItem('colorScheme'); if (s === 'dark' || s === 'light') return s; } catch (e) {}
+       return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+     }
+     function current() { return document.documentElement.getAttribute('data-color-scheme') || preferred(); }
+     function swapIcon(btn, isDark) {
+       var lu = btn.querySelector('i[data-lucide="moon"], i[data-lucide="sun"], svg.lucide-moon, svg.lucide-sun');
+       if (lu) {
+         var ni = document.createElement('i');
+         ni.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+         if (lu.tagName.toLowerCase() === 'i' && lu.className) ni.className = lu.className;
+         lu.replaceWith(ni);
+         return;
+       }
+       var fa = btn.querySelector('i.fa-moon, i.fa-sun');
+       if (fa) { fa.classList.remove('fa-moon', 'fa-sun'); fa.classList.add(isDark ? 'fa-sun' : 'fa-moon'); }
+     }
+     function refreshIcons(theme) {
+       var isDark = theme === 'dark';
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (b) { swapIcon(b, isDark); });
+       if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
+     }
+     function apply(theme) {
+       document.documentElement.setAttribute('data-color-scheme', theme);
+       try { localStorage.setItem('colorScheme', theme); } catch (e) {}
+       refreshIcons(theme);
+     }
+     window.toggleColorScheme = function () { apply(current() === 'dark' ? 'light' : 'dark'); };
+     function wire() {
+       var t = preferred();
+       document.documentElement.setAttribute('data-color-scheme', t);
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+         var clone = btn.cloneNode(true);
+         clone.removeAttribute('onclick');
+         if (btn.parentNode) btn.parentNode.replaceChild(clone, btn);
+         clone.addEventListener('click', function (e) { e.preventDefault(); window.toggleColorScheme(); });
+       });
+       refreshIcons(t);
+     }
+     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', wire); }
+     else { wire(); }
+   })();
+  </script>
+   <style>
+   .lr-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; }
+   .lr-modal { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; width: 100%; max-width: 480px; box-shadow: 0 20px 40px rgba(0,0,0,.25); overflow: hidden; }
+   .lr-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid var(--color-border); }
+   .lr-head h3 { margin: 0; font-size: 18px; font-weight: 600; }
+   .lr-x { background: none; border: none; color: var(--color-text-secondary); cursor: pointer; font-size: 22px; line-height: 1; padding: 2px 8px; border-radius: 6px; }
+   .lr-x:hover { background: var(--color-secondary); color: var(--color-text); }
+   .lr-body { padding: 20px; }
+   .lr-field { margin-bottom: 16px; }
+   .lr-field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+   .lr-field input, .lr-field select { width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-background); color: var(--color-text); font: inherit; font-size: 14px; }
+   .lr-field input:focus, .lr-field select:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-focus-ring); }
+   .lr-row { display: flex; gap: 12px; } .lr-row .lr-field { flex: 1; }
+   .lr-foot { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+  </style>
+  <script>
+   /* Landlord — add properties & tenants */
+   (function () {
+     function props() { return appData.sampleProperties; }
+     function nextId() { return props().reduce(function (m, p) { return Math.max(m, +p.id || 0); }, 0) + 1; }
+     function updateKPIs() {
+       var p = props();
+       var t = document.getElementById('kpi-total-properties'); if (t) t.textContent = p.length;
+       var h = document.getElementById('kpi-high-risk'); if (h) h.textContent = p.filter(function (x) { return x.riskLevel === 'high'; }).length;
+       var r = document.getElementById('kpi-revenue'); if (r) r.textContent = '$' + p.reduce(function (s, x) { return s + (+x.rent || 0); }, 0).toLocaleString();
+     }
+     function rerender() { try { loadPropertyList(); } catch (e) {} try { loadAlerts(); } catch (e) {} updateKPIs(); }
+
+     function openAddProperty() {
+       var todayISO = new Date().toISOString().slice(0, 10);
+       var ov = document.createElement('div'); ov.className = 'lr-overlay';
+       ov.innerHTML = '<div class="lr-modal"><div class="lr-head"><h3>Add Property &amp; Tenant</h3><button class="lr-x" type="button">&times;</button></div>'
+         + '<div class="lr-body"><form id="lrForm">'
+         + '<div class="lr-field"><label>Property address</label><input name="address" required placeholder="789 Palm Ave, Miami FL" autocomplete="off"></div>'
+         + '<div class="lr-row"><div class="lr-field"><label>Tenant name</label><input name="tenant" required placeholder="Jamie Rivera" autocomplete="off"></div>'
+         + '<div class="lr-field"><label>Monthly rent ($)</label><input name="rent" type="number" min="0" value="2500"></div></div>'
+         + '<div class="lr-row"><div class="lr-field"><label>Payment status</label><select name="status"><option value="current">Current</option><option value="late_30">30+ days late</option><option value="late_60">60+ days late</option></select></div>'
+         + '<div class="lr-field"><label>Risk level</label><select name="risk"><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select></div></div>'
+         + '<div class="lr-field"><label>Last payment date</label><input name="last" type="date" value="' + todayISO + '"></div>'
+         + '<div class="lr-foot"><button type="button" class="btn btn--secondary" data-x>Cancel</button><button type="submit" class="btn btn--primary">Add property</button></div>'
+         + '</form></div></div>';
+       document.body.appendChild(ov);
+       function close() { ov.remove(); document.removeEventListener('keydown', esc); }
+       function esc(e) { if (e.key === 'Escape') close(); }
+       ov.querySelector('.lr-x').addEventListener('click', close);
+       ov.querySelector('[data-x]').addEventListener('click', close);
+       ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+       document.addEventListener('keydown', esc);
+       function fv(n) { var e = ov.querySelector('[name="' + n + '"]'); return e ? e.value : ''; }
+       ov.querySelector('#lrForm').addEventListener('submit', function (e) {
+         e.preventDefault();
+         var property = { id: nextId(), address: fv('address').trim() || 'New Property', tenant: fv('tenant').trim() || 'New Tenant',
+           rent: parseInt(fv('rent'), 10) || 0, status: fv('status'), riskLevel: fv('risk'), lastPayment: fv('last') || todayISO };
+         props().push(property); rerender(); close();
+         if (window.showToast) showToast('Added ' + property.address);
+       });
+     }
+     function wire() { var b = document.getElementById('addPropertyBtn'); if (b) b.addEventListener('click', openAddProperty); }
+     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
+   })();
+  </script>
+  <script>
+   /* Landlord — persistence + editable properties */
+   (function () {
+     if (typeof appData === 'undefined') return;
+     var KEY = 'landlordState_v1';
+     function read() { try { var s = localStorage.getItem(KEY); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
+     var s = read();
+     if (s && Array.isArray(s.sampleProperties)) appData.sampleProperties = s.sampleProperties;
+     else { try { localStorage.setItem(KEY, JSON.stringify({ sampleProperties: appData.sampleProperties })); } catch (e) {} }
+     var last = ''; try { last = localStorage.getItem(KEY) || ''; } catch (e) {}
+     function save() { try { var j = JSON.stringify({ sampleProperties: appData.sampleProperties }); if (j !== last) { localStorage.setItem(KEY, j); last = j; } } catch (e) {} }
+     setInterval(save, 1200); window.addEventListener('beforeunload', save);
+     document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') save(); });
+
+     function icons() { if (window.lucide && lucide.createIcons) lucide.createIcons(); }
+     function esc(v) { return String(v == null ? '' : v).replace(/"/g, '&quot;'); }
+     function updateKPIs() {
+       var p = appData.sampleProperties;
+       var t = document.getElementById('kpi-total-properties'); if (t) t.textContent = p.length;
+       var h = document.getElementById('kpi-high-risk'); if (h) h.textContent = p.filter(function (x) { return x.riskLevel === 'high'; }).length;
+       var r = document.getElementById('kpi-revenue'); if (r) r.textContent = '$' + p.reduce(function (a, x) { return a + (+x.rent || 0); }, 0).toLocaleString();
+     }
+     function rerender() { try { loadPropertyList(); } catch (e) {} try { loadAlerts(); } catch (e) {} updateKPIs(); }
+     function opt(list, cur) { return list.map(function (o) { return '<option value="' + o[0] + '"' + (o[0] === cur ? ' selected' : '') + '>' + o[1] + '</option>'; }).join(''); }
+
+     function editModal(p) {
+       var ov = document.createElement('div'); ov.className = 'lr-overlay';
+       ov.innerHTML = '<div class="lr-modal"><div class="lr-head"><h3>Edit Property</h3><button class="lr-x" type="button">&times;</button></div><div class="lr-body"><form id="lrEdit">'
+         + '<div class="lr-field"><label>Property address</label><input name="address" value="' + esc(p.address) + '" required></div>'
+         + '<div class="lr-row"><div class="lr-field"><label>Tenant name</label><input name="tenant" value="' + esc(p.tenant) + '" required></div><div class="lr-field"><label>Monthly rent ($)</label><input name="rent" type="number" min="0" value="' + (p.rent || 0) + '"></div></div>'
+         + '<div class="lr-row"><div class="lr-field"><label>Payment status</label><select name="status">' + opt([['current', 'Current'], ['late_30', '30+ days late'], ['late_60', '60+ days late']], p.status) + '</select></div>'
+         + '<div class="lr-field"><label>Risk level</label><select name="risk">' + opt([['low', 'Low'], ['medium', 'Medium'], ['high', 'High']], p.riskLevel) + '</select></div></div>'
+         + '<div class="lr-field"><label>Last payment date</label><input name="last" type="date" value="' + esc(p.lastPayment) + '"></div>'
+         + '<div class="lr-foot" style="justify-content:space-between"><button type="button" class="btn btn--outline btn--sm" data-del><i class="fas fa-trash"></i> Delete</button>'
+         + '<div style="display:flex;gap:10px"><button type="button" class="btn btn--secondary" data-x>Cancel</button><button type="submit" class="btn btn--primary">Save changes</button></div></div></form></div></div>';
+       document.body.appendChild(ov); icons();
+       function close() { ov.remove(); }
+       ov.querySelector('.lr-x').addEventListener('click', close);
+       ov.querySelector('[data-x]').addEventListener('click', close);
+       ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+       function fv(n) { var e = ov.querySelector('[name="' + n + '"]'); return e ? e.value : ''; }
+       ov.querySelector('[data-del]').addEventListener('click', function () { appData.sampleProperties = appData.sampleProperties.filter(function (x) { return x.id !== p.id; }); close(); rerender(); if (window.showToast) showToast('Property removed'); });
+       ov.querySelector('#lrEdit').addEventListener('submit', function (e) {
+         e.preventDefault();
+         p.address = fv('address').trim() || p.address; p.tenant = fv('tenant').trim() || p.tenant; p.rent = parseInt(fv('rent'), 10) || 0;
+         p.status = fv('status'); p.riskLevel = fv('risk'); p.lastPayment = fv('last') || p.lastPayment;
+         close(); rerender(); if (window.showToast) showToast('Property updated');
+       });
+     }
+     function wire() {
+       var list = document.getElementById('property-list'); if (!list) return;
+       list.addEventListener('click', function (e) {
+         var item = e.target.closest('.property-item'); if (!item) return;
+         var p = (appData.sampleProperties || []).filter(function (x) { return String(x.id) === item.dataset.id; })[0];
+         if (p) editModal(p);
+       });
+     }
+     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(wire, 60); }); else setTimeout(wire, 60);
+   })();
+  </script>
+  <script>
+   /* ProjectSuite Enhance — motion, counters, ripple, cursor, chart polish (shared) */
+   (function () {
+     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+     var docEl = document.documentElement;
+
+     if (window.Chart && Chart.defaults) {
+       try {
+         var cs = getComputedStyle(docEl);
+         var txt = (cs.getPropertyValue('--color-text-secondary') || '').trim() || '#8a8f98';
+         var grid = (cs.getPropertyValue('--color-border') || '').trim() || 'rgba(140,140,140,.15)';
+         Chart.defaults.font.family = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+         Chart.defaults.font.size = 12;
+         Chart.defaults.color = txt;
+         Chart.defaults.borderColor = grid;
+         var P = Chart.defaults.plugins || {};
+         if (P.legend) { P.legend.labels = P.legend.labels || {}; P.legend.labels.usePointStyle = true; P.legend.labels.boxWidth = 8; P.legend.labels.padding = 16; }
+         if (P.tooltip) { P.tooltip.usePointStyle = true; P.tooltip.padding = 10; P.tooltip.cornerRadius = 8; P.tooltip.boxPadding = 4; P.tooltip.titleFont = { weight: '600' }; }
+         var E = Chart.defaults.elements || {};
+         if (E.line) { E.line.tension = 0.35; E.line.borderWidth = 2; }
+         if (E.point) { E.point.radius = 0; E.point.hoverRadius = 5; E.point.hitRadius = 12; }
+         if (E.bar) { E.bar.borderRadius = 6; E.bar.borderSkipped = false; }
+         if (E.arc) { E.arc.borderWidth = 2; }
+         (function () {
+           function hexRgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(function(x){return x+x;}).join('');var n=parseInt(h.slice(0,6),16);return [(n>>16)&255,(n>>8)&255,n&255];}
+           function toRgb(c){var m;c=(''+c).trim();if(m=c.match(/^#([0-9a-fA-F]{3,8})$/))return hexRgb(m[1]);if(m=c.match(/rgba?\(([^)]+)\)/i)){var p=m[1].split(',').map(parseFloat);return [p[0],p[1],p[2]];}return null;}
+           function reddish(rgb){if(!rgb)return false;var r=rgb[0],g=rgb[1],b=rgb[2];var mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn;if(mx<70||d<28)return false;var h;if(mx===r)h=((g-b)/d)%6;else if(mx===g)h=(b-r)/d+2;else h=(r-g)/d+4;h*=60;if(h<0)h+=360;var s=d/mx;return s>0.32&&(h>=338||h<=14);}
+           function remap(c){if(typeof c!=='string')return c;var rgb=toRgb(c);if(!rgb||rgb.some(isNaN))return c;if(reddish(rgb)){var a=c.match(/rgba?\([^)]*,\s*([\d.]+)\s*\)/i);return a?'rgba(226,101,42,'+a[1]+')':'#e2652a';}return c;}
+           var keys=['backgroundColor','borderColor','pointBackgroundColor','pointBorderColor','hoverBackgroundColor','hoverBorderColor','pointHoverBackgroundColor'];
+           var plugin={id:'phRecolor',beforeInit:function(chart){(chart.data.datasets||[]).forEach(function(ds){keys.forEach(function(k){if(Array.isArray(ds[k]))ds[k]=ds[k].map(remap);else if(ds[k]!=null&&typeof ds[k]==='string')ds[k]=remap(ds[k]);});});}};
+           if (Chart.register) Chart.register(plugin); else if (Chart.plugins && Chart.plugins.register) Chart.plugins.register(plugin);
+         })();
+       } catch (e) {}
+     }
+
+     function countUp(el) {
+       if (el.children.length) return;
+       var raw = el.textContent.trim();
+       var m = raw.match(/^([^\d-]*)(-?[\d,]+(?:\.\d+)?)(.*)$/);
+       if (!m) return;
+       var prefix = m[1], numStr = m[2], suffix = m[3];
+       var decimals = (numStr.split('.')[1] || '').length;
+       var useComma = numStr.indexOf(',') > -1;
+       var target = parseFloat(numStr.replace(/,/g, ''));
+       if (isNaN(target)) return;
+       var dur = 1200, t0 = performance.now();
+       function fmt(n) {
+         var s = decimals ? n.toFixed(decimals) : String(Math.round(n));
+         if (useComma) s = Number(s).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+         return prefix + s + suffix;
+       }
+       function step(now) {
+         var p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 4);
+         el.textContent = fmt(target * e);
+         if (p < 1) requestAnimationFrame(step); else el.textContent = raw;
+       }
+       requestAnimationFrame(step);
+     }
+
+     function start() {
+       var IO = window.IntersectionObserver;
+       if (!reduce && IO) {
+         docEl.classList.add('ph-anim');
+         var revealSel = '.card, .kpi-card, .widget, .chart-container, .stat-card, .metric-card, .dashboard-card, .stat-display, .info-card, .summary-card, .chart-canvas-wrap';
+         var els = [];
+         document.querySelectorAll(revealSel).forEach(function (el) {
+           if (el.closest('.nav-bar')) return;
+           if (el.querySelector('.card, .kpi-card, .widget')) return;
+           el.classList.add('ph-reveal', 'ph-card');
+           els.push(el);
+         });
+         var io = new IO(function (entries) {
+           entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in-view'); io.unobserve(en.target); } });
+         }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+         els.forEach(function (el) { io.observe(el); });
+         setTimeout(function () { els.forEach(function (el) { el.classList.add('in-view'); }); }, 1600);
+       }
+
+       if (!reduce && IO) {
+         var numSel = '.kpi-value, .stat-number, .widget-value, .stat-value, .metric-value, .kpi-card .value, .stat__value, .metric__value';
+         var co = new IO(function (entries) {
+           entries.forEach(function (en) { if (en.isIntersecting) { countUp(en.target); co.unobserve(en.target); } });
+         }, { threshold: .6 });
+         document.querySelectorAll(numSel).forEach(function (el) {
+           if (el.closest('.nav-bar') || el.children.length) return;
+           if (/\d/.test(el.textContent) && /^[^\d-]*-?[\d,]+(?:\.\d+)?[^\d]*$/.test(el.textContent.trim())) co.observe(el);
+         });
+       }
+
+       document.addEventListener('click', function (e) {
+         if (reduce) return;
+         var btn = e.target.closest('.btn, button');
+         if (!btn || btn.closest('.nav-bar')) return;
+         var r = btn.getBoundingClientRect();
+         if (getComputedStyle(btn).position === 'static') btn.style.position = 'relative';
+         if (getComputedStyle(btn).overflow !== 'hidden') btn.style.overflow = 'hidden';
+         var s = document.createElement('span');
+         s.className = 'ph-ripple';
+         var size = Math.max(r.width, r.height);
+         s.style.width = s.style.height = size + 'px';
+         s.style.left = (e.clientX - r.left) + 'px';
+         s.style.top = (e.clientY - r.top) + 'px';
+         btn.appendChild(s);
+         setTimeout(function () { s.remove(); }, 640);
+       });
+
+       if (!reduce && window.matchMedia('(pointer:fine)').matches && window.innerWidth > 900) {
+         var ring = document.createElement('div');
+         ring.className = 'ph-cursor';
+         document.body.appendChild(ring);
+         var x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y;
+         document.addEventListener('mousemove', function (e) { x = e.clientX; y = e.clientY; });
+         (function loop() { rx += (x - rx) * .18; ry += (y - ry) * .18; ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)'; requestAnimationFrame(loop); })();
+         var hoverSel = 'a,button,.btn,.nav-tab,.tab-btn,.tab-item,.menu-item,.card,[role="button"],input,select,textarea,[data-theme-toggle]';
+         document.addEventListener('mouseover', function (e) { if (e.target.closest(hoverSel)) ring.classList.add('hover'); });
+         document.addEventListener('mouseout', function (e) { if (e.target.closest(hoverSel)) ring.classList.remove('hover'); });
+       }
+     }
+
+     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+     else start();
+   })();
+  </script>
+ </body>
+</html>
