@@ -5,7 +5,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Sprint Planner - Annual Planning Tool
+   Agile Sprint Manager - Annual Planning Tool
   </title>
   <style>
 /*
@@ -1530,7 +1530,7 @@ select.form-control {
         </svg>
        </div>
        <h1 class="app-title">
-        Sprint Planner
+        Agile Sprint Manager
        </h1>
       </div>
       <div class="sprint-selector">
@@ -1882,7 +1882,7 @@ select.form-control {
        </h3>
        <div class="flex gap-8">
         <p>
-         Sprint Planner v1.0
+         Agile Sprint Manager v1.0
         </p>
         <button class="btn btn--outline" id="aboutBtn">
          <i class="icon" data-lucide="info">
@@ -1938,7 +1938,7 @@ select.form-control {
    <div class="modal-content">
     <div class="modal-header">
      <h3>
-      About Sprint Planner
+      About Agile Sprint Manager
      </h3>
      <button aria-label="Close modal" class="modal-close">
       <i class="icon" data-lucide="x">
@@ -1947,7 +1947,7 @@ select.form-control {
     </div>
     <div class="modal-body">
      <p>
-      Sprint Planner is a comprehensive tool for managing agile sprints and tracking team velocity.
+      Agile Sprint Manager is a comprehensive tool for managing agile sprints and tracking team velocity.
      </p>
      <p>
       <strong>
@@ -3041,7 +3041,7 @@ if (document.readyState === 'loading') {
 
 function initializeApp() {
   // This function is called when everything is ready
-  console.log('Sprint Planner initialized');
+  console.log('Agile Sprint Manager initialized');
 }
 </script>
   <script>
@@ -3106,7 +3106,7 @@ function initializeApp() {
    .sp-foot { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
   </style>
   <script>
-   /* Sprint Planner — add backlog stories and team members */
+   /* Agile Sprint Manager — add backlog stories and team members */
    (function () {
      function icons() { if (window.lucide && lucide.createIcons) lucide.createIcons(); }
      function nextId(prefix, arr) { var max = 0; arr.forEach(function (x) { var n = parseInt(String(x.id).replace(/\D/g, ''), 10) || 0; if (n > max) max = n; }); return prefix + (max + 1); }
@@ -3167,7 +3167,7 @@ function initializeApp() {
    })();
   </script>
   <script>
-   /* Sprint Planner — persistence + editable stories & members */
+   /* Agile Sprint Manager — persistence + editable stories & members */
    (function () {
      if (typeof appData === 'undefined') return;
      var KEY = 'sprintState_v1';
@@ -3256,7 +3256,7 @@ function initializeApp() {
    })();
   </script>
   <script>
-   window.APP_ABOUT = {"title":"About Sprint Planner","html":"<p><strong>Sprint Planner</strong> is an agile/scrum planning tool built around the workflow a software team actually uses: a backlog, a sprint board, team capacity, and the charts that tell you whether a sprint is on track.</p>\n<p>You can add and edit backlog stories (priority, points, type), move work across the sprint board, adjust each team member's weekly capacity with a live slider, and watch the burndown and cumulative-flow charts update.</p>\n<p>It's meant to show a realistic slice of engineering-team tooling — the same shape as Jira or Linear, built from scratch as a single self-contained page.</p>"};
+   window.APP_ABOUT = {"title":"About Agile Sprint Manager","html":"<p><strong>Agile Sprint Manager</strong> is an agile/scrum planning tool built around the workflow a software team actually uses: a backlog, a sprint board, team capacity, and the charts that tell you whether a sprint is on track.</p>\n<p>You can add and edit backlog stories (priority, points, type), move work across the sprint board, adjust each team member's weekly capacity with a live slider, and watch the burndown and cumulative-flow charts update.</p>\n<p>It's meant to show a realistic slice of engineering-team tooling — the same shape as Jira or Linear, built from scratch as a single self-contained page.</p>"};
   </script>
     <script>
    /* Site chrome — shared footer + about-modal system (identical across the showcase) */
