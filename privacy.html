@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Kareem Bullard — App Showcase
+   Privacy &amp; Terms — Kareem Bullard App Showcase
   </title>
   <style>
 /*
@@ -1930,160 +1930,99 @@ select.form-control {
    .sam-body li { margin-bottom: 6px; }
   </style>
 
+   <style>
+   /* Site chrome — shared footer + about-modal system */
+   .site-footer { margin-top: 32px; padding: 24px; border-top: 1px solid var(--color-border); background: var(--color-surface); }
+   .sf-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; }
+   .site-footer a { color: var(--color-text-secondary); text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; }
+   .site-footer a:hover { color: var(--color-primary); }
+   .site-footer a i { width: 14px; height: 14px; }
+   .sf-links { display: flex; gap: 20px; flex-wrap: wrap; }
+   .sf-byline { font-size: 13px; color: var(--color-text-secondary); }
+   .sf-byline a { display: inline; color: var(--color-primary); font-weight: 600; }
+   #appInfoBtn { flex-shrink: 0; }
+   .site-about-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 2500; display: flex; align-items: center; justify-content: center; padding: 20px; }
+   .site-about-modal { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; max-width: 580px; width: 100%; max-height: 82vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,.3); }
+   .sam-head { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; border-bottom: 1px solid var(--color-border); position: sticky; top: 0; background: var(--color-surface); }
+   .sam-head h3 { margin: 0; font-size: 18px; }
+   .sam-body { padding: 22px; line-height: 1.75; color: var(--color-text-secondary); font-size: 14px; }
+   .sam-body p { margin: 0 0 14px; }
+   .sam-body strong { color: var(--color-text); }
+   .sam-body hr { border: none; border-top: 1px solid var(--color-border); margin: 18px 0; }
+   .sam-body ul { margin: 0 0 14px; padding-left: 20px; }
+   .sam-body li { margin-bottom: 6px; }
+  </style>
+
  </head>
  <body>
   <style>
-   .hub-frame-wrap { position: relative; width: 100%; height: calc(100vh - 140px); min-height: 500px; border: 1px solid var(--color-card-border, var(--color-border)); border-radius: var(--radius-lg,12px); overflow: hidden; background: var(--color-surface); }
-   .hub-frame-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; background: #fff; }
-   .hub-frame-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
-   .hub-frame-bar h2 { margin: 0; }
-   .hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 20px; }
-   .app-card { background: var(--color-surface); border: 1px solid var(--color-card-border, var(--color-border)); border-radius: var(--radius-lg,12px); padding: 22px; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; display: flex; flex-direction: column; gap: 12px; }
-   .app-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); }
-   .app-card .aic { width: 44px; height: 44px; border-radius: 10px; background: var(--gradient-primary, var(--color-primary)); color: #fff; display: flex; align-items: center; justify-content: center; }
-   .app-card .aic i { width: 22px; height: 22px; }
-   .app-card h3 { margin: 0; font-size: 17px; }
-   .app-card p { margin: 0; color: var(--color-text-secondary); font-size: 13px; line-height: 1.5; flex: 1; }
-   .app-card .tag { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--color-primary); font-weight: 700; }
-   .hero { padding: 8px 0 28px; }
-   .hero h1 { font-size: 32px; margin: 0 0 8px; }
-   .hero p { color: var(--color-text-secondary); max-width: 620px; margin: 0; }
+   .legal-wrap { max-width: 760px; margin: 0 auto; padding: 40px 24px 20px; }
+   .legal-wrap h1 { font-size: 30px; margin: 0 0 6px; }
+   .legal-updated { color: var(--color-text-secondary); font-size: 13px; margin-bottom: 32px; }
+   .legal-wrap h2 { font-size: 20px; margin: 36px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+   .legal-wrap p { color: var(--color-text-secondary); line-height: 1.75; margin: 0 0 14px; }
+   .legal-wrap ul { color: var(--color-text-secondary); line-height: 1.75; padding-left: 22px; margin: 0 0 14px; }
+   .legal-wrap li { margin-bottom: 6px; }
+   .legal-wrap strong { color: var(--color-text); }
+   .legal-callout { background: var(--color-surface); border: 1px solid var(--color-card-border, var(--color-border)); border-left: 4px solid var(--color-primary); border-radius: var(--radius-base,8px); padding: 16px 18px; margin: 18px 0; }
+   .legal-callout p { margin: 0; color: var(--color-text); font-size: 14px; }
+   .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--color-primary); text-decoration: none; font-weight: 600; font-size: 14px; margin-bottom: 24px; }
+   .back-link:hover { text-decoration: underline; }
   </style>
-  <div class="app-container">
-   <header class="header">
-    <div class="header-content">
-     <div class="logo"><i data-lucide="layout-grid"></i><span>Kareem Bullard — Apps</span></div>
-     <div class="header-actions">
-      <a class="btn btn--secondary btn--sm" href="https://github.com/kareembullard" target="_blank" rel="noopener"><i data-lucide="github"></i><span>GitHub</span></a>
-      <button class="btn btn--secondary btn--sm theme-toggle" data-theme-toggle="" id="themeToggle"><i data-lucide="moon"></i></button>
-     </div>
+  <header class="header">
+   <div class="header-content">
+    <div class="logo"><i data-lucide="layout-grid"></i><span>Kareem Bullard — Apps</span></div>
+    <div class="header-actions">
+     <button class="btn btn--secondary btn--sm theme-toggle" data-theme-toggle="" id="themeToggle"><i data-lucide="moon"></i></button>
     </div>
-   </header>
-   <main class="main-content">
-    <nav class="nav-bar">
-     <button class="nav-tab active" data-tab="home"><i data-lucide="home"></i><span>Home</span></button>
-     <button class="nav-tab" data-app="asset-hub.html"><i data-lucide="database"></i><span>Asset Hub</span></button>
-     <button class="nav-tab" data-app="portfolio-dashboard.html"><i data-lucide="crown"></i><span>King Projects PMO</span></button>
-     <button class="nav-tab" data-app="sprint-planner.html"><i data-lucide="kanban-square"></i><span>Sprint Planner</span></button>
-     <button class="nav-tab" data-app="landlord-risk-manager.html"><i data-lucide="home"></i><span>Landlord Risk</span></button>
-     <button class="nav-tab" data-app="learning-hub.html"><i data-lucide="graduation-cap"></i><span>Learning Hub</span></button>
-     <button class="nav-tab" data-app="ai-wealth-framework.html"><i data-lucide="trending-up"></i><span>AI Wealth Framework</span></button>
-     <button class="nav-tab" data-app="feedly-clone.html"><i data-lucide="rss"></i><span>FeedReader</span></button>
-     <button class="nav-tab" data-app="flourishing-life.html"><i data-lucide="heart"></i><span>The Flourishing Life</span></button>
-     <button class="nav-tab" data-app="phase-system-manager.html"><i data-lucide="layers"></i><span>Phase System</span></button>
-    </nav>
-    <div class="tab-content">
-     <div class="tab-pane active" id="home">
-      <div class="hero">
-       <h1>A set of working product demos</h1>
-       <p>Nine self-contained web apps — dashboards, planners, and tools — each fully interactive. Click a card or a tab above to open it in place.</p>
-      </div>
-      <div class="hub-grid" id="homeGrid"></div>
-     </div>
-     <div class="tab-pane" id="viewer">
-      <div class="hub-frame-bar">
-       <h2 id="viewerTitle">App</h2>
-       <a class="btn btn--sm btn--outline" id="openNewTab" href="#" target="_blank" rel="noopener"><i data-lucide="external-link"></i>Open in new tab</a>
-      </div>
-      <div class="hub-frame-wrap"><iframe id="appFrame" title="app preview" loading="lazy"></iframe></div>
-     </div>
+   </div>
+  </header>
+  <main>
+   <div class="legal-wrap">
+    <a class="back-link" href="index.html"><i data-lucide="arrow-left"></i>Back to all apps</a>
+    <h1>Privacy &amp; Terms</h1>
+    <div class="legal-updated">Last updated: July 2026</div>
+
+    <p>This page covers every app in this showcase (the project portfolio hub and the nine apps linked from it). It's written in plain language on purpose — there's no account system, no data collection, and nothing complicated going on.</p>
+
+    <div class="legal-callout">
+     <p><strong>The short version:</strong> nothing you do in these apps is sent anywhere. Everything is stored only in your own browser and disappears if you clear your browser data.</p>
     </div>
-   </main>
-  </div>
 
-  <script>
-   (function () {
-     var APPS = [
-       { file: 'asset-hub.html', icon: 'database', name: 'Asset Hub', tag: 'Digital Asset Management', desc: 'Track and manage a full asset catalog — projects, integrations, sales, and automation workflows in one dashboard.' },
-       { file: 'portfolio-dashboard.html', icon: 'crown', name: 'King Projects PMO', tag: 'Portfolio Management', desc: 'A project portfolio manager: 11 active initiatives, budgets, health scoring, and a built-in Smart Assistant.' },
-       { file: 'sprint-planner.html', icon: 'kanban-square', name: 'Sprint Planner', tag: 'Agile / Scrum', desc: 'Backlog, sprint board, team capacity, and velocity analytics for running an agile sprint.' },
-       { file: 'landlord-risk-manager.html', icon: 'home', name: 'Landlord Risk Manager', tag: 'Property Management', desc: 'Track properties, tenants, payment risk, and get automated alerts on at-risk accounts.' },
-       { file: 'learning-hub.html', icon: 'graduation-cap', name: 'Learning Hub', tag: 'Education Tracker', desc: 'Organize podcasts, courses, videos, and books into one library with progress tracking.' },
-       { file: 'ai-wealth-framework.html', icon: 'trending-up', name: 'AI Wealth Framework', tag: 'Business Planning', desc: 'A step-by-step framework for building an AI-driven business, with documents, ROI calculator, and KPIs.' },
-       { file: 'feedly-clone.html', icon: 'rss', name: 'FeedReader', tag: 'RSS Reader', desc: 'A clean, fast RSS reader with feeds, saved articles, and a distraction-free reading pane.' },
-       { file: 'flourishing-life.html', icon: 'heart', name: 'The Flourishing Life', tag: 'Personal Growth', desc: 'A 14-step positive-psychology journey with habit tracking and PERMA scoring.' },
-       { file: 'phase-system-manager.html', icon: 'layers', name: 'Phase System Manager', tag: 'Task Management', desc: 'A 16-phase task and project organization system with quick capture and analytics.' }
-     ];
-     function icons() { if (window.lucide && lucide.createIcons) lucide.createIcons(); }
-     function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
+    <h2>What this site is</h2>
+    <p>This is a personal portfolio by <strong>Kareem Bullard</strong>, showcasing a set of self-contained web app demos — dashboards, planners, and tools built to demonstrate product and front-end engineering work. None of these apps are commercial products, and none are intended for real business, financial, legal, medical, or property decisions.</p>
 
-     document.getElementById('homeGrid').innerHTML = APPS.map(function (a) {
-       return '<div class="app-card" data-app="' + a.file + '"><div class="aic"><i data-lucide="' + a.icon + '"></i></div>'
-         + '<div class="tag">' + esc(a.tag) + '</div><h3>' + esc(a.name) + '</h3><p>' + esc(a.desc) + '</p></div>';
-     }).join('');
+    <h2>Data &amp; privacy</h2>
+    <p>There are no accounts, no sign-ups, and no server behind these apps. Anything you type, add, edit, or upload — a project, a property, a story, a document — is saved using your browser's built-in <strong>localStorage</strong>, scoped separately to each app.</p>
+    <ul>
+     <li>Data stays on your device. It is never transmitted to Kareem Bullard, this domain, or any third party.</li>
+     <li>Clearing your browser's site data (or using a different browser or device) removes it completely and permanently.</li>
+     <li>Each app's data is independent — there is no shared account or profile linking them together.</li>
+    </ul>
 
-     function openApp(file) {
-       var meta = APPS.filter(function (a) { return a.file === file; })[0];
-       document.getElementById('viewerTitle').textContent = meta ? meta.name : file;
-       document.getElementById('appFrame').src = file;
-       document.getElementById('openNewTab').href = file;
-       document.querySelectorAll('.nav-tab').forEach(function (b) { b.classList.toggle('active', b.dataset.app === file); });
-       document.querySelectorAll('.tab-pane').forEach(function (p) { p.classList.remove('active'); });
-       document.getElementById('viewer').classList.add('active');
-       history.replaceState(null, '', '#' + file.replace('.html', ''));
-     }
-     function openHome() {
-       document.querySelectorAll('.nav-tab').forEach(function (b) { b.classList.toggle('active', b.dataset.tab === 'home'); });
-       document.querySelectorAll('.tab-pane').forEach(function (p) { p.classList.remove('active'); });
-       document.getElementById('home').classList.add('active');
-       history.replaceState(null, '', location.pathname);
-     }
-     document.querySelectorAll('.nav-tab[data-app]').forEach(function (b) { b.addEventListener('click', function () { openApp(b.dataset.app); }); });
-     document.querySelector('.nav-tab[data-tab="home"]').addEventListener('click', openHome);
-     document.getElementById('homeGrid').addEventListener('click', function (e) { var c = e.target.closest('.app-card'); if (c) openApp(c.dataset.app); });
+    <h2>No tracking, no cookies</h2>
+    <p>These apps run no analytics, no advertising, no cookies, and no fingerprinting scripts. Nothing about how you use them is recorded or observed.</p>
 
-     var hash = (location.hash || '').replace('#', '');
-     if (hash) { var match = APPS.filter(function (a) { return a.file.replace('.html', '') === hash; })[0]; if (match) openApp(match.file); }
-     icons();
-   })();
-  </script>
+    <h2>Third-party resources</h2>
+    <p>To render properly, these pages load a small number of third-party resources at page-load time:</p>
+    <ul>
+     <li><strong>Google Fonts</strong> (Inter, Space Grotesk, JetBrains Mono) — for typography</li>
+     <li><strong>Lucide</strong> and <strong>Font Awesome</strong> icon libraries, served via CDN</li>
+     <li><strong>Chart.js</strong>, served via CDN — for the charts and graphs</li>
+    </ul>
+    <p>Loading these involves your browser making a normal request to those providers' servers — the same as any website using CDN-hosted fonts or libraries — which may log standard request metadata (such as your IP address) under their own privacy policies. No data from within these apps is sent to them.</p>
 
-  <script>
-   /* Unified color-mode toggle — shared standard across all apps */
-   (function () {
-     function preferred() {
-       try { var s = localStorage.getItem('colorScheme'); if (s === 'dark' || s === 'light') return s; } catch (e) {}
-       return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-     }
-     function current() { return document.documentElement.getAttribute('data-color-scheme') || preferred(); }
-     function swapIcon(btn, isDark) {
-       var lu = btn.querySelector('i[data-lucide="moon"], i[data-lucide="sun"], svg.lucide-moon, svg.lucide-sun');
-       if (lu) {
-         var ni = document.createElement('i');
-         ni.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
-         if (lu.tagName.toLowerCase() === 'i' && lu.className) ni.className = lu.className;
-         lu.replaceWith(ni);
-         return;
-       }
-       var fa = btn.querySelector('i.fa-moon, i.fa-sun');
-       if (fa) { fa.classList.remove('fa-moon', 'fa-sun'); fa.classList.add(isDark ? 'fa-sun' : 'fa-moon'); }
-     }
-     function refreshIcons(theme) {
-       var isDark = theme === 'dark';
-       document.querySelectorAll('[data-theme-toggle]').forEach(function (b) { swapIcon(b, isDark); });
-       if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
-     }
-     function apply(theme) {
-       document.documentElement.setAttribute('data-color-scheme', theme);
-       try { localStorage.setItem('colorScheme', theme); } catch (e) {}
-       refreshIcons(theme);
-     }
-     window.toggleColorScheme = function () { apply(current() === 'dark' ? 'light' : 'dark'); };
-     function wire() {
-       var t = preferred();
-       document.documentElement.setAttribute('data-color-scheme', t);
-       document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
-         var clone = btn.cloneNode(true);
-         clone.removeAttribute('onclick');
-         if (btn.parentNode) btn.parentNode.replaceChild(clone, btn);
-         clone.addEventListener('click', function (e) { e.preventDefault(); window.toggleColorScheme(); });
-       });
-       refreshIcons(t);
-     }
-     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', wire); }
-     else { wire(); }
-   })();
-  </script>
+    <h2>Demo &amp; sample data</h2>
+    <p>All data shown by default — projects, tenants, budgets, tasks, articles, and so on — is <strong>fictional sample data</strong> created for demonstration purposes. Anything you add yourself is your own test data. None of it reflects real people, companies, or finances, and none of these tools should be relied on for real-world decisions.</p>
+
+    <h2>Terms of use</h2>
+    <p>These apps are provided "as is," for demonstration and portfolio purposes, with no warranty of any kind. You're welcome to explore, test, and interact with them freely — just don't use them as a substitute for real financial, legal, medical, or property-management software.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about this showcase? Reach out via <a href="https://kareembullard.com" target="_blank" rel="noopener">kareembullard.com</a> or the <a href="https://github.com/kareembullard/project-showcase" target="_blank" rel="noopener">GitHub repository</a>.</p>
+   </div>
+  </main>
+
   <script>
    /* Site chrome — shared footer + about-modal system (identical across the showcase) */
    (function () {
@@ -2146,6 +2085,52 @@ select.form-control {
    })();
   </script>
 
+  <script>
+   /* Unified color-mode toggle — shared standard across all apps */
+   (function () {
+     function preferred() {
+       try { var s = localStorage.getItem('colorScheme'); if (s === 'dark' || s === 'light') return s; } catch (e) {}
+       return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+     }
+     function current() { return document.documentElement.getAttribute('data-color-scheme') || preferred(); }
+     function swapIcon(btn, isDark) {
+       var lu = btn.querySelector('i[data-lucide="moon"], i[data-lucide="sun"], svg.lucide-moon, svg.lucide-sun');
+       if (lu) {
+         var ni = document.createElement('i');
+         ni.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+         if (lu.tagName.toLowerCase() === 'i' && lu.className) ni.className = lu.className;
+         lu.replaceWith(ni);
+         return;
+       }
+       var fa = btn.querySelector('i.fa-moon, i.fa-sun');
+       if (fa) { fa.classList.remove('fa-moon', 'fa-sun'); fa.classList.add(isDark ? 'fa-sun' : 'fa-moon'); }
+     }
+     function refreshIcons(theme) {
+       var isDark = theme === 'dark';
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (b) { swapIcon(b, isDark); });
+       if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
+     }
+     function apply(theme) {
+       document.documentElement.setAttribute('data-color-scheme', theme);
+       try { localStorage.setItem('colorScheme', theme); } catch (e) {}
+       refreshIcons(theme);
+     }
+     window.toggleColorScheme = function () { apply(current() === 'dark' ? 'light' : 'dark'); };
+     function wire() {
+       var t = preferred();
+       document.documentElement.setAttribute('data-color-scheme', t);
+       document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+         var clone = btn.cloneNode(true);
+         clone.removeAttribute('onclick');
+         if (btn.parentNode) btn.parentNode.replaceChild(clone, btn);
+         clone.addEventListener('click', function (e) { e.preventDefault(); window.toggleColorScheme(); });
+       });
+       refreshIcons(t);
+     }
+     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', wire); }
+     else { wire(); }
+   })();
+  </script>
   <script>
    /* ProjectSuite Enhance — motion, counters, ripple, cursor, chart polish (shared) */
    (function () {

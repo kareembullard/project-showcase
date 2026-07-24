@@ -1372,6 +1372,29 @@ select.form-control {
      .ph-cursor { display: none; }
    }
   </style>
+   <style>
+   /* Site chrome — shared footer + about-modal system */
+   .site-footer { margin-top: 32px; padding: 24px; border-top: 1px solid var(--color-border); background: var(--color-surface); }
+   .sf-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; }
+   .site-footer a { color: var(--color-text-secondary); text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; }
+   .site-footer a:hover { color: var(--color-primary); }
+   .site-footer a i { width: 14px; height: 14px; }
+   .sf-links { display: flex; gap: 20px; flex-wrap: wrap; }
+   .sf-byline { font-size: 13px; color: var(--color-text-secondary); }
+   .sf-byline a { display: inline; color: var(--color-primary); font-weight: 600; }
+   #appInfoBtn { flex-shrink: 0; }
+   .site-about-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 2500; display: flex; align-items: center; justify-content: center; padding: 20px; }
+   .site-about-modal { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; max-width: 580px; width: 100%; max-height: 82vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,.3); }
+   .sam-head { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; border-bottom: 1px solid var(--color-border); position: sticky; top: 0; background: var(--color-surface); }
+   .sam-head h3 { margin: 0; font-size: 18px; }
+   .sam-body { padding: 22px; line-height: 1.75; color: var(--color-text-secondary); font-size: 14px; }
+   .sam-body p { margin: 0 0 14px; }
+   .sam-body strong { color: var(--color-text); }
+   .sam-body hr { border: none; border-top: 1px solid var(--color-border); margin: 18px 0; }
+   .sam-body ul { margin: 0 0 14px; padding-left: 20px; }
+   .sam-body li { margin-bottom: 6px; }
+  </style>
+
  </head>
  <body>
   <div class="app-container">
@@ -2887,6 +2910,71 @@ window.exportReport = exportReport;
      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(wire, 60); }); else setTimeout(wire, 60);
    })();
   </script>
+  <script>
+   window.APP_ABOUT = {"title":"About Landlord Risk Manager","html":"<p><strong>Landlord Risk Manager</strong> is a small-portfolio property management tool focused on one specific problem: knowing which tenants are a payment risk before it becomes a crisis.</p>\n<p>Add properties and tenants, track monthly rent and last-payment dates, and the app scores each one Low/Medium/High risk — surfacing automated alerts (like \"30+ days late, consider legal action\") the moment a property crosses a threshold. A built-in risk calculator lets you model scenarios.</p>\n<p>It's a domain-specific example of how a narrow, unglamorous problem (rent risk) can become a genuinely useful piece of software.</p>"};
+  </script>
+  <script>
+   /* Site chrome — shared footer + about-modal system (identical across the showcase) */
+   (function () {
+     function icons() { if (window.lucide && lucide.createIcons) lucide.createIcons(); }
+     function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
+     function ic(luc, faCls) { return (window.lucide && typeof lucide.createIcons === 'function') ? '<i data-lucide="' + luc + '"></i>' : '<i class="' + faCls + '"></i>'; }
+     var isHub = /(^|\/)index\.html$/.test(location.pathname) || /\/$/.test(location.pathname);
+
+     function buildFooter() {
+       if (document.querySelector('.site-footer')) return;
+       var f = document.createElement('footer');
+       f.className = 'site-footer';
+       var homeLink = isHub ? '' : '<a href="index.html">' + ic('layout-grid', 'fas fa-grip') + 'All Apps</a>';
+       f.innerHTML = '<div class="sf-inner">'
+         + '<div class="sf-byline">Built by <a href="https://kareembullard.com" target="_blank" rel="noopener">Kareem Bullard</a> — a portfolio demo, not a production product.</div>'
+         + '<div class="sf-links">' + homeLink
+         + '<a href="privacy.html">' + ic('shield-check', 'fas fa-shield-halved') + 'Privacy &amp; Terms</a>'
+         + '<a href="https://github.com/kareembullard/project-showcase" target="_blank" rel="noopener">' + ic('github', 'fab fa-github') + 'GitHub</a></div>'
+         + '</div>';
+       document.body.appendChild(f);
+       icons();
+     }
+
+     window.openAboutModal = function () {
+       var data = window.APP_ABOUT; if (!data) return;
+       var ov = document.createElement('div'); ov.className = 'site-about-overlay';
+       ov.innerHTML = '<div class="site-about-modal"><div class="sam-head"><h3></h3><button class="modal-close" type="button" id="samClose">' + ic('x', 'fas fa-xmark') + '</button></div>'
+         + '<div class="sam-body"></div></div>';
+       ov.querySelector('h3').textContent = data.title;
+       ov.querySelector('.sam-body').innerHTML = data.html
+         + '<hr><p><strong>Note:</strong> This is a portfolio demo — all data shown is fictional/sample and stored only in your browser (nothing is sent to a server). See <a href="privacy.html">Privacy &amp; Terms</a> for details.</p>';
+       document.body.appendChild(ov);
+       function close() { ov.remove(); document.removeEventListener('keydown', esckey); }
+       function esckey(e) { if (e.key === 'Escape') close(); }
+       ov.querySelector('#samClose').addEventListener('click', close);
+       ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+       document.addEventListener('keydown', esckey);
+       icons();
+     };
+
+     function wireInfoButton() {
+       if (!window.APP_ABOUT || document.getElementById('appInfoBtn')) return;
+       var toggle = document.querySelector('[data-theme-toggle]');
+       var container = toggle ? toggle.parentNode : (document.querySelector('.header-actions') || document.querySelector('.header-right') || document.querySelector('.sidebar-header') || document.querySelector('.sidebar__header'));
+       if (!container) return;
+       var btn = document.createElement('button');
+       btn.id = 'appInfoBtn';
+       btn.className = 'btn btn--secondary btn--sm';
+       btn.type = 'button';
+       btn.title = 'About this app';
+       btn.setAttribute('aria-label', 'About this app');
+       btn.innerHTML = ic('info', 'fas fa-circle-info');
+       btn.addEventListener('click', window.openAboutModal);
+       if (toggle) container.insertBefore(btn, toggle); else container.insertBefore(btn, container.firstChild);
+       icons();
+     }
+
+     function start() { buildFooter(); wireInfoButton(); }
+     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(start, 50); }); else setTimeout(start, 50);
+   })();
+  </script>
+
   <script>
    /* ProjectSuite Enhance — motion, counters, ripple, cursor, chart polish (shared) */
    (function () {
